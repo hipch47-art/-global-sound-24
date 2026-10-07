@@ -37,6 +37,8 @@ h1{font-size:30px;line-height:1.15;margin:0 0 7px;letter-spacing:-.7px}.sub{colo
 #explore>.sub{font-size:20px;line-height:1.5;margin-bottom:28px;color:#a7a7a7}
 .back{font-size:18px;padding:8px 0;min-height:44px}
 .playerBack{font-size:18px;min-height:44px;padding:8px 14px}
+
+.categoryGrid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:6px}.categoryChoice{border:1px solid #303233;background:#191b1c;color:#f4f1eb;border-radius:20px;padding:18px 15px;text-align:left;min-height:88px}.categoryChoice:active{transform:scale(.98)}.categoryChoice .ci{font-size:30px;margin-bottom:7px}.categoryChoice b{display:block;font-size:17px}.categoryChoice small{display:block;color:#969791;margin-top:4px;font-size:12px}.sourceHeader{font-size:18px;font-weight:800;margin:5px 0 2px}.sourceHint{color:#969791;font-size:13px;margin-bottom:12px}
 </style>
 <style id="v141-additions">
 .settingsRow{width:100%;color:#f4f1eb;text-align:left;font-family:inherit;border:1px solid #303233}
@@ -73,7 +75,7 @@ h1{font-size:30px;line-height:1.15;margin:0 0 7px;letter-spacing:-.7px}.sub{colo
 </section>
 
 <section id="explore" class="page">
-<button class="back" onclick="showPage('home')">‹ 回首頁</button><h1>選擇聲音</h1><div class="sub">從一種感覺開始。</div><div id="exploreList" class="list"></div>
+<button class="back" id="exploreBack" onclick="exploreBackAction()">‹ 回首頁</button><h1 id="exploreTitle">選擇聲音</h1><div class="sub" id="exploreSub">從一種感覺開始。</div><div id="exploreList" class="list"></div>
 </section>
 
 <section id="library" class="page">
@@ -117,53 +119,42 @@ h1{font-size:30px;line-height:1.15;margin:0 0 7px;letter-spacing:-.7px}.sub{colo
 <script>
 let catalog=[], currentSource=null, streamAudio=document.getElementById('streamAudio'), audioReady=false;
 const data={
-music:[["🎷","Jazz Lounge","爵士・Lounge"],["🎹","Piano","鋼琴・Instrumental"],["🎻","Classical","古典・交響"],["🎸","Acoustic","原聲・吉他"],["🎛️","Electronic","電子・Ambient"]],
-nature:[["🌧️","Rain","雨聲・放鬆"],["🌊","Ocean","海浪・海岸"],["🌲","Forest","森林・自然"],["🔥","Fireplace","壁爐・夜晚"]],
-faith:[["🪷","Buddhist","佛經・梵唱・禪修"],["🏔️","Tibetan","藏傳梵唱・Mantra"],["✝️","Christian","Hymns・Gospel・Worship"],["☪️","Islamic","Quran・Nasheed"],["🕉️","Hindu","Mantra・Vedic Chant"]],
-region:[["🇹🇼","台灣","Taiwan"],["🇨🇳","中國","China"],["🇯🇵","日本","Japan"],["🇰🇷","韓國","Korea"],["🇺🇸","美國","United States"],["🌎","世界","Global"]]
+ music:[['🎷','爵士','Jazz · Lounge'],['🎻','古典','Classical · Orchestra'],['🎹','鋼琴','Piano · Instrumental'],['🎸','原聲','Acoustic · Guitar'],['🎛️','電子','Electronic · Ambient'],['🥁','搖滾','Rock · Alternative']],
+ nature:[['🌧️','雨聲','Rain · Relax'],['🌊','海浪','Ocean · Coast'],['🌲','森林','Forest · Nature'],['🔥','壁爐','Fireplace · Night']],
+ faith:[['🪷','佛教','佛經 · 梵唱 · 禪修'],['🏔️','藏傳佛教','Tibetan Chant · Mantra'],['✝️','基督宗教','Hymns · Gospel · Worship'],['☪️','伊斯蘭','Quran · Nasheed'],['🕉️','印度教','Mantra · Vedic Chant'],['✡️','猶太教','Jewish Prayer · Hebrew Chant'],['☯️','道教','道樂 · 經典'],['🕯️','其他靈性','Sikh · Jain · Shinto · Spiritual']],
+ region:[['🇹🇼','台灣','Taiwan'],['🇨🇳','中國','China'],['🇯🇵','日本','Japan'],['🇰🇷','韓國','Korea'],['🇮🇳','印度','India'],['🇫🇷','法國','France'],['🇬🇧','英國','United Kingdom'],['🇺🇸','美國','United States'],['🌎','世界','Global']]
 };
-const labels={music:"音樂",nature:"放鬆・自然",faith:"信仰・靈性",region:"地區"};
-
-async function loadCatalog(){
- try{
-   const r=await fetch('sources.json?v='+Date.now(),{cache:'no-store'});
-   if(!r.ok) throw new Error('catalog '+r.status);
-   const j=await r.json();
-   catalog=(j.sources||[]).filter(s=>s.enabled && s.publish && s.streamUrl);
-   console.log('GLOBAL SOUND catalog loaded:',catalog.length);
- }catch(e){
-   catalog=[];
-   console.warn('sources.json unavailable',e);
- }
+const labels={music:'音樂類型',nature:'放鬆・自然',faith:'信仰・靈性',region:'地區'};
+let exploreCategory=null, exploreSubcategory=null;
+function sourceRows(type,sub){
+ return catalog.filter(s=>{
+   if(type && s.category!==type) return false;
+   if(!sub) return true;
+   const target=String(sub).toLowerCase();
+   const vals=[s.subcategory,s.subCategory,s.genre,s.country,s.countryCode,s.name,s.subtitle,...(s.tags||[])].filter(Boolean).join(' ').toLowerCase();
+   return vals.includes(target);
+ });
 }
-loadCatalog();
-
-function showPage(id){
- document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));
- document.getElementById(id).classList.add('active');
- document.querySelectorAll('.bottom button').forEach(x=>x.classList.remove('active'));
- let n={library:'navLibrary',settings:'navSettings'}[id];
- if(n && document.getElementById(n)) document.getElementById(n).classList.add('active');
- window.scrollTo(0,0);
-}
-function findSource(title){
- return catalog.find(s=>s.name===title) || catalog.find(s=>s.name.toLowerCase()===String(title).toLowerCase());
-}
-function sourceRows(type){
- const cat=labels[type];
- return catalog.filter(s=>s.category===type || (type==='music' && s.categoryLabel==='音樂'));
-}
-function renderCatalog(type){
+function renderCategoryChoices(type){
  const list=document.getElementById('exploreList');
- const rows=sourceRows(type);
- list.innerHTML=`<h2 style="margin:4px 0 12px">${labels[type]}</h2>`;
- if(!rows.length){
-   list.innerHTML+=`<div class="empty"><b>目前沒有已發布音源</b><br><small>目前還沒有可播放的聲音。</small></div>`;
-   return;
- }
+ document.getElementById('exploreTitle').textContent=labels[type];
+ document.getElementById('exploreSub').textContent= type==='region' ? '先選一個國家或地區。' : '先選一種聲音，再開始播放。';
+ document.getElementById('exploreBack').textContent='‹ 回首頁';
+ list.innerHTML='<div class="categoryGrid">'+data[type].map(x=>`<button class="categoryChoice" onclick="selectSubcategory('${type}','${x[1]}')"><div class="ci">${x[0]}</div><b>${x[1]}</b><small>${x[2]}</small></button>`).join('')+'</div>';
+}
+function renderSubcategory(type,sub){
+ const list=document.getElementById('exploreList');
+ document.getElementById('exploreTitle').textContent=sub;
+ document.getElementById('exploreSub').textContent='選擇一個音源開始播放。';
+ document.getElementById('exploreBack').textContent='‹ 返回'+labels[type];
+ const rows=sourceRows(type,sub);
+ list.innerHTML=`<div class="sourceHeader">${labels[type]} · ${sub}</div><div class="sourceHint">目前已發布的音源</div>`;
+ if(!rows.length){list.innerHTML+=`<div class="empty"><b>目前還沒有音源</b><br><small>後台完成 TECH / CONTENT / RIGHTS 審核後，音源會出現在這裡。</small></div>`;return;}
  list.innerHTML+=rows.map(s=>`<button class="row" onclick="openPlayerById('${s.id}')"><div class="thumb">${s.icon||'🎵'}</div><div class="info"><b>${s.name}</b><small>${s.subtitle||s.country||''}</small></div><span>›</span></button>`).join('');
 }
-function openCategory(type){showPage('explore');renderCatalog(type);}
+function selectSubcategory(type,sub){exploreCategory=type;exploreSubcategory=sub;renderSubcategory(type,sub);}
+function exploreBackAction(){if(exploreSubcategory){exploreSubcategory=null;renderCategoryChoices(exploreCategory);return;}showPage('home');}
+function openCategory(type){exploreCategory=type;exploreSubcategory=null;showPage('explore');renderCategoryChoices(type);}
 function openFirst(type){const s=sourceRows(type)[0]; if(s) openPlayerById(s.id); else openCategory(type);}
 function openPlayerById(id){
  const s=catalog.find(x=>x.id===id); if(!s)return;
