@@ -16,7 +16,7 @@ header{display:flex;justify-content:center;align-items:center;margin:8px 2px 30p
 h1{font-size:30px;line-height:1.15;margin:0 0 7px;letter-spacing:-.7px}.sub{color:#aaa9a3;font-size:18px;margin-bottom:24px}.sectionTitle{font-size:24px;font-weight:800;margin:32px 0 14px}
 .quick{display:grid;grid-template-columns:1fr 1fr;gap:12px}.card{position:relative;overflow:hidden;background:linear-gradient(145deg,#1b1d1e,#151718);border:1px solid #303233;border-radius:24px;padding:20px;min-height:152px;text-align:left;color:#f4f1eb;box-shadow:0 8px 28px #0005;transition:.15s}.card:active{transform:scale(.98)}.card:after{content:"";position:absolute;width:90px;height:90px;border-radius:50%;right:-25px;bottom:-28px;border:1px solid #ffffff0d}.emoji{font-size:40px;margin-bottom:25px}.card b{font-size:22px;display:block}.card small{display:block;color:#969791;margin-top:7px;font-size:13px}
 .rec{display:flex;gap:13px;overflow:auto;padding-bottom:5px}.rec .item{min-width:225px;background:#181a1b;border:1px solid #303233;border-radius:22px;padding:13px;color:#f4f1eb;text-align:left}.item .cover{height:128px;border-radius:17px;background:radial-gradient(circle at 50% 45%,#3d3e3c 0 11%,#191a1a 12% 65%,#0d0e0e 66%);display:flex;align-items:center;justify-content:center;font-size:45px;margin-bottom:13px;box-shadow:inset 0 0 25px #000}.item b{font-size:17px}.item small{display:block;color:#92938e;margin-top:5px;font-size:13px}
-.page{display:none}.page.active{display:block}.back{border:0;background:transparent;padding:8px 0 18px;font-size:18px;color:#d8d6d0;font-weight:600}.list{display:flex;flex-direction:column;gap:10px}.row{background:#191b1c;border:1px solid #303233;border-radius:19px;padding:15px;display:flex;align-items:center;gap:14px;color:#f4f1eb;text-align:left}.row .thumb{width:58px;height:58px;border-radius:16px;background:#252728;display:grid;place-items:center;font-size:27px}.row .info{flex:1}.row b{font-size:17px}.row small{display:block;color:#92938e;margin-top:5px;font-size:13px}.row>span{color:#777;font-size:25px}
+.page{display:none}.page.active{display:block}.back{border:0;background:transparent;padding:10px 0 16px;font-size:18px;color:#d8d6d0;font-weight:600;display:block;min-height:48px}.list{display:flex;flex-direction:column;gap:10px}.row{background:#191b1c;border:1px solid #303233;border-radius:19px;padding:15px;display:flex;align-items:center;gap:14px;color:#f4f1eb;text-align:left}.row .thumb{width:58px;height:58px;border-radius:16px;background:#252728;display:grid;place-items:center;font-size:27px}.row .info{flex:1}.row b{font-size:17px}.row small{display:block;color:#92938e;margin-top:5px;font-size:13px}.row>span{color:#777;font-size:25px}
 .bottom{position:fixed;z-index:20;left:50%;transform:translateX(-50%);bottom:11px;width:min(650px,calc(100% - 24px));background:#17191aee;backdrop-filter:blur(18px);border:1px solid #343637;border-radius:25px;padding:7px 7px calc(7px + env(safe-area-inset-bottom));display:grid;grid-template-columns:repeat(2,1fr);box-shadow:0 12px 40px #0008}.bottom button{border:0;background:transparent;color:#8d8e89;font-size:14px;font-weight:600;padding:9px 2px}.bottom button b{display:block;color:inherit;font-size:30px;line-height:30px;margin-bottom:6px;font-weight:400}.bottom button.active{color:#f3f0e9}
 .sheet{position:fixed;z-index:30;inset:0;background:#000b;display:none;align-items:flex-end}.sheet.show{display:flex}.sheetbox{width:100%;max-width:680px;margin:auto;background:#17191a;border:1px solid #303233;border-bottom:0;border-radius:30px 30px 0 0;padding:22px 20px calc(30px + env(safe-area-inset-bottom));min-height:430px}.handle{width:46px;height:5px;border-radius:5px;background:#555;margin:0 auto 25px}.vinyl{width:225px;height:225px;border-radius:50%;margin:0 auto 20px;background:repeating-radial-gradient(circle,#0a0a0a 0 2px,#242424 2px 4px);display:grid;place-items:center;box-shadow:0 12px 35px #000b}.label{width:82px;height:82px;border-radius:50%;background:#b9ad8d;color:#151515;display:grid;place-items:center;font-size:31px;box-shadow:inset 0 0 0 5px #8f856b}.sheet h2{text-align:center;font-size:23px;margin:8px 0 5px}.sheet p{text-align:center;color:#999;margin:0 0 22px;font-size:14px}.sheet .bigplay{display:block;margin:auto;background:#eeeae2;color:#111;border:0;border-radius:50%;width:62px;height:62px;font-size:23px}
 .empty{background:#181a1b;border:1px solid #303233;border-radius:22px;padding:32px 20px;text-align:center;color:#91928c;font-size:14px}.empty b{display:block;color:#eeeae2;margin-bottom:8px;font-size:18px}.settingsRow{background:#191b1c;border:1px solid #303233;border-radius:19px;padding:18px;margin-bottom:10px;display:flex;justify-content:space-between;font-size:16px}.settingsRow small{display:block;color:#92938e;margin-top:6px;font-size:13px}
@@ -77,11 +77,11 @@ h1{font-size:30px;line-height:1.15;margin:0 0 7px;letter-spacing:-.7px}.sub{colo
 </section>
 
 <section id="library" class="page">
-<h1>我的收藏</h1><div class="sub">喜歡的聲音會留在這裡。</div><div class="empty"><b>還沒有收藏</b>播放時按 ♡，就會出現在這裡。</div>
+<button class="back" onclick="showPage('home')">‹ 回首頁</button><h1>我的收藏</h1><div class="sub">喜歡的聲音會留在這裡。</div><div class="empty"><b>還沒有收藏</b>播放時按 ♡，就會出現在這裡。</div>
 </section>
 
 <section id="settings" class="page">
-<h1>Settings</h1><div class="sub">GLOBAL SOUND 24</div>
+<button class="back" onclick="showPage('home')">‹ 回首頁</button><h1>Settings</h1><div class="sub">GLOBAL SOUND 24</div>
 <button class="settingsRow" onclick="openLanguage()"><div style="text-align:left"><b>Language</b><small id="currentLanguage">繁體中文</small></div><span>›</span></button>
 <div class="settingsRow"><div><b>背景播放</b><small>正式 App 版本提供</small></div><span>›</span></div>
 <div class="settingsRow"><div><b>睡眠計時</b><small>讓聲音在指定時間後停止</small></div><span>›</span></div>
@@ -113,6 +113,7 @@ h1{font-size:30px;line-height:1.15;margin:0 0 7px;letter-spacing:-.7px}.sub{colo
 
 <div id="sheet" class="sheet" onclick="if(event.target===this)closePlayer()"><div id="playerBox" class="sheetbox"><button class="playerBack" onclick="closePlayer()">‹ 回上一頁</button><div class="handle"></div><div class="vinyl"><div class="label" id="playerIcon">🎵</div></div><h2 id="playerTitle">GLOBAL SOUND 24</h2><p id="playerCat">選擇聲音開始播放</p><div id="playerTags"></div><div id="playerStatus" class="playStatus">準備播放</div><button id="playBtn" class="bigplay" onclick="toggleStream()">▶</button><div id="playerMsg" style="text-align:center;color:#999;font-size:11px;margin-top:14px"></div></div></div>
 
+<audio id="streamAudio" preload="none"></audio>
 <script>
 let catalog=[], currentSource=null, streamAudio=document.getElementById('streamAudio'), audioReady=false;
 const data={
@@ -231,13 +232,14 @@ function startMetro(){stopMetro();metroOn=true;document.getElementById('metroBtn
 function stopMetro(){metroOn=false;if(metroTimer)clearInterval(metroTimer);metroTimer=null;const b=document.getElementById('metroBtn');if(b)b.textContent='▶ 開始'}
 function toggleMetro(){metroOn?stopMetro():startMetro()}
 function waveDemo(){document.querySelector('.wave').classList.add('active');document.getElementById('waveMsg').textContent='示範波形已啟動'}
+function toolDemo(){if(currentTool==='guitar')showChord('C');else if(currentTool==='metronome')toggleMetro();else if(currentTool==='waveform')waveDemo();else playTone(440,1,'sine',.06)}
 function openLanguage(){document.getElementById('languageSheet').classList.add('show')}
 function closeLanguage(){document.getElementById('languageSheet').classList.remove('show')}
 function setLanguage(v){document.getElementById('currentLanguage').textContent=v;localStorage.setItem('gs24_language',v);closeLanguage()}
 
 </script>
 
-<audio id="streamAudio" preload="none" crossorigin="anonymous"></audio>
+
 <div id="audioToast" class="audioToast"></div>
 
 </body></html>
