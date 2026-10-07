@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
-<meta name="theme-color" content="#f7f6f2">
+<meta name="theme-color" content="#101112">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="GLOBAL SOUND 24">
@@ -50,6 +50,10 @@ h1{font-size:30px;line-height:1.15;margin:0 0 7px;letter-spacing:-.7px}.sub{colo
 .categoryChoice{min-height:96px;padding:17px}.categoryChoice b{font-size:18px}.categoryChoice small{font-size:12px;line-height:1.35}
 .soundPresetGrid{display:grid;grid-template-columns:1fr 1fr;gap:11px;margin-top:18px}.soundPreset{border:1px solid #303233;background:#191b1c;color:#f4f1eb;border-radius:18px;padding:17px 14px;text-align:left;min-height:82px}.soundPreset b{display:block;font-size:17px}.soundPreset small{display:block;color:#92938e;margin-top:5px}.soundPreset.active{border-color:#b9ad8d;background:#232322}.presetIcon{font-size:24px;margin-bottom:6px}
 .regionNote{color:#8f908b;font-size:13px;margin:4px 0 12px}.sourceCount{color:#8f908b;font-size:12px}
+</style>
+
+<style id="v150-source-engine">
+.sourceLoading{background:#191b1c;border:1px solid #303233;border-radius:20px;padding:24px;text-align:center;color:#a9aaa4}.sourceLoading b{display:block;color:#eeeae2;font-size:17px;margin-bottom:7px}.liveBadge{display:inline-block;margin-top:10px;padding:5px 9px;border:1px solid #3a3d3e;border-radius:999px;font-size:10px;color:#bdbdb7}.sourceMeta{color:#8f908b;font-size:12px;margin-top:5px}.apiNote{margin:8px 0 14px;color:#7f817c;font-size:11px;line-height:1.5}
 </style>
 </head>
 <body>
@@ -137,134 +141,79 @@ h1{font-size:30px;line-height:1.15;margin:0 0 7px;letter-spacing:-.7px}.sub{colo
 
 <div id="sheet" class="sheet" onclick="if(event.target===this)closePlayer()"><div id="playerBox" class="sheetbox"><button class="playerBack" onclick="closePlayer()">‹ 回上一頁</button><div class="handle"></div><div class="vinyl"><div class="label" id="playerIcon">🎵</div></div><h2 id="playerTitle">GLOBAL SOUND 24</h2><p id="playerCat">選擇聲音開始播放</p><div id="playerTags"></div><div id="playerStatus" class="playStatus">準備播放</div><button id="playBtn" class="bigplay" onclick="toggleStream()">▶</button><div id="playerMsg" style="text-align:center;color:#999;font-size:11px;margin-top:14px"></div></div></div>
 
-<audio id="streamAudio" preload="none" crossorigin="anonymous"></audio>
+<audio id="streamAudio" preload="none"></audio>
 <script>
 let catalog=[], currentSource=null, streamAudio=document.getElementById('streamAudio'), audioReady=false;
+const RADIO_SERVERS=[
+ 'https://de1.api.radio-browser.info',
+ 'https://nl1.api.radio-browser.info',
+ 'https://fr1.api.radio-browser.info',
+ 'https://at1.api.radio-browser.info',
+ 'https://us1.api.radio-browser.info'
+];
+let radioCache=new Map(), radioRequestToken=0;
 const data={
- music:[['🎤','R&B','R&B · Soul · Groove'],['🎷','Jazz','Jazz · Lounge · Smooth'],['🎻','Classical','Classical · Orchestra'],['🎹','Piano','Piano · Instrumental'],['🎸','Acoustic','Acoustic · Guitar'],['🎛️','Electronic','Electronic · House · Ambient'],['🥁','Rock','Rock · Alternative'],['🎵','Pop','Pop · Top 40'],['🎙️','Hip-Hop','Hip-Hop · Rap'],['🌎','World Music','Global · Folk · World'],['🌙','Lo-fi','Lo-fi · Chill'],['〰️','Ambient','Ambient · Soundscape']],
- nature:[['🌧️','雨聲','Rain · Relax'],['🌊','海浪','Ocean · Coast'],['🌲','森林','Forest · Nature'],['🔥','壁爐','Fireplace · Night']],
- faith:[['🪷','佛教','佛經 · 梵唱 · 禪修'],['🏔️','藏傳佛教','Tibetan Chant · Mantra'],['✝️','基督宗教','Hymns · Gospel · Worship'],['☪️','伊斯蘭','Quran · Nasheed'],['🕉️','印度教','Mantra · Vedic Chant'],['✡️','猶太教','Jewish Prayer · Hebrew Chant'],['☯️','道教','道樂 · 經典'],['🕯️','其他靈性','Sikh · Jain · Shinto · Spiritual']],
- region:[['🌏','亞洲','Taiwan · China · Japan · Korea · India'],['🌍','歐洲','France · United Kingdom · Germany · Italy'],['🌎','美洲','United States · Canada · Latin America'],['🕌','中東','Middle East · Arabic'],['🌍','非洲','Africa · Regional Sounds'],['🌊','大洋洲','Australia · New Zealand · Pacific'],['🌐','世界','Global Sources']]
+ music:[['🎤','R&B','R&B · Soul · Groove','rnb'],['🎷','Jazz','Jazz · Lounge · Smooth','jazz'],['🎻','Classical','Classical · Orchestra · Opera','classical'],['🎹','Piano','Piano · Instrumental','piano'],['🎸','Acoustic','Acoustic · Guitar','acoustic'],['🎛️','Electronic','Electronic · House · Ambient','electronic'],['🥁','Rock','Rock · Alternative','rock'],['🎵','Pop','Pop · Top 40','pop'],['🎙️','Hip-Hop','Hip-Hop · Rap','hip-hop'],['🌎','World Music','Global · Folk · World','world'],['🌙','Lo-fi','Lo-fi · Chill','lofi'],['〰️','Ambient','Ambient · Soundscape','ambient']],
+ nature:[['🌧️','雨聲','Rain · Relax','rain'],['🌊','海浪','Ocean · Coast','ocean'],['🌲','森林','Forest · Nature','nature'],['🔥','壁爐','Fireplace · Night','fireplace']],
+ faith:[['🪷','佛教','佛經 · 梵唱 · 禪修','buddhist'],['🏔️','藏傳佛教','Tibetan Chant · Mantra','tibetan'],['✝️','基督宗教','Hymns · Gospel · Worship','christian'],['☪️','伊斯蘭','Quran · Nasheed','quran'],['🕉️','印度教','Mantra · Vedic Chant','hindu'],['✡️','猶太教','Jewish Prayer · Hebrew Chant','jewish'],['☯️','道教','道樂 · 經典','taoist'],['🕯️','其他靈性','Sikh · Jain · Shinto · Spiritual','spiritual']],
+ region:[['🌏','亞洲','Taiwan · China · Japan · Korea · India','ASIA'],['🌍','歐洲','France · United Kingdom · Germany · Italy','EUROPE'],['🌎','美洲','United States · Canada · Latin America','AMERICAS'],['🕌','中東','Middle East · Arabic','MIDEAST'],['🌍','非洲','Africa · Regional Sounds','AFRICA'],['🌊','大洋洲','Australia · New Zealand · Pacific','OCEANIA'],['🌐','世界','Global Sources','WORLD']]
 };
 const regionCountries={
- '亞洲':[['🇹🇼','台灣','Taiwan'],['🇨🇳','中國','China'],['🇯🇵','日本','Japan'],['🇰🇷','韓國','Korea'],['🇮🇳','印度','India']],
- '歐洲':[['🇫🇷','法國','France'],['🇬🇧','英國','United Kingdom'],['🇩🇪','德國','Germany'],['🇮🇹','義大利','Italy'],['🇪🇸','西班牙','Spain']],
- '美洲':[['🇺🇸','美國','United States'],['🇨🇦','加拿大','Canada'],['🇲🇽','墨西哥','Mexico'],['🇧🇷','巴西','Brazil']],
- '中東':[['🇸🇦','沙烏地阿拉伯','Saudi Arabia'],['🇦🇪','阿拉伯聯合大公國','United Arab Emirates'],['🇮🇱','以色列','Israel'],['🇹🇷','土耳其','Turkey']],
- '非洲':[['🇪🇬','埃及','Egypt'],['🇿🇦','南非','South Africa'],['🇲🇦','摩洛哥','Morocco']],
- '大洋洲':[['🇦🇺','澳洲','Australia'],['🇳🇿','紐西蘭','New Zealand']],
- '世界':[['🌐','世界','Global']]
+ '亞洲':[['🇹🇼','台灣','TW'],['🇨🇳','中國','CN'],['🇯🇵','日本','JP'],['🇰🇷','韓國','KR'],['🇮🇳','印度','IN']],
+ '歐洲':[['🇫🇷','法國','FR'],['🇬🇧','英國','GB'],['🇩🇪','德國','DE'],['🇮🇹','義大利','IT'],['🇪🇸','西班牙','ES'],['🇳🇱','荷蘭','NL']],
+ '美洲':[['🇺🇸','美國','US'],['🇨🇦','加拿大','CA'],['🇲🇽','墨西哥','MX'],['🇧🇷','巴西','BR']],
+ '中東':[['🇸🇦','沙烏地阿拉伯','SA'],['🇦🇪','阿拉伯聯合大公國','AE'],['🇮🇱','以色列','IL'],['🇹🇷','土耳其','TR']],
+ '非洲':[['🇪🇬','埃及','EG'],['🇿🇦','南非','ZA'],['🇲🇦','摩洛哥','MA']],
+ '大洋洲':[['🇦🇺','澳洲','AU'],['🇳🇿','紐西蘭','NZ']],
+ '世界':[['🌐','世界','WORLD']]
 };
 const labels={music:'音樂類型',nature:'放鬆・自然',faith:'信仰・靈性',region:'地區'};
+const faithTags={buddhist:['buddhist','buddhism','zen','mantra'],tibetan:['tibetan','tibetan chant','mantra'],christian:['christian','gospel','worship','hymn','gregorian'],quran:['quran','koran','islamic','nasheed'],hindu:['hindu','mantra','vedic','bhajan'],jewish:['jewish','hebrew','torah'],taoist:['taoist','taoism','chinese traditional'],spiritual:['meditation','spiritual','new age','healing','sikh','jain','shinto']};
 let exploreCategory=null, exploreSubcategory=null, exploreRegionArea=null;
 function showPage(id){document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));const el=document.getElementById(id);if(el)el.classList.add('active');window.scrollTo({top:0,behavior:'smooth'});}
-function sourceRows(type,sub){
- return catalog.filter(s=>{
-   if(s.enabled===false || s.publish===false) return false;
-   if(type && s.category!==type) return false;
-   if(!sub) return true;
-   const target=String(sub).toLowerCase();
-   const vals=[s.subcategory,s.subCategory,s.genre,s.country,s.countryCode,s.name,s.subtitle,s.regionArea,...(s.tags||[])].filter(Boolean).join(' ').toLowerCase();
-   return vals.includes(target);
- });
+function escapeHtml(v){return String(v??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));}
+function stationToSource(s,category,subcategory,regionArea=''){
+ const url=s.url_resolved||s.url||''; if(!url)return null;
+ const id='rb_'+s.stationuuid;
+ return {id,name:s.name||'Untitled Station',streamUrl:url,icon:category==='music'?'🎵':category==='faith'?'🕊️':category==='nature'?'🌿':'🌎',subtitle:[s.language||'',s.country||'',s.codec||''].filter(Boolean).join(' · ')||'Live Stream',category,subcategory,country:s.country||'',countryCode:s.countrycode||'',regionArea,tags:['LIVE','TECH CHECK'],homepage:s.homepage||'',codec:s.codec||'',bitrate:s.bitrate||0,source:'Radio Browser',enabled:true,publish:true};
 }
-function renderCategoryChoices(type){
- const list=document.getElementById('exploreList');
- document.getElementById('exploreTitle').textContent=labels[type];
- document.getElementById('exploreSub').textContent= type==='region' ? '先選一個國家或地區。' : (type==='music'?'先選音樂風格，再選音源。':'先選一種聲音，再開始播放。');
- document.getElementById('exploreBack').textContent='‹ 回首頁';
- list.innerHTML='<div class="categoryGrid">'+data[type].map(x=>`<button class="categoryChoice" onclick="selectSubcategory('${type}','${x[1]}')"><div class="ci">${x[0]}</div><b>${x[1]}</b><small>${x[2]}</small></button>`).join('')+'</div>';
+function localMatches(type,sub){return catalog.filter(s=>s.category===type && s.subcategory===sub && s.enabled!==false && s.publish!==false);}
+async function apiFetch(path){
+ let last;
+ for(const base of RADIO_SERVERS){try{const r=await fetch(base+path,{headers:{'User-Agent':'GLOBAL-SOUND-24/0.150'},cache:'no-store'});if(r.ok)return await r.json();last=new Error('HTTP '+r.status);}catch(e){last=e;}}
+ throw last||new Error('API unavailable');
 }
-function renderRegionCountries(area){
- const list=document.getElementById('exploreList');
- document.getElementById('exploreTitle').textContent=area;
- document.getElementById('exploreSub').textContent='先選國家，再選可播放的音源。';
- document.getElementById('exploreBack').textContent='‹ 返回地區';
- const countries=regionCountries[area]||[];
- list.innerHTML='<div class="regionNote">國家 / 區域</div><div class="categoryGrid">'+countries.map(x=>`<button class="categoryChoice" onclick="selectRegionCountry('${area}','${x[1]}')"><div class="ci">${x[0]}</div><b>${x[1]}</b><small>${x[2]}</small></button>`).join('')+'</div>';
+async function queryTags(tags,category,subcategory,limit=18){
+ const key='tag|'+category+'|'+subcategory;
+ if(radioCache.has(key))return radioCache.get(key);
+ const all=[]; const seen=new Set();
+ for(const tag of tags){try{const arr=await apiFetch('/json/stations/bytag/'+encodeURIComponent(tag)+'?limit='+Math.max(8,Math.ceil(limit/tags.length)+3)+'&hidebroken=true&order=clickcount&reverse=true');for(const s of arr){if((s.lastcheckok===0)||!(s.url_resolved||s.url)||seen.has(s.stationuuid))continue;seen.add(s.stationuuid);const x=stationToSource(s,category,subcategory);if(x)all.push(x);if(all.length>=limit)break;} }catch(e){} if(all.length>=limit)break;}
+ radioCache.set(key,all);return all;
 }
-function renderSubcategory(type,sub){
- const list=document.getElementById('exploreList');
- document.getElementById('exploreTitle').textContent=sub;
- document.getElementById('exploreSub').textContent='選擇一個音源開始播放。';
- document.getElementById('exploreBack').textContent='‹ 返回'+labels[type];
- const rows=sourceRows(type,sub);
- list.innerHTML=`<div class="sourceHeader">${labels[type]} · ${sub}</div><div class="sourceHint">目前已發布的音源 <span class="sourceCount">${rows.length} 個</span></div>`;
- if(!rows.length){list.innerHTML+=`<div class="empty"><b>目前還沒有音源</b><br><small>這個分類已建立，等待後台發布合格音源。</small></div>`;return;}
- list.innerHTML+=rows.map(s=>`<button class="row" onclick="openPlayerById('${s.id}')"><div class="thumb">${s.icon||'🎵'}</div><div class="info"><b>${s.name}</b><small>${s.subtitle||s.country||''}</small></div><span>›</span></button>`).join('');
+async function queryCountry(code,area,limit=24){
+ const key='country|'+code;if(radioCache.has(key))return radioCache.get(key);
+ try{const arr=await apiFetch('/json/stations/bycountrycodeexact/'+encodeURIComponent(code)+'?limit='+limit+'&hidebroken=true&order=clickcount&reverse=true');
+  const out=arr.filter(s=>s.lastcheckok!==0&&(s.url_resolved||s.url)).map(s=>stationToSource(s,'region',s.tags?.split(',')[0]||'General',area)).filter(Boolean);radioCache.set(key,out);return out;
+ }catch(e){radioCache.set(key,[]);return []}
 }
-function renderRegionSources(country,area){
- const list=document.getElementById('exploreList');
- document.getElementById('exploreTitle').textContent=country;
- document.getElementById('exploreSub').textContent='選擇一個音源開始播放。';
- document.getElementById('exploreBack').textContent='‹ 返回'+area;
- const rows=sourceRows('region',country);
- list.innerHTML=`<div class="sourceHeader">${area} · ${country}</div><div class="sourceHint">目前已發布的音源 <span class="sourceCount">${rows.length} 個</span></div>`;
- if(!rows.length){list.innerHTML+=`<div class="empty"><b>目前還沒有音源</b><br><small>這個國家已建立，等待後台發布合格音源。</small></div>`;return;}
- list.innerHTML+=rows.map(s=>`<button class="row" onclick="openPlayerById('${s.id}')"><div class="thumb">${s.icon||'🌍'}</div><div class="info"><b>${s.name}</b><small>${s.subtitle||s.country||''}</small></div><span>›</span></button>`).join('');
-}
+async function queryCountryWorld(limit=30){
+ const key='country|WORLD';if(radioCache.has(key))return radioCache.get(key);try{const arr=await apiFetch('/json/stations/topclick/'+limit+'?hidebroken=true');const out=arr.filter(s=>s.lastcheckok!==0&&(s.url_resolved||s.url)).map(s=>stationToSource(s,'region','World','世界')).filter(Boolean);radioCache.set(key,out);return out}catch(e){return []}}
+function showLoading(msg='正在尋找可播放音源…'){document.getElementById('exploreList').innerHTML='<div class="sourceLoading"><b>'+escapeHtml(msg)+'</b>正在連接全球音源目錄<div class="liveBadge">LIVE SOURCE DISCOVERY</div></div>';}
+function renderCategoryChoices(type){const list=document.getElementById('exploreList');document.getElementById('exploreTitle').textContent=labels[type];document.getElementById('exploreSub').textContent=type==='region'?'先選區域，再選國家，最後選音源。':'先選你想聽的風格，再從可播放音源中選擇。';document.getElementById('exploreBack').textContent='‹ 回首頁';const arr=data[type]||[];list.innerHTML='<div class="categoryGrid">'+arr.map(x=>`<button class="categoryChoice" onclick="selectSubcategory('${type}','${x[1].replace(/'/g,"\\'")}')"><div class="ci">${x[0]}</div><b>${x[1]}</b><small>${x[2]}</small></button>`).join('')+'</div><div class="apiNote">音源會即時從全球公開目錄尋找，先通過技術可播放條件才顯示。正式商業發布仍需後台權利審核。</div>';}
+function renderRegionCountries(area){const list=document.getElementById('exploreList');document.getElementById('exploreTitle').textContent=area;document.getElementById('exploreSub').textContent='先選國家，再選可播放的音源。';document.getElementById('exploreBack').textContent='‹ 返回地區';const countries=regionCountries[area]||[];list.innerHTML='<div class="regionNote">國家 / 區域</div><div class="categoryGrid">'+countries.map(x=>`<button class="categoryChoice" onclick="selectRegionCountry('${area}','${x[1]}')"><div class="ci">${x[0]}</div><b>${x[1]}</b><small>${x[2]}</small></button>`).join('')+'</div>';}
+async function renderSubcategory(type,sub){const list=document.getElementById('exploreList');document.getElementById('exploreTitle').textContent=sub;document.getElementById('exploreSub').textContent='正在尋找可播放音源…';document.getElementById('exploreBack').textContent='‹ 返回'+labels[type];showLoading();let rows=[];const local=localMatches(type,sub);if(local.length)rows=local;const map=data[type]?.find(x=>x[1]===sub);const key=map?.[3];let tags=[];if(type==='faith')tags=faithTags[key]||[key];else tags=key?[key]:[sub];const live=await queryTags(tags,type,sub,18);const merged=[...rows,...live.filter(x=>!rows.some(y=>y.id===x.id))];catalog=[...catalog.filter(x=>!merged.some(y=>y.id===x.id)),...merged];list.innerHTML=`<div class="sourceHeader">${escapeHtml(labels[type])} · ${escapeHtml(sub)}</div><div class="sourceHint">找到 <span class="sourceCount">${merged.length}</span> 個可播放候選音源</div>`;if(!merged.length){list.innerHTML+=`<div class="empty"><b>目前沒有找到可播放音源</b><br><small>可以換另一個風格；音源目錄會持續變動。</small></div>`;return;}list.innerHTML+=merged.map(s=>`<button class="row" onclick="openPlayerById('${s.id}')"><div class="thumb">${s.icon}</div><div class="info"><b>${escapeHtml(s.name)}</b><small>${escapeHtml(s.subtitle||s.country||'Live Stream')}</small><span class="sourceMeta">${escapeHtml(s.source||'Global Source')} · ${escapeHtml(s.codec||'audio')}</span></div><span>›</span></button>`).join('');}
+async function renderRegionSources(country,area,code){const list=document.getElementById('exploreList');document.getElementById('exploreTitle').textContent=country;document.getElementById('exploreSub').textContent='正在尋找可播放音源…';document.getElementById('exploreBack').textContent='‹ 返回'+area;showLoading();const rows=code==='WORLD'?await queryCountryWorld(30):await queryCountry(code,area,30);catalog=[...catalog.filter(x=>!rows.some(y=>y.id===x.id)),...rows];list.innerHTML=`<div class="sourceHeader">${escapeHtml(area)} · ${escapeHtml(country)}</div><div class="sourceHint">找到 <span class="sourceCount">${rows.length}</span> 個可播放候選音源</div>`;if(!rows.length){list.innerHTML+=`<div class="empty"><b>目前沒有找到可播放音源</b><br><small>這個國家的公開目錄目前沒有回傳可播放來源。</small></div>`;return;}list.innerHTML+=rows.map(s=>`<button class="row" onclick="openPlayerById('${s.id}')"><div class="thumb">${s.icon}</div><div class="info"><b>${escapeHtml(s.name)}</b><small>${escapeHtml(s.subtitle||s.country||'Live Stream')}</small><span class="sourceMeta">${escapeHtml(s.source||'Global Source')} · ${escapeHtml(s.codec||'audio')}</span></div><span>›</span></button>`).join('');}
 function selectSubcategory(type,sub){exploreCategory=type;exploreSubcategory=sub;if(type==='region'){exploreRegionArea=sub;renderRegionCountries(sub);}else renderSubcategory(type,sub);}
-function selectRegionCountry(area,country){exploreRegionArea=area;exploreSubcategory=country;renderRegionSources(country,area);}
-function exploreBackAction(){
- if(exploreCategory==='region' && exploreSubcategory){exploreSubcategory=null;renderRegionCountries(exploreRegionArea);return;}
- if(exploreCategory==='region' && exploreRegionArea){exploreRegionArea=null;renderCategoryChoices('region');return;}
- if(exploreSubcategory){exploreSubcategory=null;renderCategoryChoices(exploreCategory);return;}
- showPage('home');
-}
+function selectRegionCountry(area,country){const x=(regionCountries[area]||[]).find(v=>v[1]===country);exploreRegionArea=area;exploreSubcategory=country;renderRegionSources(country,area,x?.[2]||'WORLD');}
+function exploreBackAction(){if(exploreCategory==='region'&&exploreSubcategory){exploreSubcategory=null;renderRegionCountries(exploreRegionArea);return;}if(exploreCategory==='region'&&exploreRegionArea){exploreRegionArea=null;renderCategoryChoices('region');return;}if(exploreSubcategory){exploreSubcategory=null;renderCategoryChoices(exploreCategory);return;}showPage('home');}
 function openCategory(type){exploreCategory=type;exploreSubcategory=null;exploreRegionArea=null;showPage('explore');renderCategoryChoices(type);}
 function openFirst(type){openCategory(type);}
-function openPlayerById(id){
- const s=catalog.find(x=>x.id===id); if(!s)return;
- currentSource=s;
- document.getElementById('playerTitle').textContent=s.name;
- document.getElementById('playerIcon').textContent=s.icon||'🎵';
- document.getElementById('playerCat').textContent=s.subtitle||labels[s.category]||'';
- document.getElementById('playerTags').innerHTML=(s.tags||[]).map(t=>`<span class="sourceTag">${t}</span>`).join('');
- document.getElementById('playerMsg').textContent='';
- document.getElementById('playerStatus').textContent='準備播放';
- document.getElementById('playBtn').textContent='▶';
- document.getElementById('playerBox').classList.remove('playing');
- document.getElementById('sheet').classList.add('show');
-}
+function openPlayerById(id){const s=catalog.find(x=>x.id===id);if(!s)return;currentSource=s;document.getElementById('playerTitle').textContent=s.name;document.getElementById('playerIcon').textContent=s.icon||'🎵';document.getElementById('playerCat').textContent=s.subtitle||labels[s.category]||'';document.getElementById('playerTags').innerHTML=(s.tags||[]).map(t=>`<span class="sourceTag">${escapeHtml(t)}</span>`).join('');document.getElementById('playerMsg').textContent='';document.getElementById('playerStatus').textContent='準備播放';document.getElementById('playBtn').textContent='▶';document.getElementById('playerBox').classList.remove('playing');document.getElementById('sheet').classList.add('show');}
 function closePlayer(){stopStream();document.getElementById('sheet').classList.remove('show')}
 function toast(t){const x=document.getElementById('audioToast');x.textContent=t;x.classList.add('show');clearTimeout(window._toast);window._toast=setTimeout(()=>x.classList.remove('show'),2600)}
-async function toggleStream(){
- if(!currentSource)return;
- if(!streamAudio.paused){stopStream();return}
- document.getElementById('playerStatus').textContent='正在連接音源…';
- document.getElementById('playBtn').textContent='…';
- try{
-   streamAudio.src=currentSource.streamUrl;
-   streamAudio.load();
-   await streamAudio.play();
- }catch(e){
-   document.getElementById('playerStatus').textContent='無法啟動音源';
-   document.getElementById('playBtn').textContent='▶';
-   toast('音源無法播放，可能是來源限制或目前離線');
- }
-}
-function stopStream(){
- streamAudio.pause(); streamAudio.removeAttribute('src'); streamAudio.load();
- document.getElementById('playerBox')?.classList.remove('playing');
- const b=document.getElementById('playBtn'); if(b)b.textContent='▶';
- const st=document.getElementById('playerStatus'); if(st)st.textContent='準備播放';
-}
-streamAudio.addEventListener('playing',()=>{
- audioReady=true;
- document.getElementById('playerStatus').textContent='● 正在播放';
- document.getElementById('playBtn').textContent='■';
- document.getElementById('playerBox').classList.add('playing');
-});
-streamAudio.addEventListener('waiting',()=>{document.getElementById('playerStatus').textContent='緩衝中…'});
-streamAudio.addEventListener('pause',()=>{
- if(streamAudio.currentSrc){document.getElementById('playerBox')?.classList.remove('playing');}
-});
-streamAudio.addEventListener('error',()=>{
- document.getElementById('playerStatus').textContent='音源連線失敗';
- document.getElementById('playBtn').textContent='▶';
- document.getElementById('playerBox')?.classList.remove('playing');
- toast('此音源目前無法連線');
-});
+async function toggleStream(){if(!currentSource)return;if(!streamAudio.paused){stopStream();return}document.getElementById('playerStatus').textContent='正在連接音源…';document.getElementById('playBtn').textContent='…';try{streamAudio.src=currentSource.streamUrl;streamAudio.load();await streamAudio.play();}catch(e){document.getElementById('playerStatus').textContent='無法啟動音源';document.getElementById('playBtn').textContent='▶';toast('此來源無法直接播放，可能是格式或來源限制');}}
+function stopStream(){streamAudio.pause();streamAudio.removeAttribute('src');streamAudio.load();document.getElementById('playerBox')?.classList.remove('playing');const b=document.getElementById('playBtn');if(b)b.textContent='▶';const st=document.getElementById('playerStatus');if(st)st.textContent='準備播放';}
+streamAudio.addEventListener('playing',()=>{audioReady=true;document.getElementById('playerStatus').textContent='● 正在播放';document.getElementById('playBtn').textContent='■';document.getElementById('playerBox').classList.add('playing');});streamAudio.addEventListener('waiting',()=>{document.getElementById('playerStatus').textContent='緩衝中…'});streamAudio.addEventListener('pause',()=>{if(streamAudio.currentSrc)document.getElementById('playerBox')?.classList.remove('playing')});streamAudio.addEventListener('error',()=>{document.getElementById('playerStatus').textContent='音源連線失敗';document.getElementById('playBtn').textContent='▶';document.getElementById('playerBox')?.classList.remove('playing');toast('此音源目前無法連線');});
 
 let currentTool="guitar", metroOn=false, bpm=100, metroTimer=null, audioCtx=null;
 async function getAudioCtx(){if(!audioCtx)audioCtx=new (window.AudioContext||window.webkitAudioContext)();if(audioCtx.state==='suspended')await audioCtx.resume();return audioCtx}
@@ -289,6 +238,10 @@ function openSoundStage(){document.getElementById('soundStageSheet').classList.a
 function closeSoundStage(){document.getElementById('soundStageSheet').classList.remove('show')}
 function setSoundStage(v){localStorage.setItem('gs24_soundstage',v);document.getElementById('currentSoundStage').textContent=v;document.querySelectorAll('.soundPreset').forEach(b=>b.classList.toggle('active',b.dataset.preset===v));document.getElementById('soundStageMsg').textContent='已選擇：'+v+'（播放引擎音場處理將在原生 App 啟用）';}
 async function loadCatalog(){try{const r=await fetch('sources.json?v=v149',{cache:'no-store'});const j=await r.json();catalog=Array.isArray(j.sources)?j.sources:[];}catch(e){catalog=[];}document.getElementById('currentLanguage').textContent=localStorage.getItem('gs24_language')||'繁體中文';document.getElementById('currentSoundStage').textContent=localStorage.getItem('gs24_soundstage')||'標準 · Flat';}
+loadCatalog();
+
+
+async function loadCatalog(){try{const r=await fetch('sources.json?v=v150',{cache:'no-store'});const j=await r.json();catalog=Array.isArray(j.sources)?j.sources.filter(x=>x.enabled!==false&&x.publish!==false):[];}catch(e){catalog=[];}document.getElementById('currentLanguage').textContent=localStorage.getItem('gs24_language')||'繁體中文';document.getElementById('currentSoundStage').textContent=localStorage.getItem('gs24_soundstage')||'標準 · Flat';}
 loadCatalog();
 
 </script>

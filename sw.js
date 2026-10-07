@@ -1,4 +1,4 @@
-const CACHE="gs24-v149";
+const CACHE="gs24-v150";
 const APP=["./","./index.html","./manifest.webmanifest","./sources.json"];
 self.addEventListener("install",e=>{self.skipWaiting();e.waitUntil(caches.open(CACHE).then(c=>c.addAll(APP)))});
 self.addEventListener("activate",e=>{e.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim()))});
