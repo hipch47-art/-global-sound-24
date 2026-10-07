@@ -24,12 +24,13 @@ h1{font-size:30px;line-height:1.15;margin:0 0 7px;letter-spacing:-.7px}.sub{colo
 .audioToast{position:fixed;left:50%;bottom:88px;transform:translateX(-50%);z-index:30;background:#202225;color:#fff;border:1px solid #34363a;border-radius:14px;padding:10px 14px;font-size:12px;opacity:0;pointer-events:none;transition:.25s;max-width:88%;text-align:center}
 .audioToast.show{opacity:1}
 .playerBack{border:0;background:transparent;color:#d8d6d0;font-size:17px;font-weight:600;padding:4px 0 10px;display:block}.sheetbox.playing .vinyl{animation:spin 3s linear infinite}
+.tonearm{position:absolute;z-index:4;width:150px;height:150px;right:calc(50% - 145px);top:58px;transform-origin:118px 28px;transform:rotate(-16deg);transition:transform .65s cubic-bezier(.2,.8,.2,1);pointer-events:none}.tonearm .arm{position:absolute;left:24px;top:24px;width:112px;height:7px;border-radius:8px;background:linear-gradient(90deg,#d6d1c6,#77736c);box-shadow:0 2px 5px #0008}.tonearm .pivot{position:absolute;left:5px;top:12px;width:31px;height:31px;border-radius:50%;background:#333;border:2px solid #aaa}.tonearm .stylus{position:absolute;right:0;top:24px;width:10px;height:22px;border-radius:3px;background:#c7c1b4;transform:rotate(12deg);transform-origin:top center}.sheetbox.playing .tonearm{transform:rotate(15deg)}
 @keyframes spin{to{transform:rotate(360deg)}}
 .playStatus{font-size:12px;color:#aaa;margin-top:8px;min-height:18px}
 .sourceTag{display:inline-block;margin:8px 4px 0 0;padding:5px 8px;border:1px solid #35383c;border-radius:999px;font-size:10px;color:#bbb}
 
 
-/* V149 UX typography: remove homepage search and rebalance hierarchy */
+/* V152 playback tonearm animation: remove homepage search and rebalance hierarchy */
 .page#home h1{font-size:32px;line-height:1.2;letter-spacing:-.02em;margin:22px 0 8px}
 .page#home .sub{font-size:20px;line-height:1.5;margin-bottom:28px;color:#a7a7a7}
 #explore h1{font-size:32px;line-height:1.2;margin:18px 0 8px}
@@ -139,7 +140,7 @@ h1{font-size:30px;line-height:1.15;margin:0 0 7px;letter-spacing:-.7px}.sub{colo
 <div id="toolMsg" style="text-align:center;color:#999;font-size:12px;margin-top:14px"></div>
 </div></div>
 
-<div id="sheet" class="sheet" onclick="if(event.target===this)closePlayer()"><div id="playerBox" class="sheetbox"><button class="playerBack" onclick="closePlayer()">‹ 回上一頁</button><div class="handle"></div><div class="vinyl"><div class="label" id="playerIcon">🎵</div></div><h2 id="playerTitle">GLOBAL SOUND 24</h2><p id="playerCat">選擇聲音開始播放</p><div id="playerTags"></div><div id="playerStatus" class="playStatus">準備播放</div><button id="playBtn" class="bigplay" onclick="toggleStream()">▶</button><div id="playerMsg" style="text-align:center;color:#999;font-size:11px;margin-top:14px"></div></div></div>
+<div id="sheet" class="sheet" onclick="if(event.target===this)closePlayer()"><div id="playerBox" class="sheetbox"><button class="playerBack" onclick="closePlayer()">‹ 回上一頁</button><div class="handle"></div><div style="position:relative;width:225px;height:245px;margin:0 auto 0"><div class="vinyl" style="margin:0"><div class="label" id="playerIcon">🎵</div></div><div class="tonearm"><div class="pivot"></div><div class="arm"></div><div class="stylus"></div></div></div><h2 id="playerTitle">GLOBAL SOUND 24</h2><p id="playerCat">選擇聲音開始播放</p><div id="playerTags"></div><div id="playerStatus" class="playStatus">準備播放</div><button id="playBtn" class="bigplay" onclick="toggleStream()">▶</button><div id="playerMsg" style="text-align:center;color:#999;font-size:11px;margin-top:14px"></div></div></div>
 
 <audio id="streamAudio" preload="none"></audio>
 <script>
