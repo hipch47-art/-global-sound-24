@@ -3,6 +3,23 @@
   "updated": "2026-10-07",
   "sources": [
     {
+      "id": "test-music-01",
+      "name": "GLOBAL SOUND Test Music",
+      "icon": "🎵",
+      "subtitle": "Test Audio · Music",
+      "category": "music",
+      "country": "Global",
+      "language": "Instrumental",
+      "tags": [
+        "TEST ONLY",
+        "AUDIO TEST"
+      ],
+      "enabled": true,
+      "publish": true,
+      "rightsStatus": "REVIEW",
+      "streamUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
+    },
+    {
       "id": "test-bbc-world",
       "name": "BBC World Service",
       "icon": "🌍",
