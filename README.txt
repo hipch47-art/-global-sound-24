@@ -1,4 +1,4 @@
-GLOBAL SOUND 24 V145 — BACKEND SOURCE CONNECTION TEST
+GLOBAL SOUND 24 V146 — BACKEND SOURCE CONNECTION TEST
 
 This version adds a static source catalog endpoint:
   sources.json
