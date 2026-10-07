@@ -30,13 +30,14 @@ h1{font-size:30px;line-height:1.15;margin:0 0 7px;letter-spacing:-.7px}.sub{colo
 .sourceTag{display:inline-block;margin:8px 4px 0 0;padding:5px 8px;border:1px solid #35383c;border-radius:999px;font-size:10px;color:#bbb}
 
 
-/* V152 playback tonearm animation: remove homepage search and rebalance hierarchy */
+/* V156 playback tonearm animation: remove homepage search and rebalance hierarchy */
 .page#home h1{font-size:32px;line-height:1.2;letter-spacing:-.02em;margin:22px 0 8px}
 .page#home .sub{font-size:20px;line-height:1.5;margin-bottom:28px;color:#a7a7a7}
 #explore h1{font-size:32px;line-height:1.2;margin:18px 0 8px}
 #explore>.sub{font-size:20px;line-height:1.5;margin-bottom:28px;color:#a7a7a7}
 .back{font-size:18px;padding:8px 0;min-height:44px}
 .playerBack{font-size:18px;min-height:44px;padding:8px 14px}
+.playerTop{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:4px}.playerTop .playerBack{padding-left:0}.playerSettingsBtn{border:1px solid #343637;background:#1c1e1f;color:#eeeae2;border-radius:14px;padding:10px 12px;font-size:13px;font-weight:700;white-space:nowrap}
 
 .categoryGrid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:6px}.categoryChoice{border:1px solid #303233;background:#191b1c;color:#f4f1eb;border-radius:20px;padding:18px 15px;text-align:left;min-height:88px}.categoryChoice:active{transform:scale(.98)}.categoryChoice .ci{font-size:30px;margin-bottom:7px}.categoryChoice b{display:block;font-size:17px}.categoryChoice small{display:block;color:#969791;margin-top:4px;font-size:12px}.sourceHeader{font-size:18px;font-weight:800;margin:5px 0 2px}.sourceHint{color:#969791;font-size:13px;margin-bottom:12px}
 </style>
@@ -55,6 +56,33 @@ h1{font-size:30px;line-height:1.15;margin:0 0 7px;letter-spacing:-.7px}.sub{colo
 
 <style id="v150-source-engine">
 .sourceLoading{background:#191b1c;border:1px solid #303233;border-radius:20px;padding:24px;text-align:center;color:#a9aaa4}.sourceLoading b{display:block;color:#eeeae2;font-size:17px;margin-bottom:7px}.liveBadge{display:inline-block;margin-top:10px;padding:5px 9px;border:1px solid #3a3d3e;border-radius:999px;font-size:10px;color:#bdbdb7}.sourceMeta{color:#8f908b;font-size:12px;margin-top:5px}.apiNote{margin:8px 0 14px;color:#7f817c;font-size:11px;line-height:1.5}
+</style>
+<style id="v156-turntable">
+/* V156 realistic hi-fi turntable */
+.turntableStage{position:relative;width:292px;height:282px;margin:0 auto 2px;border-radius:26px;background:linear-gradient(145deg,#242525,#101111);box-shadow:inset 0 1px 0 #ffffff0a,0 18px 42px #000b;overflow:hidden}
+.turntableStage:before{content:"";position:absolute;inset:12px;border:1px solid #ffffff08;border-radius:20px;pointer-events:none}
+.platter{position:absolute;left:31px;top:24px;width:236px;height:236px;border-radius:50%;display:grid;place-items:center;background:radial-gradient(circle,#555 0 2%,#242424 2.5% 3%,#171717 3.5% 82%,#303030 82.5% 84%,#111 84.5%);box-shadow:0 8px 18px #000c, inset 0 0 0 3px #080808;}
+.sheetbox.playing .platter{animation:platterSpin 2.1s linear infinite}
+.vinyl{position:relative;width:216px;height:216px;margin:0;border-radius:50%;display:grid;place-items:center;background:repeating-radial-gradient(circle at 48% 47%,#070707 0 1px,#171717 1.5px 2px,#0b0b0b 2.5px 3px);box-shadow:inset 0 0 0 1px #444,inset 0 0 24px #000,0 2px 5px #000;overflow:hidden}
+.sheetbox.playing .vinyl{animation:none}
+.vinyl:before{content:"";position:absolute;inset:7px;border-radius:50%;background:repeating-radial-gradient(circle,#ffffff0a 0 1px,transparent 1px 5px);mix-blend-mode:screen;opacity:.55}
+.vinylHighlight{position:absolute;inset:0;border-radius:50%;background:linear-gradient(115deg,transparent 0 34%,#ffffff12 42%,transparent 49% 70%,#ffffff09 77%,transparent 84%);transform:rotate(-12deg);pointer-events:none}
+.label{position:relative;z-index:2;width:82px;height:82px;border-radius:50%;background:radial-gradient(circle at 38% 34%,#d0c4a3,#8f856d 68%,#6c6353);color:#171717;display:grid;place-items:center;font-size:29px;border:1px solid #ded4ba88;box-shadow:inset 0 0 0 5px #766c5b,inset 0 0 0 7px #c6b99555,0 2px 5px #0008}
+.label:after{content:"";position:absolute;width:7px;height:7px;border-radius:50%;background:#171717;box-shadow:0 0 0 2px #d8caa6}
+.spindle{position:absolute;z-index:3;width:7px;height:7px;border-radius:50%;background:#bdb7a9;box-shadow:0 1px 3px #000}
+.tonearm{position:absolute;z-index:5;right:11px;top:21px;width:150px;height:178px;transform-origin:128px 24px;transform:rotate(-18deg);transition:transform .9s cubic-bezier(.22,.75,.2,1);pointer-events:none}
+.tonearm .pivot{position:absolute;right:4px;top:4px;width:38px;height:38px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#8c8c88,#292a2a 52%,#0e0f0f);border:2px solid #b7b4ab66;box-shadow:0 3px 8px #000b}
+.pivotInner{position:absolute;inset:9px;border-radius:50%;border:1px solid #ddd8cc55;background:#181919}
+.tonearm .counterweight{position:absolute;right:30px;top:31px;width:24px;height:34px;border-radius:8px;background:linear-gradient(90deg,#333,#aaa,#333);transform:rotate(7deg);box-shadow:0 2px 5px #0009}
+.tonearm .arm{position:absolute;right:29px;top:53px;width:105px;height:8px;border-radius:8px;background:linear-gradient(180deg,#dedad0,#7b7972 55%,#444);box-shadow:0 2px 5px #000b;transform:rotate(-34deg);transform-origin:right center}
+.armHighlight{position:absolute;left:8px;right:8px;top:1px;height:2px;border-radius:2px;background:#fff7;opacity:.55}
+.tonearm .cartridge{position:absolute;left:0;top:104px;width:34px;height:23px;background:linear-gradient(135deg,#d4d0c6,#686660);border-radius:4px 4px 7px 7px;transform:rotate(14deg);box-shadow:0 3px 5px #000b}
+.cartridgeBody{position:absolute;left:5px;top:4px;width:22px;height:9px;background:#242424;border-radius:2px}
+.tonearm .stylus{position:absolute;left:20px;top:18px;width:3px;height:22px;background:linear-gradient(#aaa,#eee,#555);border-radius:2px;transform:rotate(-9deg);transform-origin:top center}
+.cueLever{position:absolute;right:20px;top:72px;width:3px;height:47px;border-radius:3px;background:#777;transform:rotate(15deg);box-shadow:0 1px 3px #000}
+.sheetbox.playing .tonearm{transform:rotate(10deg)}
+@keyframes platterSpin{to{transform:rotate(360deg)}}
+@media(max-width:380px){.turntableStage{transform:scale(.92);transform-origin:top center;margin-bottom:-18px}}
 </style>
 </head>
 <body>
@@ -94,10 +122,10 @@ h1{font-size:30px;line-height:1.15;margin:0 0 7px;letter-spacing:-.7px}.sub{colo
 </section>
 
 <section id="settings" class="page">
-<button class="back" onclick="showPage('home')">‹ 回首頁</button><h1>Settings</h1><div class="sub">GLOBAL SOUND 24</div>
+<button class="back" id="settingsBack" onclick="settingsBackAction()">‹ 回首頁</button><h1>Settings</h1><div class="sub">GLOBAL SOUND 24</div>
 <button class="settingsRow" onclick="openLanguage()"><div style="text-align:left"><b>Language</b><small id="currentLanguage">繁體中文</small></div><span>›</span></button>
 <button class="settingsRow" onclick="openSoundStage()"><div style="text-align:left"><b>音場設定</b><small id="currentSoundStage">標準 · Flat</small></div><span>›</span></button>
-<div class="settingsRow"><div><b>背景播放</b><small>正式 App 版本提供</small></div><span>›</span></div>
+<button class="settingsRow" id="backgroundRow" onclick="toggleBackgroundPlayback()"><div style="text-align:left"><b>背景播放</b><small id="backgroundStatus">關閉</small></div><span id="backgroundArrow">›</span></button>
 <div class="settingsRow"><div><b>睡眠計時</b><small>讓聲音在指定時間後停止</small></div><span>›</span></div>
 <div class="settingsRow"><div><b>聆聽分析</b><small>看看自己最近常聽什麼</small></div><span>›</span></div>
 </section>
@@ -140,7 +168,7 @@ h1{font-size:30px;line-height:1.15;margin:0 0 7px;letter-spacing:-.7px}.sub{colo
 <div id="toolMsg" style="text-align:center;color:#999;font-size:12px;margin-top:14px"></div>
 </div></div>
 
-<div id="sheet" class="sheet" onclick="if(event.target===this)closePlayer()"><div id="playerBox" class="sheetbox"><button class="playerBack" onclick="closePlayer()">‹ 回上一頁</button><div class="handle"></div><div style="position:relative;width:225px;height:245px;margin:0 auto 0"><div class="vinyl" style="margin:0"><div class="label" id="playerIcon">🎵</div></div><div class="tonearm"><div class="pivot"></div><div class="arm"></div><div class="stylus"></div></div></div><h2 id="playerTitle">GLOBAL SOUND 24</h2><p id="playerCat">選擇聲音開始播放</p><div id="playerTags"></div><div id="playerStatus" class="playStatus">準備播放</div><button id="playBtn" class="bigplay" onclick="toggleStream()">▶</button><div id="playerMsg" style="text-align:center;color:#999;font-size:11px;margin-top:14px"></div></div></div>
+<div id="sheet" class="sheet" onclick="if(event.target===this)closePlayer()"><div id="playerBox" class="sheetbox"><div class="playerTop"><button class="playerBack" onclick="closePlayer()">‹ 回上一頁</button><button class="playerSettingsBtn" onclick="openSettingsFromPlayer()">⚙ 播放設定</button></div><div class="handle"></div><div class="turntableStage"><div class="platter"><div class="vinyl"><div class="vinylHighlight"></div><div class="label" id="playerIcon">🎵</div><div class="spindle"></div></div></div><div class="tonearm"><div class="pivot"><div class="pivotInner"></div></div><div class="counterweight"></div><div class="arm"><div class="armHighlight"></div></div><div class="cartridge"><div class="cartridgeBody"></div><div class="stylus"></div></div></div><div class="cueLever"></div></div><h2 id="playerTitle">GLOBAL SOUND 24</h2><p id="playerCat">選擇聲音開始播放</p><div id="playerTags"></div><div id="playerStatus" class="playStatus">準備播放</div><button id="playBtn" class="bigplay" onclick="toggleStream()">▶</button><div id="playerMsg" style="text-align:center;color:#999;font-size:11px;margin-top:14px"></div></div></div>
 
 <audio id="streamAudio" preload="none"></audio>
 <script>
@@ -154,7 +182,7 @@ const RADIO_SERVERS=[
 ];
 let radioCache=new Map(), radioRequestToken=0;
 const data={
- music:[['🎤','R&B','R&B · Soul · Groove','rnb'],['🎷','Jazz','Jazz · Lounge · Smooth','jazz'],['🎻','Classical','Classical · Orchestra · Opera','classical'],['🎹','Piano','Piano · Instrumental','piano'],['🎸','Acoustic','Acoustic · Guitar','acoustic'],['🎛️','Electronic','Electronic · House · Ambient','electronic'],['🥁','Rock','Rock · Alternative','rock'],['🎵','Pop','Pop · Top 40','pop'],['🎙️','Hip-Hop','Hip-Hop · Rap','hip-hop'],['🌎','World Music','Global · Folk · World','world'],['🌙','Lo-fi','Lo-fi · Chill','lofi'],['〰️','Ambient','Ambient · Soundscape','ambient']],
+ music:[['🎼','純音樂 / Instrumental','Instrumental · No Vocals','instrumental'],['🎤','R&B','R&B · Soul · Groove','rnb'],['🎷','Jazz','Jazz · Lounge · Smooth','jazz'],['🎻','Classical','Classical · Orchestra · Opera','classical'],['🎹','Piano','Piano · Instrumental','piano'],['🎸','Acoustic','Acoustic · Guitar','acoustic'],['🎛️','Electronic','Electronic · House · Ambient','electronic'],['🥁','Rock','Rock · Alternative','rock'],['🎵','Pop','Pop · Top 40','pop'],['🎙️','Hip-Hop','Hip-Hop · Rap','hip-hop'],['🌎','World Music','Global · Folk · World','world'],['🌙','Lo-fi','Lo-fi · Chill','lofi'],['〰️','Ambient','Ambient · Soundscape','ambient']],
  nature:[['🌧️','雨聲','Rain · Relax','rain'],['🌊','海浪','Ocean · Coast','ocean'],['🌲','森林','Forest · Nature','nature'],['🔥','壁爐','Fireplace · Night','fireplace']],
  faith:[['🪷','佛教','佛經 · 梵唱 · 禪修','buddhist'],['🏔️','藏傳佛教','Tibetan Chant · Mantra','tibetan'],['✝️','基督宗教','Hymns · Gospel · Worship','christian'],['☪️','伊斯蘭','Quran · Nasheed','quran'],['🕉️','印度教','Mantra · Vedic Chant','hindu'],['✡️','猶太教','Jewish Prayer · Hebrew Chant','jewish'],['☯️','道教','道樂 · 經典','taoist'],['🕯️','其他靈性','Sikh · Jain · Shinto · Spiritual','spiritual']],
  region:[['🌏','亞洲','Taiwan · China · Japan · Korea · India','ASIA'],['🌍','歐洲','France · United Kingdom · Germany · Italy','EUROPE'],['🌎','美洲','United States · Canada · Latin America','AMERICAS'],['🕌','中東','Middle East · Arabic','MIDEAST'],['🌍','非洲','Africa · Regional Sounds','AFRICA'],['🌊','大洋洲','Australia · New Zealand · Pacific','OCEANIA'],['🌐','世界','Global Sources','WORLD']]
@@ -170,9 +198,9 @@ const regionCountries={
 };
 const labels={music:'音樂類型',nature:'放鬆・自然',faith:'信仰・靈性',region:'地區'};
 const faithTags={buddhist:['buddhist','buddhism','zen','mantra'],tibetan:['tibetan','tibetan chant','mantra'],christian:['christian','gospel','worship','hymn','gregorian'],quran:['quran','koran','islamic','nasheed'],hindu:['hindu','mantra','vedic','bhajan'],jewish:['jewish','hebrew','torah'],taoist:['taoist','taoism','chinese traditional'],spiritual:['meditation','spiritual','new age','healing','sikh','jain','shinto']};
-const musicTags={rnb:['rnb','r&b','rhythm and blues','soul','soul music'],jazz:['jazz','smooth jazz','jazz lounge'],classical:['classical','classic','orchestra','orchestral','opera'],piano:['piano','instrumental','solo piano'],acoustic:['acoustic','acoustic guitar','guitar'],electronic:['electronic','edm','house','techno','trance','dance'],rock:['rock','alternative','indie rock','classic rock'],pop:['pop','top 40','hits','pop music'],['hip-hop']:['hip-hop','hip hop','rap'],world:['world','world music','folk','ethnic'],lofi:['lofi','lo-fi','chill','chillout'],ambient:['ambient','soundscape','downtempo','chillout']};
+const musicTags={instrumental:['instrumental','no vocals','instrumental music','piano instrumental','guitar instrumental','acoustic instrumental','jazz instrumental','classical instrumental','ambient instrumental'],rnb:['rnb','r&b','rhythm and blues','soul','soul music'],jazz:['jazz','smooth jazz','jazz lounge'],classical:['classical','classic','orchestra','orchestral','opera'],piano:['piano','instrumental','solo piano'],acoustic:['acoustic','acoustic guitar','guitar'],electronic:['electronic','edm','house','techno','trance','dance'],rock:['rock','alternative','indie rock','classic rock'],pop:['pop','top 40','hits','pop music'],['hip-hop']:['hip-hop','hip hop','rap'],world:['world','world music','folk','ethnic'],lofi:['lofi','lo-fi','chill','chillout'],ambient:['ambient','soundscape','downtempo','chillout']};
 let exploreCategory=null, exploreSubcategory=null, exploreRegionArea=null;
-function showPage(id){document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));const el=document.getElementById(id);if(el)el.classList.add('active');window.scrollTo({top:0,behavior:'smooth'});}
+function showPage(id){document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));const el=document.getElementById(id);if(el)el.classList.add('active');if(id==='settings'){document.getElementById('settingsBack').textContent='‹ 回首頁';}window.scrollTo({top:0,behavior:'smooth'});}
 function escapeHtml(v){return String(v??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));}
 function stationToSource(s,category,subcategory,regionArea=''){
  const url=s.url_resolved||s.url||''; if(!url)return null;
@@ -191,6 +219,14 @@ async function queryStations(params){
  qs.set('limit',String(params.limit||30)); qs.set('hidebroken','true'); qs.set('order','clickcount'); qs.set('reverse','true');
  return await apiFetch('/json/stations/search?'+qs.toString());
 }
+function natureQualityOK(q, sub){
+ const raw=String(q.tags||'').toLowerCase();
+ const bad=['news','talk','talk radio','speech','sports','politics','spoken word','public radio','current affairs','top 40','hits','pop'];
+ if(bad.some(x=>raw.includes(x))) return false;
+ const goodMap={rain:['rain','nature','ambient','relax'],ocean:['ocean','wave','sea','nature','ambient'],nature:['nature','forest','bird','ambient','relax'],fireplace:['fire','fireplace','ambient','relax']};
+ const good=goodMap[sub]||[];
+ return good.length===0 || good.some(x=>raw.includes(x)) || !q.tags;
+}
 async function queryTags(tags,category,subcategory,limit=18){
  const key='tag2|'+category+'|'+subcategory;
  if(radioCache.has(key))return radioCache.get(key);
@@ -198,14 +234,14 @@ async function queryTags(tags,category,subcategory,limit=18){
  for(const tag of tags){
    let arr=[];
    try{arr=await queryStations({tag,limit:Math.max(12,Math.ceil(limit/tags.length)+6)});}catch(e){errors++;continue;}
-   for(const q of arr){if(q.lastcheckok===0||!(q.url_resolved||q.url)||seen.has(q.stationuuid))continue;seen.add(q.stationuuid);const x=stationToSource(q,category,subcategory);if(x)all.push(x);if(all.length>=limit)break;}
+   for(const q of arr){if(q.lastcheckok===0||!(q.url_resolved||q.url)||seen.has(q.stationuuid))continue;if(category==='nature'&&!natureQualityOK(q,subcategory==='雨聲'?'rain':subcategory==='海浪'?'ocean':subcategory==='森林'?'nature':'fireplace'))continue;seen.add(q.stationuuid);const x=stationToSource(q,category,subcategory);if(x)all.push(x);if(all.length>=limit)break;}
    if(all.length>=limit)break;
  }
  // If tag matching is sparse, try name matching for human-friendly genres.
  if(all.length<Math.min(6,limit)){
    for(const term of tags.slice(0,3)){
      let arr=[]; try{arr=await queryStations({name:term,limit:12});}catch(e){errors++;continue;}
-     for(const q of arr){if(q.lastcheckok===0||!(q.url_resolved||q.url)||seen.has(q.stationuuid))continue;seen.add(q.stationuuid);const x=stationToSource(q,category,subcategory);if(x)all.push(x);if(all.length>=limit)break;}
+     for(const q of arr){if(q.lastcheckok===0||!(q.url_resolved||q.url)||seen.has(q.stationuuid))continue;if(category==='nature'&&!natureQualityOK(q,subcategory==='雨聲'?'rain':subcategory==='海浪'?'ocean':subcategory==='森林'?'nature':'fireplace'))continue;seen.add(q.stationuuid);const x=stationToSource(q,category,subcategory);if(x)all.push(x);if(all.length>=limit)break;}
      if(all.length>=limit)break;
    }
  }
@@ -221,7 +257,7 @@ async function queryCountry(code,area,limit=24){
 async function queryCountryWorld(limit=30){
  const key='country|WORLD';if(radioCache.has(key))return radioCache.get(key);try{const arr=await apiFetch('/json/stations/topclick/'+limit+'?hidebroken=true');const out=arr.filter(s=>s.lastcheckok!==0&&(s.url_resolved||s.url)).map(s=>stationToSource(s,'region','World','世界')).filter(Boolean);radioCache.set(key,out);return out}catch(e){return []}}
 function showLoading(msg='正在尋找可播放音源…'){document.getElementById('exploreList').innerHTML='<div class="sourceLoading"><b>'+escapeHtml(msg)+'</b>正在連接全球音源目錄<div class="liveBadge">LIVE SOURCE DISCOVERY</div></div>';}
-function renderCategoryChoices(type){const list=document.getElementById('exploreList');document.getElementById('exploreTitle').textContent=labels[type];document.getElementById('exploreSub').textContent=type==='region'?'先選區域，再選國家，最後選音源。':'先選你想聽的風格，再從可播放音源中選擇。';document.getElementById('exploreBack').textContent='‹ 回首頁';const arr=data[type]||[];list.innerHTML='<div class="categoryGrid">'+arr.map(x=>`<button class="categoryChoice" onclick="selectSubcategory('${type}','${x[1].replace(/'/g,"\\'")}')"><div class="ci">${x[0]}</div><b>${x[1]}</b><small>${x[2]}</small></button>`).join('')+'</div><div class="apiNote">音源會即時從全球公開目錄尋找，先通過技術可播放條件才顯示。正式商業發布仍需後台權利審核。</div>';}
+function renderCategoryChoices(type){const list=document.getElementById('exploreList');document.getElementById('exploreTitle').textContent=labels[type];document.getElementById('exploreSub').textContent=type==='region'?'先選區域，再選國家，最後選音源。':type==='nature'?'只顯示以自然聲、環境聲為主的來源，新聞／談話型電台會自動排除。':'先選你想聽的風格，再從可播放音源中選擇。';document.getElementById('exploreBack').textContent='‹ 回首頁';const arr=data[type]||[];list.innerHTML='<div class="categoryGrid">'+arr.map(x=>`<button class="categoryChoice" onclick="selectSubcategory('${type}','${x[1].replace(/'/g,"\\'")}')"><div class="ci">${x[0]}</div><b>${x[1]}</b><small>${x[2]}</small></button>`).join('')+'</div><div class="apiNote">音源會即時從全球公開目錄尋找，先通過技術可播放條件才顯示。正式商業發布仍需後台權利審核。</div>';}
 function renderRegionCountries(area){const list=document.getElementById('exploreList');document.getElementById('exploreTitle').textContent=area;document.getElementById('exploreSub').textContent='先選國家，再選可播放的音源。';document.getElementById('exploreBack').textContent='‹ 返回地區';const countries=regionCountries[area]||[];list.innerHTML='<div class="regionNote">國家 / 區域</div><div class="categoryGrid">'+countries.map(x=>`<button class="categoryChoice" onclick="selectRegionCountry('${area}','${x[1]}')"><div class="ci">${x[0]}</div><b>${x[1]}</b><small>${x[2]}</small></button>`).join('')+'</div>';}
 async function renderSubcategory(type,sub){
  const list=document.getElementById('exploreList');
@@ -234,6 +270,7 @@ async function renderSubcategory(type,sub){
  let tags=[];
  if(type==='faith') tags=faithTags[key]||[key];
  else if(type==='music') tags=musicTags[key]||[key,sub];
+ else if(type==='nature') tags=({rain:['rain','rain sounds','rain sounds relaxing','nature sounds'],ocean:['ocean','ocean sounds','waves','sea sounds','nature'],nature:['nature sounds','nature','forest sounds','birds','ambient nature'],fireplace:['fireplace','fire','crackling fire','relaxation']})[key]||[key,sub];
  else tags=key?[key]:[sub];
  const live=await queryTags(tags,type,sub,18);
  const merged=[...rows,...live.filter(x=>!rows.some(y=>y.id===x.id))];
@@ -250,6 +287,29 @@ function exploreBackAction(){if(exploreCategory==='region'&&exploreSubcategory){
 function openCategory(type){exploreCategory=type;exploreSubcategory=null;exploreRegionArea=null;showPage('explore');renderCategoryChoices(type);}
 function openFirst(type){openCategory(type);}
 function openPlayerById(id){const s=catalog.find(x=>x.id===id);if(!s)return;currentSource=s;document.getElementById('playerTitle').textContent=s.name;document.getElementById('playerIcon').textContent=s.icon||'🎵';document.getElementById('playerCat').textContent=s.subtitle||labels[s.category]||'';document.getElementById('playerTags').innerHTML=(s.tags||[]).map(t=>`<span class="sourceTag">${escapeHtml(t)}</span>`).join('');document.getElementById('playerMsg').textContent='';document.getElementById('playerStatus').textContent='準備播放';document.getElementById('playBtn').textContent='▶';document.getElementById('playerBox').classList.remove('playing');document.getElementById('sheet').classList.add('show');}
+function openSettingsFromPlayer(){
+  document.getElementById('sheet').classList.remove('show');
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById('settings').classList.add('active');
+  document.getElementById('settingsBack').textContent='‹ 返回播放';
+}
+function settingsBackAction(){
+  if(currentSource){
+    document.getElementById('settings').classList.remove('active');
+    document.getElementById('sheet').classList.add('show');
+    document.getElementById('settingsBack').textContent='‹ 回首頁';
+    return;
+  }
+  showPage('home');
+}
+function toggleBackgroundPlayback(){
+  const enabled=localStorage.getItem('gs24_background')==='on';
+  const next=!enabled;
+  localStorage.setItem('gs24_background',next?'on':'off');
+  const el=document.getElementById('backgroundStatus');
+  if(el)el.textContent=next?'開啟':'關閉';
+  toast(next?'背景播放已開啟（瀏覽器能力依裝置而定）':'背景播放已關閉');
+}
 function closePlayer(){stopStream();document.getElementById('sheet').classList.remove('show')}
 function toast(t){const x=document.getElementById('audioToast');x.textContent=t;x.classList.add('show');clearTimeout(window._toast);window._toast=setTimeout(()=>x.classList.remove('show'),2600)}
 async function toggleStream(){if(!currentSource)return;if(!streamAudio.paused){stopStream();return}document.getElementById('playerStatus').textContent='正在連接音源…';document.getElementById('playBtn').textContent='…';try{streamAudio.src=currentSource.streamUrl;streamAudio.load();await streamAudio.play();}catch(e){document.getElementById('playerStatus').textContent='無法啟動音源';document.getElementById('playBtn').textContent='▶';toast('此來源無法直接播放，可能是格式或來源限制');}}
@@ -278,11 +338,11 @@ function setLanguage(v){document.getElementById('currentLanguage').textContent=v
 function openSoundStage(){document.getElementById('soundStageSheet').classList.add('show');const p=localStorage.getItem('gs24_soundstage')||'標準 · Flat';document.querySelectorAll('.soundPreset').forEach(b=>b.classList.toggle('active',b.dataset.preset===p));document.getElementById('soundStageMsg').textContent='目前：'+p;}
 function closeSoundStage(){document.getElementById('soundStageSheet').classList.remove('show')}
 function setSoundStage(v){localStorage.setItem('gs24_soundstage',v);document.getElementById('currentSoundStage').textContent=v;document.querySelectorAll('.soundPreset').forEach(b=>b.classList.toggle('active',b.dataset.preset===v));document.getElementById('soundStageMsg').textContent='已選擇：'+v+'（播放引擎音場處理將在原生 App 啟用）';}
-async function loadCatalog(){try{const r=await fetch('sources.json?v=v149',{cache:'no-store'});const j=await r.json();catalog=Array.isArray(j.sources)?j.sources:[];}catch(e){catalog=[];}document.getElementById('currentLanguage').textContent=localStorage.getItem('gs24_language')||'繁體中文';document.getElementById('currentSoundStage').textContent=localStorage.getItem('gs24_soundstage')||'標準 · Flat';}
+async function loadCatalog(){try{const r=await fetch('sources.json?v=v149',{cache:'no-store'});const j=await r.json();catalog=Array.isArray(j.sources)?j.sources:[];}catch(e){catalog=[];}document.getElementById('currentLanguage').textContent=localStorage.getItem('gs24_language')||'繁體中文';document.getElementById('currentSoundStage').textContent=localStorage.getItem('gs24_soundstage')||'標準 · Flat';document.getElementById('backgroundStatus').textContent=localStorage.getItem('gs24_background')==='on'?'開啟':'關閉';}
 loadCatalog();
 
 
-async function loadCatalog(){try{const r=await fetch('sources.json?v=v151',{cache:'no-store'});const j=await r.json();catalog=Array.isArray(j.sources)?j.sources.filter(x=>x.enabled!==false&&x.publish!==false):[];}catch(e){catalog=[];}document.getElementById('currentLanguage').textContent=localStorage.getItem('gs24_language')||'繁體中文';document.getElementById('currentSoundStage').textContent=localStorage.getItem('gs24_soundstage')||'標準 · Flat';}
+async function loadCatalog(){try{const r=await fetch('sources.json?v=v151',{cache:'no-store'});const j=await r.json();catalog=Array.isArray(j.sources)?j.sources.filter(x=>x.enabled!==false&&x.publish!==false):[];}catch(e){catalog=[];}document.getElementById('currentLanguage').textContent=localStorage.getItem('gs24_language')||'繁體中文';document.getElementById('currentSoundStage').textContent=localStorage.getItem('gs24_soundstage')||'標準 · Flat';document.getElementById('backgroundStatus').textContent=localStorage.getItem('gs24_background')==='on'?'開啟':'關閉';}
 loadCatalog();
 
 </script>
