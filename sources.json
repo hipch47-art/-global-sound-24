@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "updated": "2026-10-07",
+  "sources": [
+    {
+      "id": "test-bbc-world",
+      "name": "BBC World Service",
+      "icon": "🌍",
+      "subtitle": "English · World News",
+      "category": "region",
+      "country": "United Kingdom",
+      "language": "English",
+      "tags": [
+        "TEST ONLY",
+        "NOT FOR PRODUCTION"
+      ],
+      "enabled": true,
+      "streamUrl": "https://stream.live.vc.bbcmedia.co.uk/bbc_world_service",
+      "rightsStatus": "REVIEW",
+      "publish": true
+    }
+  ]
+}
