@@ -1,3 +1,4 @@
-GLOBAL SOUND 24 V148
+GLOBAL SOUND 24 V149
 
-修正：分類頁先選音樂種類／自然聲景／信仰子分類／國家地區，再顯示已發布音源。BBC 不再直接出現在「地區」第一層。
+Category navigation + Faith sources + Sound Stage settings.
+Upload all files to GitHub Pages.
