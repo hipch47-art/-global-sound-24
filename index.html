@@ -29,6 +29,14 @@ h1{font-size:30px;line-height:1.15;margin:0 0 7px;letter-spacing:-.7px}.sub{colo
 .playStatus{font-size:12px;color:#aaa;margin-top:8px;min-height:18px}
 .sourceTag{display:inline-block;margin:8px 4px 0 0;padding:5px 8px;border:1px solid #35383c;border-radius:999px;font-size:10px;color:#bbb}
 
+
+/* V145 UX typography: remove homepage search and rebalance hierarchy */
+.page#home h1{font-size:32px;line-height:1.2;letter-spacing:-.02em;margin:22px 0 8px}
+.page#home .sub{font-size:20px;line-height:1.5;margin-bottom:28px;color:#a7a7a7}
+#explore h1{font-size:32px;line-height:1.2;margin:18px 0 8px}
+#explore>.sub{font-size:20px;line-height:1.5;margin-bottom:28px;color:#a7a7a7}
+.back{font-size:18px;padding:8px 0;min-height:44px}
+.playerBack{font-size:18px;min-height:44px;padding:8px 14px}
 </style>
 <style id="v141-additions">
 .settingsRow{width:100%;color:#f4f1eb;text-align:left;font-family:inherit;border:1px solid #303233}
@@ -41,7 +49,6 @@ h1{font-size:30px;line-height:1.15;margin:0 0 7px;letter-spacing:-.7px}.sub{colo
 <header><div class="brand">GLOBAL SOUND 24<span>LISTEN BEYOND BORDERS</span></div></header>
 
 <section id="home" class="page active">
-<div class="search"><input id="searchInput" placeholder="搜尋音樂、自然、信仰、地區…"><button onclick="doSearch()">⌕</button></div>
 <h1>今晚，想聽什麼？</h1><div class="sub">不用研究，選一種感覺就好。</div>
 <div class="quick">
 <button class="card" onclick="openCategory('music')"><div class="emoji">🎵</div><b>音樂</b><small>爵士・古典・鋼琴</small></button>
@@ -209,14 +216,6 @@ streamAudio.addEventListener('error',()=>{
  document.getElementById('playerBox')?.classList.remove('playing');
  toast('此音源目前無法連線');
 });
-
-function doSearch(){
- const q=document.getElementById('searchInput').value.trim().toLowerCase();
- showPage('explore');
- if(!q){document.getElementById('exploreList').innerHTML='<h2 style="margin:4px 0 12px">音源</h2>';return;}
- const hits=catalog.filter(s=>(s.name+' '+(s.subtitle||'')+' '+(s.country||'')+' '+(s.language||'')+' '+(s.tags||[]).join(' ')).toLowerCase().includes(q));
- document.getElementById('exploreList').innerHTML=`<h2 style="margin:4px 0 12px">搜尋結果</h2>`+(hits.length?hits.map(s=>`<button class="row" onclick="openPlayerById('${s.id}')"><div class="thumb">${s.icon||'🎵'}</div><div class="info"><b>${s.name}</b><small>${s.subtitle||''}</small></div><span>›</span></button>`).join(''):'<div class="empty"><b>找不到</b>換個關鍵字試試。</div>');
-}
 
 let currentTool="guitar", metroOn=false, bpm=100, metroTimer=null, audioCtx=null;
 async function getAudioCtx(){if(!audioCtx)audioCtx=new (window.AudioContext||window.webkitAudioContext)();if(audioCtx.state==='suspended')await audioCtx.resume();return audioCtx}
