@@ -169,6 +169,7 @@ const regionCountries={
 };
 const labels={music:'音樂類型',nature:'放鬆・自然',faith:'信仰・靈性',region:'地區'};
 const faithTags={buddhist:['buddhist','buddhism','zen','mantra'],tibetan:['tibetan','tibetan chant','mantra'],christian:['christian','gospel','worship','hymn','gregorian'],quran:['quran','koran','islamic','nasheed'],hindu:['hindu','mantra','vedic','bhajan'],jewish:['jewish','hebrew','torah'],taoist:['taoist','taoism','chinese traditional'],spiritual:['meditation','spiritual','new age','healing','sikh','jain','shinto']};
+const musicTags={rnb:['rnb','r&b','rhythm and blues','soul','soul music'],jazz:['jazz','smooth jazz','jazz lounge'],classical:['classical','classic','orchestra','orchestral','opera'],piano:['piano','instrumental','solo piano'],acoustic:['acoustic','acoustic guitar','guitar'],electronic:['electronic','edm','house','techno','trance','dance'],rock:['rock','alternative','indie rock','classic rock'],pop:['pop','top 40','hits','pop music'],['hip-hop']:['hip-hop','hip hop','rap'],world:['world','world music','folk','ethnic'],lofi:['lofi','lo-fi','chill','chillout'],ambient:['ambient','soundscape','downtempo','chillout']};
 let exploreCategory=null, exploreSubcategory=null, exploreRegionArea=null;
 function showPage(id){document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));const el=document.getElementById(id);if(el)el.classList.add('active');window.scrollTo({top:0,behavior:'smooth'});}
 function escapeHtml(v){return String(v??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));}
@@ -183,13 +184,33 @@ async function apiFetch(path){
  for(const base of RADIO_SERVERS){try{const r=await fetch(base+path,{headers:{'User-Agent':'GLOBAL-SOUND-24/0.150'},cache:'no-store'});if(r.ok)return await r.json();last=new Error('HTTP '+r.status);}catch(e){last=e;}}
  throw last||new Error('API unavailable');
 }
-async function queryTags(tags,category,subcategory,limit=18){
- const key='tag|'+category+'|'+subcategory;
- if(radioCache.has(key))return radioCache.get(key);
- const all=[]; const seen=new Set();
- for(const tag of tags){try{const arr=await apiFetch('/json/stations/bytag/'+encodeURIComponent(tag)+'?limit='+Math.max(8,Math.ceil(limit/tags.length)+3)+'&hidebroken=true&order=clickcount&reverse=true');for(const s of arr){if((s.lastcheckok===0)||!(s.url_resolved||s.url)||seen.has(s.stationuuid))continue;seen.add(s.stationuuid);const x=stationToSource(s,category,subcategory);if(x)all.push(x);if(all.length>=limit)break;} }catch(e){} if(all.length>=limit)break;}
- radioCache.set(key,all);return all;
+async function queryStations(params){
+ const qs=new URLSearchParams();
+ Object.entries(params).forEach(([k,v])=>{if(v!==undefined&&v!==null&&v!=='')qs.set(k,v)});
+ qs.set('limit',String(params.limit||30)); qs.set('hidebroken','true'); qs.set('order','clickcount'); qs.set('reverse','true');
+ return await apiFetch('/json/stations/search?'+qs.toString());
 }
+async function queryTags(tags,category,subcategory,limit=18){
+ const key='tag2|'+category+'|'+subcategory;
+ if(radioCache.has(key))return radioCache.get(key);
+ const all=[]; const seen=new Set(); let errors=0;
+ for(const tag of tags){
+   let arr=[];
+   try{arr=await queryStations({tag,limit:Math.max(12,Math.ceil(limit/tags.length)+6)});}catch(e){errors++;continue;}
+   for(const q of arr){if(q.lastcheckok===0||!(q.url_resolved||q.url)||seen.has(q.stationuuid))continue;seen.add(q.stationuuid);const x=stationToSource(q,category,subcategory);if(x)all.push(x);if(all.length>=limit)break;}
+   if(all.length>=limit)break;
+ }
+ // If tag matching is sparse, try name matching for human-friendly genres.
+ if(all.length<Math.min(6,limit)){
+   for(const term of tags.slice(0,3)){
+     let arr=[]; try{arr=await queryStations({name:term,limit:12});}catch(e){errors++;continue;}
+     for(const q of arr){if(q.lastcheckok===0||!(q.url_resolved||q.url)||seen.has(q.stationuuid))continue;seen.add(q.stationuuid);const x=stationToSource(q,category,subcategory);if(x)all.push(x);if(all.length>=limit)break;}
+     if(all.length>=limit)break;
+   }
+ }
+ const result=all.slice(0,limit); result._errors=errors; radioCache.set(key,result); return result;
+}
+
 async function queryCountry(code,area,limit=24){
  const key='country|'+code;if(radioCache.has(key))return radioCache.get(key);
  try{const arr=await apiFetch('/json/stations/bycountrycodeexact/'+encodeURIComponent(code)+'?limit='+limit+'&hidebroken=true&order=clickcount&reverse=true');
@@ -201,7 +222,26 @@ async function queryCountryWorld(limit=30){
 function showLoading(msg='正在尋找可播放音源…'){document.getElementById('exploreList').innerHTML='<div class="sourceLoading"><b>'+escapeHtml(msg)+'</b>正在連接全球音源目錄<div class="liveBadge">LIVE SOURCE DISCOVERY</div></div>';}
 function renderCategoryChoices(type){const list=document.getElementById('exploreList');document.getElementById('exploreTitle').textContent=labels[type];document.getElementById('exploreSub').textContent=type==='region'?'先選區域，再選國家，最後選音源。':'先選你想聽的風格，再從可播放音源中選擇。';document.getElementById('exploreBack').textContent='‹ 回首頁';const arr=data[type]||[];list.innerHTML='<div class="categoryGrid">'+arr.map(x=>`<button class="categoryChoice" onclick="selectSubcategory('${type}','${x[1].replace(/'/g,"\\'")}')"><div class="ci">${x[0]}</div><b>${x[1]}</b><small>${x[2]}</small></button>`).join('')+'</div><div class="apiNote">音源會即時從全球公開目錄尋找，先通過技術可播放條件才顯示。正式商業發布仍需後台權利審核。</div>';}
 function renderRegionCountries(area){const list=document.getElementById('exploreList');document.getElementById('exploreTitle').textContent=area;document.getElementById('exploreSub').textContent='先選國家，再選可播放的音源。';document.getElementById('exploreBack').textContent='‹ 返回地區';const countries=regionCountries[area]||[];list.innerHTML='<div class="regionNote">國家 / 區域</div><div class="categoryGrid">'+countries.map(x=>`<button class="categoryChoice" onclick="selectRegionCountry('${area}','${x[1]}')"><div class="ci">${x[0]}</div><b>${x[1]}</b><small>${x[2]}</small></button>`).join('')+'</div>';}
-async function renderSubcategory(type,sub){const list=document.getElementById('exploreList');document.getElementById('exploreTitle').textContent=sub;document.getElementById('exploreSub').textContent='正在尋找可播放音源…';document.getElementById('exploreBack').textContent='‹ 返回'+labels[type];showLoading();let rows=[];const local=localMatches(type,sub);if(local.length)rows=local;const map=data[type]?.find(x=>x[1]===sub);const key=map?.[3];let tags=[];if(type==='faith')tags=faithTags[key]||[key];else tags=key?[key]:[sub];const live=await queryTags(tags,type,sub,18);const merged=[...rows,...live.filter(x=>!rows.some(y=>y.id===x.id))];catalog=[...catalog.filter(x=>!merged.some(y=>y.id===x.id)),...merged];list.innerHTML=`<div class="sourceHeader">${escapeHtml(labels[type])} · ${escapeHtml(sub)}</div><div class="sourceHint">找到 <span class="sourceCount">${merged.length}</span> 個可播放候選音源</div>`;if(!merged.length){list.innerHTML+=`<div class="empty"><b>目前沒有找到可播放音源</b><br><small>可以換另一個風格；音源目錄會持續變動。</small></div>`;return;}list.innerHTML+=merged.map(s=>`<button class="row" onclick="openPlayerById('${s.id}')"><div class="thumb">${s.icon}</div><div class="info"><b>${escapeHtml(s.name)}</b><small>${escapeHtml(s.subtitle||s.country||'Live Stream')}</small><span class="sourceMeta">${escapeHtml(s.source||'Global Source')} · ${escapeHtml(s.codec||'audio')}</span></div><span>›</span></button>`).join('');}
+async function renderSubcategory(type,sub){
+ const list=document.getElementById('exploreList');
+ document.getElementById('exploreTitle').textContent=sub;
+ document.getElementById('exploreSub').textContent='正在尋找可播放音源…';
+ document.getElementById('exploreBack').textContent='‹ 返回'+labels[type];
+ showLoading();
+ let rows=[]; const local=localMatches(type,sub); if(local.length)rows=local;
+ const map=data[type]?.find(x=>x[1]===sub); const key=map?.[3];
+ let tags=[];
+ if(type==='faith') tags=faithTags[key]||[key];
+ else if(type==='music') tags=musicTags[key]||[key,sub];
+ else tags=key?[key]:[sub];
+ const live=await queryTags(tags,type,sub,18);
+ const merged=[...rows,...live.filter(x=>!rows.some(y=>y.id===x.id))];
+ catalog=[...catalog.filter(x=>!merged.some(y=>y.id===x.id)),...merged];
+ list.innerHTML=`<div class="sourceHeader">${escapeHtml(labels[type])} · ${escapeHtml(sub)}</div><div class="sourceHint">找到 <span class="sourceCount">${merged.length}</span> 個可播放候選音源</div>`;
+ if(!merged.length){list.innerHTML+=`<div class="empty"><b>目前沒有找到可播放音源</b><br><small>本次查詢使用多個標籤與備援搜尋；若仍為 0，代表目錄或網路端暫時沒有回傳結果。</small></div>`;return;}
+ list.innerHTML+=merged.map(s=>`<button class="row" onclick="openPlayerById('${s.id}')"><div class="thumb">${s.icon}</div><div class="info"><b>${escapeHtml(s.name)}</b><small>${escapeHtml(s.subtitle||s.country||'Live Stream')}</small><span class="sourceMeta">${escapeHtml(s.source||'Global Source')} · ${escapeHtml(s.codec||'audio')}${s.bitrate?' · '+escapeHtml(s.bitrate)+' kbps':''}</span></div><span>›</span></button>`).join('');
+}
+
 async function renderRegionSources(country,area,code){const list=document.getElementById('exploreList');document.getElementById('exploreTitle').textContent=country;document.getElementById('exploreSub').textContent='正在尋找可播放音源…';document.getElementById('exploreBack').textContent='‹ 返回'+area;showLoading();const rows=code==='WORLD'?await queryCountryWorld(30):await queryCountry(code,area,30);catalog=[...catalog.filter(x=>!rows.some(y=>y.id===x.id)),...rows];list.innerHTML=`<div class="sourceHeader">${escapeHtml(area)} · ${escapeHtml(country)}</div><div class="sourceHint">找到 <span class="sourceCount">${rows.length}</span> 個可播放候選音源</div>`;if(!rows.length){list.innerHTML+=`<div class="empty"><b>目前沒有找到可播放音源</b><br><small>這個國家的公開目錄目前沒有回傳可播放來源。</small></div>`;return;}list.innerHTML+=rows.map(s=>`<button class="row" onclick="openPlayerById('${s.id}')"><div class="thumb">${s.icon}</div><div class="info"><b>${escapeHtml(s.name)}</b><small>${escapeHtml(s.subtitle||s.country||'Live Stream')}</small><span class="sourceMeta">${escapeHtml(s.source||'Global Source')} · ${escapeHtml(s.codec||'audio')}</span></div><span>›</span></button>`).join('');}
 function selectSubcategory(type,sub){exploreCategory=type;exploreSubcategory=sub;if(type==='region'){exploreRegionArea=sub;renderRegionCountries(sub);}else renderSubcategory(type,sub);}
 function selectRegionCountry(area,country){const x=(regionCountries[area]||[]).find(v=>v[1]===country);exploreRegionArea=area;exploreSubcategory=country;renderRegionSources(country,area,x?.[2]||'WORLD');}
@@ -241,7 +281,7 @@ async function loadCatalog(){try{const r=await fetch('sources.json?v=v149',{cach
 loadCatalog();
 
 
-async function loadCatalog(){try{const r=await fetch('sources.json?v=v150',{cache:'no-store'});const j=await r.json();catalog=Array.isArray(j.sources)?j.sources.filter(x=>x.enabled!==false&&x.publish!==false):[];}catch(e){catalog=[];}document.getElementById('currentLanguage').textContent=localStorage.getItem('gs24_language')||'繁體中文';document.getElementById('currentSoundStage').textContent=localStorage.getItem('gs24_soundstage')||'標準 · Flat';}
+async function loadCatalog(){try{const r=await fetch('sources.json?v=v151',{cache:'no-store'});const j=await r.json();catalog=Array.isArray(j.sources)?j.sources.filter(x=>x.enabled!==false&&x.publish!==false):[];}catch(e){catalog=[];}document.getElementById('currentLanguage').textContent=localStorage.getItem('gs24_language')||'繁體中文';document.getElementById('currentSoundStage').textContent=localStorage.getItem('gs24_soundstage')||'標準 · Flat';}
 loadCatalog();
 
 </script>
