@@ -12,7 +12,7 @@ button{font:inherit;color:inherit}main{max-width:760px;margin:auto;padding:24px 
 header{display:flex;align-items:center;justify-content:space-between;margin-bottom:26px}
 .logo{font-size:18px;font-weight:750;letter-spacing:.08em}.gear{border:1px solid var(--line);background:#111;border-radius:50%;width:42px;height:42px}
 h1{font-size:32px;margin:8px 0 22px}.section{margin-top:30px}.section h2{font-size:19px;margin:0 0 13px}.sub{font-size:13px;color:var(--muted);margin-top:-7px;margin-bottom:13px}
-.music-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:13px}.region-btn{flex:0 0 auto;border:1px solid var(--line);background:#151515;border-radius:999px;min-width:62px;height:44px;padding:0 13px;cursor:pointer;font-size:17px}.region-btn span{font-size:13px;color:var(--muted);margin-left:3px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.tile{border:1px solid var(--line);background:var(--card);border-radius:16px;padding:18px 12px;min-height:92px;text-align:left;cursor:pointer}.tile b{display:block;font-size:16px;margin-top:10px}.tile span{font-size:25px}
+.music-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:10px}.inline-regions{display:flex;flex-wrap:wrap;gap:7px;margin:0 0 15px}.region-chip{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:#151515;border-radius:999px;padding:7px 10px;min-height:40px;cursor:pointer;font-size:14px}.region-chip input{width:17px;height:17px;margin:0;accent-color:#fff}.region-chip.on{border-color:#555;background:#202020}.region-chip .flag{font-size:18px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.tile{border:1px solid var(--line);background:var(--card);border-radius:16px;padding:18px 12px;min-height:92px;text-align:left;cursor:pointer}.tile b{display:block;font-size:16px;margin-top:10px}.tile span{font-size:25px}
 .hot{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.hot button{border:1px solid var(--line);background:var(--card);border-radius:16px;padding:15px;text-align:left;min-height:76px;cursor:pointer}.hot strong{display:block;font-size:15px}.hot small{display:block;color:var(--muted);margin-top:5px}
 .genre{display:flex;gap:8px;overflow:auto;padding-bottom:4px}.genre button{white-space:nowrap;border:1px solid var(--line);background:#111;border-radius:999px;padding:10px 14px;cursor:pointer}
 .overlay{position:fixed;inset:0;background:rgba(0,0,0,.82);display:none;align-items:flex-end;justify-content:center;padding:14px}.sheet{width:min(700px,100%);background:#171717;border:1px solid var(--line);border-radius:22px;padding:20px}.sheettop{display:flex;justify-content:space-between;align-items:center}.close{background:#242424;border:0;border-radius:50%;width:38px;height:38px}.countries label{display:flex;align-items:center;gap:12px;padding:13px 2px;border-bottom:1px solid var(--line)}.countries input{width:20px;height:20px}.actions{display:flex;gap:8px;margin-top:12px}.actions button{border:1px solid var(--line);background:#242424;border-radius:10px;padding:9px 12px}
@@ -27,9 +27,9 @@ h1{font-size:32px;margin:8px 0 22px}.section{margin-top:30px}.section h2{font-si
 
 <section class="section">
 <div class="music-head">
-  <div><h2 style="margin:0">🎵 音樂類型</h2><div class="sub" style="margin-top:5px;margin-bottom:0">先選擇地區，再選擇曲風</div></div>
-  <button class="region-btn" id="openRegion" type="button">🌎 <span id="regionCount">6</span></button>
+  <div><h2 style="margin:0">🎵 音樂類型</h2><div class="sub" style="margin-top:5px;margin-bottom:0">勾選地區後，只顯示該地區的音樂來源</div></div>
 </div>
+<div class="inline-regions" id="inlineRegions" aria-label="來源地區"></div>
 <div class="grid">
 <button class="tile" data-genre="Instrumental"><span>🎼</span><b>純音樂</b></button>
 <button class="tile" data-genre="R&B"><span>🎤</span><b>R&B</b></button>
@@ -74,18 +74,39 @@ h1{font-size:32px;margin:8px 0 22px}.section{margin-top:30px}.section h2{font-si
 
 <div class="overlay" id="settingsOverlay">
 <div class="sheet"><div class="sheettop"><b>Settings</b><button class="close" id="closeSettings">×</button></div>
-<p style="color:#aaa;font-size:14px;line-height:1.6">V163 · 音樂類型區域篩選位置修正<br>地區已從首頁移除，音樂類型使用右上角國家篩選。</p>
+<div style="margin-top:18px">
+  <div style="font-weight:650;margin-bottom:8px">語言 / Language</div>
+  <div style="color:#999;font-size:13px;margin-bottom:10px">介面語言只提供目前六個地區的語言</div>
+  <select id="languageSelect" style="width:100%;background:#222;color:#fff;border:1px solid #333;border-radius:12px;padding:13px 12px;font-size:16px">
+    <option value="zh-TW">🇹🇼 繁體中文</option>
+    <option value="zh-CN">🇨🇳 简体中文</option>
+    <option value="ja-JP">🇯🇵 日本語</option>
+    <option value="ko-KR">🇰🇷 한국어</option>
+    <option value="en-US">🇺🇸 English (US)</option>
+    <option value="en-GB">🇬🇧 English (UK)</option>
+  </select>
+</div>
+<p style="color:#aaa;font-size:14px;line-height:1.6">V166 · 地區與語言範圍統一<br>地區已從首頁移除，音樂類型使用右上角國家篩選。</p>
 </div></div>
 
 <script>
-const countries=[['TW','🇹🇼','台灣'],['CN','🇨🇳','中國'],['JP','🇯🇵','日本'],['HK','🇭🇰','香港'],['US','🇺🇸','美國'],['GB','🇬🇧','英國']];
+const countries=[['TW','🇹🇼','台灣'],['CN','🇨🇳','中國'],['JP','🇯🇵','日本'],['KR','🇰🇷','韓國'],['US','🇺🇸','美國'],['GB','🇬🇧','英國']];
 const selected=new Set(countries.map(x=>x[0]));
 const countryOverlay=document.getElementById('countryOverlay');
 const countriesBox=document.getElementById('countries');
+const inlineRegions=document.getElementById('inlineRegions');
+function drawInlineRegions(){
+  inlineRegions.innerHTML=countries.map(([id,flag,name])=>`<label class="region-chip ${selected.has(id)?'on':''}"><input type="checkbox" data-inline-id="${id}" ${selected.has(id)?'checked':''}><span class="flag">${flag}</span><span>${name}</span></label>`).join('');
+  inlineRegions.querySelectorAll('input').forEach(i=>i.addEventListener('change',()=>{
+    i.checked?selected.add(i.dataset.inlineId):selected.delete(i.dataset.inlineId);
+    i.closest('.region-chip').classList.toggle('on',i.checked);
+    drawCountries();
+  }));
+}
 function drawCountries(){countriesBox.innerHTML=countries.map(([id,flag,name])=>`<label><input type="checkbox" data-id="${id}" ${selected.has(id)?'checked':''}><span style="font-size:22px">${flag}</span><span>${name}</span></label>`).join('');countriesBox.querySelectorAll('input').forEach(i=>i.onchange=()=>{i.checked?selected.add(i.dataset.id):selected.delete(i.dataset.id);updateRegionCount();});}
 drawCountries();
+drawInlineRegions();
 function updateRegionCount(){document.getElementById('regionCount').textContent=selected.size;}
-document.getElementById('openRegion').onclick=()=>{drawCountries();countryOverlay.style.display='flex';};
 document.getElementById('settings').onclick=()=>document.getElementById('settingsOverlay').style.display='flex';
 document.getElementById('closeSettings').onclick=()=>document.getElementById('settingsOverlay').style.display='none';
 
@@ -93,8 +114,8 @@ function playName(name){document.getElementById('playername').textContent=name+'
 document.querySelectorAll('[data-genre]').forEach(b=>b.onclick=()=>playName(b.dataset.genre));
 document.querySelectorAll('[data-hot]').forEach(b=>b.onclick=()=>playName(b.dataset.hot));
 document.getElementById('closeCountry').onclick=()=>countryOverlay.style.display='none';
-document.getElementById('all').onclick=()=>{countries.forEach(x=>selected.add(x[0]));drawCountries();updateRegionCount()};
-document.getElementById('none').onclick=()=>{selected.clear();drawCountries();updateRegionCount()};
+document.getElementById('all').onclick=()=>{countries.forEach(x=>selected.add(x[0]));drawCountries();drawInlineRegions();updateRegionCount()};
+document.getElementById('none').onclick=()=>{selected.clear();drawCountries();drawInlineRegions();updateRegionCount()};
 updateRegionCount();
 document.getElementById('play').onclick=()=>{document.getElementById('play').textContent=document.getElementById('play').textContent==='▶'?'❚❚':'▶'};
 </script>
