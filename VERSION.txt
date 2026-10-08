@@ -1,10 +1,2 @@
-V207 - Faith restored + playback state fix + UI cleanup
-UI rebuild + iPhone playback flow
-- Region selector fixed to upper-right of Music section, all six countries visible by default.
-- Bottom navigation restored: Favorites / Settings.
-- Settings overlay CSS restored.
-- Source list no longer hides candidates before user playback; playback is verified on tap.
-- Dedicated play button starts stream from a direct user gesture.
-- Removed automatic source-card autoplay to improve iPhone reliability.
-- Player tonearm remains above vinyl; stylus lands on outer groove.
-- News / Talk / politics / sports talk remain excluded; vocal music is allowed by genre.
+GLOBAL SOUND 24
+V210
