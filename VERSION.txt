@@ -1,10 +1,10 @@
-GLOBAL SOUND 24 V187
+GLOBAL SOUND 24 V188
 
-- Clean V187 package; V185/V186 folders are not included.
-- Reworked stream test registry using current official direct-stream pages.
-- Removed stale server-specific SomaFM endpoints; uses the official stable direct aliases for test playback.
-- Jazz24 uses the official direct MP3/AAC links published by Jazz24.
-- Playback state machine only starts turntable animation after the audio element emits playing.
-- Failed sources are hidden for the current session after all fallback URLs fail.
-- Startup now loads and validates the local source registry without fetching third-party M3U/PLS from GitHub Pages.
-- Important: this is still a GitHub Pages test build. Production-grade real-time source Health Check requires a backend service.
+本版重點：
+1. Chrome 測試優先。
+2. 新增 Source Diagnostic：Connecting / Metadata OK / PLAYING / FAILED。
+3. 只有真正收到 playing 事件才讓唱片旋轉與唱針下降。
+4. 重新設計唱盤：唱臂、唱頭、唱針位置改為正確的黑膠唱盤結構，不再使用舊版錯誤讀寫頭。
+5. Jazz24 標示為目前已由使用者 Chrome 實測可播放。
+6. WWOZ、KCRW Eclectic24 為候選音源，第一次測試成功後才視為可用；失敗會在本次 session 隱藏。
+7. 真正商用版仍應由後端做持續 Health Check 與播放來源管理。

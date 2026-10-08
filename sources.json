@@ -1,13 +1,28 @@
 {
-  "version":"V187",
-  "generated":"2026-10-08",
-  "note":"Test-only official source registry; production requires rights review and backend health checks.",
-  "sources":[
-    {"name":"Jazz24 · Live Jazz","country":"us","genre":"jazz","urls":["https://knkx-live-a.edge.audiocdn.com/6285_128k","https://knkx-live-a.edge.audiocdn.com/6285_64k"],"manifest":"https://www.jazz24.org/streaming-links/"},
-    {"name":"SomaFM · Groove Salad","country":"us","genre":"instrumental","urls":["https://ice.somafm.com/groovesalad"],"manifest":"https://somafm.com/groovesalad/directstreamlinks.html"},
-    {"name":"SomaFM · Drone Zone","country":"us","genre":"instrumental","urls":["https://ice.somafm.com/dronezone"],"manifest":"https://somafm.com/dronezone/directstreamlinks.html"},
-    {"name":"SomaFM · Indie Pop Rocks!","country":"us","genre":"rock","urls":["https://ice.somafm.com/indiepop"],"manifest":"https://somafm.com/indiepop/directstreamlinks.html"},
-    {"name":"SomaFM · The Trip","country":"us","genre":"electronic","urls":["https://ice.somafm.com/thetrip"],"manifest":"https://somafm.com/thetrip/directstreamlinks.html"},
-    {"name":"SomaFM · Mission Control","country":"us","genre":"instrumental","urls":["https://ice.somafm.com/missioncontrol"],"manifest":"https://somafm.com/missioncontrol/directstreamlinks.html"}
+  "version": "V188",
+  "test_mode": true,
+  "browser_target": "Chrome",
+  "sources": [
+    {
+      "name": "Jazz24 · Live Jazz",
+      "country": "US",
+      "genre": "jazz",
+      "status": "user-confirmed-playable",
+      "urls": ["https://knkx-live-a.edge.audiocdn.com/6285_128k", "https://knkx-live-a.edge.audiocdn.com/6285_64k"]
+    },
+    {
+      "name": "WWOZ · New Orleans Jazz",
+      "country": "US",
+      "genre": "jazz",
+      "status": "candidate",
+      "urls": ["https://wwoz-sc.streamguys1.com/wwoz-hi.mp3"]
+    },
+    {
+      "name": "KCRW · Eclectic24",
+      "country": "US",
+      "genre": "instrumental",
+      "status": "candidate",
+      "urls": ["https://streams.kcrw.com/e24_mp3", "https://kcrw.streamguys1.com/kcrw_192k_mp3_e24"]
+    }
   ]
 }
