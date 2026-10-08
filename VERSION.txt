@@ -1,2 +1,2 @@
-V204
-啟動即進首頁；音源背景驗證；素面介面；新增 Pop/R&B 分類；唱針外圈定位。
+GLOBAL SOUND 24 V205
+Clean UI + non-blocking startup + mobile audio engine repair
