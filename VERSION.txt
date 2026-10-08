@@ -1,2 +1,2 @@
-GLOBAL SOUND 24 V201
-立即進入首頁；音源驗證完全背景化。修正 badSources 初始化造成啟動畫面卡住。
+GLOBAL SOUND 24 V202
+Immediate home startup; source verification runs only in background. New service worker filename sw-v202.js avoids stale V199-V201 worker interception.

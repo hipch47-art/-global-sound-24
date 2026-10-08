@@ -365,6 +365,5 @@ const overlay=document.getElementById('overlay');document.getElementById('settin
 renderRegions();renderGenres();renderHot();renderSources();
 if(location.hash==='#sources') showSources(currentGenre); else if(location.hash==='#space') showSpace(); else if(location.hash==='#home'||!location.hash) showHome(); else showHome();
 refreshSourceRegistry();
-setTimeout(()=>{const el=document.getElementById('startup');if(el){el.classList.add('hide');setTimeout(()=>el.remove(),350)}},1800);
-if('serviceWorker' in navigator){navigator.serviceWorker.register('./sw.js?v=201',{updateViaCache:'none'}).then(r=>r.update()).catch(()=>{});}
+if('serviceWorker' in navigator){navigator.serviceWorker.register('./sw-v202.js?v=202',{updateViaCache:'none'}).then(r=>r.update()).catch(()=>{});}
 </script><div class="chart-modal" id="chartModal" onclick="if(event.target===this)closeCharts()"><div class="chart-sheet"><div class="chart-head"><h3 id="chartTitle">🔥 熱門音樂</h3><button class="chart-close" onclick="closeCharts()">✕</button></div><div class="chart-note">排行榜介面獨立於播放來源；歌曲排行可依地區更新。正式版可接後端排行榜資料，播放時再使用合法的官方播放來源。</div><div class="chart-tabs" id="chartTabs"></div><div class="chart-list" id="chartList"></div></div></div></body></html>
