@@ -132,6 +132,7 @@ h1{font-size:30px;line-height:1.15;margin:0 0 7px;letter-spacing:-.7px}.sub{colo
 <button class="settingsRow" onclick="openLanguage()"><div style="text-align:left"><b>Language</b><small id="currentLanguage">繁體中文</small></div><span>›</span></button>
 <button class="settingsRow" onclick="openSoundStage()"><div style="text-align:left"><b>音場設定</b><small id="currentSoundStage">標準 · Flat</small></div><span>›</span></button>
 <button class="settingsRow" id="backgroundRow" onclick="toggleBackgroundPlayback()"><div style="text-align:left"><b>背景播放</b><small id="backgroundStatus">關閉</small></div><span id="backgroundArrow">›</span></button>
+<button class="settingsRow" onclick="openVersionInfo()"><div style="text-align:left"><b>版本</b><small>V160 · Region Scope / Cache Fix</small></div><span>›</span></button>
 <div class="settingsRow"><div><b>睡眠計時</b><small>讓聲音在指定時間後停止</small></div><span>›</span></div>
 <div class="settingsRow"><div><b>聆聽分析</b><small>看看自己最近常聽什麼</small></div><span>›</span></div>
 </section>
@@ -315,6 +316,10 @@ function openSettingsFromPlayer(){
   document.getElementById('settings').classList.add('active');
   document.getElementById('settingsBack').textContent='‹ 返回播放';
 }
+function openVersionInfo(){
+  alert("GLOBAL SOUND 24\n\n目前版本：V160\n版本：Region Scope / Cache Fix\n地區：台灣、中國、日本、香港、美國、英國\n信仰：佛教、藏傳佛教、天主教、基督新教、其他靈性\n\n如果這裡顯示 V160，就代表目前載入的是最新測試版本。");
+}
+
 function settingsBackAction(){
   if(currentSource){
     document.getElementById('settings').classList.remove('active');
