@@ -1,10 +1,12 @@
-GLOBAL SOUND 24 V176
+GLOBAL SOUND 24 V177
 
-Fixes based on V175 test:
-1. Country selector stays visible in the upper-right of Music on mobile.
-2. Turntable is removed from Home. It appears only in the separate Now Playing screen after a playable source is selected.
-3. Test source list is removed from Home. Genre selection opens a separate Music Sources screen.
-4. Only verified direct HTTPS audio test streams are shown as playable; non-direct program pages are removed.
-5. Restored the former Audio Lab as “聲音空間”, with Guitar, Metronome, and Audio Generator.
-6. Hot Music cards open official YouTube search pages instead of pretending arbitrary songs are directly playable.
-7. Audio Generator: 20 Hz–20 kHz, Sine/Square/Triangle/Sawtooth.
+UI fixes:
+- Region selector remains in the upper-right of Music Type and is moved upward.
+- Country selection controls the visible Hot Music list; only selected regions are shown.
+- Hot Music titles are smaller and single-line on mobile.
+- Replaced baked-text hot-card images with neutral country-matched visual backgrounds.
+- Genre grid is moved upward with tighter spacing.
+- Tapping a genre opens a dedicated Music Sources view.
+- Source list shows only directly playable test streams currently verified for this prototype.
+- Tapping a source opens Now Playing with turntable; stylus drops and vinyl spins only after audio fires the playing event.
+- Sound Space is preserved as a separate view.
