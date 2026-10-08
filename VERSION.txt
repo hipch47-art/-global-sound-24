@@ -1,3 +1,2 @@
-GLOBAL SOUND 24 V200
-UI starts immediately; source verification runs in background.
-HLS verification has a hard library-load timeout.
+GLOBAL SOUND 24 V201
+立即進入首頁；音源驗證完全背景化。修正 badSources 初始化造成啟動畫面卡住。
