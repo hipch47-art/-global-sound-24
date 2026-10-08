@@ -1,4 +1,4 @@
-GLOBAL SOUND 24 V206
+V207 - Faith restored + playback state fix + UI cleanup
 UI rebuild + iPhone playback flow
 - Region selector fixed to upper-right of Music section, all six countries visible by default.
 - Bottom navigation restored: Favorites / Settings.
