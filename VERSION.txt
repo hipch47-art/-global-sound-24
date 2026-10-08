@@ -1,2 +1,10 @@
-GLOBAL SOUND 24 V175
-Premium visual test build. Uses cropped assets from approved cinematic music visual reference. Includes real playback test sources from V174, responsive country selector, gradient typography, and playback-driven turntable/needle animation.
+GLOBAL SOUND 24 V176
+
+Fixes based on V175 test:
+1. Country selector stays visible in the upper-right of Music on mobile.
+2. Turntable is removed from Home. It appears only in the separate Now Playing screen after a playable source is selected.
+3. Test source list is removed from Home. Genre selection opens a separate Music Sources screen.
+4. Only verified direct HTTPS audio test streams are shown as playable; non-direct program pages are removed.
+5. Restored the former Audio Lab as “聲音空間”, with Guitar, Metronome, and Audio Generator.
+6. Hot Music cards open official YouTube search pages instead of pretending arbitrary songs are directly playable.
+7. Audio Generator: 20 Hz–20 kHz, Sine/Square/Triangle/Sawtooth.
