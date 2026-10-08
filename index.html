@@ -26,15 +26,18 @@ main{width:min(760px,100%);margin:0 auto;padding:18px 18px 88px}
 .space-tools{display:grid;gap:10px;margin-top:18px}.space-tool{border:1px solid var(--line);background:#111;border-radius:12px;padding:15px}.space-tool h3{margin:0 0 5px;font-size:16px}.space-tool p{margin:0 0 12px;color:#777;font-size:11px;line-height:1.5}.row{display:flex;align-items:center;gap:9px;flex-wrap:wrap}.space-tool button{border:1px solid #333;background:#181818;border-radius:9px;padding:8px 12px}.gen-select{background:#171717;border:1px solid #333;border-radius:8px;color:#eee;padding:8px}.space-tool input[type=range]{flex:1;min-width:120px}.bpm{font-size:23px;font-weight:650;min-width:62px}.tuner-readout{font-size:42px;font-weight:650;margin-top:18px}.tuner-note{color:#777;font-size:11px;margin:4px 0 12px}.tuner-meter{height:4px;background:#292929;border-radius:4px;position:relative}.tuner-needle{position:absolute;top:-5px;width:2px;height:14px;background:#eee;left:50%}.sleep-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:7px}.sleep-btn{min-height:72px!important;padding:8px!important}.sleep-btn b,.sleep-btn small{display:block}.sleep-btn b{font-size:12px}.sleep-btn small{font-size:9px;color:#777;margin-top:3px}
 .chart-modal{position:fixed;inset:0;background:rgba(0,0,0,.82);z-index:90;display:none;align-items:flex-end}.chart-modal.show{display:flex}.chart-sheet{width:100%;max-height:88vh;overflow:auto;background:#111;border:1px solid #2c2c2c;border-bottom:0;border-radius:20px 20px 0 0;padding:18px}.chart-head{display:flex;justify-content:space-between;align-items:center}.chart-head h3{margin:0;font-size:20px}.chart-close{width:36px;height:36px;border:1px solid #333;background:#181818;border-radius:50%}.chart-note{color:#777;font-size:10px;line-height:1.5;margin:6px 0 12px}.chart-tabs{display:flex;gap:6px;overflow:auto}.chart-tab{white-space:nowrap;border:1px solid #333;background:#151515;border-radius:999px;padding:7px 10px;font-size:10px}.chart-tab.active{border-color:#777}.chart-list{display:grid;gap:7px;margin-top:10px}.chart-row{display:grid;grid-template-columns:30px 1fr auto;gap:8px;align-items:center;border:1px solid #292929;background:#151515;border-radius:10px;padding:9px}.chart-rank{font-size:16px;color:#aaa;text-align:center}.chart-song{font-size:12px;font-weight:600}.chart-artist{font-size:9px;color:#777;margin-top:2px}.chart-open{border:1px solid #333;background:#181818;border-radius:8px;padding:6px 7px;font-size:9px}
 @keyframes spin{to{transform:rotate(360deg)}}@keyframes logoSpin{to{transform:translate(-50%,-50%) rotate(360deg)}}@keyframes logoTextSpin{to{transform:rotate(-360deg)}}
-@media(max-width:650px){main{padding:16px 16px 88px}.hero{padding-top:32px}.hero h1{font-size:31px}.music-head{display:block}.music-title{margin-bottom:9px}.region-box{max-width:100%}.grid{gap:8px}.tile{min-height:132px}.tile-title{font-size:18px}.hot{grid-template-columns:1fr 1fr}.turn-wrap{width:min(310px,82vw)}}
+
+/* V206 UI refinement */
+.music-head{position:relative;min-height:58px;align-items:flex-start}.region-box{display:grid;grid-template-columns:repeat(3,max-content);gap:5px;justify-content:end;max-width:205px;margin-left:auto;padding:0}.region-box:before{content:"地區";grid-column:1/-1;text-align:right;color:#777;font-size:9px;margin-bottom:1px}.region-chip{font-size:9px;padding:4px 6px;border-radius:8px}.region-chip input{width:10px;height:10px}.music-title{padding-top:1px;padding-right:8px}.bottom-nav{position:fixed;left:50%;bottom:12px;transform:translateX(-50%);width:min(390px,calc(100% - 24px));height:58px;display:grid;grid-template-columns:1fr 1fr;gap:6px;padding:5px;background:rgba(18,18,18,.96);border:1px solid #292929;border-radius:18px;z-index:80;box-shadow:0 10px 30px rgba(0,0,0,.35)}.bottom-nav button{border:0;background:transparent;border-radius:13px;color:#999;font-size:11px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px}.bottom-nav button.active{background:#1b1b1b;color:#eee}.bottom-nav .ico{font-size:20px;line-height:1}.overlay{position:fixed;inset:0;background:rgba(0,0,0,.68);z-index:100;display:none;align-items:flex-end;padding:0}.sheet{width:100%;background:#111;border:1px solid #292929;border-bottom:0;border-radius:20px 20px 0 0;padding:18px;box-shadow:0 -12px 35px rgba(0,0,0,.4)}.sheettop{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}.close{width:36px;height:36px;border:1px solid #333;background:#181818;border-radius:50%;font-size:22px}.opt{width:100%;padding:13px;margin-top:7px;text-align:left;border:1px solid #292929;background:#151515;border-radius:10px}.player-screen{padding-bottom:70px}.player-screen .turn-wrap{margin-bottom:18px}.play{margin-top:14px}.source-card{transition:border-color .15s,background .15s}.source-card:active{background:#181818;border-color:#555}.verified{color:#aaa}.pending{color:#777}
+@media(max-width:650px){main{padding:16px 16px 92px}.hero{padding-top:32px}.hero h1{font-size:31px}.music-head{display:flex;align-items:flex-start}.region-box{grid-template-columns:repeat(3,max-content);max-width:205px}.grid{gap:8px}.tile{min-height:132px}.tile-title{font-size:18px}.hot{grid-template-columns:1fr 1fr}.turn-wrap{width:min(310px,82vw)}}
 @media(max-width:430px){.hot{grid-template-columns:1fr}.tile{min-height:126px}}
 </style></head><body><main>
-<section id="homeView" class="view active" aria-label="首頁"><header class="top"><div class="logo">GLOBAL SOUND 24</div><button class="gear" id="settings" aria-label="設定">⚙︎</button></header>
+<section id="homeView" class="view active" aria-label="首頁"><header class="top"><div class="logo">GLOBAL SOUND 24</div></header>
 <div class="hero"><h1>想聽什麼？</h1><p>選一種感覺，直接開始聽。</p></div>
 <section class="section music-section"><div class="music-head"><div class="music-title"><h2>🎵 音樂類型</h2><p class="sub">依地區篩選音樂來源</p></div><div class="region-box" id="regions"></div></div><div class="grid" id="genres"></div></section>
 <section class="section"><div class="section-head"><div><h2>🔥 熱門音樂</h2><p class="sub">依你選擇的地區顯示</p></div></div><div class="hot" id="hot"></div></section>
 <section class="section compact-space"><button class="space-link" onclick="showSpace()"><span><b>🔊 聲音空間</b><small>吉他調音器・節拍器・音頻產生器・睡眠聲音</small></span><span>›</span></button></section>
-</section><section id="sourcesView" class="view"><button class="back" onclick="showHome()">‹ 回首頁</button><div class="view-title" id="sourceTitle">音樂來源</div><div id="sourceCount" class="sub" style="margin-top:-2px"></div><p class="sub">已驗證可播放的音樂來源。可有歌唱；排除新聞、主持、Talk、政治與體育口播。</p><div class="source-list" id="sources"></div></section>
+</section><section id="sourcesView" class="view"><button class="back" onclick="showHome()">‹ 回首頁</button><div class="view-title" id="sourceTitle">音樂來源</div><div id="sourceCount" class="sub" style="margin-top:-2px"></div><p class="sub">來源可含歌唱；排除新聞、主持、Talk、政治與體育口播。播放時即時確認。</p><div class="source-list" id="sources"></div></section>
 <section id="playerView" class="view player-screen"><button class="back" onclick="showSources()">‹ 返回音樂來源</button><div class="view-title">Now Playing</div><div class="turn-wrap"><div class="turntable"><div class="platter"></div><div class="turn" id="turn"><div class="core-counter" id="coreCounter"><div class="spindle"></div><div class="genre-logo" id="genreLogo"><span id="genreLogoText">PIANO</span></div></div></div><svg class="arm-svg" viewBox="0 0 330 330" aria-hidden="true"><circle class="pivot" cx="286" cy="34" r="17"/><path class="arm" d="M286 34 C286 66 282 100 272 136 C263 172 253 205 244 232"/><path class="arm-inner" d="M286 34 C286 66 282 100 272 136 C263 172 253 205 244 232"/><g class="needle" id="needle"><path class="headshell" d="M244 225 L230 231 L232 243 L247 239 Z"/><path class="stylus" d="M234 241 L257 276"/></g></svg></div></div><div class="playername" id="playername">GLOBAL SOUND 24 · Ready</div><div class="status" id="status">等待播放</div><audio id="audio" class="audio-engine" preload="auto" playsinline webkit-playsinline></audio><button class="play" id="play" aria-label="播放">▶</button></section>
 <section id="spaceView" class="view"><button class="back" onclick="showHome()">‹ 回首頁</button><div class="view-title">聲音空間</div><p class="sub">簡單、立即可用的聲音工具。</p><div class="space-tools">
 <div class="space-tool"><h3>🎸 吉他調音器</h3><p>使用手機麥克風偵測吉他音高，標準調弦 E A D G B E。</p><button onclick="startTuner()" id="tunerBtn">開始調音</button><div class="tuner-readout" id="tunerNote">—</div><div class="tuner-note" id="tunerCents">請先允許麥克風</div><div class="tuner-meter"><div class="tuner-needle" id="tunerNeedle"></div></div></div>
@@ -43,6 +46,7 @@ main{width:min(760px,100%);margin:0 auto;padding:18px 18px 88px}
 <div class="space-tool sleep"><h3>🌙 睡眠聲音</h3><p>獨立睡眠聲音工具，可搭配 Sleep Timer。</p><div class="sleep-grid"><button class="sleep-btn" onclick="playSleep('white')">🤍<b>白噪音</b><small>White Noise</small></button><button class="sleep-btn" onclick="playSleep('pink')">🌸<b>粉紅噪音</b><small>Pink Noise</small></button><button class="sleep-btn" onclick="playSleep('brown')">🤎<b>棕噪音</b><small>Brown Noise</small></button><button class="sleep-btn" onclick="playSleep('rain')">🌧️<b>雨聲</b><small>Rain</small></button><button class="sleep-btn" onclick="playSleep('ocean')">🌊<b>海浪</b><small>Ocean</small></button><button class="sleep-btn" onclick="playSleep('forest')">🌲<b>森林</b><small>Forest</small></button><button class="sleep-btn" onclick="playSleep('campfire')">🔥<b>營火</b><small>Campfire</small></button><button class="sleep-btn" onclick="playSleep('wind')">💨<b>風聲</b><small>Wind</small></button><button class="sleep-btn" onclick="playSleep('thunder')">⛈️<b>雷雨</b><small>Thunderstorm</small></button></div><div class="row" style="margin-top:12px"><select id="sleepTimer" class="gen-select"><option value="0">Sleep Timer：關閉</option><option value="30">30 分鐘</option><option value="60">1 小時</option><option value="120">2 小時</option><option value="240">4 小時</option><option value="480">8 小時</option></select><button onclick="stopSleep()">停止</button></div><div class="status" id="sleepStatus">尚未播放睡眠聲音</div></div>
 </div></section>
 </main>
+<nav class="bottom-nav" aria-label="底部導覽"><button id="favNav" onclick="toggleFavorites()"><span class="ico">♡</span><span>收藏</span></button><button id="settingsNav" onclick="openSettings()"><span class="ico">⚙︎</span><span>Settings</span></button></nav>
 <div class="overlay" id="overlay" aria-hidden="true"><div class="sheet"><div class="sheettop"><strong>Settings</strong><button class="close" id="close">×</button></div><button class="opt" onclick="showHome();closeSettings()">回首頁</button><button class="opt" onclick="showSpace();closeSettings()">聲音空間</button><p style="color:#777;font-size:12px;margin-top:15px">GLOBAL SOUND 24 V205</p></div></div>
 <script>
 const countries=[['tw','🇹🇼','台灣'],['cn','🇨🇳','中國'],['jp','🇯🇵','日本'],['kr','🇰🇷','韓國'],['us','🇺🇸','美國'],['uk','🇬🇧','英國']];
@@ -123,19 +127,10 @@ async function verifyOneSource(src,index,total,background=false){
 
 async function refreshSourceRegistry(){
  const candidates=candidateSources.slice(); let next=0;
- const worker=async()=>{
-   while(true){
-     const i=next++; if(i>=candidates.length)return;
-     const src=candidates[i];
-     // Background check uses a short, muted media probe; it never blocks navigation.
-     for(const url of (src.urls||[])){
-       const ok=await testAudioUrl(url,{hls:false,timeout:4500});
-       if(ok){src.verified=true;sourceHealth.set(src.name,{ok:true,at:Date.now()});renderSources();break}
-     }
-   }
- };
+ const worker=async()=>{while(true){const i=next++;if(i>=candidates.length)return;const src=candidates[i];for(const url of (src.urls||[])){const ok=await testAudioUrl(url,{timeout:3500});if(ok){sourceHealth.set(src.name,{ok:true,at:Date.now()});renderSources();break}}}};
  Promise.all([worker(),worker(),worker()]).catch(()=>{});
 }
+
 function addVerifiedSource(src){if(testSources.some(x=>x.name===src.name))return;testSources.push(src);testSources.sort((a,b)=>candidateSources.indexOf(a)-candidateSources.indexOf(b));renderSources();}
 function scheduleBackgroundRetry(failed){
  if(retryTimer)clearTimeout(retryTimer);
@@ -168,18 +163,19 @@ function showSources(g=''){currentGenre=g;hideViews();document.getElementById('s
 function showSpace(){hideViews();document.getElementById('spaceView').classList.add('active');history.replaceState(null,'','#space');window.scrollTo(0,0)}
 function renderSources(){
  const s=document.getElementById('sources');
- let list=testSources.filter(x=>!badSources.has(x.name)&&(x.c==='global'||selected.has(x.c))&&(!currentGenre||x.g===currentGenre)&&(!currentGenre||currentGenre==='instrumental'||x.type==='music'||x.type==='instrumental'));
+ const list=testSources.filter(x=>!badSources.has(x.name)&&(x.c==='global'||selected.has(x.c))&&(!currentGenre||x.g===currentGenre));
  const count=document.getElementById('sourceCount');
  if(count)count.textContent=list.length?`音樂來源 ${list.length} 個`:'目前沒有符合這個曲風／地區的來源';
- if(!list.length){s.innerHTML='<div class="empty">目前沒有這個曲風的來源。背景會繼續尋找可播放音源。</div>';return;}
+ if(!list.length){s.innerHTML='<div class="empty">目前沒有這個曲風的來源。請改選其他地區或曲風。</div>';return;}
  s.innerHTML=list.map(x=>{
    const health=sourceHealth.get(x.name);
    const label=x.type==='instrumental'?'純器樂':'可含歌唱';
-   const state=health?.ok?'✓ 最近可播放':'點選後測試播放';
-   return `<button class="source-card" data-i="${testSources.indexOf(x)}"><strong>${x.name}</strong><small>${x.meta}</small><div class="source-meta">${state}</div><em>${label}</em></button>`;
+   const state=health?.ok?'✓ 最近播放成功':'點選後即時測試';
+   return `<button class="source-card" data-i="${testSources.indexOf(x)}"><strong>${x.name}</strong><small>${x.meta}</small><div class="source-meta ${health?.ok?'verified':'pending'}">${state}</div><em>${label}</em></button>`;
  }).join('');
  s.querySelectorAll('.source-card').forEach(b=>b.onclick=()=>playSource(testSources[+b.dataset.i]));
 }
+
 function clearPlayTimeout(){if(playTimeout){clearTimeout(playTimeout);playTimeout=null}}
 let hlsInstance=null;
 function setBusy(on){const b=document.getElementById('play');b.classList.toggle('busy',on);b.textContent=on?'…':(playStarted?'❚❚':'▶');b.disabled=!!on;}
@@ -192,13 +188,15 @@ async function resolvePlaylist(url){
  }catch(e){return null}
 }
 
-async function playDirect(url){
+function playDirect(url){
   cleanupAudio(); playStarted=false; setBusy(true); status.textContent='正在連線…';
-  if(activeSource?.playlist){const resolved=await resolvePlaylist(url);if(!resolved){setBusy(false);status.textContent='來源連線失敗，請選另一個來源';return;}url=resolved;}
-  audio.src=url;
-  const p=audio.play();
-  if(p&&p.catch)p.catch(()=>{ setBusy(false); status.textContent='請再按一次播放'; });
-  playTimeout=setTimeout(()=>{if(!playStarted)tryNextUrl()},9000);
+  try{
+    audio.src=url;
+    audio.load();
+    const p=audio.play();
+    if(p&&p.catch)p.catch(()=>{ clearPlayTimeout(); setBusy(false); status.textContent='播放被裝置拒絕，請再按一次 ▶'; });
+    playTimeout=setTimeout(()=>{if(!playStarted)tryNextUrl()},10000);
+  }catch(e){ clearPlayTimeout(); setBusy(false); status.textContent='來源無法連線'; setTimeout(tryNextUrl,250); }
 }
 function tryActiveUrl(){
  const urls=activeSource?.urls||[];
@@ -209,10 +207,11 @@ function tryActiveUrl(){
 function tryNextUrl(){clearPlayTimeout();activeUrlIndex++;if(activeSource&&activeUrlIndex<(activeSource.urls||[]).length){tryActiveUrl();return}sourceFailed()}
 function sourceFailed(){
  cleanupAudio();playStarted=false;turn.classList.remove('spinning');needle.classList.remove('down');genreLogo.classList.remove('playing');setBusy(false);setPlayIcon(false);
- status.textContent='這個來源目前無法播放，請選另一個來源';
+ status.textContent='此來源目前無法播放，請換另一個來源';
  if(activeSource)badSources.add(activeSource.name);
  setTimeout(()=>showSources(currentGenre),700);
 }
+
 function setGenreLogo(x){
  const map={instrumental:'INSTRUMENTAL',piano:'PIANO',jazz:'JAZZ',classical:'CLASSICAL',acoustic:'ACOUSTIC',electronic:'ELECTRONIC',ambient:'AMBIENT',world:'WORLD',rnb:'R&B',rock:'ROCK',pop:'POP'};
  document.getElementById('genreLogoText').textContent=map[currentGenre]||map[x?.g]||'MUSIC';genreLogo.classList.remove('playing');
@@ -258,7 +257,7 @@ else if(kind==='wind'){const a=playNoise('pink',.11,'bandpass',500);addLfo(a.g,.
 else if(kind==='thunder'){const rain=playNoise('white',.045,'bandpass',3500);addLfo(rain.g,3.5,.02);const wind=playNoise('brown',.035,'lowpass',500);addLfo(wind.g,.06,.025);let stopped=false;function thunder(){if(stopped)return;const delay=1800+Math.random()*6500;setTimeout(()=>{if(stopped)return;const o=c.createOscillator(),g=c.createGain();o.type='sawtooth';o.frequency.value=38+Math.random()*35;g.gain.setValueAtTime(.001,c.currentTime);g.gain.linearRampToValueAtTime(.07+Math.random()*.08,c.currentTime+.12);g.gain.exponentialRampToValueAtTime(.001,c.currentTime+3.5);o.connect(g).connect(c.destination);o.start();o.stop(c.currentTime+3.6);thunder()},delay)}thunder();sleepNodes.push({stop(){stopped=true},disconnect(){}})}
 document.querySelectorAll('.sleep-btn').forEach(b=>b.classList.remove('sleep-playing'));const btn=[...document.querySelectorAll('.sleep-btn')].find(b=>b.getAttribute('onclick')?.includes("'"+kind+"'"));if(btn)btn.classList.add('sleep-playing');document.getElementById('sleepStatus').textContent='正在播放 · '+label;const mins=Number(document.getElementById('sleepTimer').value);if(mins)sleepStopTimer=setTimeout(stopSleep,mins*60000)}
 async function startTuner(){const btn=document.getElementById('tunerBtn');if(tunerStream){tunerStream.getTracks().forEach(t=>t.stop());tunerStream=null;if(tunerRAF)cancelAnimationFrame(tunerRAF);btn.textContent='開始調音';document.getElementById('tunerNote').textContent='—';document.getElementById('tunerCents').textContent='已停止';return}try{tunerStream=await navigator.mediaDevices.getUserMedia({audio:true});const ac=audioCtx();const source=ac.createMediaStreamSource(tunerStream);const analyser=ac.createAnalyser();analyser.fftSize=2048;source.connect(analyser);const data=new Float32Array(analyser.fftSize);btn.textContent='停止調音';const notes=['C','C♯','D','D♯','E','F','F♯','G','G♯','A','A♯','B'];function loop(){analyser.getFloatTimeDomainData(data);let rms=0;for(const x of data)rms+=x*x;if(rms/data.length<.00005){document.getElementById('tunerCents').textContent='請彈奏琴弦…';tunerRAF=requestAnimationFrame(loop);return}let best=0,bestCorr=0;for(let lag=30;lag<1000;lag++){let corr=0;for(let i=0;i<data.length-lag;i+=4)corr+=data[i]*data[i+lag];if(corr>bestCorr){bestCorr=corr;best=lag}}const f=ac.sampleRate/best;if(f<70||f>500){tunerRAF=requestAnimationFrame(loop);return}const midi=69+12*Math.log2(f/440),nearest=Math.round(midi),target=440*Math.pow(2,(nearest-69)/12),cents=Math.round(1200*Math.log2(f/target));document.getElementById('tunerNote').textContent=notes[(nearest+120)%12]+(Math.floor(nearest/12)-1);document.getElementById('tunerCents').textContent=(cents>0?'+':'')+cents+' cents · '+f.toFixed(1)+' Hz';document.getElementById('tunerNeedle').style.left=Math.max(4,Math.min(96,50+cents*.35))+'%';tunerRAF=requestAnimationFrame(loop)}loop()}catch(e){btn.textContent='開始調音';document.getElementById('tunerCents').textContent='無法使用麥克風，請確認權限'}}
-const overlay=document.getElementById('overlay');document.getElementById('settings').onclick=()=>overlay.style.display='flex';document.getElementById('close').onclick=()=>overlay.style.display='none';
+const overlay=document.getElementById('overlay');function openSettings(){overlay.style.display='flex';overlay.setAttribute('aria-hidden','false')}function closeSettings(){overlay.style.display='none';overlay.setAttribute('aria-hidden','true')}document.getElementById('close').onclick=closeSettings;overlay.addEventListener('click',e=>{if(e.target===overlay)closeSettings()});let favorites=JSON.parse(localStorage.getItem('gs24-favorites')||'[]');function toggleFavorites(){if(activeSource){if(favorites.includes(activeSource.name))favorites=favorites.filter(x=>x!==activeSource.name);else favorites.push(activeSource.name);localStorage.setItem('gs24-favorites',JSON.stringify(favorites));}else{alert(favorites.length?('已收藏 '+favorites.length+' 個來源'):'目前尚無收藏')}}
 renderRegions();renderGenres();renderHot();renderSources();
 showHome();
 setTimeout(()=>{try{refreshSourceRegistry()}catch(e){}},50);
