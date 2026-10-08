@@ -1,2 +1,3 @@
-GLOBAL SOUND 24 V199
-真正素面 UI；修正唱臂圖層；音樂可含演唱，但排除新聞／主持／談話；擴充音樂來源候選；啟動播放驗證改為穩定播放判定。
+GLOBAL SOUND 24 V200
+UI starts immediately; source verification runs in background.
+HLS verification has a hard library-load timeout.
