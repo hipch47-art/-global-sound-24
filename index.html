@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="zh-Hant"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#080808"><meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Expires" content="0"><title>GLOBAL SOUND 24 V198</title>
+<meta name="theme-color" content="#080808"><meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Expires" content="0"><title>GLOBAL SOUND 24 V199</title>
 <style>
 :root{--bg:#080808;--card:#111;--line:#302a27;--text:#fff9f4;--muted:#b9aaa2;--rose:#d8a18b;--blue:#1976ff}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Noto Sans TC",sans-serif}button{font:inherit;color:inherit}
@@ -85,7 +85,41 @@ h1{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Noto Sans TC",
 /* 唱盤維持招牌元素，但取消過度金屬／玫瑰金裝飾 */
 .platter{box-shadow:0 0 0 8px #111,0 16px 30px #000}.turn{box-shadow:inset 0 0 24px #000,0 0 0 1px #333}.genre-logo{background:#161616;border-color:#555;box-shadow:inset 0 0 0 5px #101010,inset 0 0 16px #000,0 0 0 1px #333; color:#eee}.spindle{background:#777;box-shadow:0 0 0 5px #111,0 0 0 6px #444}.arm{stroke:#aaa}.arm-inner{stroke:#666}.pivot,.headshell{fill:#aaa;stroke:#222}.stylus{stroke:#ddd}
 @media(max-width:650px){main{padding:18px 18px 90px}.music-head{min-height:72px!important}.music-title{padding-right:205px!important}h1{font-size:32px!important;margin:30px 0 17px!important}.section{margin-top:16px!important}.music-title h2{font-size:19px!important}.tile{min-height:145px;border-radius:13px}.tile-title{font-size:20px}.hot button{min-height:64px}.space-home-card{border-radius:13px}}
-</style></head><body><div class="startup" id="startup"><div class="startup-box"><div class="startup-logo">GLOBAL SOUND 24</div><div class="loader-ring"></div><div class="startup-title">正在檢查音源</div><div class="startup-status" id="startupStatus">正在載入純音樂音源設定…</div><div class="startup-progress"><span id="startupProgress"></span></div></div></div><main>
+
+/* V199 — 真正回到素面、耐看：移除音樂卡片的大圖與金屬裝飾 */
+body{background:#0b0b0b!important;color:#e9e9e9!important}
+header.top{border-bottom:1px solid #1f1f1f;padding-bottom:12px}
+h1{font-size:32px!important;font-weight:700!important;margin:30px 0 18px!important}
+.music-title h2,.music-title .sub{color:#e8e8e8!important}
+.music-title .sub{color:#777!important}
+.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px!important}
+.tile{min-height:118px!important;border:1px solid #282828!important;border-radius:12px!important;background:#141414!important;box-shadow:none!important;background-image:none!important}
+.tile:before,.tile:after{display:none!important}
+.tile-content{left:14px!important;right:14px!important;bottom:13px!important}
+.tile-title{font-size:19px!important;font-weight:650!important;color:#ededed!important;text-shadow:none!important}
+.tile-en{font-size:8px!important;color:#777!important;letter-spacing:.12em!important}
+.region-box{box-shadow:none!important;background:#111!important}
+.hot button{background:#141414!important;background-image:none!important}
+.hot button:before{display:none!important}
+.hot .inside{position:relative!important}
+.section{margin-top:18px!important}
+.space-home-card{background:#121212!important}
+.player-screen .turn-wrap{z-index:2}
+.player-screen .turntable{position:relative;z-index:1}
+.player-screen .platter,.player-screen .turn{z-index:1}
+.player-screen .arm-svg{z-index:20}
+.player-screen .genre-logo{z-index:4}
+.player-screen .playername{margin-top:14px!important;padding:7px 12px!important;min-height:28px!important;background:#111!important;border:1px solid #252525!important;border-radius:10px!important;z-index:30!important}
+.player-screen .status{z-index:30!important}
+@media(max-width:620px){
+ main{padding:16px 18px 90px!important}
+ .music-title{padding-right:226px!important}
+ .grid{gap:8px!important}
+ .tile{min-height:118px!important}
+ .tile-title{font-size:18px!important}
+ .region-box{width:208px!important}
+}
+</style></head><body><div class="startup" id="startup"><div class="startup-box"><div class="startup-logo">GLOBAL SOUND 24</div><div class="loader-ring"></div><div class="startup-title">正在檢查音源</div><div class="startup-status" id="startupStatus">正在載入音樂音源設定…</div><div class="startup-progress"><span id="startupProgress"></span></div></div></div><main>
 <section id="homeView" class="view active"><header class="top"><div class="logo">GLOBAL SOUND 24</div><button class="gear" id="settings">⚙︎</button></header>
 <h1>想聽什麼？</h1>
 <section class="section"><div class="music-head"><div class="music-title"><h2>🎵 音樂類型</h2><p class="sub">勾選地區後，只顯示該地區的音樂來源</p></div>
@@ -95,7 +129,7 @@ h1{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Noto Sans TC",
 <section class="section"><div class="music-title"><h2>🔊 聲音空間</h2><p class="sub">聲音工具與獨立睡眠聲音</p></div><div class="space-home-card"><button class="tool" onclick="showSpace()"><div class="ico">🎸</div><span>吉他調音器</span></button><button class="tool" onclick="showSpace()"><div class="ico">🥁</div><span>節拍器</span></button><button class="tool" onclick="showSpace()"><div class="ico">🎵</div><span>音頻產生器</span></button><button class="tool" onclick="showSpace()"><div class="ico">🌙</div><span>睡眠聲音</span></button></div></section>
 
 
-</section><section id="sourcesView" class="view"><button class="back" onclick="showHome()">‹ 回首頁</button><div class="view-title" id="sourceTitle">音樂來源</div><div id="sourceCount" class="sub" style="margin-top:-2px"></div><p class="sub">只顯示啟動時已通過 Chrome 播放驗證的純器樂來源。</p><div class="source-list" id="sources"></div></section>
+</section><section id="sourcesView" class="view"><button class="back" onclick="showHome()">‹ 回首頁</button><div class="view-title" id="sourceTitle">音樂來源</div><div id="sourceCount" class="sub" style="margin-top:-2px"></div><p class="sub">只顯示啟動時已通過播放驗證的音樂來源；可有演唱，但排除新聞、主持、談話。</p><div class="source-list" id="sources"></div></section>
 <section id="playerView" class="view player-screen"><button class="back" onclick="showSources()">‹ 返回音樂來源</button><div class="view-title">Now Playing</div><div class="turn-wrap"><div class="turntable"><div class="platter"></div><div class="turn" id="turn"><div class="core-counter" id="coreCounter"><div class="spindle"></div><div class="genre-logo" id="genreLogo"><span id="genreLogoText">PIANO</span></div></div></div><svg class="arm-svg" viewBox="0 0 330 330" aria-hidden="true"><circle class="pivot" cx="286" cy="34" r="17"/><path class="arm" d="M286 34 C286 72 282 111 273 148 C267 174 263 194 260 212"/><path class="arm-inner" d="M286 34 C286 72 282 111 273 148 C267 174 263 194 260 212"/><g class="needle" id="needle"><path class="headshell" d="M260 205 L246 210 L247 222 L262 219 Z"/><path class="stylus" d="M249 220 L248 235"/></g></svg></div></div><div class="playername" id="playername">GLOBAL SOUND 24 · Ready</div><div class="status" id="status">等待播放</div><div class="audio-panel"><audio id="audio" preload="none" controls></audio></div><div class="diag" id="diag"><b>Source Diagnostic</b><br>等待選擇音源</div><button class="play" id="play" aria-label="播放">▶</button></section>
 <section id="spaceView" class="view"><button class="back" onclick="showHome()">‹ 回首頁</button><div class="view-title">聲音空間</div><p class="sub">簡單、立即可用的聲音工具。</p><div class="space-tools">
 <div class="space-tool"><h3>🎸 吉他調音器</h3><p>使用手機麥克風偵測吉他音高，標準調弦 E A D G B E。</p><button onclick="startTuner()" id="tunerBtn">開始調音</button><div class="tuner-readout" id="tunerNote">—</div><div class="tuner-note" id="tunerCents">請先允許麥克風</div><div class="tuner-meter"><div class="tuner-needle" id="tunerNeedle"></div></div></div>
@@ -104,7 +138,7 @@ h1{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Noto Sans TC",
 <div class="space-tool sleep"><h3>🌙 睡眠聲音</h3><p>獨立睡眠聲音工具，可搭配 Sleep Timer。</p><div class="sleep-grid"><button class="sleep-btn" onclick="playSleep('white')">🤍<b>白噪音</b><small>White Noise</small></button><button class="sleep-btn" onclick="playSleep('pink')">🌸<b>粉紅噪音</b><small>Pink Noise</small></button><button class="sleep-btn" onclick="playSleep('brown')">🤎<b>棕噪音</b><small>Brown Noise</small></button><button class="sleep-btn" onclick="playSleep('rain')">🌧️<b>雨聲</b><small>Rain</small></button><button class="sleep-btn" onclick="playSleep('ocean')">🌊<b>海浪</b><small>Ocean</small></button><button class="sleep-btn" onclick="playSleep('forest')">🌲<b>森林</b><small>Forest</small></button><button class="sleep-btn" onclick="playSleep('campfire')">🔥<b>營火</b><small>Campfire</small></button><button class="sleep-btn" onclick="playSleep('wind')">💨<b>風聲</b><small>Wind</small></button><button class="sleep-btn" onclick="playSleep('thunder')">⛈️<b>雷雨</b><small>Thunderstorm</small></button></div><div class="row" style="margin-top:12px"><select id="sleepTimer" class="gen-select"><option value="0">Sleep Timer：關閉</option><option value="30">30 分鐘</option><option value="60">1 小時</option><option value="120">2 小時</option><option value="240">4 小時</option><option value="480">8 小時</option></select><button onclick="stopSleep()">停止</button></div><div class="status" id="sleepStatus">尚未播放睡眠聲音</div></div>
 </div></section>
 </main>
-<div class="overlay" id="overlay"><div class="sheet"><div class="sheettop"><strong>Settings</strong><button class="close" id="close">×</button></div><button class="opt" onclick="showHome();closeSettings()">回首頁</button><button class="opt" onclick="showSpace();closeSettings()">聲音空間</button><p style="color:#777;font-size:12px;margin-top:15px">GLOBAL SOUND 24 V198</p></div></div>
+<div class="overlay" id="overlay"><div class="sheet"><div class="sheettop"><strong>Settings</strong><button class="close" id="close">×</button></div><button class="opt" onclick="showHome();closeSettings()">回首頁</button><button class="opt" onclick="showSpace();closeSettings()">聲音空間</button><p style="color:#777;font-size:12px;margin-top:15px">GLOBAL SOUND 24 V199</p></div></div>
 <script>
 const countries=[['tw','🇹🇼','台灣'],['cn','🇨🇳','中國'],['jp','🇯🇵','日本'],['kr','🇰🇷','韓國'],['us','🇺🇸','美國'],['uk','🇬🇧','英國']];
 let selected=new Set(countries.map(x=>x[0])); let currentGenre='';
@@ -112,25 +146,37 @@ const genres=[
  ['instrumental','純音樂','INSTRUMENTAL','instrumental.jpg'],['piano','Piano','SOLO PIANO','piano.jpg'],['jazz','Jazz','INSTRUMENTAL JAZZ','jazz.jpg'],['classical','Classical','CLASSICAL','classical.jpg'],['acoustic','Acoustic','ACOUSTIC','instrumental.jpg'],['electronic','Electronic','INSTRUMENTAL ELECTRONIC','rock.jpg'],['ambient','Ambient','AMBIENT','instrumental.jpg'],['world','World Music','WORLD INSTRUMENTAL','instrumental.jpg'],['rnb','R&B','INSTRUMENTAL R&B','rnb.jpg'],['rock','Rock','INSTRUMENTAL ROCK','rock.jpg']
 ];
 const testSources=[
- {c:'us',g:'piano',name:'Whisperings · Solo Piano Radio',meta:'USA · Solo Piano · 24H · 無演唱人聲',manifest:'https://www.solopianoradio.com/',urls:['https://pianosolo.streamguys1.com/live','http://pianosolo.streamguys.net/live']},
- {c:'global',g:'instrumental',name:'Abiding Radio · Instrumental',meta:'USA · Sacred Instrumental · 24H · 純器樂',manifest:'https://www.abidingradio.org/media/',urls:['https://www.abidingradio.org/radio/instrumental']},
- {c:'us',g:'jazz',name:'RelaxingJazz.com · Instrumental Smooth Jazz',meta:'Smooth Jazz · 24H · 純器樂',manifest:'https://relaxingjazz.com/?p=40',urls:['https://443-1.autopo.st/171/stream/3/','https://stream-02-eu.relaxingjazz.com/stream/3/','https://stream-02-eu.relaxingjazz.com/stream/1/']},
- {c:'us',g:'jazz',name:'101 Smooth Jazz · 24H',meta:'USA · Smooth Jazz · 24H · 全器樂',manifest:'https://www.101smoothjazz.com/',urls:['https://ais-sa5.cdnstream1.com/b22139_128mp3']},
- {c:'global',g:'piano',name:'Radio Art · Solo Piano',meta:'Radio Art · Solo Piano · 純器樂',manifest:'https://www.radioart.com/',urls:['https://air.radioart.com/fSolo_piano.mp3','https://live.radioart.com/fSolo_piano.mp3']},
- {c:'global',g:'acoustic',name:'Radio Art · Piano & Guitar',meta:'Radio Art · Piano + Guitar · 純器樂',manifest:'https://www.radioart.com/',urls:['https://air.radioart.com/fPiano_and_guitar.mp3','https://live.radioart.com/fPiano_and_guitar.mp3']},
- {c:'global',g:'jazz',name:'Radio Art · Jazz Piano',meta:'Radio Art · Jazz Piano · 純器樂',manifest:'https://www.radioart.com/',urls:['https://air.radioart.com/fJazz_piano.mp3','https://live.radioart.com/fJazz_piano.mp3']},
- {c:'global',g:'piano',name:'Radio Art · Piano',meta:'Radio Art · Piano · 純器樂',manifest:'https://www.radioart.com/',urls:['https://air.radioart.com/fPiano.mp3','https://live.radioart.com/fPiano.mp3']},
- {c:'global',g:'classical',name:'Radio Art · Classical Relaxation',meta:'Radio Art · Classical · 純器樂',manifest:'https://www.radioart.com/',urls:['https://air.radioart.com/fClassical_relaxation.mp3','https://live.radioart.com/fClassical_relaxation.mp3']},
- {c:'global',g:'classical',name:'Radio Art · Solo Flute',meta:'Radio Art · Solo Flute · 純器樂',manifest:'https://www.radioart.com/',urls:['https://air.radioart.com/fSolo_flute.mp3','https://live.radioart.com/fSolo_flute.mp3']},
- {c:'global',g:'classical',name:'Radio Art · Solo Harp',meta:'Radio Art · Solo Harp · 純器樂',manifest:'https://www.radioart.com/',urls:['https://air.radioart.com/fSolo_harp.mp3','https://live.radioart.com/fSolo_harp.mp3']},
- {c:'global',g:'classical',name:'Radio Art · Solo Instruments',meta:'Radio Art · Solo Instruments · 純器樂',manifest:'https://www.radioart.com/',urls:['https://air.radioart.com/fSolo_instruments.mp3','https://live.radioart.com/fSolo_instruments.mp3']},
- {c:'global',g:'piano',name:'Radio Art · Piano Trios',meta:'Radio Art · Piano Trio · 純器樂',manifest:'https://www.radioart.com/',urls:['https://air.radioart.com/fPiano_trios.mp3','https://live.radioart.com/fPiano_trios.mp3']},
- {c:'global',g:'acoustic',name:'Radio Art · Solo Guitar',meta:'Radio Art · Solo Guitar · 純器樂',manifest:'https://www.radioart.com/',urls:['https://air.radioart.com/fSolo_guitar.mp3','https://live.radioart.com/fSolo_guitar.mp3']},
- {c:'global',g:'classical',name:'Radio Art · Classical for Sleep',meta:'Radio Art · Classical · 純器樂',manifest:'https://www.radioart.com/',urls:['https://air.radioart.com/fClassical_for_sleep.mp3','https://live.radioart.com/fClassical_for_sleep.mp3']},
- {c:'global',g:'ambient',name:'MUGEN Radio · Ambient',meta:'24H · Ambient / Piano / Koto · 無人聲 · HLS',manifest:'https://mugenradio.com/embed.html',urls:['https://mugenradio.com/hls/live.m3u8'],hls:true},
- {c:'global',g:'instrumental',name:'Radio Art · Study',meta:'Radio Art · Atmospheric Instrumental · 純器樂',manifest:'https://www.radioart.com/',urls:['https://air.radioart.com/fStudy.mp3','https://live.radioart.com/fStudy.mp3']},
- {c:'global',g:'ambient',name:'Radio Art · Healing & Recovery',meta:'Radio Art · Ambient Instrumental · 純器樂',manifest:'https://www.radioart.com/',urls:['https://air.radioart.com/fHealing_and_recovery.mp3','https://live.radioart.com/fHealing_and_recovery.mp3']},
- {c:'global',g:'world',name:'Radio Art · Lute',meta:'Radio Art · Lute / Early Music · 純器樂',manifest:'https://www.radioart.com/',urls:['https://air.radioart.com/fLute.mp3','https://live.radioart.com/fLute.mp3']}
+ {c:'us',g:'piano',type:'instrumental',name:'Whisperings · Solo Piano Radio',meta:'USA · Solo Piano · 24H · 純器樂',manifest:'https://www.solopianoradio.com/',urls:['https://pianosolo.streamguys1.com/live','http://pianosolo.streamguys.net/live']},
+ {c:'global',g:'instrumental',type:'instrumental',name:'Abiding Radio · Instrumental',meta:'Sacred Instrumental · 24H · 純器樂',manifest:'https://www.abidingradio.org/media/',urls:['https://www.abidingradio.org/radio/instrumental']},
+ {c:'us',g:'jazz',type:'instrumental',name:'RelaxingJazz.com · Smooth Jazz',meta:'Smooth Jazz · 24H · 純器樂',manifest:'https://relaxingjazz.com/?p=40',urls:['https://443-1.autopo.st/171/stream/3/','https://stream-02-eu.relaxingjazz.com/stream/3/','https://stream-02-eu.relaxingjazz.com/stream/1/']},
+ {c:'us',g:'jazz',type:'instrumental',name:'101 Smooth Jazz · 24H',meta:'USA · Smooth Jazz · 24H · 純器樂',manifest:'https://www.101smoothjazz.com/',urls:['https://ais-sa5.cdnstream1.com/b22139_128mp3']},
+ {c:'global',g:'jazz',type:'music',name:'SomaFM · Sonic Universe',meta:'Modern Jazz · 可含演唱 · 無新聞／談話',manifest:'https://somafm.com/sonicuniverse/',urls:['https://ice5.somafm.com/sonicuniverse-128-mp3','https://ice2.somafm.com/sonicuniverse-128-mp3']},
+ {c:'global',g:'piano',type:'instrumental',name:'Radio Art · Solo Piano',meta:'Solo Piano · 純器樂',manifest:'https://www.radioart.com/',urls:['https://air.radioart.com/fSolo_piano.mp3','https://live.radioart.com/fSolo_piano.mp3']},
+ {c:'global',g:'acoustic',type:'instrumental',name:'Radio Art · Piano & Guitar',meta:'Piano + Guitar · 純器樂',manifest:'https://www.radioart.com/',urls:['https://air.radioart.com/fPiano_and_guitar.mp3','https://live.radioart.com/fPiano_and_guitar.mp3']},
+ {c:'global',g:'jazz',type:'instrumental',name:'Radio Art · Jazz Piano',meta:'Jazz Piano · 純器樂',manifest:'https://www.radioart.com/',urls:['https://air.radioart.com/fJazz_piano.mp3','https://live.radioart.com/fJazz_piano.mp3']},
+ {c:'global',g:'piano',type:'instrumental',name:'Radio Art · Piano',meta:'Piano · 純器樂',manifest:'https://www.radioart.com/',urls:['https://air.radioart.com/fPiano.mp3','https://live.radioart.com/fPiano.mp3']},
+ {c:'global',g:'classical',type:'instrumental',name:'Radio Art · Classical Relaxation',meta:'Classical · 純器樂',manifest:'https://www.radioart.com/',urls:['https://air.radioart.com/fClassical_relaxation.mp3','https://live.radioart.com/fClassical_relaxation.mp3']},
+ {c:'global',g:'classical',type:'instrumental',name:'Radio Art · Solo Flute',meta:'Solo Flute · 純器樂',manifest:'https://www.radioart.com/',urls:['https://air.radioart.com/fSolo_flute.mp3','https://live.radioart.com/fSolo_flute.mp3']},
+ {c:'global',g:'classical',type:'instrumental',name:'Radio Art · Solo Harp',meta:'Solo Harp · 純器樂',manifest:'https://www.radioart.com/',urls:['https://air.radioart.com/fSolo_harp.mp3','https://live.radioart.com/fSolo_harp.mp3']},
+ {c:'global',g:'classical',type:'instrumental',name:'Radio Art · Solo Instruments',meta:'Solo Instruments · 純器樂',manifest:'https://www.radioart.com/',urls:['https://air.radioart.com/fSolo_instruments.mp3','https://live.radioart.com/fSolo_instruments.mp3']},
+ {c:'global',g:'piano',type:'instrumental',name:'Radio Art · Piano Trios',meta:'Piano Trio · 純器樂',manifest:'https://www.radioart.com/',urls:['https://air.radioart.com/fPiano_trios.mp3','https://live.radioart.com/fPiano_trios.mp3']},
+ {c:'global',g:'acoustic',type:'instrumental',name:'Radio Art · Solo Guitar',meta:'Solo Guitar · 純器樂',manifest:'https://www.radioart.com/',urls:['https://air.radioart.com/fSolo_guitar.mp3','https://live.radioart.com/fSolo_guitar.mp3']},
+ {c:'global',g:'classical',type:'instrumental',name:'Radio Art · Classical for Sleep',meta:'Classical · 純器樂',manifest:'https://www.radioart.com/',urls:['https://air.radioart.com/fClassical_for_sleep.mp3','https://live.radioart.com/fClassical_for_sleep.mp3']},
+ {c:'global',g:'ambient',type:'instrumental',name:'MUGEN Radio · Ambient',meta:'Ambient · 純器樂 · HLS',manifest:'https://mugenradio.com/embed.html',urls:['https://mugenradio.com/hls/live.m3u8'],hls:true},
+ {c:'global',g:'instrumental',type:'instrumental',name:'Radio Art · Study',meta:'Atmospheric Instrumental · 純器樂',manifest:'https://www.radioart.com/',urls:['https://air.radioart.com/fStudy.mp3','https://live.radioart.com/fStudy.mp3']},
+ {c:'global',g:'ambient',type:'instrumental',name:'Radio Art · Healing & Recovery',meta:'Ambient Instrumental · 純器樂',manifest:'https://www.radioart.com/',urls:['https://air.radioart.com/fHealing_and_recovery.mp3','https://live.radioart.com/fHealing_and_recovery.mp3']},
+ {c:'global',g:'world',type:'instrumental',name:'Radio Art · Lute',meta:'Lute / Early Music · 純器樂',manifest:'https://www.radioart.com/',urls:['https://air.radioart.com/fLute.mp3','https://live.radioart.com/fLute.mp3']},
+
+ {c:'us',g:'electronic',type:'music',name:'SomaFM · Groove Salad',meta:'Ambient / Downtempo · 可含演唱 · 無新聞／談話',manifest:'https://somafm.com/groovesalad/',urls:['https://ice5.somafm.com/groovesalad-128-mp3','https://ice2.somafm.com/groovesalad-128-mp3']},
+ {c:'us',g:'electronic',type:'music',name:'SomaFM · Groove Salad Classic',meta:'Downtempo / Electronica · 可含演唱 · 無新聞／談話',manifest:'https://somafm.com/gsclassic/',urls:['https://ice5.somafm.com/gsclassic-128-mp3','https://ice6.somafm.com/gsclassic-128-mp3']},
+ {c:'us',g:'electronic',type:'music',name:'SomaFM · The Trip',meta:'Progressive House / Trance · 可含演唱 · 無新聞／談話',manifest:'https://somafm.com/thetrip/',urls:['https://ice5.somafm.com/thetrip-128-mp3','https://ice6.somafm.com/thetrip-128-mp3']},
+ {c:'us',g:'electronic',type:'music',name:'SomaFM · Lush',meta:'Mellow Electronica · 女聲演唱 · 無新聞／談話',manifest:'https://somafm.com/lush/',urls:['https://ice5.somafm.com/lush-128-mp3','https://ice6.somafm.com/lush-128-mp3']},
+ {c:'us',g:'pop',type:'music',name:'SomaFM · Indie Pop Rocks!',meta:'Indie Pop / Rock · 有演唱 · 無新聞／談話',manifest:'https://somafm.com/indiepop/',urls:['https://ice5.somafm.com/indiepop-128-mp3','https://ice6.somafm.com/indiepop-128-mp3']},
+ {c:'us',g:'rock',type:'music',name:'SomaFM · Metal Detector',meta:'Rock / Metal · 可含演唱 · 無新聞／談話',manifest:'https://somafm.com/metal/',urls:['https://ice5.somafm.com/metal-128-mp3','https://ice2.somafm.com/metal-128-mp3']},
+ {c:'us',g:'rock',type:'music',name:'SomaFM · Digitalis',meta:'Alternative Rock · 可含演唱 · 無新聞／談話',manifest:'https://somafm.com/digitalis/',urls:['https://ice.somafm.com/digitalis']},
+ {c:'us',g:'ambient',type:'music',name:'SomaFM · Secret Agent',meta:'Cinematic / Lounge · 可含演唱 · 無新聞／談話',manifest:'https://somafm.com/secretagent/',urls:['https://ice5.somafm.com/secretagent-128-mp3','https://ice2.somafm.com/secretagent-128-mp3']},
+ {c:'us',g:'electronic',type:'music',name:'SomaFM · Fluid',meta:'Instrumental Hip-Hop / Future Soul · 可含演唱 · 無新聞／談話',manifest:'https://somafm.com/fluid/',urls:['https://ice.somafm.com/fluid']},
+ {c:'us',g:'electronic',type:'instrumental',name:'SomaFM · Deep Space One',meta:'Ambient Electronic / Space · 以音樂為主',manifest:'https://somafm.com/deepspaceone/',urls:['https://ice.somafm.com/deepspaceone']}
 ];
 let sourceRefreshDone=false;
 const candidateSources=testSources.map(x=>({...x,urls:[...(x.urls||[])]}));
@@ -153,9 +199,9 @@ function testAudioUrl(url,{hls=false,timeout=8500}={}){
   timer=setTimeout(()=>finish(false),timeout);
   const attemptPlay=()=>{try{const q=a.play();if(q&&q.catch)q.catch(()=>{})}catch(e){}};
   a.ontimeupdate=()=>{if(a.currentTime>0 && lastTime>=0 && a.currentTime>lastTime+0.05)advanced=true;lastTime=a.currentTime};
-  a.onplaying=()=>{if(stableTimer)return;stableTimer=setTimeout(()=>{if(!done && !a.paused && (advanced || a.currentTime>0))finish(true);else finish(false)},1200)};
+  a.onplaying=()=>{if(stableTimer)return;stableTimer=setTimeout(()=>{if(!done && !a.paused && a.readyState>=2)finish(true);else finish(false)},1500)};
   a.oncanplay=attemptPlay; a.onloadeddata=attemptPlay;
-  a.onwaiting=()=>{if(stableTimer && !advanced)finish(false)};
+  a.onwaiting=()=>{if(!stableTimer){} };
   a.onerror=()=>finish(false); a.onstalled=()=>{if(!stableTimer){} };
   try{
    if(hls){
@@ -220,10 +266,21 @@ function hideViews(){document.querySelectorAll('.view').forEach(v=>v.classList.r
 function showHome(){hideViews();document.getElementById('homeView').classList.add('active');renderHot();history.replaceState(null,'','#home');window.scrollTo(0,0)}
 function showSources(g=''){currentGenre=g;hideViews();document.getElementById('sourcesView').classList.add('active');history.replaceState(null,'','#sources');const genre=genres.find(x=>x[0]===g);document.getElementById('sourceTitle').textContent=genre?genre[1]+' · 音樂來源':'音樂來源';renderSources();window.scrollTo(0,0)}
 function showSpace(){hideViews();document.getElementById('spaceView').classList.add('active');history.replaceState(null,'','#space');window.scrollTo(0,0)}
-function renderSources(){const s=document.getElementById('sources');let list=testSources.filter(x=>!badSources.has(x.name)&&(x.c==='global'||selected.has(x.c))&&(!currentGenre||x.g===currentGenre));const count=document.getElementById('sourceCount');if(count)count.textContent=list.length?`可播放來源 ${list.length} 個`:'目前沒有已驗證的可播放來源';if(!list.length){s.innerHTML='<div class="empty">目前沒有已驗證、符合這個曲風／地區的純音樂來源。<br>未通過啟動前播放驗證的來源不會顯示。</div>';return}s.innerHTML=list.map(x=>`<button class="source-card" data-i="${testSources.indexOf(x)}"><strong>${x.name}</strong><small>${x.meta}</small><div class="source-meta">✓ 已驗證可播放</div><em>純音樂 · 無演唱人聲</em></button>`).join('');s.querySelectorAll('.source-card').forEach(b=>b.onclick=()=>playSource(testSources[+b.dataset.i]))}
-const audio=document.getElementById('audio'),turn=document.getElementById('turn'),needle=document.getElementById('needle'),playername=document.getElementById('playername'),status=document.getElementById('status'),genreLogo=document.getElementById('genreLogo'),coreCounter=document.getElementById('coreCounter');
-let activeSource=null,activeUrlIndex=0,playTimeout=null,playStarted=false; const badSources=new Set();
-const DEBUG_MODE=new URLSearchParams(location.search).get('debug')==='1'; if(DEBUG_MODE){document.getElementById('diag').style.display='block'}
+function renderSources(){
+ const s=document.getElementById('sources');
+ let list=testSources.filter(x=>!badSources.has(x.name)&&(x.c==='global'||selected.has(x.c))&&(!currentGenre||x.g===currentGenre)&&(!currentGenre||currentGenre==='instrumental'||x.type==='music'||x.type==='instrumental'));
+ const count=document.getElementById('sourceCount');
+ if(count)count.textContent=list.length?`可播放來源 ${list.length} 個`:'目前沒有已驗證的可播放來源';
+ if(!list.length){
+   s.innerHTML='<div class="empty">目前沒有已驗證、符合這個曲風／地區的音樂來源。<br>純音樂類型只收純器樂；其他曲風可有演唱，但排除新聞、主持、談話與廣播口播。</div>';
+   return;
+ }
+ s.innerHTML=list.map(x=>{
+   const label=x.type==='instrumental'?'純器樂': '音樂 · 可含演唱';
+   return `<button class="source-card" data-i="${testSources.indexOf(x)}"><strong>${x.name}</strong><small>${x.meta}</small><div class="source-meta">✓ 已驗證可播放</div><em>${label}</em></button>`;
+ }).join('');
+ s.querySelectorAll('.source-card').forEach(b=>b.onclick=()=>playSource(testSources[+b.dataset.i]));
+}
 function clearPlayTimeout(){if(playTimeout){clearTimeout(playTimeout);playTimeout=null}}
 function setBusy(on){const b=document.getElementById('play');b.classList.toggle('busy',on);if(on)b.textContent='';}
 let hlsInstance=null;
