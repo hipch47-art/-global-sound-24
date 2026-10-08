@@ -1,4 +1,4 @@
-// V192 intentionally does not cache app assets. This prevents stale GitHub Pages test builds.
+// V193 no-cache service worker for GitHub Pages test builds.
 self.addEventListener('install', event => self.skipWaiting());
 self.addEventListener('activate', event => event.waitUntil(self.clients.claim()));
 self.addEventListener('fetch', event => {
