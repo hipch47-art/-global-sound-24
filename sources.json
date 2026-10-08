@@ -1,16 +1,128 @@
 {
-  "version": "V189",
+  "version": "V191",
   "test_mode": true,
   "browser_target": "Chrome",
+  "instrumental_only": true,
   "sources": [
-    {"name":"Jazz24 · Live Jazz","country":"US","genre":"jazz","status":"user-confirmed-playable","urls":["https://knkx-live-a.edge.audiocdn.com/6285_128k","https://knkx-live-a.edge.audiocdn.com/6285_64k"]},
-    {"name":"WWOZ · New Orleans Jazz","country":"US","genre":"jazz","status":"candidate","urls":["https://wwoz-sc.streamguys1.com/wwoz-hi.mp3"]},
-    {"name":"KCSM Jazz 91","country":"US","genre":"jazz","status":"candidate","urls":["https://ice7.securenetsystems.net/KCSM2"]},
-    {"name":"KCRW · Eclectic24","country":"US","genre":"instrumental","status":"candidate","urls":["https://streams.kcrw.com/e24_mp3","https://kcrw.streamguys1.com/kcrw_192k_mp3_e24"]},
-    {"name":"KEXP · Live Music","country":"US","genre":"rock","status":"candidate","urls":["https://kexp.streamguys1.com/kexp160.aac","https://kexp.streamguys1.com/kexp64.aac"]},
-    {"name":"Radio Paradise · Main Mix","country":"US","genre":"rock","status":"candidate","urls":["https://stream-tx3.radioparadise.com/mp3-192","https://stream-dc1.radioparadise.com/mp3-192","https://stream-tx1.radioparadise.com/mp3-128"]},
-    {"name":"90s90s · R&B","country":"US","genre":"rnb","status":"candidate","urls":["https://streams.90s90s.de/rnb/mp3-192/streams.90s90s.de/","https://streams.90s90s.de/rnb/mp3-128/streams.90s90s.de/"]},
-    {"name":"WQXR · Classical 105.9","country":"US","genre":"classical","status":"candidate","urls":["https://stream.wqxr.org/wqxr"]},
-    {"name":"Classical KC · 91.9","country":"US","genre":"classical","status":"candidate","urls":["https://kcur.streamguys1.com/classicalkc-website-mp3","https://kcur.streamguys1.com/classicalkc-website-icy"]}
+    {
+      "name": "Whisperings · Solo Piano Radio",
+      "country": "US",
+      "genre": "piano",
+      "status": "candidate",
+      "instrumental_only": true,
+      "urls": [
+        "https://pianosolo.streamguys1.com/live",
+        "http://pianosolo.streamguys.net/live"
+      ]
+    },
+    {
+      "name": "Abiding Radio · Instrumental",
+      "country": "US",
+      "genre": "instrumental",
+      "status": "candidate",
+      "instrumental_only": true,
+      "urls": [
+        "https://www.abidingradio.org/radio/instrumental"
+      ]
+    },
+    {
+      "name": "RelaxingJazz.com · Instrumental Smooth Jazz",
+      "country": "International",
+      "genre": "jazz",
+      "status": "candidate",
+      "instrumental_only": true,
+      "urls": [
+        "https://443-1.autopo.st/171/stream/3/",
+        "https://stream-02-eu.relaxingjazz.com/stream/3/",
+        "https://stream-02-eu.relaxingjazz.com/stream/1/"
+      ]
+    },
+    {
+      "name": "101 Smooth Jazz · 24H",
+      "country": "US",
+      "genre": "jazz",
+      "status": "candidate",
+      "instrumental_only": true,
+      "urls": [
+        "https://ais-sa5.cdnstream1.com/b22139_128mp3"
+      ]
+    },
+    {
+      "name": "Radio Art · Solo Piano",
+      "country": "Greece",
+      "genre": "piano",
+      "status": "candidate",
+      "instrumental_only": true,
+      "urls": [
+        "https://air.radioart.com/fSolo_piano.mp3",
+        "https://live.radioart.com/fSolo_piano.mp3"
+      ]
+    },
+    {
+      "name": "Radio Art · Piano & Guitar",
+      "country": "Greece",
+      "genre": "acoustic",
+      "status": "candidate",
+      "instrumental_only": true,
+      "urls": [
+        "https://air.radioart.com/fPiano_and_guitar.mp3",
+        "https://live.radioart.com/fPiano_and_guitar.mp3"
+      ]
+    },
+    {
+      "name": "Radio Art · Solo Flute",
+      "country": "Greece",
+      "genre": "classical",
+      "status": "candidate",
+      "instrumental_only": true,
+      "urls": [
+        "https://air.radioart.com/fSolo_flute.mp3",
+        "https://live.radioart.com/fSolo_flute.mp3"
+      ]
+    },
+    {
+      "name": "Radio Art · Solo Harp",
+      "country": "Greece",
+      "genre": "classical",
+      "status": "candidate",
+      "instrumental_only": true,
+      "urls": [
+        "https://air.radioart.com/fSolo_harp.mp3",
+        "https://live.radioart.com/fSolo_harp.mp3"
+      ]
+    },
+    {
+      "name": "Radio Art · Solo Instruments",
+      "country": "Greece",
+      "genre": "classical",
+      "status": "candidate",
+      "instrumental_only": true,
+      "urls": [
+        "https://air.radioart.com/fSolo_instruments.mp3",
+        "https://live.radioart.com/fSolo_instruments.mp3"
+      ]
+    },
+    {
+      "name": "Radio Art · Piano Trios",
+      "country": "Greece",
+      "genre": "piano",
+      "status": "candidate",
+      "instrumental_only": true,
+      "urls": [
+        "https://air.radioart.com/fPiano_trios.mp3",
+        "https://live.radioart.com/fPiano_trios.mp3"
+      ]
+    },
+    {
+      "name": "MUGEN Radio · Ambient",
+      "country": "International",
+      "genre": "ambient",
+      "status": "candidate",
+      "instrumental_only": true,
+      "hls": true,
+      "urls": [
+        "https://mugenradio.com/hls/live.m3u8"
+      ]
+    }
   ]
 }

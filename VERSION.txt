@@ -1,2 +1,3 @@
-GLOBAL SOUND 24 V190
-Pure Instrumental Sources Edition
+GLOBAL SOUND 24
+V191
+Chrome instrumental-source test build
