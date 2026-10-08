@@ -1,7 +1,10 @@
-GLOBAL SOUND 24 V186
+GLOBAL SOUND 24 V187
 
-- Sleep Sounds redesigned with distinct synthesized sound profiles: white/pink/brown noise, rain, ocean, forest, campfire, wind, thunderstorm.
-- Hot Music now opens an in-app regional chart UI instead of directly opening a YouTube search page.
-- Regional chart cards follow the selected country filter.
-- Official chart button is kept as an external fallback; final production chart data should come from a backend and licensed playback sources.
-- V186 is a UI/prototype step; third-party stream health still requires backend verification before production.
+- Clean V187 package; V185/V186 folders are not included.
+- Reworked stream test registry using current official direct-stream pages.
+- Removed stale server-specific SomaFM endpoints; uses the official stable direct aliases for test playback.
+- Jazz24 uses the official direct MP3/AAC links published by Jazz24.
+- Playback state machine only starts turntable animation after the audio element emits playing.
+- Failed sources are hidden for the current session after all fallback URLs fail.
+- Startup now loads and validates the local source registry without fetching third-party M3U/PLS from GitHub Pages.
+- Important: this is still a GitHub Pages test build. Production-grade real-time source Health Check requires a backend service.

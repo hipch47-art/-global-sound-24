@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="zh-Hant"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#080808"><title>GLOBAL SOUND 24 V186</title>
+<meta name="theme-color" content="#080808"><title>GLOBAL SOUND 24 V187</title>
 <style>
 :root{--bg:#080808;--card:#111;--line:#302a27;--text:#fff9f4;--muted:#b9aaa2;--rose:#d8a18b;--blue:#1976ff}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Noto Sans TC",sans-serif}button{font:inherit;color:inherit}
@@ -77,7 +77,7 @@ h1{margin-bottom:18px}
 <section class="section"><div class="music-title"><h2>🔊 聲音空間</h2><p class="sub">聲音工具與獨立睡眠聲音</p></div><div class="space-home-card"><button class="tool" onclick="showSpace()"><div class="ico">🎸</div><span>吉他調音器</span></button><button class="tool" onclick="showSpace()"><div class="ico">🥁</div><span>節拍器</span></button><button class="tool" onclick="showSpace()"><div class="ico">🎵</div><span>音頻產生器</span></button><button class="tool" onclick="showSpace()"><div class="ico">🌙</div><span>睡眠聲音</span></button></div></section>
 
 
-</section><section id="sourcesView" class="view"><button class="back" onclick="showHome()">‹ 回首頁</button><div class="view-title" id="sourceTitle">音樂來源</div><div id="sourceCount" class="sub" style="margin-top:-2px"></div><p class="sub">只顯示目前可直接播放的音樂清單；點選後進入黑膠唱盤。</p><div class="source-list" id="sources"></div></section>
+</section><section id="sourcesView" class="view"><button class="back" onclick="showHome()">‹ 回首頁</button><div class="view-title" id="sourceTitle">音樂來源</div><div id="sourceCount" class="sub" style="margin-top:-2px"></div><p class="sub">只顯示目前已設定的官方測試音源；真正播放成功後才啟動黑膠唱盤。</p><div class="source-list" id="sources"></div></section>
 <section id="playerView" class="view player-screen"><button class="back" onclick="showSources()">‹ 返回音樂來源</button><div class="view-title">Now Playing</div><div class="turn-wrap"><div class="turn" id="turn"></div><div class="needle" id="needle"></div></div><div class="playername" id="playername">GLOBAL SOUND 24 · Ready</div><div class="status" id="status">等待播放</div><div class="audio-panel"><audio id="audio" preload="none"></audio></div><button class="play" id="play" aria-label="播放">▶</button></section>
 <section id="spaceView" class="view"><button class="back" onclick="showHome()">‹ 回首頁</button><div class="view-title">聲音空間</div><p class="sub">簡單、立即可用的聲音工具。</p><div class="space-tools">
 <div class="space-tool"><h3>🎸 吉他調音器</h3><p>使用手機麥克風偵測吉他音高，標準調弦 E A D G B E。</p><button onclick="startTuner()" id="tunerBtn">開始調音</button><div class="tuner-readout" id="tunerNote">—</div><div class="tuner-note" id="tunerCents">請先允許麥克風</div><div class="tuner-meter"><div class="tuner-needle" id="tunerNeedle"></div></div></div>
@@ -86,7 +86,7 @@ h1{margin-bottom:18px}
 <div class="space-tool sleep"><h3>🌙 睡眠聲音</h3><p>獨立睡眠聲音工具，可搭配 Sleep Timer。</p><div class="sleep-grid"><button class="sleep-btn" onclick="playSleep('white')">🤍<b>白噪音</b><small>White Noise</small></button><button class="sleep-btn" onclick="playSleep('pink')">🌸<b>粉紅噪音</b><small>Pink Noise</small></button><button class="sleep-btn" onclick="playSleep('brown')">🤎<b>棕噪音</b><small>Brown Noise</small></button><button class="sleep-btn" onclick="playSleep('rain')">🌧️<b>雨聲</b><small>Rain</small></button><button class="sleep-btn" onclick="playSleep('ocean')">🌊<b>海浪</b><small>Ocean</small></button><button class="sleep-btn" onclick="playSleep('forest')">🌲<b>森林</b><small>Forest</small></button><button class="sleep-btn" onclick="playSleep('campfire')">🔥<b>營火</b><small>Campfire</small></button><button class="sleep-btn" onclick="playSleep('wind')">💨<b>風聲</b><small>Wind</small></button><button class="sleep-btn" onclick="playSleep('thunder')">⛈️<b>雷雨</b><small>Thunderstorm</small></button></div><div class="row" style="margin-top:12px"><select id="sleepTimer" class="gen-select"><option value="0">Sleep Timer：關閉</option><option value="30">30 分鐘</option><option value="60">1 小時</option><option value="120">2 小時</option><option value="240">4 小時</option><option value="480">8 小時</option></select><button onclick="stopSleep()">停止</button></div><div class="status" id="sleepStatus">尚未播放睡眠聲音</div></div>
 </div></section>
 </main>
-<div class="overlay" id="overlay"><div class="sheet"><div class="sheettop"><strong>Settings</strong><button class="close" id="close">×</button></div><button class="opt" onclick="showHome();closeSettings()">回首頁</button><button class="opt" onclick="showSpace();closeSettings()">聲音空間</button><p style="color:#777;font-size:12px;margin-top:15px">GLOBAL SOUND 24 V185</p></div></div>
+<div class="overlay" id="overlay"><div class="sheet"><div class="sheettop"><strong>Settings</strong><button class="close" id="close">×</button></div><button class="opt" onclick="showHome();closeSettings()">回首頁</button><button class="opt" onclick="showSpace();closeSettings()">聲音空間</button><p style="color:#777;font-size:12px;margin-top:15px">GLOBAL SOUND 24 V187</p></div></div>
 <script>
 const countries=[['tw','🇹🇼','台灣'],['cn','🇨🇳','中國'],['jp','🇯🇵','日本'],['kr','🇰🇷','韓國'],['us','🇺🇸','美國'],['uk','🇬🇧','英國']];
 let selected=new Set(countries.map(x=>x[0])); let currentGenre='';
@@ -94,24 +94,26 @@ const genres=[
  ['instrumental','純音樂','INSTRUMENTAL','instrumental.jpg'],['rnb','R&B','R&B / SOUL','rnb.jpg'],['jazz','Jazz','JAZZ MUSIC','jazz.jpg'],['classical','Classical','CLASSICAL MUSIC','classical.jpg'],['piano','Piano','PIANO MUSIC','piano.jpg'],['rock','Rock','ROCK MUSIC','rock.jpg']
 ];
 const testSources=[
- {c:'us',g:'jazz',name:'Jazz24 · Live Jazz',meta:'USA · Jazz · MP3 128 kbps',manifest:'https://www.jazz24.org/streaming-links/',urls:['https://knkx-live-a.edge.audiocdn.com/6285_128k','https://knkx-live-a.edge.audiocdn.com/6285_256k','https://knkx-live-a.edge.audiocdn.com/6285_128k/playlist.m3u8']},
- {c:'us',g:'jazz',name:'SomaFM · Sonic Universe',meta:'USA · Jazz / Fusion · MP3 128 kbps',manifest:'https://somafm.com/sonicuniverse/directstreamlinks.html',urls:['https://ice5.somafm.com/sonicuniverse-128-mp3','https://ice2.somafm.com/sonicuniverse-128-mp3']},
- {c:'us',g:'instrumental',name:'SomaFM · Groove Salad',meta:'USA · Ambient / Chill · MP3 128 kbps',manifest:'https://somafm.com/groovesalad/directstreamlinks.html',urls:['https://ice5.somafm.com/groovesalad-128-mp3','https://ice2.somafm.com/groovesalad-128-mp3']},
- {c:'us',g:'instrumental',name:'SomaFM · Drone Zone',meta:'USA · Ambient / Drone · MP3 128 kbps',manifest:'https://somafm.com/dronezone/directstreamlinks.html',urls:['https://ice5.somafm.com/dronezone-128-mp3','https://ice2.somafm.com/dronezone-128-mp3']},
- {c:'us',g:'instrumental',name:'SomaFM · Digitalis',meta:'USA · Ambient / Experimental · MP3 128 kbps',manifest:'https://somafm.com/digitalis/directstreamlinks.html',urls:['https://ice5.somafm.com/digitalis-128-mp3','https://ice6.somafm.com/digitalis-128-mp3']},
- {c:'us',g:'instrumental',name:'SomaFM · Mission Control',meta:'USA · Ambient / Space · MP3 128 kbps',manifest:'https://somafm.com/missioncontrol/directstreamlinks.html',urls:['https://ice5.somafm.com/missioncontrol-128-mp3','https://ice6.somafm.com/missioncontrol-128-mp3']},
- {c:'us',g:'rock',name:'SomaFM · Indie Pop Rocks!',meta:'USA · Indie / Rock · MP3 128 kbps',manifest:'https://somafm.com/indiepop/directstreamlinks.html',urls:['https://ice5.somafm.com/indiepop-128-mp3','https://ice6.somafm.com/indiepop-128-mp3']},
- {c:'us',g:'rock',name:'SomaFM · PopTron',meta:'USA · Indie / Pop · MP3 128 kbps',manifest:'https://somafm.com/poptron/directstreamlinks.html',urls:['https://ice5.somafm.com/poptron-128-mp3','https://ice6.somafm.com/poptron-128-mp3']},
- {c:'us',g:'electronic',name:'SomaFM · The Trip',meta:'USA · Electronic · MP3 128 kbps',manifest:'https://somafm.com/thetrip/directstreamlinks.html',urls:['https://ice5.somafm.com/thetrip-128-mp3','https://ice6.somafm.com/thetrip-128-mp3']},
- {c:'us',g:'electronic',name:'SomaFM · Mission Control',meta:'USA · Electronic / Space · MP3 128 kbps',manifest:'https://somafm.com/missioncontrol/directstreamlinks.html',urls:['https://ice5.somafm.com/missioncontrol-128-mp3','https://ice6.somafm.com/missioncontrol-128-mp3']}
+ {c:'us',g:'jazz',name:'Jazz24 · Live Jazz',meta:'USA · Jazz · AAC/MP3 · 官方直連',manifest:'https://www.jazz24.org/streaming-links/',urls:['https://knkx-live-a.edge.audiocdn.com/6285_128k','https://knkx-live-a.edge.audiocdn.com/6285_64k']},
+ {c:'us',g:'instrumental',name:'SomaFM · Groove Salad',meta:'USA · Ambient / Chill · 官方直連',manifest:'https://somafm.com/groovesalad/directstreamlinks.html',urls:['https://ice.somafm.com/groovesalad']},
+ {c:'us',g:'instrumental',name:'SomaFM · Drone Zone',meta:'USA · Ambient / Drone · 官方直連',manifest:'https://somafm.com/dronezone/directstreamlinks.html',urls:['https://ice.somafm.com/dronezone']},
+ {c:'us',g:'rock',name:'SomaFM · Indie Pop Rocks!',meta:'USA · Indie / Rock · 官方直連',manifest:'https://somafm.com/indiepop/directstreamlinks.html',urls:['https://ice.somafm.com/indiepop']},
+ {c:'us',g:'electronic',name:'SomaFM · The Trip',meta:'USA · Electronic · 官方直連',manifest:'https://somafm.com/thetrip/directstreamlinks.html',urls:['https://ice.somafm.com/thetrip']},
+ {c:'us',g:'instrumental',name:'SomaFM · Mission Control',meta:'USA · Ambient / Space · 官方直連',manifest:'https://somafm.com/missioncontrol/directstreamlinks.html',urls:['https://ice.somafm.com/missioncontrol']}
 ];
 let sourceRefreshDone=false;
-function refreshSourceRegistry(){
+async function refreshSourceRegistry(){
  const statusEl=document.getElementById('startupStatus'),bar=document.getElementById('startupProgress');
- statusEl.textContent='正在載入最新官方音源設定…'; bar.style.width='55%';
- // 不在 GitHub Pages 前端抓 M3U/PLS：第三方清單常有 CORS 限制，會把原本可用的 fallback URL 覆蓋成不可播放資料。
- // 目前先採用官方頁面當天公布的 direct stream endpoints，並保留主／備援路徑；正式版再由後端 API 動態刷新。
- setTimeout(()=>{sourceRefreshDone=true;statusEl.textContent='官方音源設定已載入，主／備援路徑就緒';bar.style.width='100%';setTimeout(()=>{const el=document.getElementById('startup');if(el){el.classList.add('hide');setTimeout(()=>el.remove(),400)}},450)},450);
+ statusEl.textContent='正在載入最新官方音源設定…';bar.style.width='25%';
+ // GitHub Pages 不能可靠地從第三方 M3U/PLS 取得清單，因此不再用它覆寫可播放 URL。
+ // 本測試版只保留官方頁面目前公布的直連；真正的即時 Health Check 應放在後端。
+ await new Promise(r=>setTimeout(r,250));
+ statusEl.textContent='正在整理可測試音源…';bar.style.width='55%';
+ const valid=testSources.filter(x=>Array.isArray(x.urls)&&x.urls.length&&x.manifest);
+ testSources.splice(0,testSources.length,...valid);
+ await new Promise(r=>setTimeout(r,250));
+ sourceRefreshDone=true;statusEl.textContent=`已載入 ${testSources.length} 個官方測試音源`;bar.style.width='100%';
+ setTimeout(()=>{const el=document.getElementById('startup');if(el){el.classList.add('hide');setTimeout(()=>el.remove(),400)}},500);
 }
 function renderRegions(){const box=document.getElementById('regions');box.innerHTML=countries.map(([id,f,n])=>`<label class="region-chip ${selected.has(id)?'on':''}"><input type="checkbox" ${selected.has(id)?'checked':''} data-id="${id}"><span class="flag">${f}</span><span>${n}</span></label>`).join('')+`<div class="region-actions"><button id="all">全選</button><button id="none">清除</button></div>`;box.querySelectorAll('input').forEach(i=>i.onchange=()=>{i.checked?selected.add(i.dataset.id):selected.delete(i.dataset.id);renderRegions();renderHot();renderSources()});document.getElementById('all').onclick=()=>{selected=new Set(countries.map(x=>x[0]));renderRegions();renderHot();renderSources()};document.getElementById('none').onclick=()=>{selected.clear();renderRegions();renderHot();renderSources()}}
 function renderRegions(){const box=document.getElementById('regions');box.innerHTML=countries.map(([id,f,n])=>`<label class="region-chip ${selected.has(id)?'on':''}"><input type="checkbox" ${selected.has(id)?'checked':''} data-id="${id}"><span class="flag">${f}</span><span>${n}</span></label>`).join('')+`<div class="region-actions"><button id="all">全選</button><button id="none">清除</button></div>`;box.querySelectorAll('input').forEach(i=>i.onchange=()=>{i.checked?selected.add(i.dataset.id):selected.delete(i.dataset.id);renderRegions();renderHot();renderSources()});document.getElementById('all').onclick=()=>{selected=new Set(countries.map(x=>x[0]));renderRegions();renderHot();renderSources()};document.getElementById('none').onclick=()=>{selected.clear();renderRegions();renderHot();renderSources()}}
@@ -129,20 +131,32 @@ function showSources(g=''){currentGenre=g;hideViews();document.getElementById('s
 function showSpace(){hideViews();document.getElementById('spaceView').classList.add('active');history.replaceState(null,'','#space');window.scrollTo(0,0)}
 function renderSources(){const s=document.getElementById('sources');let list=testSources.filter(x=>!badSources.has(x.name)&&selected.has(x.c)&&(!currentGenre||x.g===currentGenre));const count=document.getElementById('sourceCount');if(count)count.textContent=list.length?`測試來源 ${list.length} 個`:'目前沒有可播放測試來源';if(!list.length){s.innerHTML='<div class="empty">目前沒有符合這個曲風／地區的直接播放測試來源。<br>未驗證的歌曲連結不會放入清單。</div>';return}s.innerHTML=list.map(x=>`<button class="source-card" data-i="${testSources.indexOf(x)}"><strong>${x.name}</strong><small>${x.meta}</small><div class="source-meta">▶ 點選測試播放 · 失敗會自動切換備援</div></button>`).join('');s.querySelectorAll('.source-card').forEach(b=>b.onclick=()=>playSource(testSources[+b.dataset.i]))}
 const audio=document.getElementById('audio'),turn=document.getElementById('turn'),needle=document.getElementById('needle'),playername=document.getElementById('playername'),status=document.getElementById('status');
-let activeSource=null,activeUrlIndex=0,playTimeout=null; const badSources=new Set();
+let activeSource=null,activeUrlIndex=0,playTimeout=null,playStarted=false; const badSources=new Set();
 function clearPlayTimeout(){if(playTimeout){clearTimeout(playTimeout);playTimeout=null}}
-function tryActiveUrl(){clearPlayTimeout();const urls=activeSource?.urls||[];if(!urls.length){sourceFailed();return}const url=urls[activeUrlIndex];status.textContent=`正在連線… ${activeUrlIndex+1}/${urls.length}`;audio.src=url;audio.load();audio.play().catch(()=>{tryNextUrl()});playTimeout=setTimeout(()=>{if(audio.paused || audio.readyState<2)tryNextUrl()},6000)}
-function tryNextUrl(){clearPlayTimeout();activeUrlIndex++;if(activeSource && activeUrlIndex<(activeSource.urls||[]).length){tryActiveUrl();return}sourceFailed()}
-function sourceFailed(){if(activeSource)badSources.add(activeSource.name);turn.classList.remove('spinning');needle.classList.remove('down');setPlayIcon(false);status.textContent='此來源目前無法播放，已暫時隱藏';setTimeout(()=>{showSources(currentGenre)},700)}
-function playSource(x){activeSource=x;activeUrlIndex=0;hideViews();document.getElementById('play').classList.add('busy');document.getElementById('play').textContent='';document.getElementById('playerView').classList.add('active');history.replaceState(null,'','#player');window.scrollTo(0,0);playername.textContent=x.name;status.textContent='正在連線…';tryActiveUrl()}
-audio.addEventListener('canplay',()=>{clearPlayTimeout();document.getElementById('play').classList.remove('busy');});
-audio.addEventListener('playing',()=>{clearPlayTimeout();document.getElementById('play').classList.remove('busy');status.textContent='播放中 · 24H Sound';turn.classList.add('spinning');needle.classList.add('down');setPlayIcon(true)});
-audio.addEventListener('waiting',()=>{document.getElementById('play').classList.add('busy');document.getElementById('play').textContent='';status.textContent='正在緩衝…';turn.classList.remove('spinning');needle.classList.remove('down')});
-audio.addEventListener('pause',()=>{clearPlayTimeout();document.getElementById('play').classList.remove('busy');status.textContent='已暫停';turn.classList.remove('spinning');needle.classList.remove('down');setPlayIcon(false)});
-audio.addEventListener('ended',()=>{clearPlayTimeout();document.getElementById('play').classList.remove('busy');status.textContent='播放結束';turn.classList.remove('spinning');needle.classList.remove('down');setPlayIcon(false)});
-audio.addEventListener('error',()=>{if(activeSource)tryNextUrl()});
+function setBusy(on){const b=document.getElementById('play');b.classList.toggle('busy',on);if(on)b.textContent='';}
+function tryActiveUrl(){
+ clearPlayTimeout();
+ const urls=activeSource?.urls||[];
+ if(!urls.length){sourceFailed();return}
+ const url=urls[activeUrlIndex];
+ playStarted=false;setBusy(true);status.textContent=`正在連線… ${activeUrlIndex+1}/${urls.length}`;
+ audio.pause();audio.removeAttribute('src');audio.load();audio.src=url;audio.load();
+ playTimeout=setTimeout(()=>{if(!playStarted && (audio.readyState<3 || audio.paused))tryNextUrl()},9000);
+ const p=audio.play();
+ if(p&&typeof p.catch==='function')p.catch(()=>{setTimeout(()=>{if(!playStarted)tryNextUrl()},80)});
+}
+function tryNextUrl(){clearPlayTimeout();activeUrlIndex++;if(activeSource&&activeUrlIndex<(activeSource.urls||[]).length){tryActiveUrl();return}sourceFailed()}
+function sourceFailed(){if(activeSource)badSources.add(activeSource.name);clearPlayTimeout();playStarted=false;audio.pause();audio.removeAttribute('src');audio.load();turn.classList.remove('spinning');needle.classList.remove('down');setBusy(false);setPlayIcon(false);status.textContent='此來源目前無法播放，已暫時隱藏';setTimeout(()=>showSources(currentGenre),700)}
+function playSource(x){activeSource=x;activeUrlIndex=0;hideViews();setBusy(true);document.getElementById('playerView').classList.add('active');history.replaceState(null,'','#player');window.scrollTo(0,0);playername.textContent=x.name;status.textContent='正在連線…';tryActiveUrl()}
+audio.addEventListener('loadedmetadata',()=>{if(activeSource)status.textContent='已連線，正在緩衝…'});
+audio.addEventListener('canplay',()=>{if(!playStarted)setBusy(true)});
+audio.addEventListener('playing',()=>{clearPlayTimeout();playStarted=true;setBusy(false);status.textContent='播放中 · 24H Sound';turn.classList.add('spinning');needle.classList.add('down');setPlayIcon(true)});
+audio.addEventListener('waiting',()=>{if(playStarted){setBusy(true);status.textContent='正在緩衝…';turn.classList.remove('spinning');needle.classList.remove('down')}});
+audio.addEventListener('pause',()=>{clearPlayTimeout();if(!playStarted)return;setBusy(false);status.textContent='已暫停';turn.classList.remove('spinning');needle.classList.remove('down');setPlayIcon(false)});
+audio.addEventListener('ended',()=>{clearPlayTimeout();setBusy(false);status.textContent='播放結束';turn.classList.remove('spinning');needle.classList.remove('down');setPlayIcon(false)});
+audio.addEventListener('error',()=>{if(activeSource&&!playStarted)tryNextUrl()});
 function setPlayIcon(isPlaying){const b=document.getElementById('play');b.textContent=isPlaying?'❚❚':'▶';b.setAttribute('aria-label',isPlaying?'暫停':'播放');}
-document.getElementById('play').onclick=()=>{if(audio.paused){audio.play().catch(()=>tryNextUrl());}else{audio.pause();}};setPlayIcon(false);
+document.getElementById('play').onclick=()=>{if(!activeSource)return;if(audio.paused){setBusy(true);status.textContent='正在恢復播放…';audio.play().catch(()=>tryNextUrl())}else{audio.pause();}};setPlayIcon(false);
 let ctx=null,metroTimer=null,metroRunning=false,metroNext=0,osc=null,gain=null,sleepNodes=[],sleepStopTimer=null,tunerStream=null,tunerRAF=null;
 function audioCtx(){return ctx||(ctx=new (window.AudioContext||window.webkitAudioContext)())}
 function updateMetroBpm(v){document.getElementById('bpmValue').textContent=v;if(metroRunning){clearTimeout(metroTimer);metroNext=performance.now()+60000/Number(v);metroTimer=setTimeout(metroTick,20)}}
