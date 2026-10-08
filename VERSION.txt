@@ -1,11 +1,7 @@
-GLOBAL SOUND 24 V185
+GLOBAL SOUND 24 V186
 
-本版重點：
-- 全新高質感黑膠唱盤紋理與唱針狀態
-- 播放 Loading / Buffering 時鎖定播放鍵，只有真正 playing 才旋轉與落針
-- 失效音源自動切換備援，失敗來源於本次工作階段暫時隱藏
-- Audio Generator 頻率可直接輸入 20–20000 Hz，並與滑桿同步
-- 吉他改為 Guitar Tuner 麥克風調音器
-- 節拍器 BPM 即時調整
-- 睡眠聲音獨立區：白噪音、粉紅噪音、棕噪音、雨聲、海浪、森林、營火、風聲、雷雨 + Sleep Timer
-- 熱門音樂名稱依地區動態變更，並可開啟對應 YouTube 熱門搜尋
+- Sleep Sounds redesigned with distinct synthesized sound profiles: white/pink/brown noise, rain, ocean, forest, campfire, wind, thunderstorm.
+- Hot Music now opens an in-app regional chart UI instead of directly opening a YouTube search page.
+- Regional chart cards follow the selected country filter.
+- Official chart button is kept as an external fallback; final production chart data should come from a backend and licensed playback sources.
+- V186 is a UI/prototype step; third-party stream health still requires backend verification before production.
