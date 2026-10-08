@@ -1,3 +1,3 @@
-GLOBAL SOUND 24 V178
-
-Fix: homepage is now a real view, so tapping a genre hides the homepage and opens the music-source list. Source cards open Now Playing. Added hash-based view state for more reliable mobile navigation.
+GLOBAL SOUND 24 V181
+Startup source refresh prototype.
+On app open, show Loading and refresh the latest stream paths from official M3U/HLS manifests where browser CORS permits. If a manifest cannot be fetched, retain verified fallback URLs. This improves resilience but is not a substitute for a production backend source registry.
