@@ -1,2 +1,3 @@
 GLOBAL SOUND 24
-V210
+Soft Ver.: V212
+Changes: Settings now contains Sleep Timer, Language, and Soft Ver.; removed Sleep Timer from home; added timer support for sleep playback including YouTube player pause.
