@@ -1,2 +1,8 @@
-GLOBAL SOUND 24 V182
-Turntable visual upgrade: embossed guilloche texture, radial etched motif, rose-gold center label, stronger visible rotation at 1.8s per revolution. Playback state still controls spinning; pause/wait/error stops the record and lifts the needle.
+GLOBAL SOUND 24 V183
+
+修正：V182 啟動時前端抓取 M3U/PLS 造成 CORS 失敗或覆蓋原本可用 URL 的問題。
+本版改為使用官方頁面目前公布的 direct stream endpoints，保留主/備援路徑。
+啟動 Loading 仍保留，但不會因遠端 playlist fetch 失敗而破壞播放來源。
+
+唱盤：playing -> 旋轉/唱針落下；pause -> 停止/唱針抬起。
+正式版建議由自有後端 API 更新第三方音源，避免前端 CORS 與來源變動問題。

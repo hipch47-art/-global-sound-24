@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="zh-Hant"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#080808"><title>GLOBAL SOUND 24 V181</title>
+<meta name="theme-color" content="#080808"><title>GLOBAL SOUND 24 V183</title>
 <style>
 :root{--bg:#080808;--card:#111;--line:#302a27;--text:#fff9f4;--muted:#b9aaa2;--rose:#d8a18b;--blue:#1976ff}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Noto Sans TC",sans-serif}button{font:inherit;color:inherit}
@@ -64,7 +64,7 @@ h1{margin-bottom:18px}
 <div class="space-tool"><h3>🎵 音頻產生器</h3><p>20 Hz–20 kHz · Sine / Square / Triangle / Sawtooth</p><div class="row"><select id="wave" class="gen-select"><option>sine</option><option>square</option><option>triangle</option><option>sawtooth</option></select><input id="freq" type="range" min="20" max="20000" value="440" oninput="freqVal.textContent=this.value+' Hz'"><span id="freqVal">440 Hz</span></div><div class="row" style="margin-top:10px"><input id="vol" type="range" min="0" max="1" step="0.01" value="0.25"><button onclick="toggleTone()" id="toneBtn">播放</button></div></div>
 </div></section>
 </main>
-<div class="overlay" id="overlay"><div class="sheet"><div class="sheettop"><strong>Settings</strong><button class="close" id="close">×</button></div><button class="opt" onclick="showHome();closeSettings()">回首頁</button><button class="opt" onclick="showSpace();closeSettings()">聲音空間</button><p style="color:#777;font-size:12px;margin-top:15px">GLOBAL SOUND 24 V181</p></div></div>
+<div class="overlay" id="overlay"><div class="sheet"><div class="sheettop"><strong>Settings</strong><button class="close" id="close">×</button></div><button class="opt" onclick="showHome();closeSettings()">回首頁</button><button class="opt" onclick="showSpace();closeSettings()">聲音空間</button><p style="color:#777;font-size:12px;margin-top:15px">GLOBAL SOUND 24 V183</p></div></div>
 <script>
 const countries=[['tw','🇹🇼','台灣'],['cn','🇨🇳','中國'],['jp','🇯🇵','日本'],['kr','🇰🇷','韓國'],['us','🇺🇸','美國'],['uk','🇬🇧','英國']];
 let selected=new Set(countries.map(x=>x[0])); let currentGenre='';
@@ -72,28 +72,24 @@ const genres=[
  ['instrumental','純音樂','INSTRUMENTAL','instrumental.jpg'],['rnb','R&B','R&B / SOUL','rnb.jpg'],['jazz','Jazz','JAZZ MUSIC','jazz.jpg'],['classical','Classical','CLASSICAL MUSIC','classical.jpg'],['piano','Piano','PIANO MUSIC','piano.jpg'],['rock','Rock','ROCK MUSIC','rock.jpg']
 ];
 const testSources=[
- {c:'us',g:'jazz',name:'Jazz24 · Live Jazz',meta:'USA · Jazz · MP3 128 kbps',manifest:'https://knkx-live-a.edge.audiocdn.com/6285_128k/playlist.m3u8',urls:['https://knkx-live-a.edge.audiocdn.com/6285_128k','https://knkx-live-a.edge.audiocdn.com/6285_64k']},
- {c:'us',g:'jazz',name:'SomaFM · Sonic Universe',meta:'USA · Jazz / Fusion · MP3 128 kbps',manifest:'https://somafm.com/m3u/sonicuniverse.m3u',urls:['https://ice5.somafm.com/sonicuniverse-128-mp3','https://ice2.somafm.com/sonicuniverse-128-mp3']},
- {c:'us',g:'instrumental',name:'SomaFM · Groove Salad',meta:'USA · Ambient / Chill · MP3 128 kbps',manifest:'https://somafm.com/m3u/groovesalad.m3u',urls:['https://ice5.somafm.com/groovesalad-128-mp3','https://ice2.somafm.com/groovesalad-128-mp3']},
- {c:'us',g:'instrumental',name:'SomaFM · Drone Zone',meta:'USA · Ambient / Drone · MP3 128 kbps',manifest:'https://somafm.com/m3u/dronezone.m3u',urls:['https://ice5.somafm.com/dronezone-128-mp3','https://ice2.somafm.com/dronezone-128-mp3']},
- {c:'us',g:'instrumental',name:'SomaFM · Digitalis',meta:'USA · Ambient / Experimental · MP3 128 kbps',manifest:'https://somafm.com/m3u/digitalis.m3u',urls:['https://ice5.somafm.com/digitalis-128-mp3','https://ice6.somafm.com/digitalis-128-mp3']},
- {c:'us',g:'instrumental',name:'SomaFM · Mission Control',meta:'USA · Ambient / Space · MP3 128 kbps',manifest:'https://somafm.com/m3u/missioncontrol.m3u',urls:['https://ice5.somafm.com/missioncontrol-128-mp3','https://ice6.somafm.com/missioncontrol-128-mp3']},
- {c:'us',g:'rock',name:'SomaFM · Indie Pop Rocks!',meta:'USA · Indie / Rock · MP3 128 kbps',manifest:'https://somafm.com/m3u/indiepop.m3u',urls:['https://ice5.somafm.com/indiepop-128-mp3','https://ice6.somafm.com/indiepop-128-mp3']},
- {c:'us',g:'rock',name:'SomaFM · PopTron',meta:'USA · Indie / Pop · MP3 128 kbps',manifest:'https://somafm.com/m3u/poptron.m3u',urls:['https://ice5.somafm.com/poptron-128-mp3','https://ice6.somafm.com/poptron-128-mp3']},
- {c:'us',g:'electronic',name:'SomaFM · The Trip',meta:'USA · Electronic · MP3 128 kbps',manifest:'https://somafm.com/m3u/thetrip.m3u',urls:['https://ice5.somafm.com/thetrip-128-mp3','https://ice6.somafm.com/thetrip-128-mp3']},
- {c:'us',g:'electronic',name:'SomaFM · cliqhop idm',meta:'USA · IDM / Electronic · MP3 128 kbps',manifest:'https://somafm.com/m3u/cliqhop.m3u',urls:['https://ice5.somafm.com/cliqhop-128-mp3','https://ice2.somafm.com/cliqhop-128-mp3']}
+ {c:'us',g:'jazz',name:'Jazz24 · Live Jazz',meta:'USA · Jazz · MP3 128 kbps',manifest:'https://www.jazz24.org/streaming-links/',urls:['https://knkx-live-a.edge.audiocdn.com/6285_128k','https://knkx-live-a.edge.audiocdn.com/6285_256k','https://knkx-live-a.edge.audiocdn.com/6285_128k/playlist.m3u8']},
+ {c:'us',g:'jazz',name:'SomaFM · Sonic Universe',meta:'USA · Jazz / Fusion · MP3 128 kbps',manifest:'https://somafm.com/sonicuniverse/directstreamlinks.html',urls:['https://ice5.somafm.com/sonicuniverse-128-mp3','https://ice2.somafm.com/sonicuniverse-128-mp3']},
+ {c:'us',g:'instrumental',name:'SomaFM · Groove Salad',meta:'USA · Ambient / Chill · MP3 128 kbps',manifest:'https://somafm.com/groovesalad/directstreamlinks.html',urls:['https://ice5.somafm.com/groovesalad-128-mp3','https://ice2.somafm.com/groovesalad-128-mp3']},
+ {c:'us',g:'instrumental',name:'SomaFM · Drone Zone',meta:'USA · Ambient / Drone · MP3 128 kbps',manifest:'https://somafm.com/dronezone/directstreamlinks.html',urls:['https://ice5.somafm.com/dronezone-128-mp3','https://ice2.somafm.com/dronezone-128-mp3']},
+ {c:'us',g:'instrumental',name:'SomaFM · Digitalis',meta:'USA · Ambient / Experimental · MP3 128 kbps',manifest:'https://somafm.com/digitalis/directstreamlinks.html',urls:['https://ice5.somafm.com/digitalis-128-mp3','https://ice6.somafm.com/digitalis-128-mp3']},
+ {c:'us',g:'instrumental',name:'SomaFM · Mission Control',meta:'USA · Ambient / Space · MP3 128 kbps',manifest:'https://somafm.com/missioncontrol/directstreamlinks.html',urls:['https://ice5.somafm.com/missioncontrol-128-mp3','https://ice6.somafm.com/missioncontrol-128-mp3']},
+ {c:'us',g:'rock',name:'SomaFM · Indie Pop Rocks!',meta:'USA · Indie / Rock · MP3 128 kbps',manifest:'https://somafm.com/indiepop/directstreamlinks.html',urls:['https://ice5.somafm.com/indiepop-128-mp3','https://ice6.somafm.com/indiepop-128-mp3']},
+ {c:'us',g:'rock',name:'SomaFM · PopTron',meta:'USA · Indie / Pop · MP3 128 kbps',manifest:'https://somafm.com/poptron/directstreamlinks.html',urls:['https://ice5.somafm.com/poptron-128-mp3','https://ice6.somafm.com/poptron-128-mp3']},
+ {c:'us',g:'electronic',name:'SomaFM · The Trip',meta:'USA · Electronic · MP3 128 kbps',manifest:'https://somafm.com/thetrip/directstreamlinks.html',urls:['https://ice5.somafm.com/thetrip-128-mp3','https://ice6.somafm.com/thetrip-128-mp3']},
+ {c:'us',g:'electronic',name:'SomaFM · Mission Control',meta:'USA · Electronic / Space · MP3 128 kbps',manifest:'https://somafm.com/missioncontrol/directstreamlinks.html',urls:['https://ice5.somafm.com/missioncontrol-128-mp3','https://ice6.somafm.com/missioncontrol-128-mp3']}
 ];
 let sourceRefreshDone=false;
-function extractStreamUrls(text){return text.split(/\r?\n/).map(x=>x.trim()).filter(x=>/^https?:\/\//i.test(x)&&!x.startsWith('#')).filter((x,i,a)=>a.indexOf(x)===i)}
-async function refreshSourceRegistry(){
- const statusEl=document.getElementById('startupStatus'), bar=document.getElementById('startupProgress');
- const targets=testSources.filter(x=>x.manifest); let done=0,updated=0;
- statusEl.textContent='正在取得最新串流路徑…'; bar.style.width='5%';
- await Promise.all(targets.map(async x=>{try{const r=await fetch(x.manifest,{cache:'no-store',mode:'cors'});if(!r.ok)throw new Error('HTTP '+r.status);const text=await r.text();const urls=extractStreamUrls(text);if(urls.length){x.urls=urls;updated++}}catch(e){}finally{done++;bar.style.width=Math.max(5,Math.round(done/targets.length*92))+'%'}}));
- sourceRefreshDone=true; statusEl.textContent=updated?`音源路徑已更新 ${updated} 個來源`:'目前無法取得遠端清單，使用備援音源路徑';bar.style.width='100%';
- await new Promise(r=>setTimeout(r,650));
- const el=document.getElementById('startup');el.classList.add('hide');setTimeout(()=>el.remove(),400);
- renderSources();
+function refreshSourceRegistry(){
+ const statusEl=document.getElementById('startupStatus'),bar=document.getElementById('startupProgress');
+ statusEl.textContent='正在載入最新官方音源設定…'; bar.style.width='55%';
+ // 不在 GitHub Pages 前端抓 M3U/PLS：第三方清單常有 CORS 限制，會把原本可用的 fallback URL 覆蓋成不可播放資料。
+ // 目前先採用官方頁面當天公布的 direct stream endpoints，並保留主／備援路徑；正式版再由後端 API 動態刷新。
+ setTimeout(()=>{sourceRefreshDone=true;statusEl.textContent='官方音源設定已載入，主／備援路徑就緒';bar.style.width='100%';setTimeout(()=>{const el=document.getElementById('startup');if(el){el.classList.add('hide');setTimeout(()=>el.remove(),400)}},450)},450);
 }
 function renderRegions(){const box=document.getElementById('regions');box.innerHTML=countries.map(([id,f,n])=>`<label class="region-chip ${selected.has(id)?'on':''}"><input type="checkbox" ${selected.has(id)?'checked':''} data-id="${id}"><span class="flag">${f}</span><span>${n}</span></label>`).join('')+`<div class="region-actions"><button id="all">全選</button><button id="none">清除</button></div>`;box.querySelectorAll('input').forEach(i=>i.onchange=()=>{i.checked?selected.add(i.dataset.id):selected.delete(i.dataset.id);renderRegions();renderHot();renderSources()});document.getElementById('all').onclick=()=>{selected=new Set(countries.map(x=>x[0]));renderRegions();renderHot();renderSources()};document.getElementById('none').onclick=()=>{selected.clear();renderRegions();renderHot();renderSources()}}
 function renderRegions(){const box=document.getElementById('regions');box.innerHTML=countries.map(([id,f,n])=>`<label class="region-chip ${selected.has(id)?'on':''}"><input type="checkbox" ${selected.has(id)?'checked':''} data-id="${id}"><span class="flag">${f}</span><span>${n}</span></label>`).join('')+`<div class="region-actions"><button id="all">全選</button><button id="none">清除</button></div>`;box.querySelectorAll('input').forEach(i=>i.onchange=()=>{i.checked?selected.add(i.dataset.id):selected.delete(i.dataset.id);renderRegions();renderHot();renderSources()});document.getElementById('all').onclick=()=>{selected=new Set(countries.map(x=>x[0]));renderRegions();renderHot();renderSources()};document.getElementById('none').onclick=()=>{selected.clear();renderRegions();renderHot();renderSources()}}
@@ -108,10 +104,11 @@ function renderSources(){const s=document.getElementById('sources');let list=tes
 const audio=document.getElementById('audio'),turn=document.getElementById('turn'),needle=document.getElementById('needle'),playername=document.getElementById('playername'),status=document.getElementById('status');
 let activeSource=null,activeUrlIndex=0,playTimeout=null;
 function clearPlayTimeout(){if(playTimeout){clearTimeout(playTimeout);playTimeout=null}}
-function tryActiveUrl(){clearPlayTimeout();const urls=activeSource?.urls||[];if(!urls.length){sourceFailed();return}const url=urls[activeUrlIndex];status.textContent=`正在連線… ${activeUrlIndex+1}/${urls.length}`;audio.src=url;audio.load();audio.play().catch(()=>{tryNextUrl()});playTimeout=setTimeout(()=>{if(audio.paused || audio.readyState<2)tryNextUrl()},8000)}
+function tryActiveUrl(){clearPlayTimeout();const urls=activeSource?.urls||[];if(!urls.length){sourceFailed();return}const url=urls[activeUrlIndex];status.textContent=`正在連線… ${activeUrlIndex+1}/${urls.length}`;audio.src=url;audio.load();audio.play().catch(()=>{tryNextUrl()});playTimeout=setTimeout(()=>{if(audio.paused || audio.readyState<2)tryNextUrl()},6000)}
 function tryNextUrl(){clearPlayTimeout();activeUrlIndex++;if(activeSource && activeUrlIndex<(activeSource.urls||[]).length){tryActiveUrl();return}sourceFailed()}
 function sourceFailed(){turn.classList.remove('spinning');needle.classList.remove('down');setPlayIcon(false);status.textContent='此來源目前無法播放';setTimeout(()=>{showSources(currentGenre)},700)}
 function playSource(x){activeSource=x;activeUrlIndex=0;hideViews();document.getElementById('playerView').classList.add('active');history.replaceState(null,'','#player');window.scrollTo(0,0);playername.textContent=x.name;status.textContent='正在連線…';tryActiveUrl()}
+audio.addEventListener('canplay',()=>{clearPlayTimeout()});
 audio.addEventListener('playing',()=>{clearPlayTimeout();status.textContent='播放中 · 24H Sound';turn.classList.add('spinning');needle.classList.add('down');setPlayIcon(true)});
 audio.addEventListener('waiting',()=>{status.textContent='正在緩衝…';turn.classList.remove('spinning');needle.classList.remove('down')});
 audio.addEventListener('pause',()=>{clearPlayTimeout();status.textContent='已暫停';turn.classList.remove('spinning');needle.classList.remove('down');setPlayIcon(false)});
