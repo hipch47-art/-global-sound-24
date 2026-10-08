@@ -1,8 +1,11 @@
-GLOBAL SOUND 24 V183
+GLOBAL SOUND 24 V185
 
-修正：V182 啟動時前端抓取 M3U/PLS 造成 CORS 失敗或覆蓋原本可用 URL 的問題。
-本版改為使用官方頁面目前公布的 direct stream endpoints，保留主/備援路徑。
-啟動 Loading 仍保留，但不會因遠端 playlist fetch 失敗而破壞播放來源。
-
-唱盤：playing -> 旋轉/唱針落下；pause -> 停止/唱針抬起。
-正式版建議由自有後端 API 更新第三方音源，避免前端 CORS 與來源變動問題。
+本版重點：
+- 全新高質感黑膠唱盤紋理與唱針狀態
+- 播放 Loading / Buffering 時鎖定播放鍵，只有真正 playing 才旋轉與落針
+- 失效音源自動切換備援，失敗來源於本次工作階段暫時隱藏
+- Audio Generator 頻率可直接輸入 20–20000 Hz，並與滑桿同步
+- 吉他改為 Guitar Tuner 麥克風調音器
+- 節拍器 BPM 即時調整
+- 睡眠聲音獨立區：白噪音、粉紅噪音、棕噪音、雨聲、海浪、森林、營火、風聲、雷雨 + Sleep Timer
+- 熱門音樂名稱依地區動態變更，並可開啟對應 YouTube 熱門搜尋
