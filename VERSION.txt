@@ -1,9 +1,17 @@
 GLOBAL SOUND 24
-V173
+V174
 
-視覺調整：
-曲風卡片不再只有單一 Emoji。
-加入低調的音樂符號、旋律線、唱片同心圓等背景元素，
-依曲風使用不同的視覺暗紋：
-純音樂／R&B／Jazz／Classical／Piano／Rock。
-維持高級深色風格，不使用花俏發光效果。
+新增真實播放測試：
+- 🇺🇸 Jazz → Jazz24 官方 MP3 128k 串流
+- 🇺🇸 純音樂 / Ambient → SomaFM Groove Salad
+- 🇺🇸 Ambient → SomaFM Drone Zone
+- 🇺🇸 Pop / Rock 測試 → SomaFM Indie Pop Rocks!
+- 🇹🇼 Classical → IC之音「百珊FUN音樂」官方頁面
+
+操作：
+1. 勾選 🇺🇸 美國
+2. 點 Jazz / 純音樂 / Classical 等曲風
+3. 下方「測試音樂來源」會依地區＋曲風篩選
+4. 點「▶ 直接播放」即可測試實際聲音
+
+注意：這些來源目前僅作功能測試，不代表取得 GLOBAL SOUND 24 第三方／商業再利用授權。

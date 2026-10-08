@@ -18,6 +18,15 @@ h1{font-size:32px;margin:8px 0 22px}.section{margin-top:30px}.section h2{font-si
 .overlay{position:fixed;inset:0;background:rgba(0,0,0,.82);display:none;align-items:flex-end;justify-content:center;padding:14px}.sheet{width:min(700px,100%);background:#171717;border:1px solid var(--line);border-radius:22px;padding:20px}.sheettop{display:flex;justify-content:space-between;align-items:center}.close{background:#242424;border:0;border-radius:50%;width:38px;height:38px}.countries label{display:flex;align-items:center;gap:12px;padding:13px 2px;border-bottom:1px solid var(--line)}.countries input{width:20px;height:20px}.actions{display:flex;gap:8px;margin-top:12px}.actions button{border:1px solid var(--line);background:#242424;border-radius:10px;padding:9px 12px}
 .player{margin-top:28px;border:1px solid var(--line);border-radius:20px;padding:18px;background:linear-gradient(145deg,#181818,#101010)}.turn{width:min(260px,68vw);aspect-ratio:1;margin:4px auto 18px;border-radius:50%;background:repeating-radial-gradient(circle,#0b0b0b 0 2px,#202020 2px 3px,#0d0d0d 3px 5px);box-shadow:0 0 0 10px #111,0 16px 35px #000;position:relative;animation:spin 4s linear infinite}.turn:after{content:"";position:absolute;inset:40%;background:#333;border-radius:50%;box-shadow:0 0 0 7px #111}.needle{position:absolute;right:-18px;top:17px;width:105px;height:6px;background:#aaa;border-radius:6px;transform:rotate(25deg);transform-origin:right center}.playername{text-align:center;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.play{display:block;margin:15px auto 0;border:0;background:#eee;color:#111;border-radius:50%;width:54px;height:54px}
 @keyframes spin{to{transform:rotate(360deg)}}@media(max-width:600px){.music-head{min-height:54px}.music-title{padding-right:43%}.region-box{top:-4px;right:0;width:41%;grid-template-columns:1fr 1fr;padding:5px;gap:3px}.region-chip{font-size:10px;padding:3px 4px;min-height:26px;gap:3px;border-radius:7px}.region-chip input{width:12px;height:12px}.region-chip .flag{font-size:12px}} @media(max-width:480px){main{padding-top:18px}.grid{grid-template-columns:1fr 1fr}.hot{grid-template-columns:1fr 1fr}h1{font-size:29px}}
+
+.source-list{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
+.source-card{border:1px solid #292929;background:linear-gradient(145deg,#181818,#111);border-radius:16px;padding:14px;cursor:pointer}
+.source-card strong{display:block;font-size:15px}.source-card small{display:block;color:#999;margin-top:5px;line-height:1.4}
+.source-card .source-meta{margin-top:9px;color:#6fa8ff;font-size:12px}
+.audio-panel{margin-top:14px;border:1px solid #292929;background:#111;border-radius:16px;padding:14px}
+.audio-panel .now{font-size:14px;margin-bottom:9px}.audio-panel audio{width:100%}
+.test-note{font-size:11px;color:#777;line-height:1.5;margin-top:10px}
+@media(max-width:480px){.source-list{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -47,6 +56,15 @@ h1{font-size:32px;margin:8px 0 22px}.section{margin-top:30px}.section h2{font-si
 <h2>🔥 熱門音樂</h2>
 <div class="sub">依你選擇的地區，自動顯示對應熱門音樂</div>
 <div class="hot" id="hotMusic"></div>
+</section><section class="section">
+<h2>🎧 測試音樂來源</h2>
+<div class="sub">先提供可實際播放的官方串流，讓你直接測試播放流程</div>
+<div class="source-list" id="sourceList"></div>
+<div class="audio-panel">
+  <div class="now" id="nowSource">尚未選擇來源</div>
+  <audio id="audioPlayer" controls preload="none"></audio>
+  <div class="test-note">※ 本區為功能測試來源。部分來源的官方頁面明確限制第三方／商業再利用；目前只用於你測試播放功能，不代表可直接作為 GLOBAL SOUND 24 上線音源。</div>
+</div>
 </section>
 
 <section class="section">
@@ -84,7 +102,7 @@ h1{font-size:32px;margin:8px 0 22px}.section{margin-top:30px}.section h2{font-si
     <option value="en-GB">🇬🇧 English (UK)</option>
   </select>
 </div>
-<p style="color:#aaa;font-size:14px;line-height:1.6">V173 · 曲風卡片音樂元素強化<br>地區已從首頁移除，音樂類型使用右上角國家篩選。</p>
+<p style="color:#aaa;font-size:14px;line-height:1.6">V174 · 真實音樂串流測試<br>地區已從首頁移除，音樂類型使用右上角國家篩選。</p>
 </div></div>
 
 <script>
@@ -97,6 +115,37 @@ const hotByCountry={
  US:[['🎵','US Top Hits','美國熱門歌曲'],['🎤','US Pop Hits','美國流行音樂'],['🏆','US Music Charts','美國熱門排行'],['📱','TikTok US Hits','美國短影音熱門歌曲']],
  GB:[['🎵','UK Top Hits','英國熱門歌曲'],['🎤','UK Pop Hits','英國流行音樂'],['🏆','UK Music Charts','英國熱門排行'],['📱','UK Viral Hits','英國熱門短影音歌曲']]
 };
+
+const testSources=[
+  {country:'US',genre:'Jazz',name:'Jazz24',desc:'24/7 Jazz · MP3 128k',url:'https://knkx-live-a.edge.audiocdn.com/6285_128k',official:'https://www.jazz24.org/streaming-links/'},
+  {country:'US',genre:'Instrumental',name:'SomaFM · Groove Salad',desc:'Ambient / Downtempo · MP3 128k',url:'https://ice.somafm.com/groovesalad',official:'https://somafm.com/groovesalad/'},
+  {country:'US',genre:'Ambient',name:'SomaFM · Drone Zone',desc:'Ambient / Electronic · MP3',url:'https://ice.somafm.com/dronezone',official:'https://somafm.com/dronezone/'},
+  {country:'US',genre:'Pop',name:'SomaFM · Indie Pop Rocks!',desc:'Indie Pop · MP3 128k',url:'https://ice.somafm.com/indiepop',official:'https://somafm.com/indiepop/'},
+  {country:'TW',genre:'Classical',name:'IC之音 · 百珊FUN音樂',desc:'台灣古典音樂節目／官方線上收聽',url:'',official:'https://www.ic975.com/programs/24/%E7%99%BE%E7%8F%8AFun%E9%9F%B3%E6%A8%82'}
+];
+
+function renderSources(filterGenre=''){
+  const box=document.getElementById('sourceList');
+  if(!box)return;
+  const rows=testSources.filter(s=>selected.has(s.country) && (!filterGenre || s.genre===filterGenre || (filterGenre==='Rock' && s.genre==='Pop')));
+  if(!rows.length){
+    box.innerHTML='<div style="grid-column:1/-1;color:#888;padding:12px 0">目前選取地區尚無已加入的測試串流。可先勾選 🇺🇸 美國測試。</div>';
+    return;
+  }
+  box.innerHTML=rows.map((s,i)=>`<button class="source-card" type="button" data-src-index="${testSources.indexOf(s)}"><strong>${s.name}</strong><small>${s.desc}</small><div class="source-meta">${s.url?'▶ 直接播放':'↗ 官方線上收聽'}</div></button>`).join('');
+  box.querySelectorAll('[data-src-index]').forEach(btn=>btn.addEventListener('click',()=>{
+    const s=testSources[Number(btn.dataset.srcIndex)];
+    if(s.url){
+      const audio=document.getElementById('audioPlayer');
+      audio.src=s.url;
+      document.getElementById('nowSource').textContent=s.name+' · '+s.desc;
+      audio.play().catch(()=>{});
+    }else{
+      window.open(s.official,'_blank');
+    }
+  }));
+}
+
 const selected=new Set(countries.map(x=>x[0]));
 const countryOverlay=document.getElementById('countryOverlay');
 const countriesBox=document.getElementById('countries');
@@ -123,6 +172,7 @@ function renderInlineRegions(){
     if(i.checked) selected.add(i.dataset.inlineId); else selected.delete(i.dataset.inlineId);
     i.closest('.region-chip').classList.toggle('on',i.checked);
     renderHotMusic();
+    renderSources(window.currentGenre||'');
   }));
 }
 
@@ -138,12 +188,13 @@ function drawCountries(){
 drawCountries();
 renderInlineRegions();
 renderHotMusic();
+renderSources('');
 function playName(name){document.getElementById('playername').textContent=name+' · '+[...selected].map(id=>countries.find(x=>x[0]===id)[2]).join('＋');document.getElementById('play').textContent='❚❚';}
-document.querySelectorAll('[data-genre]').forEach(b=>b.onclick=()=>playName(b.dataset.genre));
+document.querySelectorAll('[data-genre]').forEach(b=>b.onclick=()=>{window.currentGenre=b.dataset.genre;playName(b.dataset.genre);renderSources(window.currentGenre);document.getElementById('sourceList').scrollIntoView({behavior:'smooth',block:'start'});});
 
 document.getElementById('closeCountry').onclick=()=>countryOverlay.style.display='none';
-document.getElementById('all').onclick=()=>{countries.forEach(x=>selected.add(x[0]));drawCountries();drawInlineRegions();renderHotMusic();updateRegionCount()};
-document.getElementById('none').onclick=()=>{selected.clear();drawCountries();drawInlineRegions();renderHotMusic();updateRegionCount()};
+document.getElementById('all').onclick=()=>{countries.forEach(x=>selected.add(x[0]));drawCountries();drawInlineRegions();renderHotMusic();renderSources(window.currentGenre||'');updateRegionCount()};
+document.getElementById('none').onclick=()=>{selected.clear();drawCountries();drawInlineRegions();renderHotMusic();renderSources(window.currentGenre||'');updateRegionCount()};
 updateRegionCount();
 document.getElementById('play').onclick=()=>{document.getElementById('play').textContent=document.getElementById('play').textContent==='▶'?'❚❚':'▶'};
 </script>
