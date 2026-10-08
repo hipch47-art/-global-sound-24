@@ -1,12 +1,3 @@
-GLOBAL SOUND 24 V177
+GLOBAL SOUND 24 V178
 
-UI fixes:
-- Region selector remains in the upper-right of Music Type and is moved upward.
-- Country selection controls the visible Hot Music list; only selected regions are shown.
-- Hot Music titles are smaller and single-line on mobile.
-- Replaced baked-text hot-card images with neutral country-matched visual backgrounds.
-- Genre grid is moved upward with tighter spacing.
-- Tapping a genre opens a dedicated Music Sources view.
-- Source list shows only directly playable test streams currently verified for this prototype.
-- Tapping a source opens Now Playing with turntable; stylus drops and vinyl spins only after audio fires the playing event.
-- Sound Space is preserved as a separate view.
+Fix: homepage is now a real view, so tapping a genre hides the homepage and opens the music-source list. Source cards open Now Playing. Added hash-based view state for more reliable mobile navigation.
