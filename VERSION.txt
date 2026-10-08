@@ -1,3 +1,2 @@
-GLOBAL SOUND 24
-Version: V196
-Source verification: startup full scan + background retry
+GLOBAL SOUND 24 V198
+回到較素面、耐看的 UI 風格；保留唱盤與核心功能。
