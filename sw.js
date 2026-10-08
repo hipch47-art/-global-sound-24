@@ -1,7 +1,4 @@
-// V195: always prefer the newest GitHub Pages asset; never serve stale app files.
-self.addEventListener('install', event => self.skipWaiting());
-self.addEventListener('activate', event => event.waitUntil(self.clients.claim()));
-self.addEventListener('fetch', event => {
-  if (event.request.method !== 'GET') return;
-  event.respondWith(fetch(event.request, {cache:'no-store'}));
-});
+const CACHE='gs24-v196';
+self.addEventListener('install',e=>{self.skipWaiting()});
+self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim()))});
+self.addEventListener('fetch',e=>{if(e.request.method!=='GET')return; const u=new URL(e.request.url); if(u.origin===location.origin && (u.pathname.endsWith('/index.html')||u.pathname.endsWith('/sources.json')||u.pathname.endsWith('/sw.js'))){e.respondWith(fetch(e.request,{cache:'no-store'}).catch(()=>caches.match(e.request)));}});

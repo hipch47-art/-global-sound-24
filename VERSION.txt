@@ -1,4 +1,3 @@
 GLOBAL SOUND 24
-V195
-Full startup source verification
-Verified-only playback source list
+Version: V196
+Source verification: startup full scan + background retry
