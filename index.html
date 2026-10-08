@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="zh-Hant"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#080808"><meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Expires" content="0"><title>GLOBAL SOUND 24 V207</title>
+<meta name="theme-color" content="#080808"><meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Expires" content="0"><title>GLOBAL SOUND 24 V208</title>
 <style>
 :root{--bg:#0b0b0b;--panel:#141414;--panel2:#101010;--line:#272727;--text:#f2f2f2;--muted:#8b8b8b;--soft:#bdbdbd}
 *{box-sizing:border-box}html,body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Noto Sans TC",Arial,sans-serif}
@@ -32,31 +32,33 @@ main{width:min(760px,100%);margin:0 auto;padding:18px 18px 88px}
 @media(max-width:650px){main{padding:16px 16px 92px}.hero{padding-top:32px}.hero h1{font-size:31px}.music-head{display:flex;align-items:flex-start}.region-box{grid-template-columns:repeat(3,max-content);max-width:205px}.grid{gap:8px}.tile{min-height:132px}.tile-title{font-size:18px}.hot{grid-template-columns:1fr 1fr}.turn-wrap{width:min(310px,82vw)}}
 @media(max-width:430px){.hot{grid-template-columns:1fr}.tile{min-height:126px}}
 .faith-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}.faith-card{min-height:92px;border:1px solid #292929;border-radius:12px;background:#151515;text-align:left;padding:13px;color:#eee}.faith-card b{display:block;font-size:16px}.faith-card small{display:block;margin-top:6px;color:#888;font-size:10px;line-height:1.4}.faith-card:active{background:#1b1b1b;border-color:#4a4a4a}.faith-note{color:#777;font-size:11px;padding:12px;border:1px dashed #292929;border-radius:10px}.hot{overflow-x:auto;display:flex;gap:8px;padding-bottom:3px}.hot button{min-width:190px;flex:0 0 190px}
+
+.sleep-home .section-head{display:flex;justify-content:space-between;align-items:center}.mini-more{border:0;background:none;color:#888;font-size:11px;padding:4px}.sleep-home-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:7px}.sleep-home-grid button{border:1px solid #292929;background:#111;border-radius:10px;padding:11px 5px;color:#ddd;font-size:11px}.faith-grid{grid-template-columns:repeat(2,1fr)}.faith-card{background:#111}.faith-card b{font-size:15px}.embed-box{margin-top:14px;border:1px solid #2b2b2b;border-radius:12px;overflow:hidden;background:#0e0e0e}.embed-box iframe{display:block;width:100%;height:420px;border:0;background:#fff}.embed-note{padding:10px 12px;color:#777;font-size:10px;line-height:1.5}
 </style></head><body><main>
 <section id="homeView" class="view active" aria-label="首頁"><header class="top"><div class="logo">GLOBAL SOUND 24</div></header>
 <div class="hero"><h1>想聽什麼？</h1><p>選一種感覺，直接開始聽。</p></div>
 <section class="section music-section"><div class="music-head"><div class="music-title"><h2>🎵 音樂類型</h2><p class="sub">依地區篩選音樂來源</p></div><div class="region-box" id="regions"></div></div><div class="grid" id="genres"></div></section>
-<section class="section faith-section"><div class="section-head"><div><h2>🕊️ 信仰・靈性</h2><p class="sub">宗教音樂與靈性聲音</p></div></div><div class="faith-grid" id="faithGrid"></div></section>
+<section class="section sleep-home"><div class="section-head"><div><h2>🌙 睡眠聲音</h2><p class="sub">白噪音・雨聲・海浪・森林・營火</p></div><button class="mini-more" onclick="showSpace();setTimeout(()=>document.getElementById('sleepSection')?.scrollIntoView({behavior:'smooth'}),60)">更多 ›</button></div><div class="sleep-home-grid"><button onclick="showSpace();setTimeout(()=>playSleep('rain'),80)">🌧️ 雨聲</button><button onclick="showSpace();setTimeout(()=>playSleep('ocean'),80)">🌊 海浪</button><button onclick="showSpace();setTimeout(()=>playSleep('forest'),80)">🌲 森林</button><button onclick="showSpace();setTimeout(()=>playSleep('campfire'),80)">🔥 營火</button></div></section><section class="section faith-section"><div class="section-head"><div><h2>🕊️ 信仰・靈性</h2><p class="sub">宗教音樂與靈性聲音</p></div></div><div class="faith-grid" id="faithGrid"></div></section>
 <section class="section"><div class="section-head"><div><h2>🔥 熱門音樂</h2><p class="sub">依你選擇的地區顯示</p></div></div><div class="hot" id="hot"></div></section>
 <section class="section compact-space"><button class="space-link" onclick="showSpace()"><span><b>🔊 聲音空間</b><small>吉他調音器・節拍器・音頻產生器・睡眠聲音</small></span><span>›</span></button></section>
 </section><section id="sourcesView" class="view"><button class="back" onclick="showHome()">‹ 回首頁</button><div class="view-title" id="sourceTitle">音樂來源</div><div id="sourceCount" class="sub" style="margin-top:-2px"></div><p class="sub">來源可含歌唱；排除新聞、主持、Talk、政治與體育口播。播放時即時確認。</p><div class="source-list" id="sources"></div></section>
-<section id="playerView" class="view player-screen"><button class="back" onclick="showSources()">‹ 返回音樂來源</button><div class="view-title">Now Playing</div><div class="turn-wrap"><div class="turntable"><div class="platter"></div><div class="turn" id="turn"><div class="core-counter" id="coreCounter"><div class="spindle"></div><div class="genre-logo" id="genreLogo"><span id="genreLogoText">PIANO</span></div></div></div><svg class="arm-svg" viewBox="0 0 330 330" aria-hidden="true"><circle class="pivot" cx="286" cy="34" r="17"/><path class="arm" d="M286 34 C286 66 282 100 272 136 C263 172 253 205 244 232"/><path class="arm-inner" d="M286 34 C286 66 282 100 272 136 C263 172 253 205 244 232"/><g class="needle" id="needle"><path class="headshell" d="M244 225 L230 231 L232 243 L247 239 Z"/><path class="stylus" d="M234 241 L257 276"/></g></svg></div></div><div class="playername" id="playername">GLOBAL SOUND 24 · Ready</div><div class="status" id="status">等待播放</div><audio id="audio" class="audio-engine" preload="auto" playsinline webkit-playsinline></audio><button class="play" id="play" aria-label="播放">▶</button></section>
+<section id="playerView" class="view player-screen"><button class="back" onclick="returnToSourceList()">‹ 返回來源</button><div class="view-title">Now Playing</div><div class="turn-wrap"><div class="turntable"><div class="platter"></div><div class="turn" id="turn"><div class="core-counter" id="coreCounter"><div class="spindle"></div><div class="genre-logo" id="genreLogo"><span id="genreLogoText">PIANO</span></div></div></div><svg class="arm-svg" viewBox="0 0 330 330" aria-hidden="true"><circle class="pivot" cx="286" cy="34" r="17"/><path class="arm" d="M286 34 C286 66 282 100 272 136 C263 172 253 205 244 232"/><path class="arm-inner" d="M286 34 C286 66 282 100 272 136 C263 172 253 205 244 232"/><g class="needle" id="needle"><path class="headshell" d="M244 225 L230 231 L232 243 L247 239 Z"/><path class="stylus" d="M234 241 L257 276"/></g></svg></div></div><div class="playername" id="playername">GLOBAL SOUND 24 · Ready</div><div class="status" id="status">等待播放</div><audio id="audio" class="audio-engine" preload="auto" playsinline webkit-playsinline></audio><div id="officialEmbed" style="display:none"></div><button class="play" id="play" aria-label="播放">▶</button></section>
 <section id="spaceView" class="view"><button class="back" onclick="showHome()">‹ 回首頁</button><div class="view-title">聲音空間</div><p class="sub">簡單、立即可用的聲音工具。</p><div class="space-tools">
 <div class="space-tool"><h3>🎸 吉他調音器</h3><p>使用手機麥克風偵測吉他音高，標準調弦 E A D G B E。</p><button onclick="startTuner()" id="tunerBtn">開始調音</button><div class="tuner-readout" id="tunerNote">—</div><div class="tuner-note" id="tunerCents">請先允許麥克風</div><div class="tuner-meter"><div class="tuner-needle" id="tunerNeedle"></div></div></div>
 <div class="space-tool"><h3>🥁 節拍器</h3><p>調整 BPM 後立即套用，不需停止。</p><div class="row"><span class="bpm" id="bpmValue">90</span><input id="bpm" type="range" min="40" max="200" value="90" oninput="updateMetroBpm(this.value)"><button id="metroBtn" onclick="toggleMetro()">開始</button></div></div>
 <div class="space-tool"><h3>🎵 音頻產生器</h3><p>20 Hz–20 kHz · Sine / Square / Triangle / Sawtooth</p><div class="row"><select id="wave" class="gen-select"><option>sine</option><option>square</option><option>triangle</option><option>sawtooth</option></select><input id="freq" class="freq-input" type="number" min="20" max="20000" value="440" step="1"><span>Hz</span></div><div class="row" style="margin-top:10px"><input id="freqRange" type="range" min="20" max="20000" value="440" oninput="syncFreq(this.value)"><input id="vol" type="range" min="0" max="1" step="0.01" value="0.25"><button onclick="toggleTone()" id="toneBtn">播放</button></div></div>
-<div class="space-tool sleep"><h3>🌙 睡眠聲音</h3><p>獨立睡眠聲音工具，可搭配 Sleep Timer。</p><div class="sleep-grid"><button class="sleep-btn" onclick="playSleep('white')">🤍<b>白噪音</b><small>White Noise</small></button><button class="sleep-btn" onclick="playSleep('pink')">🌸<b>粉紅噪音</b><small>Pink Noise</small></button><button class="sleep-btn" onclick="playSleep('brown')">🤎<b>棕噪音</b><small>Brown Noise</small></button><button class="sleep-btn" onclick="playSleep('rain')">🌧️<b>雨聲</b><small>Rain</small></button><button class="sleep-btn" onclick="playSleep('ocean')">🌊<b>海浪</b><small>Ocean</small></button><button class="sleep-btn" onclick="playSleep('forest')">🌲<b>森林</b><small>Forest</small></button><button class="sleep-btn" onclick="playSleep('campfire')">🔥<b>營火</b><small>Campfire</small></button><button class="sleep-btn" onclick="playSleep('wind')">💨<b>風聲</b><small>Wind</small></button><button class="sleep-btn" onclick="playSleep('thunder')">⛈️<b>雷雨</b><small>Thunderstorm</small></button></div><div class="row" style="margin-top:12px"><select id="sleepTimer" class="gen-select"><option value="0">Sleep Timer：關閉</option><option value="30">30 分鐘</option><option value="60">1 小時</option><option value="120">2 小時</option><option value="240">4 小時</option><option value="480">8 小時</option></select><button onclick="stopSleep()">停止</button></div><div class="status" id="sleepStatus">尚未播放睡眠聲音</div></div>
+<div class="space-tool sleep" id="sleepSection"><h3>🌙 睡眠聲音</h3><p>獨立睡眠聲音工具，可搭配 Sleep Timer。</p><div class="sleep-grid"><button class="sleep-btn" onclick="playSleep('white')">🤍<b>白噪音</b><small>White Noise</small></button><button class="sleep-btn" onclick="playSleep('pink')">🌸<b>粉紅噪音</b><small>Pink Noise</small></button><button class="sleep-btn" onclick="playSleep('brown')">🤎<b>棕噪音</b><small>Brown Noise</small></button><button class="sleep-btn" onclick="playSleep('rain')">🌧️<b>雨聲</b><small>Rain</small></button><button class="sleep-btn" onclick="playSleep('ocean')">🌊<b>海浪</b><small>Ocean</small></button><button class="sleep-btn" onclick="playSleep('forest')">🌲<b>森林</b><small>Forest</small></button><button class="sleep-btn" onclick="playSleep('campfire')">🔥<b>營火</b><small>Campfire</small></button><button class="sleep-btn" onclick="playSleep('wind')">💨<b>風聲</b><small>Wind</small></button><button class="sleep-btn" onclick="playSleep('thunder')">⛈️<b>雷雨</b><small>Thunderstorm</small></button></div><div class="row" style="margin-top:12px"><select id="sleepTimer" class="gen-select"><option value="0">Sleep Timer：關閉</option><option value="30">30 分鐘</option><option value="60">1 小時</option><option value="120">2 小時</option><option value="240">4 小時</option><option value="480">8 小時</option></select><button onclick="stopSleep()">停止</button></div><div class="status" id="sleepStatus">尚未播放睡眠聲音</div></div>
 </div></section>
 </main>
 <nav class="bottom-nav" aria-label="底部導覽"><button id="favNav" onclick="toggleFavorites()"><span class="ico">♡</span><span>收藏</span></button><button id="settingsNav" onclick="openSettings()"><span class="ico">⚙︎</span><span>Settings</span></button></nav>
-<div class="overlay" id="overlay" aria-hidden="true"><div class="sheet"><div class="sheettop"><strong>Settings</strong><button class="close" id="close">×</button></div><button class="opt" onclick="showHome();closeSettings()">回首頁</button><button class="opt" onclick="showSpace();closeSettings()">聲音空間</button><p style="color:#777;font-size:12px;margin-top:15px">GLOBAL SOUND 24 V207</p></div></div>
+<div class="overlay" id="overlay" aria-hidden="true"><div class="sheet"><div class="sheettop"><strong>Settings</strong><button class="close" id="close">×</button></div><button class="opt" onclick="showHome();closeSettings()">回首頁</button><button class="opt" onclick="showSpace();closeSettings()">聲音空間</button><p style="color:#777;font-size:12px;margin-top:15px">GLOBAL SOUND 24 V208</p></div></div>
 <script>
 const countries=[['tw','🇹🇼','台灣'],['cn','🇨🇳','中國'],['jp','🇯🇵','日本'],['kr','🇰🇷','韓國'],['us','🇺🇸','美國'],['uk','🇬🇧','英國']];
 let selected=new Set(countries.map(x=>x[0])); let currentGenre=''; let currentFaith='';
 let activeSource=null, activeUrlIndex=0, playTimeout=null, playStarted=false;
 const audio=document.getElementById('audio'), turn=document.getElementById('turn'), needle=document.getElementById('needle'), genreLogo=document.getElementById('genreLogo'), status=document.getElementById('status'), playername=document.getElementById('playername');
 const genres=[
- ['instrumental','純音樂','PURE INSTRUMENTAL','instrumental.jpg'],['piano','Piano','PIANO','piano.jpg'],['jazz','Jazz','JAZZ MUSIC','jazz.jpg'],['classical','Classical','CLASSICAL MUSIC','classical.jpg'],['acoustic','Acoustic','ACOUSTIC MUSIC','instrumental.jpg'],['electronic','Electronic','ELECTRONIC MUSIC','rock.jpg'],['ambient','Ambient','AMBIENT MUSIC','instrumental.jpg'],['world','World Music','WORLD MUSIC','instrumental.jpg'],['rnb','R&B','R&B MUSIC','rnb.jpg'],['rock','Rock','ROCK MUSIC','rock.jpg'],['pop','Pop','POP MUSIC','hot_us.jpg']
+ ['instrumental','純音樂','PURE INSTRUMENTAL','instrumental.jpg'],['piano','Piano','PIANO','piano.jpg'],['jazz','Jazz','JAZZ MUSIC','jazz.jpg'],['classical','Classical','CLASSICAL MUSIC','classical.jpg'],['rnb','R&B','R&B MUSIC','rnb.jpg'],['rock','Rock','ROCK MUSIC','rock.jpg'],['pop','Pop','POP MUSIC','hot_us.jpg']
  ];
 const faiths=[
  ['buddhist','🪷 佛教','梵唄・佛號・禪修'],
@@ -105,10 +107,10 @@ const testSources=[
  {c:'global',faith:'protestant',g:'faith',type:'music',name:'Abiding Radio · Sacred',meta:'基督新教 · Sacred Hymns · 可含歌唱',manifest:'https://www.abidingradio.org/media/',urls:['https://www.abidingradio.org/radio/sacred']},
  {c:'us',faith:'protestant',g:'faith',type:'instrumental',name:'Abiding Radio · Bluegrass Hymns',meta:'基督新教 · Bluegrass Hymns · 純器樂',manifest:'https://www.abidingradio.org/media/',urls:['https://www.abidingradio.org/radio/bluegrass']},
  {c:'us',faith:'protestant',g:'faith',type:'music',name:'FBC Radio · Great Hymns of the Faith',meta:'基督新教 · Sacred Traditional Music · 24H',manifest:'https://www.fbcradio.org/',urls:['https://cast1.my-control-panel.com/proxy/foundati/stream','https://cast2.my-control-panel.com/proxy/foundat1/stream']},
- {c:'global',faith:'catholic',g:'faith',type:'music',name:'SACREDMUSIC.FM · Gregorian Chant',meta:'天主教／聖樂 · Gregorian Chant & Renaissance Polyphony · 24H',manifest:'https://www.sacredmusic.fm/',urls:[]},
- {c:'global',faith:'tibetan',g:'faith',type:'music',name:'Lungta Radio · Tibetan Spiritual & Devotional',meta:'藏傳佛教相關 · Tibetan Spiritual & Devotional Music · 24H',manifest:'https://chakrishar.com/projects/lungta-radio/',urls:[]},
- {c:'global',faith:'buddhist',g:'faith',type:'music',name:'World Buddhist Radio',meta:'佛教 · Buddhist Music & Dharma · 24H',manifest:'https://bdcu.org.au/',urls:[]},
- {c:'global',faith:'spiritual',g:'faith',type:'music',name:'Sanathana Vani · Spiritual Stream',meta:'靈性 · Chants / Meditation / Instrumental · 24H',manifest:'https://www.saiprakashana.org/sanathana-vani/',urls:[]}
+ {c:'global',faith:'catholic',g:'faith',type:'music',name:'SACREDMUSIC.FM · Gregorian Chant',meta:'天主教／聖樂 · Gregorian Chant & Renaissance Polyphony · 24H',manifest:'https://www.sacredmusic.fm/',embedUrl:'https://www.sacredmusic.fm/',urls:[]},
+ {c:'global',faith:'tibetan',g:'faith',type:'music',name:'Lungta Radio · Tibetan Spiritual & Devotional',meta:'藏傳佛教相關 · Tibetan Spiritual & Devotional Music · 24H',manifest:'https://lungtaradio.com/',embedUrl:'https://lungtaradio.com/',urls:[]},
+ {c:'global',faith:'buddhist',g:'faith',type:'music',name:'World Buddhist Radio',meta:'佛教 · Buddhist Music & Dharma · 24H',manifest:'https://bdcu.org.au/buddhist-radio/',embedUrl:'https://bdcu.org.au/buddhist-radio/',urls:[]},
+ {c:'global',faith:'spiritual',g:'faith',type:'music',name:'Sanathana Vani · Spiritual Stream',meta:'靈性 · Chants / Meditation / Instrumental · 24H',manifest:'https://www.saiprakashana.org/sanathana-vani/',embedUrl:'https://www.saiprakashana.org/sanathana-vani/',urls:[]}
 ];
 let sourceRefreshDone=false;
 const candidateSources=testSources.map(x=>({...x,urls:[...(x.urls||[])]}));
@@ -145,7 +147,7 @@ async function verifyOneSource(src,index,total,background=false){
 }
 
 async function refreshSourceRegistry(){
- const candidates=candidateSources.slice(); let next=0;
+ const candidates=candidateSources.filter(x=>genres.some(g=>g[0]===x.g)||x.faith); let next=0;
  const worker=async()=>{while(true){const i=next++;if(i>=candidates.length)return;const src=candidates[i];for(const url of (src.urls||[])){const ok=await testAudioUrl(url,{timeout:3500});if(ok){sourceHealth.set(src.name,{ok:true,at:Date.now()});renderSources();break}}}};
  Promise.all([worker(),worker(),worker()]).catch(()=>{});
 }
@@ -179,22 +181,22 @@ function closeCharts(){document.getElementById('chartModal').classList.remove('s
 function openOfficialChart(c){const u={tw:'https://music.youtube.com/charts',cn:'https://music.youtube.com/charts',jp:'https://music.youtube.com/charts',kr:'https://music.youtube.com/charts',us:'https://music.youtube.com/charts',uk:'https://music.youtube.com/charts'}[c]||'https://music.youtube.com/charts';window.open(u,'_blank','noopener')}
 function hideViews(){document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'))}
 function showHome(){hideViews();currentGenre='';currentFaith='';document.getElementById('homeView').classList.add('active');renderRegions();renderFaith();renderHot();history.replaceState(null,'','#home');window.scrollTo(0,0)}
-function showSources(g=''){currentGenre=g;currentFaith='';hideViews();document.getElementById('sourcesView').classList.add('active');history.replaceState(null,'','#sources');const genre=genres.find(x=>x[0]===g);document.getElementById('sourceTitle').textContent=genre?genre[1]+' · 音樂來源':'音樂來源';renderSources();window.scrollTo(0,0)}
-function showFaith(f=''){currentFaith=f;currentGenre='';hideViews();document.getElementById('sourcesView').classList.add('active');history.replaceState(null,'','#faith');const faith=faiths.find(x=>x[0]===f);document.getElementById('sourceTitle').textContent=faith?faith[1]+' · 宗教音樂':'信仰・靈性';renderSources();window.scrollTo(0,0)}
+function showSources(g=''){hideOfficialEmbed();currentGenre=g;currentFaith='';hideViews();document.getElementById('sourcesView').classList.add('active');history.replaceState(null,'','#sources');const genre=genres.find(x=>x[0]===g);document.getElementById('sourceTitle').textContent=genre?genre[1]+' · 音樂來源':'音樂來源';renderSources();window.scrollTo(0,0)}
+function showFaith(f=''){hideOfficialEmbed();currentFaith=f;currentGenre='';hideViews();document.getElementById('sourcesView').classList.add('active');history.replaceState(null,'','#faith');const faith=faiths.find(x=>x[0]===f);document.getElementById('sourceTitle').textContent=faith?faith[1]+' · 宗教音樂':'信仰・靈性';renderSources();window.scrollTo(0,0)}
 function showSpace(){hideViews();document.getElementById('spaceView').classList.add('active');history.replaceState(null,'','#space');window.scrollTo(0,0)}
 function renderSources(){
  const s=document.getElementById('sources');
- const list=testSources.filter(x=>!badSources.has(x.name)&&(x.c==='global'||selected.has(x.c))&&(currentFaith?x.faith===currentFaith:(!currentGenre||x.g===currentGenre)));
+ const list=testSources.filter(x=>(x.c==='global'||selected.has(x.c))&&(currentFaith?x.faith===currentFaith:(!currentGenre||x.g===currentGenre)));
  const count=document.getElementById('sourceCount');
  if(count)count.textContent=list.length?`音樂來源 ${list.length} 個`:'目前沒有符合這個曲風／地區的來源';
  if(!list.length){s.innerHTML='<div class="empty">目前沒有這個曲風的來源。請改選其他地區或曲風。</div>';return;}
  s.innerHTML=list.map(x=>{
    const health=sourceHealth.get(x.name);
    const label=x.type==='instrumental'?'純器樂':'可含歌唱';
-   const state=health?.ok?'✓ 最近播放成功':'點選後即時測試';
-   return `<button class="source-card" data-i="${testSources.indexOf(x)}"><strong>${x.name}</strong><small>${x.meta}</small><div class="source-meta ${health?.ok?'verified':'pending'}">${x.urls?.length?(health?.ok?'✓ 最近播放成功':'點選後即時測試'):'官方來源已找到，播放器串流待接入'}</div><em>${label}</em></button>`;
+   const failed=sourceHealth.get(x.name)?.ok===false;
+   return `<button class="source-card" data-i="${testSources.indexOf(x)}"><strong>${x.name}</strong><small>${x.meta}</small><div class="source-meta ${health?.ok?'verified':'pending'}">${x.urls?.length?(health?.ok?'✓ 最近播放成功':(failed?'⚠ 上次播放失敗，點擊重試':'點擊播放')):(x.embedUrl?'官方播放器（App 內開啟）':'官方來源已找到，播放器串流待接入')}</div><em>${label}</em></button>`;
  }).join('');
- s.querySelectorAll('.source-card').forEach(b=>b.onclick=()=>{const x=testSources[+b.dataset.i]; if(x.urls&&x.urls.length) playSource(x); else if(x.manifest) window.open(x.manifest,'_blank','noopener')});
+ s.querySelectorAll('.source-card').forEach(b=>b.onclick=()=>{const x=testSources[+b.dataset.i]; if(x.urls&&x.urls.length) playSource(x); else if(x.embedUrl) showOfficialEmbed(x); else if(x.manifest) showOfficialEmbed({...x,embedUrl:x.manifest})});
 }
 
 function clearPlayTimeout(){if(playTimeout){clearTimeout(playTimeout);playTimeout=null}}
@@ -229,15 +231,26 @@ function tryNextUrl(){clearPlayTimeout();activeUrlIndex++;if(activeSource&&activ
 function sourceFailed(){
  cleanupAudio();playStarted=false;turn.classList.remove('spinning');needle.classList.remove('down');genreLogo.classList.remove('playing');setBusy(false);setPlayIcon(false);
  status.textContent='此來源目前無法播放，請換另一個來源';
- if(activeSource)badSources.add(activeSource.name);
- setTimeout(()=>showSources(currentGenre),700);
+ if(activeSource)sourceHealth.set(activeSource.name,{ok:false,at:Date.now()});
+ setTimeout(returnToSourceList,700);
 }
+function returnToSourceList(){hideOfficialEmbed(); if(currentFaith)showFaith(currentFaith); else showSources(currentGenre)}
 
 function setGenreLogo(x){
- const map={instrumental:'INSTRUMENTAL',piano:'PIANO',jazz:'JAZZ',classical:'CLASSICAL',acoustic:'ACOUSTIC',electronic:'ELECTRONIC',ambient:'AMBIENT',world:'WORLD',rnb:'R&B',rock:'ROCK',pop:'POP',faith:'FAITH'};
+ const map={instrumental:'INSTRUMENTAL',piano:'PIANO',jazz:'JAZZ',classical:'CLASSICAL',rnb:'R&B',rock:'ROCK',pop:'POP',faith:'FAITH'};
  document.getElementById('genreLogoText').textContent=map[currentGenre]||map[x?.g]||'MUSIC';genreLogo.classList.remove('playing');
 }
+
+function showOfficialEmbed(x){
+ activeSource=x; activeUrlIndex=0; hideViews(); document.getElementById('playerView').classList.add('active'); history.replaceState(null,'','#player'); window.scrollTo(0,0);
+ setGenreLogo(x); playername.textContent=x.name; status.textContent='官方播放器'; setBusy(false); setPlayIcon(false);
+ const wrap=document.getElementById('officialEmbed');
+ wrap.innerHTML=`<div class="embed-box"><iframe src="${x.embedUrl}" title="${x.name}" loading="lazy" allow="autoplay; encrypted-media"></iframe><div class="embed-note">這個宗教音樂來源目前提供官方網頁播放器。GLOBAL SOUND 24 不另開新視窗，直接在 App 內顯示。</div></div>`;
+ wrap.style.display='block'; document.querySelector('.turn-wrap').style.display='none'; document.getElementById('play').style.display='none';
+}
+function hideOfficialEmbed(){const wrap=document.getElementById('officialEmbed'); if(wrap){wrap.innerHTML='';wrap.style.display='none'} document.querySelector('.turn-wrap').style.display='block'; document.getElementById('play').style.display='block'}
 function playSource(x){
+ hideOfficialEmbed();
  activeSource=x;activeUrlIndex=0;setGenreLogo(x);hideViews();document.getElementById('playerView').classList.add('active');history.replaceState(null,'','#player');window.scrollTo(0,0);
  playername.textContent=x.name;status.textContent='準備播放';setPlayIcon(false);setBusy(false);
  // First attempt is initiated directly from the user's tap on the source card.
