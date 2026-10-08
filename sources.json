@@ -1,28 +1,16 @@
 {
-  "version": "V188",
+  "version": "V189",
   "test_mode": true,
   "browser_target": "Chrome",
   "sources": [
-    {
-      "name": "Jazz24 · Live Jazz",
-      "country": "US",
-      "genre": "jazz",
-      "status": "user-confirmed-playable",
-      "urls": ["https://knkx-live-a.edge.audiocdn.com/6285_128k", "https://knkx-live-a.edge.audiocdn.com/6285_64k"]
-    },
-    {
-      "name": "WWOZ · New Orleans Jazz",
-      "country": "US",
-      "genre": "jazz",
-      "status": "candidate",
-      "urls": ["https://wwoz-sc.streamguys1.com/wwoz-hi.mp3"]
-    },
-    {
-      "name": "KCRW · Eclectic24",
-      "country": "US",
-      "genre": "instrumental",
-      "status": "candidate",
-      "urls": ["https://streams.kcrw.com/e24_mp3", "https://kcrw.streamguys1.com/kcrw_192k_mp3_e24"]
-    }
+    {"name":"Jazz24 · Live Jazz","country":"US","genre":"jazz","status":"user-confirmed-playable","urls":["https://knkx-live-a.edge.audiocdn.com/6285_128k","https://knkx-live-a.edge.audiocdn.com/6285_64k"]},
+    {"name":"WWOZ · New Orleans Jazz","country":"US","genre":"jazz","status":"candidate","urls":["https://wwoz-sc.streamguys1.com/wwoz-hi.mp3"]},
+    {"name":"KCSM Jazz 91","country":"US","genre":"jazz","status":"candidate","urls":["https://ice7.securenetsystems.net/KCSM2"]},
+    {"name":"KCRW · Eclectic24","country":"US","genre":"instrumental","status":"candidate","urls":["https://streams.kcrw.com/e24_mp3","https://kcrw.streamguys1.com/kcrw_192k_mp3_e24"]},
+    {"name":"KEXP · Live Music","country":"US","genre":"rock","status":"candidate","urls":["https://kexp.streamguys1.com/kexp160.aac","https://kexp.streamguys1.com/kexp64.aac"]},
+    {"name":"Radio Paradise · Main Mix","country":"US","genre":"rock","status":"candidate","urls":["https://stream-tx3.radioparadise.com/mp3-192","https://stream-dc1.radioparadise.com/mp3-192","https://stream-tx1.radioparadise.com/mp3-128"]},
+    {"name":"90s90s · R&B","country":"US","genre":"rnb","status":"candidate","urls":["https://streams.90s90s.de/rnb/mp3-192/streams.90s90s.de/","https://streams.90s90s.de/rnb/mp3-128/streams.90s90s.de/"]},
+    {"name":"WQXR · Classical 105.9","country":"US","genre":"classical","status":"candidate","urls":["https://stream.wqxr.org/wqxr"]},
+    {"name":"Classical KC · 91.9","country":"US","genre":"classical","status":"candidate","urls":["https://kcur.streamguys1.com/classicalkc-website-mp3","https://kcur.streamguys1.com/classicalkc-website-icy"]}
   ]
 }

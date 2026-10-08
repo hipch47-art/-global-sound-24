@@ -1,10 +1,2 @@
-GLOBAL SOUND 24 V188
-
-本版重點：
-1. Chrome 測試優先。
-2. 新增 Source Diagnostic：Connecting / Metadata OK / PLAYING / FAILED。
-3. 只有真正收到 playing 事件才讓唱片旋轉與唱針下降。
-4. 重新設計唱盤：唱臂、唱頭、唱針位置改為正確的黑膠唱盤結構，不再使用舊版錯誤讀寫頭。
-5. Jazz24 標示為目前已由使用者 Chrome 實測可播放。
-6. WWOZ、KCRW Eclectic24 為候選音源，第一次測試成功後才視為可用；失敗會在本次 session 隱藏。
-7. 真正商用版仍應由後端做持續 Health Check 與播放來源管理。
+GLOBAL SOUND 24 V190
+Pure Instrumental Sources Edition
