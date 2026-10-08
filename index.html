@@ -190,20 +190,13 @@ let radioCache=new Map(), radioRequestToken=0;
 const data={
  music:[['🎼','純音樂 / Instrumental','Instrumental · No Vocals','instrumental'],['🎤','R&B','R&B · Soul · Groove','rnb'],['🎷','Jazz','Jazz · Lounge · Smooth','jazz'],['🎻','Classical','Classical · Orchestra · Opera','classical'],['🎹','Piano','Piano · Instrumental','piano'],['🎸','Acoustic','Acoustic · Guitar','acoustic'],['🎛️','Electronic','Electronic · House · Ambient','electronic'],['🥁','Rock','Rock · Alternative','rock'],['🎵','Pop','Pop · Top 40','pop'],['🎙️','Hip-Hop','Hip-Hop · Rap','hip-hop'],['🌎','World Music','Global · Folk · World','world'],['🌙','Lo-fi','Lo-fi · Chill','lofi'],['〰️','Ambient','Ambient · Soundscape','ambient']],
  nature:[['🌧️','雨聲','Rain · Relax','rain'],['🌊','海浪','Ocean · Coast','ocean'],['🌲','森林','Forest · Nature','nature'],['🔥','壁爐','Fireplace · Night','fireplace']],
- faith:[['🪷','佛教','佛經 · 梵唱 · 禪修','buddhist'],['🏔️','藏傳佛教','Tibetan Chant · Mantra','tibetan'],['✝️','基督宗教','Hymns · Gospel · Worship','christian'],['☪️','伊斯蘭','Quran · Nasheed','quran'],['🕉️','印度教','Mantra · Vedic Chant','hindu'],['✡️','猶太教','Jewish Prayer · Hebrew Chant','jewish'],['☯️','道教','道樂 · 經典','taoist'],['🕯️','其他靈性','Sikh · Jain · Shinto · Spiritual','spiritual']],
- region:[['🌏','亞洲','Taiwan · China · Japan · Korea · India','ASIA'],['🌍','歐洲','France · United Kingdom · Germany · Italy','EUROPE'],['🌎','美洲','United States · Canada · Latin America','AMERICAS'],['🕌','中東','Middle East · Arabic','MIDEAST'],['🌍','非洲','Africa · Regional Sounds','AFRICA'],['🌊','大洋洲','Australia · New Zealand · Pacific','OCEANIA'],['🌐','世界','Global Sources','WORLD']]
+ faith:[['🪷','佛教','佛經 · 梵唱 · 禪修','buddhist'],['🏔️','藏傳佛教','Tibetan Chant · Mantra','tibetan'],['✝️','天主教','Gregorian Chant · Catholic Hymns · Latin Mass','catholic'],['⛪','基督新教','Hymns · Gospel · Worship','protestant'],['🕯️','其他靈性','Meditation · Spiritual · Healing','spiritual']],
+ region:[['🇹🇼','台灣','Taiwan · TW','TW'],['🇨🇳','中國','China · CN','CN'],['🇯🇵','日本','Japan · JP','JP'],['🇭🇰','香港','Hong Kong · HK','HK'],['🇺🇸','美國','United States · US','US'],['🇬🇧','英國','United Kingdom · GB','GB']]
 };
-const regionCountries={
- '亞洲':[['🇹🇼','台灣','TW'],['🇨🇳','中國','CN'],['🇯🇵','日本','JP'],['🇰🇷','韓國','KR'],['🇮🇳','印度','IN']],
- '歐洲':[['🇫🇷','法國','FR'],['🇬🇧','英國','GB'],['🇩🇪','德國','DE'],['🇮🇹','義大利','IT'],['🇪🇸','西班牙','ES'],['🇳🇱','荷蘭','NL']],
- '美洲':[['🇺🇸','美國','US'],['🇨🇦','加拿大','CA'],['🇲🇽','墨西哥','MX'],['🇧🇷','巴西','BR']],
- '中東':[['🇸🇦','沙烏地阿拉伯','SA'],['🇦🇪','阿拉伯聯合大公國','AE'],['🇮🇱','以色列','IL'],['🇹🇷','土耳其','TR']],
- '非洲':[['🇪🇬','埃及','EG'],['🇿🇦','南非','ZA'],['🇲🇦','摩洛哥','MA']],
- '大洋洲':[['🇦🇺','澳洲','AU'],['🇳🇿','紐西蘭','NZ']],
- '世界':[['🌐','世界','WORLD']]
-};
+const regionCountries={'地區':[['🇹🇼','台灣','TW'],['🇨🇳','中國','CN'],['🇯🇵','日本','JP'],['🇭🇰','香港','HK'],['🇺🇸','美國','US'],['🇬🇧','英國','GB']]};
+const ALLOWED_COUNTRIES=['TW','CN','JP','HK','US','GB'];
 const labels={music:'音樂類型',nature:'放鬆・自然',faith:'信仰・靈性',region:'地區'};
-const faithTags={buddhist:['buddhist','buddhism','zen','mantra'],tibetan:['tibetan','tibetan chant','mantra'],christian:['christian','gospel','worship','hymn','gregorian'],quran:['quran','koran','islamic','nasheed'],hindu:['hindu','mantra','vedic','bhajan'],jewish:['jewish','hebrew','torah'],taoist:['taoist','taoism','chinese traditional'],spiritual:['meditation','spiritual','new age','healing','sikh','jain','shinto']};
+const faithTags={buddhist:['buddhist','buddhism','zen','mantra'],tibetan:['tibetan','tibetan chant','tibetan buddhism','mantra'],catholic:['catholic','gregorian','gregorian chant','latin mass','catholic hymns'],protestant:['protestant','christian','gospel','worship','hymn'],spiritual:['meditation','spiritual','new age','healing','sound bath','singing bowl']};
 const musicTags={instrumental:['instrumental','no vocals','instrumental music','piano instrumental','guitar instrumental','acoustic instrumental','jazz instrumental','classical instrumental','ambient instrumental'],rnb:['rnb','r&b','rhythm and blues','soul','soul music'],jazz:['jazz','smooth jazz','jazz lounge'],classical:['classical','classic','orchestra','orchestral','opera'],piano:['piano','instrumental','solo piano'],acoustic:['acoustic','acoustic guitar','guitar'],electronic:['electronic','edm','house','techno','trance','dance'],rock:['rock','alternative','indie rock','classic rock'],pop:['pop','top 40','hits','pop music'],['hip-hop']:['hip-hop','hip hop','rap'],world:['world','world music','folk','ethnic'],lofi:['lofi','lo-fi','chill','chillout'],ambient:['ambient','soundscape','downtempo','chillout']};
 let exploreCategory=null, exploreSubcategory=null, exploreRegionArea=null;
 function showPage(id){document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));const el=document.getElementById(id);if(el)el.classList.add('active');if(id==='settings'){document.getElementById('settingsBack').textContent='‹ 回首頁';}window.scrollTo({top:0,behavior:'smooth'});}
@@ -234,26 +227,36 @@ function natureQualityOK(q, sub){
  return good.length===0 || good.some(x=>raw.includes(x)) || !q.tags;
 }
 async function queryTags(tags,category,subcategory,limit=18){
- const key='tag2|'+category+'|'+subcategory;
+ const key='tag3|'+category+'|'+subcategory;
  if(radioCache.has(key))return radioCache.get(key);
  const all=[]; const seen=new Set(); let errors=0;
+ const addRows=(arr)=>{
+   for(const q of arr){
+     const cc=String(q.countrycode||'').toUpperCase();
+     if(!ALLOWED_COUNTRIES.includes(cc))continue;
+     if(q.lastcheckok===0||!(q.url_resolved||q.url)||seen.has(q.stationuuid))continue;
+     if(category==='nature'&&!natureQualityOK(q,subcategory==='雨聲'?'rain':subcategory==='海浪'?'ocean':subcategory==='森林'?'nature':'fireplace'))continue;
+     seen.add(q.stationuuid); const x=stationToSource(q,category,subcategory); if(x)all.push(x);
+   }
+ };
  for(const tag of tags){
-   let arr=[];
-   try{arr=await queryStations({tag,limit:Math.max(12,Math.ceil(limit/tags.length)+6)});}catch(e){errors++;continue;}
-   for(const q of arr){if(q.lastcheckok===0||!(q.url_resolved||q.url)||seen.has(q.stationuuid))continue;if(category==='nature'&&!natureQualityOK(q,subcategory==='雨聲'?'rain':subcategory==='海浪'?'ocean':subcategory==='森林'?'nature':'fireplace'))continue;seen.add(q.stationuuid);const x=stationToSource(q,category,subcategory);if(x)all.push(x);if(all.length>=limit)break;}
+   for(const cc of ALLOWED_COUNTRIES){
+     let arr=[]; try{arr=await queryStations({tag,countrycode:cc,limit:10});}catch(e){errors++;continue;}
+     addRows(arr); if(all.length>=limit)break;
+   }
    if(all.length>=limit)break;
  }
- // If tag matching is sparse, try name matching for human-friendly genres.
  if(all.length<Math.min(6,limit)){
    for(const term of tags.slice(0,3)){
-     let arr=[]; try{arr=await queryStations({name:term,limit:12});}catch(e){errors++;continue;}
-     for(const q of arr){if(q.lastcheckok===0||!(q.url_resolved||q.url)||seen.has(q.stationuuid))continue;if(category==='nature'&&!natureQualityOK(q,subcategory==='雨聲'?'rain':subcategory==='海浪'?'ocean':subcategory==='森林'?'nature':'fireplace'))continue;seen.add(q.stationuuid);const x=stationToSource(q,category,subcategory);if(x)all.push(x);if(all.length>=limit)break;}
+     for(const cc of ALLOWED_COUNTRIES){
+       let arr=[]; try{arr=await queryStations({name:term,countrycode:cc,limit:8});}catch(e){errors++;continue;}
+       addRows(arr); if(all.length>=limit)break;
+     }
      if(all.length>=limit)break;
    }
  }
  const result=all.slice(0,limit); result._errors=errors; radioCache.set(key,result); return result;
 }
-
 async function queryCountry(code,area,limit=24){
  const key='country|'+code;if(radioCache.has(key))return radioCache.get(key);
  try{const arr=await apiFetch('/json/stations/bycountrycodeexact/'+encodeURIComponent(code)+'?limit='+limit+'&hidebroken=true&order=clickcount&reverse=true');
@@ -263,7 +266,19 @@ async function queryCountry(code,area,limit=24){
 async function queryCountryWorld(limit=30){
  const key='country|WORLD';if(radioCache.has(key))return radioCache.get(key);try{const arr=await apiFetch('/json/stations/topclick/'+limit+'?hidebroken=true');const out=arr.filter(s=>s.lastcheckok!==0&&(s.url_resolved||s.url)).map(s=>stationToSource(s,'region','World','世界')).filter(Boolean);radioCache.set(key,out);return out}catch(e){return []}}
 function showLoading(msg='正在尋找可播放音源…'){document.getElementById('exploreList').innerHTML='<div class="sourceLoading"><b>'+escapeHtml(msg)+'</b>正在連接全球音源目錄<div class="liveBadge">LIVE SOURCE DISCOVERY</div></div>';}
-function renderCategoryChoices(type){const list=document.getElementById('exploreList');document.getElementById('exploreTitle').textContent=labels[type];document.getElementById('exploreSub').textContent=type==='region'?'先選區域，再選國家，最後選音源。':type==='nature'?'只顯示以自然聲、環境聲為主的來源，新聞／談話型電台會自動排除。':'先選你想聽的風格，再從可播放音源中選擇。';document.getElementById('exploreBack').textContent='‹ 回首頁';const arr=data[type]||[];list.innerHTML='<div class="categoryGrid">'+arr.map(x=>`<button class="categoryChoice" onclick="selectSubcategory('${type}','${x[1].replace(/'/g,"\\'")}')"><div class="ci">${x[0]}</div><b>${x[1]}</b><small>${x[2]}</small></button>`).join('')+'</div><div class="apiNote">音源會即時從全球公開目錄尋找，先通過技術可播放條件才顯示。正式商業發布仍需後台權利審核。</div>';}
+function renderCategoryChoices(type){
+ const list=document.getElementById('exploreList');
+ document.getElementById('exploreTitle').textContent=labels[type];
+ document.getElementById('exploreSub').textContent=type==='region'?'先選國家，再選可播放的音源。':type==='nature'?'只顯示以自然聲、環境聲為主的來源，新聞／談話型電台會自動排除。':'先選你想聽的風格，再從可播放音源中選擇。';
+ document.getElementById('exploreBack').textContent='‹ 回首頁';
+ if(type==='region'){
+   const countries=regionCountries['地區'];
+   list.innerHTML='<div class="regionNote">限定地區</div><div class="categoryGrid">'+countries.map(x=>`<button class="categoryChoice" onclick="selectRegionCountry('地區','${x[1]}')"><div class="ci">${x[0]}</div><b>${x[1]}</b><small>${x[2]}</small></button>`).join('')+'</div><div class="apiNote">目前僅提供台灣、中國、日本、香港、美國、英國的音源。</div>';
+   return;
+ }
+ const arr=data[type]||[];
+ list.innerHTML='<div class="categoryGrid">'+arr.map(x=>`<button class="categoryChoice" onclick="selectSubcategory('${type}','${x[1].replace(/'/g,"\'")}')"><div class="ci">${x[0]}</div><b>${x[1]}</b><small>${x[2]}</small></button>`).join('')+'</div><div class="apiNote">音源會即時從全球公開目錄尋找，先通過技術可播放條件才顯示。正式商業發布仍需後台權利審核。</div>';
+}
 function renderRegionCountries(area){const list=document.getElementById('exploreList');document.getElementById('exploreTitle').textContent=area;document.getElementById('exploreSub').textContent='先選國家，再選可播放的音源。';document.getElementById('exploreBack').textContent='‹ 返回地區';const countries=regionCountries[area]||[];list.innerHTML='<div class="regionNote">國家 / 區域</div><div class="categoryGrid">'+countries.map(x=>`<button class="categoryChoice" onclick="selectRegionCountry('${area}','${x[1]}')"><div class="ci">${x[0]}</div><b>${x[1]}</b><small>${x[2]}</small></button>`).join('')+'</div>';}
 async function renderSubcategory(type,sub){
  const list=document.getElementById('exploreList');
@@ -287,9 +302,9 @@ async function renderSubcategory(type,sub){
 }
 
 async function renderRegionSources(country,area,code){const list=document.getElementById('exploreList');document.getElementById('exploreTitle').textContent=country;document.getElementById('exploreSub').textContent='正在尋找可播放音源…';document.getElementById('exploreBack').textContent='‹ 返回'+area;showLoading();const rows=code==='WORLD'?await queryCountryWorld(30):await queryCountry(code,area,30);catalog=[...catalog.filter(x=>!rows.some(y=>y.id===x.id)),...rows];list.innerHTML=`<div class="sourceHeader">${escapeHtml(area)} · ${escapeHtml(country)}</div><div class="sourceHint">找到 <span class="sourceCount">${rows.length}</span> 個可播放候選音源</div>`;if(!rows.length){list.innerHTML+=`<div class="empty"><b>目前沒有找到可播放音源</b><br><small>這個國家的公開目錄目前沒有回傳可播放來源。</small></div>`;return;}list.innerHTML+=rows.map(s=>`<button class="row" onclick="openPlayerById('${s.id}')"><div class="thumb">${s.icon}</div><div class="info"><b>${escapeHtml(s.name)}</b><small>${escapeHtml(s.subtitle||s.country||'Live Stream')}</small><span class="sourceMeta">${escapeHtml(s.source||'Global Source')} · ${escapeHtml(s.codec||'audio')}</span></div><span>›</span></button>`).join('');}
-function selectSubcategory(type,sub){exploreCategory=type;exploreSubcategory=sub;if(type==='region'){exploreRegionArea=sub;renderRegionCountries(sub);}else renderSubcategory(type,sub);}
+function selectSubcategory(type,sub){exploreCategory=type;exploreSubcategory=sub;if(type==='region'){selectRegionCountry('地區',sub);}else renderSubcategory(type,sub);}
 function selectRegionCountry(area,country){const x=(regionCountries[area]||[]).find(v=>v[1]===country);exploreRegionArea=area;exploreSubcategory=country;renderRegionSources(country,area,x?.[2]||'WORLD');}
-function exploreBackAction(){if(exploreCategory==='region'&&exploreSubcategory){exploreSubcategory=null;renderRegionCountries(exploreRegionArea);return;}if(exploreCategory==='region'&&exploreRegionArea){exploreRegionArea=null;renderCategoryChoices('region');return;}if(exploreSubcategory){exploreSubcategory=null;renderCategoryChoices(exploreCategory);return;}showPage('home');}
+function exploreBackAction(){if(exploreCategory==='region'&&exploreSubcategory){exploreSubcategory=null;renderCategoryChoices('region');return;}if(exploreSubcategory){exploreSubcategory=null;renderCategoryChoices(exploreCategory);return;}showPage('home');}
 function openCategory(type){exploreCategory=type;exploreSubcategory=null;exploreRegionArea=null;showPage('explore');renderCategoryChoices(type);}
 function openFirst(type){openCategory(type);}
 function updatePlayerTitleMotion(){const w=document.getElementById('playerTitleWrap'),t=document.getElementById('playerTitle');if(!w||!t)return;w.classList.remove('overflowing');t.style.animation='none';requestAnimationFrame(()=>{if(t.scrollWidth>w.clientWidth+4)w.classList.add('overflowing');});}

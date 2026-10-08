@@ -1,1 +1,1 @@
-GLOBAL SOUND 24 V153 - Instrumental / 純音樂 category added.
+GLOBAL SOUND 24 V158 — Region and faith scope fix. Regions: Taiwan, China, Japan, Hong Kong, United States, United Kingdom. Faith: Buddhism, Tibetan Buddhism, Catholic, Protestant, Other Spirituality.
