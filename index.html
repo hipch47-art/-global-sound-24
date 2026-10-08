@@ -12,7 +12,7 @@ button{font:inherit;color:inherit}main{max-width:760px;margin:auto;padding:24px 
 header{display:flex;align-items:center;justify-content:space-between;margin-bottom:26px}
 .logo{font-size:18px;font-weight:750;letter-spacing:.08em}.gear{border:1px solid var(--line);background:#111;border-radius:50%;width:42px;height:42px}
 h1{font-size:32px;margin:8px 0 22px}.section{margin-top:30px}.section h2{font-size:19px;margin:0 0 13px}.sub{font-size:13px;color:var(--muted);margin-top:-7px;margin-bottom:13px}
-.music-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:10px}.inline-regions{display:flex;flex-wrap:wrap;gap:7px;margin:0 0 15px}.region-chip{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:#151515;color:#aaa;border-radius:999px;padding:7px 10px;min-height:40px;cursor:pointer;font-size:14px;transition:.15s}.region-chip input{width:18px;height:18px;margin:0;accent-color:#1976ff}.region-chip.on{border-color:#1976ff;background:rgba(25,118,255,.12);color:#4da3ff;font-weight:800;box-shadow:0 0 0 1px rgba(25,118,255,.15)}.region-chip.on .flag{filter:none}.region-chip .flag{font-size:18px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.tile{border:1px solid var(--line);background:var(--card);border-radius:16px;padding:18px 12px;min-height:92px;text-align:left;cursor:pointer}.tile b{display:block;font-size:16px;margin-top:10px}.tile span{font-size:25px}
+.music-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:10px}.inline-regions{display:flex;flex-wrap:wrap;gap:7px;margin:0 0 15px}.region-chip{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:#151515;color:#aaa;border-radius:999px;padding:7px 10px;min-height:40px;cursor:pointer;font-size:14px;transition:.15s}.region-chip input{width:18px;height:18px;margin:0;accent-color:#1976ff}.region-chip.on{border-color:#1976ff;background:rgba(25,118,255,.12);color:#aaa;font-weight:400;box-shadow:0 0 0 1px rgba(25,118,255,.15)}.region-chip.on .flag{filter:none}.region-chip .flag{font-size:18px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.tile{border:1px solid var(--line);background:var(--card);border-radius:16px;padding:18px 12px;min-height:92px;text-align:left;cursor:pointer}.tile b{display:block;font-size:16px;margin-top:10px}.tile span{font-size:25px}
 .hot{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.hot button{border:1px solid var(--line);background:var(--card);border-radius:16px;padding:15px;text-align:left;min-height:76px;cursor:pointer}.hot strong{display:block;font-size:15px}.hot small{display:block;color:var(--muted);margin-top:5px}
 .genre{display:flex;gap:8px;overflow:auto;padding-bottom:4px}.genre button{white-space:nowrap;border:1px solid var(--line);background:#111;border-radius:999px;padding:10px 14px;cursor:pointer}
 .overlay{position:fixed;inset:0;background:rgba(0,0,0,.82);display:none;align-items:flex-end;justify-content:center;padding:14px}.sheet{width:min(700px,100%);background:#171717;border:1px solid var(--line);border-radius:22px;padding:20px}.sheettop{display:flex;justify-content:space-between;align-items:center}.close{background:#242424;border:0;border-radius:50%;width:38px;height:38px}.countries label{display:flex;align-items:center;gap:12px;padding:13px 2px;border-bottom:1px solid var(--line)}.countries input{width:20px;height:20px}.actions{display:flex;gap:8px;margin-top:12px}.actions button{border:1px solid var(--line);background:#242424;border-radius:10px;padding:9px 12px}
@@ -42,13 +42,8 @@ h1{font-size:32px;margin:8px 0 22px}.section{margin-top:30px}.section h2{font-si
 
 <section class="section">
 <h2>🔥 熱門音樂</h2>
-<div class="sub">快速找到最近大家正在聽的內容</div>
-<div class="hot">
-<button data-hot="抖音神曲"><strong>🎵 抖音神曲</strong><small>熱門短影音歌曲</small></button>
-<button data-hot="2026熱門"><strong>🔥 2026 熱門</strong><small>近期熱門歌曲</small></button>
-<button data-hot="2026金曲排行"><strong>🏆 2026 金曲排行</strong><small>熱門排行入口</small></button>
-<button data-hot="台灣熱門"><strong>🇹🇼 台灣熱門</strong><small>Trending Taiwan</small></button>
-</div>
+<div class="sub">依你選擇的地區，自動顯示對應熱門音樂</div>
+<div class="hot" id="hotMusic"></div>
 </section>
 
 <section class="section">
@@ -86,24 +81,49 @@ h1{font-size:32px;margin:8px 0 22px}.section{margin-top:30px}.section h2{font-si
     <option value="en-GB">🇬🇧 English (UK)</option>
   </select>
 </div>
-<p style="color:#aaa;font-size:14px;line-height:1.6">V167 · 國家選取藍色粗體強化<br>地區已從首頁移除，音樂類型使用右上角國家篩選。</p>
+<p style="color:#aaa;font-size:14px;line-height:1.6">V168 · 熱門音樂依地區動態顯示<br>地區已從首頁移除，音樂類型使用右上角國家篩選。</p>
 </div></div>
 
 <script>
 const countries=[['TW','🇹🇼','台灣'],['CN','🇨🇳','中國'],['JP','🇯🇵','日本'],['KR','🇰🇷','韓國'],['US','🇺🇸','美國'],['GB','🇬🇧','英國']];
 const selected=new Set(countries.map(x=>x[0]));
+const hotByCountry={
+ TW:[['🎵','台灣熱門歌曲','近期熱門流行音樂'],['🎤','華語流行','華語熱門歌曲'],['🏆','台灣熱門排行','熱門歌曲排行'],['📱','短影音熱門','近期短影音熱門歌曲']],
+ CN:[['🎵','抖音熱門','抖音熱門歌曲'],['🎤','華語流行','華語熱門歌曲'],['🏆','中國熱門排行','熱門歌曲排行'],['📱','短影音熱門','近期短影音熱門歌曲']],
+ JP:[['🎵','J-POP 熱門','日本熱門流行音樂'],['🎤','日本熱門歌曲','近期熱門歌曲'],['🏆','日本熱門排行','熱門歌曲排行'],['📱','短影音熱門','日本短影音熱門歌曲']],
+ KR:[['🎵','K-POP 熱門','韓國熱門流行音樂'],['🎤','韓國熱門歌曲','近期熱門歌曲'],['🏆','韓國熱門排行','熱門歌曲排行'],['📱','短影音熱門','韓國短影音熱門歌曲']],
+ US:[['🎵','US Top Hits','美國熱門歌曲'],['🎤','US Pop Hits','美國流行音樂'],['🏆','US Music Charts','美國熱門排行'],['📱','TikTok US Hits','美國短影音熱門歌曲']],
+ GB:[['🎵','UK Top Hits','英國熱門歌曲'],['🎤','UK Pop Hits','英國流行音樂'],['🏆','UK Music Charts','英國熱門排行'],['📱','UK Viral Hits','英國熱門短影音歌曲']]
+};
 const countryOverlay=document.getElementById('countryOverlay');
 const countriesBox=document.getElementById('countries');
 const inlineRegions=document.getElementById('inlineRegions');
 function drawInlineRegions(){
   inlineRegions.innerHTML=countries.map(([id,flag,name])=>`<label class="region-chip ${selected.has(id)?'on':''}"><input type="checkbox" data-inline-id="${id}" ${selected.has(id)?'checked':''}><span class="flag">${flag}</span><span>${name}</span></label>`).join('');
   inlineRegions.querySelectorAll('input').forEach(i=>i.addEventListener('change',()=>{
-    i.checked?selected.add(i.dataset.inlineId):selected.delete(i.dataset.inlineId);
+    i.checked?selected.add(i.dataset.inlineId):selected.delete(i.dataset.inlineId);renderHotMusic();
     i.closest('.region-chip').classList.toggle('on',i.checked);
     drawCountries();
   }));
 }
-function drawCountries(){countriesBox.innerHTML=countries.map(([id,flag,name])=>`<label><input type="checkbox" data-id="${id}" ${selected.has(id)?'checked':''}><span style="font-size:22px">${flag}</span><span>${name}</span></label>`).join('');countriesBox.querySelectorAll('input').forEach(i=>i.onchange=()=>{i.checked?selected.add(i.dataset.id):selected.delete(i.dataset.id);updateRegionCount();});}
+function renderHotMusic(){
+  const box=document.getElementById('hotMusic');
+  if(!box)return;
+  const ids=[...selected];
+  if(!ids.length){
+    box.innerHTML='<div style="color:#999;padding:14px 0">請至少選擇一個地區</div>';
+    return;
+  }
+  const cards=[];
+  ids.forEach(id=>{
+    (hotByCountry[id]||[]).slice(0,4).forEach(item=>{
+      cards.push(`<button type="button" data-hot="${item[1]}"><strong>${item[0]} ${item[1]}</strong><small>${item[2]}</small></button>`);
+    });
+  });
+  box.innerHTML=cards.slice(0,8).join('');
+  box.querySelectorAll('[data-hot]').forEach(b=>b.addEventListener('click',()=>playName(b.dataset.hot)));
+}
+function drawCountries(){countriesBox.innerHTML='' countries.map(([id,flag,name])=>`<label><input type="checkbox" data-id="${id}" ${selected.has(id)?'checked':''}><span style="font-size:22px">${flag}</span><span>${name}</span></label>`).join('');countriesBox.querySelectorAll('input').forEach(i=>i.onchange=()=>{i.checked?selected.add(i.dataset.id):selected.delete(i.dataset.id);updateRegionCount();});}
 drawCountries();
 drawInlineRegions();
 function updateRegionCount(){document.getElementById('regionCount').textContent=selected.size;}
@@ -112,10 +132,10 @@ document.getElementById('closeSettings').onclick=()=>document.getElementById('se
 
 function playName(name){document.getElementById('playername').textContent=name+' · '+[...selected].map(id=>countries.find(x=>x[0]===id)[2]).join('＋');document.getElementById('play').textContent='❚❚';}
 document.querySelectorAll('[data-genre]').forEach(b=>b.onclick=()=>playName(b.dataset.genre));
-document.querySelectorAll('[data-hot]').forEach(b=>b.onclick=()=>playName(b.dataset.hot));
+
 document.getElementById('closeCountry').onclick=()=>countryOverlay.style.display='none';
-document.getElementById('all').onclick=()=>{countries.forEach(x=>selected.add(x[0]));drawCountries();drawInlineRegions();updateRegionCount()};
-document.getElementById('none').onclick=()=>{selected.clear();drawCountries();drawInlineRegions();updateRegionCount()};
+document.getElementById('all').onclick=()=>{countries.forEach(x=>selected.add(x[0]));drawCountries();drawInlineRegions();renderHotMusic();updateRegionCount()};
+document.getElementById('none').onclick=()=>{selected.clear();drawCountries();drawInlineRegions();renderHotMusic();updateRegionCount()};
 updateRegionCount();
 document.getElementById('play').onclick=()=>{document.getElementById('play').textContent=document.getElementById('play').textContent==='▶'?'❚❚':'▶'};
 </script>
