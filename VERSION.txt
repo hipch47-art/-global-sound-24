@@ -1,3 +1,2 @@
-GLOBAL SOUND 24 V181
-Startup source refresh prototype.
-On app open, show Loading and refresh the latest stream paths from official M3U/HLS manifests where browser CORS permits. If a manifest cannot be fetched, retain verified fallback URLs. This improves resilience but is not a substitute for a production backend source registry.
+GLOBAL SOUND 24 V182
+Turntable visual upgrade: embossed guilloche texture, radial etched motif, rose-gold center label, stronger visible rotation at 1.8s per revolution. Playback state still controls spinning; pause/wait/error stops the record and lifts the needle.
