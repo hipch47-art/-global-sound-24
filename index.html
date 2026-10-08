@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="zh-Hant"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#080808"><meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Expires" content="0"><title>GLOBAL SOUND 24 V194</title>
+<meta name="theme-color" content="#080808"><meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Expires" content="0"><title>GLOBAL SOUND 24 V195</title>
 <style>
 :root{--bg:#080808;--card:#111;--line:#302a27;--text:#fff9f4;--muted:#b9aaa2;--rose:#d8a18b;--blue:#1976ff}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Noto Sans TC",sans-serif}button{font:inherit;color:inherit}
@@ -51,7 +51,7 @@ h1{margin-bottom:18px}
 }
 .startup{position:fixed;inset:0;z-index:9999;background:#080808;display:flex;align-items:center;justify-content:center;transition:opacity .35s}.startup.hide{opacity:0;pointer-events:none}.startup-box{text-align:center;width:min(340px,84vw)}.startup-logo{font-size:20px;font-weight:800;letter-spacing:.14em}.loader-ring{width:54px;height:54px;border:2px solid #3b312d;border-top-color:#d79d84;border-radius:50%;margin:24px auto 16px;animation:spin .9s linear infinite}.startup-title{font-family:Georgia,"Times New Roman","Noto Serif TC",serif;font-size:23px;background:linear-gradient(110deg,#fffdfb,#d79d84);-webkit-background-clip:text;color:transparent}.startup-status{font-size:12px;color:#9d928d;margin-top:8px}.startup-progress{height:3px;background:#201c1a;border-radius:3px;margin-top:18px;overflow:hidden}.startup-progress span{display:block;width:0;height:100%;background:linear-gradient(90deg,#fffdfb,#d79d84);transition:width .4s}
 
-/* V194 startup source health check + pure instrumental source + premium turntable */
+/* V195 full startup source verification + verified-only source registry + premium turntable */
 .turn{background:repeating-radial-gradient(circle at 50% 50%,#050505 0 1px,#181818 1px 2px,#070707 2px 3px,#24201d 3px 3.6px),radial-gradient(circle,#1b1b1b,#050505 72%);box-shadow:inset 0 0 0 1px #3a302b,inset 0 0 35px rgba(215,157,132,.08),0 0 0 11px #0b0b0b,0 22px 45px #000;}
 .turn:before{content:"";position:absolute;inset:7%;border-radius:50%;border:1px solid rgba(255,255,255,.07);box-shadow:inset 0 0 0 2px rgba(215,157,132,.05),inset 0 0 0 8px rgba(255,255,255,.025);}
 .turn:after{inset:43%;background:radial-gradient(circle,#f3d8c8 0 15%,#b98269 16% 32%,#191515 33% 100%);box-shadow:0 0 0 7px #090909,0 0 0 8px #47352e;}
@@ -86,7 +86,7 @@ h1{margin-bottom:18px}
 <div class="space-tool sleep"><h3>🌙 睡眠聲音</h3><p>獨立睡眠聲音工具，可搭配 Sleep Timer。</p><div class="sleep-grid"><button class="sleep-btn" onclick="playSleep('white')">🤍<b>白噪音</b><small>White Noise</small></button><button class="sleep-btn" onclick="playSleep('pink')">🌸<b>粉紅噪音</b><small>Pink Noise</small></button><button class="sleep-btn" onclick="playSleep('brown')">🤎<b>棕噪音</b><small>Brown Noise</small></button><button class="sleep-btn" onclick="playSleep('rain')">🌧️<b>雨聲</b><small>Rain</small></button><button class="sleep-btn" onclick="playSleep('ocean')">🌊<b>海浪</b><small>Ocean</small></button><button class="sleep-btn" onclick="playSleep('forest')">🌲<b>森林</b><small>Forest</small></button><button class="sleep-btn" onclick="playSleep('campfire')">🔥<b>營火</b><small>Campfire</small></button><button class="sleep-btn" onclick="playSleep('wind')">💨<b>風聲</b><small>Wind</small></button><button class="sleep-btn" onclick="playSleep('thunder')">⛈️<b>雷雨</b><small>Thunderstorm</small></button></div><div class="row" style="margin-top:12px"><select id="sleepTimer" class="gen-select"><option value="0">Sleep Timer：關閉</option><option value="30">30 分鐘</option><option value="60">1 小時</option><option value="120">2 小時</option><option value="240">4 小時</option><option value="480">8 小時</option></select><button onclick="stopSleep()">停止</button></div><div class="status" id="sleepStatus">尚未播放睡眠聲音</div></div>
 </div></section>
 </main>
-<div class="overlay" id="overlay"><div class="sheet"><div class="sheettop"><strong>Settings</strong><button class="close" id="close">×</button></div><button class="opt" onclick="showHome();closeSettings()">回首頁</button><button class="opt" onclick="showSpace();closeSettings()">聲音空間</button><p style="color:#777;font-size:12px;margin-top:15px">GLOBAL SOUND 24 V194</p></div></div>
+<div class="overlay" id="overlay"><div class="sheet"><div class="sheettop"><strong>Settings</strong><button class="close" id="close">×</button></div><button class="opt" onclick="showHome();closeSettings()">回首頁</button><button class="opt" onclick="showSpace();closeSettings()">聲音空間</button><p style="color:#777;font-size:12px;margin-top:15px">GLOBAL SOUND 24 V195</p></div></div>
 <script>
 const countries=[['tw','🇹🇼','台灣'],['cn','🇨🇳','中國'],['jp','🇯🇵','日本'],['kr','🇰🇷','韓國'],['us','🇺🇸','美國'],['uk','🇬🇧','英國']];
 let selected=new Set(countries.map(x=>x[0])); let currentGenre='';
@@ -129,24 +129,28 @@ function wait(ms){return new Promise(r=>setTimeout(r,ms))}
 function testAudioUrl(url,{hls=false,timeout=6500}={}){
  return new Promise(async resolve=>{
   const a=document.createElement('audio');
-  a.preload='auto'; a.muted=true; a.volume=0; a.playsInline=true;
-  let h=null, done=false, timer=null;
+  a.preload='auto'; a.muted=true; a.volume=0; a.playsInline=true; a.setAttribute('crossorigin','anonymous');
+  let h=null, done=false, timer=null, stableTimer=null, sawPlaying=false;
   const finish=ok=>{
-   if(done)return; done=true; clearTimeout(timer);
+   if(done)return; done=true; clearTimeout(timer); clearTimeout(stableTimer);
    try{a.pause();a.removeAttribute('src');a.load()}catch(e){}
    if(h){try{h.destroy()}catch(e){}}
-   a.oncanplay=a.onplaying=a.onloadeddata=a.ontimeupdate=a.onerror=a.onstalled=null;
+   a.oncanplay=a.onplaying=a.onloadeddata=a.ontimeupdate=a.onerror=a.onstalled=a.onwaiting=null;
    resolve(ok);
   };
   timer=setTimeout(()=>finish(false),timeout);
-  a.onplaying=()=>finish(true);
-  a.ontimeupdate=()=>finish(true);
-  a.oncanplay=()=>{
-   // canplay means the browser has enough media data to begin playback.
-   const p=a.play(); if(p&&p.catch)p.catch(()=>{});
-   setTimeout(()=>{if(!done && a.readyState>=3) finish(true)},250);
+  a.onplaying=()=>{
+   if(sawPlaying)return;
+   sawPlaying=true;
+   // Do not treat metadata/canplay alone as success. Require actual playing state
+   // to remain alive briefly so dead/redirected streams are rejected at startup.
+   stableTimer=setTimeout(()=>{
+     if(!done && a.readyState>=2 && !a.paused) finish(true);
+   },1500);
   };
+  a.oncanplay=()=>{const p=a.play(); if(p&&p.catch)p.catch(()=>{});};
   a.onloadeddata=()=>{const p=a.play();if(p&&p.catch)p.catch(()=>{})};
+  a.onwaiting=()=>{if(sawPlaying) finish(false)};
   a.onerror=()=>finish(false);
   try{
    if(hls){
@@ -164,10 +168,10 @@ function testAudioUrl(url,{hls=false,timeout=6500}={}){
 }
 async function verifyOneSource(src,index,total){
  const statusEl=document.getElementById('startupStatus'),bar=document.getElementById('startupProgress');
- statusEl.textContent=`正在檢查 ${src.name}（${index+1}/${total}）…`;
+ statusEl.textContent=`正在驗證純音樂音源 ${index+1}/${total}：${src.name}`;
  const urls=Array.isArray(src.urls)?src.urls:[];
  for(let i=0;i<urls.length;i++){
-  const ok=await testAudioUrl(urls[i],{hls:!!src.hls,timeout:6500});
+  const ok=await testAudioUrl(urls[i],{hls:!!src.hls,timeout:9500});
   if(ok){src.urls=[urls[i]];src.verified=true;src.verifiedAt=new Date().toISOString();return true}
  }
  src.verified=false;return false;
@@ -214,7 +218,7 @@ function hideViews(){document.querySelectorAll('.view').forEach(v=>v.classList.r
 function showHome(){hideViews();document.getElementById('homeView').classList.add('active');renderHot();history.replaceState(null,'','#home');window.scrollTo(0,0)}
 function showSources(g=''){currentGenre=g;hideViews();document.getElementById('sourcesView').classList.add('active');history.replaceState(null,'','#sources');const genre=genres.find(x=>x[0]===g);document.getElementById('sourceTitle').textContent=genre?genre[1]+' · 音樂來源':'音樂來源';renderSources();window.scrollTo(0,0)}
 function showSpace(){hideViews();document.getElementById('spaceView').classList.add('active');history.replaceState(null,'','#space');window.scrollTo(0,0)}
-function renderSources(){const s=document.getElementById('sources');let list=testSources.filter(x=>!badSources.has(x.name)&&(x.c==='global'||selected.has(x.c))&&(!currentGenre||x.g===currentGenre));const count=document.getElementById('sourceCount');if(count)count.textContent=list.length?`測試來源 ${list.length} 個`:'目前沒有可播放測試來源';if(!list.length){s.innerHTML='<div class="empty">目前沒有符合這個曲風／地區的純音樂測試來源。<br>未通過 Chrome 播放驗證的來源不會保留。</div>';return}s.innerHTML=list.map(x=>`<button class="source-card" data-i="${testSources.indexOf(x)}"><strong>${x.name}</strong><small>${x.meta}</small><div class="source-meta">▶ 點選測試播放 · 失敗會自動切換備援</div><em>純音樂 · 無演唱人聲</em></button>`).join('');s.querySelectorAll('.source-card').forEach(b=>b.onclick=()=>playSource(testSources[+b.dataset.i]))}
+function renderSources(){const s=document.getElementById('sources');let list=testSources.filter(x=>!badSources.has(x.name)&&(x.c==='global'||selected.has(x.c))&&(!currentGenre||x.g===currentGenre));const count=document.getElementById('sourceCount');if(count)count.textContent=list.length?`可播放來源 ${list.length} 個`:'目前沒有已驗證的可播放來源';if(!list.length){s.innerHTML='<div class="empty">目前沒有已驗證、符合這個曲風／地區的純音樂來源。<br>未通過啟動前播放驗證的來源不會顯示。</div>';return}s.innerHTML=list.map(x=>`<button class="source-card" data-i="${testSources.indexOf(x)}"><strong>${x.name}</strong><small>${x.meta}</small><div class="source-meta">✓ 啟動前已完成 Chrome 播放驗證</div><em>純音樂 · 無演唱人聲</em></button>`).join('');s.querySelectorAll('.source-card').forEach(b=>b.onclick=()=>playSource(testSources[+b.dataset.i]))}
 const audio=document.getElementById('audio'),turn=document.getElementById('turn'),needle=document.getElementById('needle'),playername=document.getElementById('playername'),status=document.getElementById('status'),genreLogo=document.getElementById('genreLogo'),coreCounter=document.getElementById('coreCounter');
 let activeSource=null,activeUrlIndex=0,playTimeout=null,playStarted=false; const badSources=new Set();
 const DEBUG_MODE=new URLSearchParams(location.search).get('debug')==='1'; if(DEBUG_MODE){document.getElementById('diag').style.display='block'}

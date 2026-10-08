@@ -1,2 +1,4 @@
-GLOBAL SOUND 24 V194
-Startup source health check enabled
+GLOBAL SOUND 24
+V195
+Full startup source verification
+Verified-only playback source list
