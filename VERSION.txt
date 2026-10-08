@@ -1,4 +1,2 @@
-GLOBAL SOUND 24
-Version: V193
-Build: 2026-10-08
-Purpose: Pure instrumental music source test build
+GLOBAL SOUND 24 V194
+Startup source health check enabled

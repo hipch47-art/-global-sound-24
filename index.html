@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="zh-Hant"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#080808"><meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Expires" content="0"><title>GLOBAL SOUND 24 V193</title>
+<meta name="theme-color" content="#080808"><meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Expires" content="0"><title>GLOBAL SOUND 24 V194</title>
 <style>
 :root{--bg:#080808;--card:#111;--line:#302a27;--text:#fff9f4;--muted:#b9aaa2;--rose:#d8a18b;--blue:#1976ff}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Noto Sans TC",sans-serif}button{font:inherit;color:inherit}
@@ -51,7 +51,7 @@ h1{margin-bottom:18px}
 }
 .startup{position:fixed;inset:0;z-index:9999;background:#080808;display:flex;align-items:center;justify-content:center;transition:opacity .35s}.startup.hide{opacity:0;pointer-events:none}.startup-box{text-align:center;width:min(340px,84vw)}.startup-logo{font-size:20px;font-weight:800;letter-spacing:.14em}.loader-ring{width:54px;height:54px;border:2px solid #3b312d;border-top-color:#d79d84;border-radius:50%;margin:24px auto 16px;animation:spin .9s linear infinite}.startup-title{font-family:Georgia,"Times New Roman","Noto Serif TC",serif;font-size:23px;background:linear-gradient(110deg,#fffdfb,#d79d84);-webkit-background-clip:text;color:transparent}.startup-status{font-size:12px;color:#9d928d;margin-top:8px}.startup-progress{height:3px;background:#201c1a;border-radius:3px;margin-top:18px;overflow:hidden}.startup-progress span{display:block;width:0;height:100%;background:linear-gradient(90deg,#fffdfb,#d79d84);transition:width .4s}
 
-/* V192 pure instrumental source + premium turntable */
+/* V194 startup source health check + pure instrumental source + premium turntable */
 .turn{background:repeating-radial-gradient(circle at 50% 50%,#050505 0 1px,#181818 1px 2px,#070707 2px 3px,#24201d 3px 3.6px),radial-gradient(circle,#1b1b1b,#050505 72%);box-shadow:inset 0 0 0 1px #3a302b,inset 0 0 35px rgba(215,157,132,.08),0 0 0 11px #0b0b0b,0 22px 45px #000;}
 .turn:before{content:"";position:absolute;inset:7%;border-radius:50%;border:1px solid rgba(255,255,255,.07);box-shadow:inset 0 0 0 2px rgba(215,157,132,.05),inset 0 0 0 8px rgba(255,255,255,.025);}
 .turn:after{inset:43%;background:radial-gradient(circle,#f3d8c8 0 15%,#b98269 16% 32%,#191515 33% 100%);box-shadow:0 0 0 7px #090909,0 0 0 8px #47352e;}
@@ -77,7 +77,7 @@ h1{margin-bottom:18px}
 <section class="section"><div class="music-title"><h2>🔊 聲音空間</h2><p class="sub">聲音工具與獨立睡眠聲音</p></div><div class="space-home-card"><button class="tool" onclick="showSpace()"><div class="ico">🎸</div><span>吉他調音器</span></button><button class="tool" onclick="showSpace()"><div class="ico">🥁</div><span>節拍器</span></button><button class="tool" onclick="showSpace()"><div class="ico">🎵</div><span>音頻產生器</span></button><button class="tool" onclick="showSpace()"><div class="ico">🌙</div><span>睡眠聲音</span></button></div></section>
 
 
-</section><section id="sourcesView" class="view"><button class="back" onclick="showHome()">‹ 回首頁</button><div class="view-title" id="sourceTitle">音樂來源</div><div id="sourceCount" class="sub" style="margin-top:-2px"></div><p class="sub">只顯示「純器樂／無演唱人聲」候選來源；Chrome 實際收到音訊後才啟動黑膠唱盤。</p><div class="source-list" id="sources"></div></section>
+</section><section id="sourcesView" class="view"><button class="back" onclick="showHome()">‹ 回首頁</button><div class="view-title" id="sourceTitle">音樂來源</div><div id="sourceCount" class="sub" style="margin-top:-2px"></div><p class="sub">只顯示啟動時已通過 Chrome 播放驗證的純器樂來源。</p><div class="source-list" id="sources"></div></section>
 <section id="playerView" class="view player-screen"><button class="back" onclick="showSources()">‹ 返回音樂來源</button><div class="view-title">Now Playing</div><div class="turn-wrap"><div class="turntable"><div class="platter"></div><div class="turn" id="turn"><div class="core-counter" id="coreCounter"><div class="spindle"></div><div class="genre-logo" id="genreLogo">PIANO</div></div></div><svg class="arm-svg" viewBox="0 0 330 330" aria-hidden="true"><circle class="pivot" cx="286" cy="34" r="17"/><path class="arm" d="M286 34 C286 72 282 111 273 148 C267 174 263 194 260 212"/><path class="arm-inner" d="M286 34 C286 72 282 111 273 148 C267 174 263 194 260 212"/><g class="needle" id="needle"><path class="headshell" d="M260 205 L246 210 L247 222 L262 219 Z"/><path class="stylus" d="M249 220 L248 235"/></g></svg></div></div><div class="playername" id="playername">GLOBAL SOUND 24 · Ready</div><div class="status" id="status">等待播放</div><div class="audio-panel"><audio id="audio" preload="none" controls></audio></div><div class="diag" id="diag"><b>Source Diagnostic</b><br>等待選擇音源</div><button class="play" id="play" aria-label="播放">▶</button></section>
 <section id="spaceView" class="view"><button class="back" onclick="showHome()">‹ 回首頁</button><div class="view-title">聲音空間</div><p class="sub">簡單、立即可用的聲音工具。</p><div class="space-tools">
 <div class="space-tool"><h3>🎸 吉他調音器</h3><p>使用手機麥克風偵測吉他音高，標準調弦 E A D G B E。</p><button onclick="startTuner()" id="tunerBtn">開始調音</button><div class="tuner-readout" id="tunerNote">—</div><div class="tuner-note" id="tunerCents">請先允許麥克風</div><div class="tuner-meter"><div class="tuner-needle" id="tunerNeedle"></div></div></div>
@@ -86,7 +86,7 @@ h1{margin-bottom:18px}
 <div class="space-tool sleep"><h3>🌙 睡眠聲音</h3><p>獨立睡眠聲音工具，可搭配 Sleep Timer。</p><div class="sleep-grid"><button class="sleep-btn" onclick="playSleep('white')">🤍<b>白噪音</b><small>White Noise</small></button><button class="sleep-btn" onclick="playSleep('pink')">🌸<b>粉紅噪音</b><small>Pink Noise</small></button><button class="sleep-btn" onclick="playSleep('brown')">🤎<b>棕噪音</b><small>Brown Noise</small></button><button class="sleep-btn" onclick="playSleep('rain')">🌧️<b>雨聲</b><small>Rain</small></button><button class="sleep-btn" onclick="playSleep('ocean')">🌊<b>海浪</b><small>Ocean</small></button><button class="sleep-btn" onclick="playSleep('forest')">🌲<b>森林</b><small>Forest</small></button><button class="sleep-btn" onclick="playSleep('campfire')">🔥<b>營火</b><small>Campfire</small></button><button class="sleep-btn" onclick="playSleep('wind')">💨<b>風聲</b><small>Wind</small></button><button class="sleep-btn" onclick="playSleep('thunder')">⛈️<b>雷雨</b><small>Thunderstorm</small></button></div><div class="row" style="margin-top:12px"><select id="sleepTimer" class="gen-select"><option value="0">Sleep Timer：關閉</option><option value="30">30 分鐘</option><option value="60">1 小時</option><option value="120">2 小時</option><option value="240">4 小時</option><option value="480">8 小時</option></select><button onclick="stopSleep()">停止</button></div><div class="status" id="sleepStatus">尚未播放睡眠聲音</div></div>
 </div></section>
 </main>
-<div class="overlay" id="overlay"><div class="sheet"><div class="sheettop"><strong>Settings</strong><button class="close" id="close">×</button></div><button class="opt" onclick="showHome();closeSettings()">回首頁</button><button class="opt" onclick="showSpace();closeSettings()">聲音空間</button><p style="color:#777;font-size:12px;margin-top:15px">GLOBAL SOUND 24 V193</p></div></div>
+<div class="overlay" id="overlay"><div class="sheet"><div class="sheettop"><strong>Settings</strong><button class="close" id="close">×</button></div><button class="opt" onclick="showHome();closeSettings()">回首頁</button><button class="opt" onclick="showSpace();closeSettings()">聲音空間</button><p style="color:#777;font-size:12px;margin-top:15px">GLOBAL SOUND 24 V194</p></div></div>
 <script>
 const countries=[['tw','🇹🇼','台灣'],['cn','🇨🇳','中國'],['jp','🇯🇵','日本'],['kr','🇰🇷','韓國'],['us','🇺🇸','美國'],['uk','🇬🇧','英國']];
 let selected=new Set(countries.map(x=>x[0])); let currentGenre='';
@@ -115,18 +115,90 @@ const testSources=[
  {c:'global',g:'world',name:'Radio Art · Lute',meta:'Radio Art · Lute / Early Music · 純器樂',manifest:'https://www.radioart.com/',urls:['https://air.radioart.com/fLute.mp3','https://live.radioart.com/fLute.mp3']}
 ];
 let sourceRefreshDone=false;
+async function loadHlsForCheck(){
+ if(window.Hls)return window.Hls;
+ return new Promise((resolve,reject)=>{
+  const sc=document.createElement('script');
+  sc.src='https://cdn.jsdelivr.net/npm/hls.js@1.5.17/dist/hls.min.js';
+  sc.onload=()=>resolve(window.Hls);
+  sc.onerror=reject;
+  document.head.appendChild(sc);
+ });
+}
+function wait(ms){return new Promise(r=>setTimeout(r,ms))}
+function testAudioUrl(url,{hls=false,timeout=6500}={}){
+ return new Promise(async resolve=>{
+  const a=document.createElement('audio');
+  a.preload='auto'; a.muted=true; a.volume=0; a.playsInline=true;
+  let h=null, done=false, timer=null;
+  const finish=ok=>{
+   if(done)return; done=true; clearTimeout(timer);
+   try{a.pause();a.removeAttribute('src');a.load()}catch(e){}
+   if(h){try{h.destroy()}catch(e){}}
+   a.oncanplay=a.onplaying=a.onloadeddata=a.ontimeupdate=a.onerror=a.onstalled=null;
+   resolve(ok);
+  };
+  timer=setTimeout(()=>finish(false),timeout);
+  a.onplaying=()=>finish(true);
+  a.ontimeupdate=()=>finish(true);
+  a.oncanplay=()=>{
+   // canplay means the browser has enough media data to begin playback.
+   const p=a.play(); if(p&&p.catch)p.catch(()=>{});
+   setTimeout(()=>{if(!done && a.readyState>=3) finish(true)},250);
+  };
+  a.onloadeddata=()=>{const p=a.play();if(p&&p.catch)p.catch(()=>{})};
+  a.onerror=()=>finish(false);
+  try{
+   if(hls){
+    const Hls=await loadHlsForCheck();
+    if(Hls&&Hls.isSupported()){
+     h=new Hls({enableWorker:true,lowLatencyMode:false});
+     h.on(Hls.Events.MANIFEST_PARSED,()=>{const p=a.play();if(p&&p.catch)p.catch(()=>{})});
+     h.on(Hls.Events.ERROR,(ev,data)=>{if(data&&data.fatal)finish(false)});
+     h.loadSource(url); h.attachMedia(a);
+    }else if(a.canPlayType('application/vnd.apple.mpegurl')){a.src=url;a.load()}
+    else {finish(false)}
+   }else{a.src=url;a.load()}
+  }catch(e){finish(false)}
+ });
+}
+async function verifyOneSource(src,index,total){
+ const statusEl=document.getElementById('startupStatus'),bar=document.getElementById('startupProgress');
+ statusEl.textContent=`正在檢查 ${src.name}（${index+1}/${total}）…`;
+ const urls=Array.isArray(src.urls)?src.urls:[];
+ for(let i=0;i<urls.length;i++){
+  const ok=await testAudioUrl(urls[i],{hls:!!src.hls,timeout:6500});
+  if(ok){src.urls=[urls[i]];src.verified=true;src.verifiedAt=new Date().toISOString();return true}
+ }
+ src.verified=false;return false;
+}
 async function refreshSourceRegistry(){
  const statusEl=document.getElementById('startupStatus'),bar=document.getElementById('startupProgress');
- statusEl.textContent='正在載入純音樂音源設定…';bar.style.width='25%';
- // GitHub Pages 不能可靠地從第三方 M3U/PLS 取得清單，因此不再用它覆寫可播放 URL。
- // 本測試版只保留官方頁面目前公布的直連；真正的即時 Health Check 應放在後端。
- await new Promise(r=>setTimeout(r,250));
- statusEl.textContent='正在整理「無演唱人聲」音源…';bar.style.width='55%';
- const valid=testSources.filter(x=>Array.isArray(x.urls)&&x.urls.length&&x.manifest);
- testSources.splice(0,testSources.length,...valid);
- await new Promise(r=>setTimeout(r,250));
- sourceRefreshDone=true;statusEl.textContent=`已整理 ${testSources.length} 個純器樂候選來源，等待 Chrome 實測`;bar.style.width='100%';
- setTimeout(()=>{const el=document.getElementById('startup');if(el){el.classList.add('hide');setTimeout(()=>el.remove(),400)}},500);
+ statusEl.textContent='正在載入純音樂音源清單…';bar.style.width='2%';
+ const candidates=testSources.filter(x=>Array.isArray(x.urls)&&x.urls.length&&x.manifest);
+ const verified=[];
+ let done=0;
+ // 最多 3 個並行，避免手機一次建立太多串流連線；只有真正通過播放驗證的來源才進入清單。
+ const worker=async()=>{
+  while(true){
+   const i=done++; if(i>=candidates.length)return;
+   const src=candidates[i];
+   const ok=await verifyOneSource(src,i,candidates.length);
+   if(ok)verified.push(src);
+   const pct=Math.min(96,Math.round((Math.min(done,candidates.length)/candidates.length)*96));
+   bar.style.width=pct+'%';
+  }
+ };
+ await Promise.all([worker(),worker(),worker()]);
+ verified.sort((a,b)=>candidates.indexOf(a)-candidates.indexOf(b));
+ testSources.splice(0,testSources.length,...verified);
+ sourceRefreshDone=true;
+ statusEl.textContent=`音源檢查完成：${verified.length} / ${candidates.length} 個可播放`;
+ bar.style.width='100%';
+ renderSources();
+ await wait(700);
+ const el=document.getElementById('startup');
+ if(el){el.classList.add('hide');setTimeout(()=>el.remove(),400)}
 }
 function renderRegions(){const box=document.getElementById('regions');box.innerHTML=countries.map(([id,f,n])=>`<label class="region-chip ${selected.has(id)?'on':''}"><input type="checkbox" ${selected.has(id)?'checked':''} data-id="${id}"><span class="flag">${f}</span><span>${n}</span></label>`).join('')+`<div class="region-actions"><button id="all">全選</button><button id="none">清除</button></div>`;box.querySelectorAll('input').forEach(i=>i.onchange=()=>{i.checked?selected.add(i.dataset.id):selected.delete(i.dataset.id);renderRegions();renderHot();renderSources()});document.getElementById('all').onclick=()=>{selected=new Set(countries.map(x=>x[0]));renderRegions();renderHot();renderSources()};document.getElementById('none').onclick=()=>{selected.clear();renderRegions();renderHot();renderSources()}}
 function renderRegions(){const box=document.getElementById('regions');box.innerHTML=countries.map(([id,f,n])=>`<label class="region-chip ${selected.has(id)?'on':''}"><input type="checkbox" ${selected.has(id)?'checked':''} data-id="${id}"><span class="flag">${f}</span><span>${n}</span></label>`).join('')+`<div class="region-actions"><button id="all">全選</button><button id="none">清除</button></div>`;box.querySelectorAll('input').forEach(i=>i.onchange=()=>{i.checked?selected.add(i.dataset.id):selected.delete(i.dataset.id);renderRegions();renderHot();renderSources()});document.getElementById('all').onclick=()=>{selected=new Set(countries.map(x=>x[0]));renderRegions();renderHot();renderSources()};document.getElementById('none').onclick=()=>{selected.clear();renderRegions();renderHot();renderSources()}}
@@ -181,7 +253,7 @@ async function tryActiveUrl(){
  playTimeout=setTimeout(()=>{if(!playStarted)tryNextUrl()},9000);
 }
 function tryNextUrl(){clearPlayTimeout();activeUrlIndex++;if(activeSource&&activeUrlIndex<(activeSource.urls||[]).length){tryActiveUrl();return}sourceFailed()}
-function setDiag(state,msg){const d=document.getElementById('diag');if(d&&!DEBUG_MODE)return; if(d)d.innerHTML=`<b>Source Diagnostic · ${state}</b><br>${msg}`};function sourceFailed(){if(hlsInstance){try{hlsInstance.destroy()}catch(e){}hlsInstance=null}if(activeSource){badSources.add(activeSource.name);setTimeout(()=>{badSources.delete(activeSource.name);if(document.getElementById('sourcesView').classList.contains('active'))renderSources()},12000)}clearPlayTimeout();playStarted=false;audio.pause();audio.removeAttribute('src');audio.load();turn.classList.remove('spinning');needle.classList.remove('down');genreLogo.classList.remove('playing');setBusy(false);setPlayIcon(false);setDiag('FAILED','Chrome 未收到可播放音訊，來源已暫時隱藏');status.textContent='此來源目前無法播放，已暫時隱藏';setTimeout(()=>showSources(currentGenre),900)}
+function setDiag(state,msg){const d=document.getElementById('diag');if(d&&!DEBUG_MODE)return; if(d)d.innerHTML=`<b>Source Diagnostic · ${state}</b><br>${msg}`};function sourceFailed(){if(hlsInstance){try{hlsInstance.destroy()}catch(e){}hlsInstance=null}if(activeSource){badSources.add(activeSource.name);setTimeout(()=>{badSources.delete(activeSource.name)},12000)}clearPlayTimeout();playStarted=false;audio.pause();audio.removeAttribute('src');audio.load();turn.classList.remove('spinning');needle.classList.remove('down');genreLogo.classList.remove('playing');setBusy(false);setPlayIcon(false);setDiag('FAILED','Chrome 未收到可播放音訊，來源已暫時隱藏');status.textContent='此來源目前無法播放，已從本次清單移除';setTimeout(()=>showSources(currentGenre),900)}
 function setGenreLogo(x){const map={instrumental:'INSTRUMENTAL',piano:'PIANO',jazz:'JAZZ',classical:'CLASSICAL',acoustic:'ACOUSTIC',electronic:'ELECTRONIC',ambient:'AMBIENT',world:'WORLD',rnb:'R&B',rock:'ROCK'};genreLogo.textContent=map[currentGenre]||map[x?.g]||'MUSIC';genreLogo.classList.remove('playing');}
 function playSource(x){activeSource=x;activeUrlIndex=0;setGenreLogo(x);hideViews();setBusy(true);document.getElementById('playerView').classList.add('active');history.replaceState(null,'','#player');window.scrollTo(0,0);playername.textContent=x.name;status.textContent='正在連線…';tryActiveUrl()}
 audio.addEventListener('loadedmetadata',()=>{if(activeSource){setDiag('Metadata OK','已收到音訊串流資訊');status.textContent='已連線，正在緩衝…'}});
@@ -222,5 +294,5 @@ const overlay=document.getElementById('overlay');document.getElementById('settin
 renderRegions();renderGenres();renderHot();renderSources();
 if(location.hash==='#sources') showSources(currentGenre); else if(location.hash==='#space') showSpace(); else if(location.hash==='#home'||!location.hash) showHome(); else showHome();
 refreshSourceRegistry();
-if('serviceWorker' in navigator){navigator.serviceWorker.register('./sw.js?v=193',{updateViaCache:'none'}).then(r=>r.update()).catch(()=>{});}
+if('serviceWorker' in navigator){navigator.serviceWorker.register('./sw.js?v=194',{updateViaCache:'none'}).then(r=>r.update()).catch(()=>{});}
 </script><div class="chart-modal" id="chartModal" onclick="if(event.target===this)closeCharts()"><div class="chart-sheet"><div class="chart-head"><h3 id="chartTitle">🔥 熱門音樂</h3><button class="chart-close" onclick="closeCharts()">✕</button></div><div class="chart-note">排行榜介面獨立於播放來源；歌曲排行可依地區更新。正式版可接後端排行榜資料，播放時再使用合法的官方播放來源。</div><div class="chart-tabs" id="chartTabs"></div><div class="chart-list" id="chartList"></div></div></div></body></html>

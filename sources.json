@@ -1,5 +1,5 @@
 {
-  "version": "V191",
+  "version": "V194",
   "test_mode": true,
   "browser_target": "Chrome",
   "instrumental_only": true,
@@ -8,7 +8,7 @@
       "name": "Whisperings · Solo Piano Radio",
       "country": "US",
       "genre": "piano",
-      "status": "candidate",
+      "status": "startup-health-check",
       "instrumental_only": true,
       "urls": [
         "https://pianosolo.streamguys1.com/live",
@@ -19,7 +19,7 @@
       "name": "Abiding Radio · Instrumental",
       "country": "US",
       "genre": "instrumental",
-      "status": "candidate",
+      "status": "startup-health-check",
       "instrumental_only": true,
       "urls": [
         "https://www.abidingradio.org/radio/instrumental"
@@ -29,7 +29,7 @@
       "name": "RelaxingJazz.com · Instrumental Smooth Jazz",
       "country": "International",
       "genre": "jazz",
-      "status": "candidate",
+      "status": "startup-health-check",
       "instrumental_only": true,
       "urls": [
         "https://443-1.autopo.st/171/stream/3/",
@@ -41,7 +41,7 @@
       "name": "101 Smooth Jazz · 24H",
       "country": "US",
       "genre": "jazz",
-      "status": "candidate",
+      "status": "startup-health-check",
       "instrumental_only": true,
       "urls": [
         "https://ais-sa5.cdnstream1.com/b22139_128mp3"
@@ -51,7 +51,7 @@
       "name": "Radio Art · Solo Piano",
       "country": "Greece",
       "genre": "piano",
-      "status": "candidate",
+      "status": "startup-health-check",
       "instrumental_only": true,
       "urls": [
         "https://air.radioart.com/fSolo_piano.mp3",
@@ -62,7 +62,7 @@
       "name": "Radio Art · Piano & Guitar",
       "country": "Greece",
       "genre": "acoustic",
-      "status": "candidate",
+      "status": "startup-health-check",
       "instrumental_only": true,
       "urls": [
         "https://air.radioart.com/fPiano_and_guitar.mp3",
@@ -73,7 +73,7 @@
       "name": "Radio Art · Solo Flute",
       "country": "Greece",
       "genre": "classical",
-      "status": "candidate",
+      "status": "startup-health-check",
       "instrumental_only": true,
       "urls": [
         "https://air.radioart.com/fSolo_flute.mp3",
@@ -84,7 +84,7 @@
       "name": "Radio Art · Solo Harp",
       "country": "Greece",
       "genre": "classical",
-      "status": "candidate",
+      "status": "startup-health-check",
       "instrumental_only": true,
       "urls": [
         "https://air.radioart.com/fSolo_harp.mp3",
@@ -95,7 +95,7 @@
       "name": "Radio Art · Solo Instruments",
       "country": "Greece",
       "genre": "classical",
-      "status": "candidate",
+      "status": "startup-health-check",
       "instrumental_only": true,
       "urls": [
         "https://air.radioart.com/fSolo_instruments.mp3",
@@ -106,7 +106,7 @@
       "name": "Radio Art · Piano Trios",
       "country": "Greece",
       "genre": "piano",
-      "status": "candidate",
+      "status": "startup-health-check",
       "instrumental_only": true,
       "urls": [
         "https://air.radioart.com/fPiano_trios.mp3",
@@ -117,7 +117,7 @@
       "name": "MUGEN Radio · Ambient",
       "country": "International",
       "genre": "ambient",
-      "status": "candidate",
+      "status": "startup-health-check",
       "instrumental_only": true,
       "hls": true,
       "urls": [
