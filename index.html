@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="zh-Hant"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#080808"><meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Expires" content="0"><title>GLOBAL SOUND 24 V245</title>
+<meta name="theme-color" content="#080808"><meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Expires" content="0"><title>GLOBAL SOUND 24 V246</title>
 <style>
 :root{--bg:#0b0b0b;--panel:#141414;--panel2:#101010;--line:#272727;--text:#f2f2f2;--muted:#8b8b8b;--soft:#bdbdbd}
 *{box-sizing:border-box}html,body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Noto Sans TC",Arial,sans-serif}
@@ -44,7 +44,7 @@ main{width:min(760px,100%);margin:0 auto;padding:18px 18px 88px}
 /* V242 build/version confirmation badge */
 #buildStamp{position:fixed;top:calc(env(safe-area-inset-top,0px) + 10px);left:50%;transform:translateX(-50%);z-index:10001;max-width:calc(100vw - 28px);padding:10px 15px;border:1px solid #8a735a;border-radius:999px;background:rgba(18,18,18,.96);box-shadow:0 6px 24px #0009;color:#f4e7d5;font-size:12px;letter-spacing:.04em;text-align:center;white-space:nowrap;transition:opacity .35s ease}
 #buildStamp small{color:#b7a38b;margin-left:7px;font-size:10px}
-</style></head><body><div id="buildStamp">GLOBAL SOUND 24 · V245<small>BUILD 20261009-05</small></div><div id="startupCheck"><div class="startup-disc"><span>GS24</span></div><div class="startup-label">GLOBAL SOUND 24</div><div class="startup-status" id="startupStatus">正在檢查可用音源…<br>請稍候</div><div class="startup-progress"><span id="startupProgress"></span></div></div><main>
+</style></head><body><div id="buildStamp">GLOBAL SOUND 24 · V246<small>BUILD 20261009-05</small></div><div id="startupCheck"><div class="startup-disc"><span>GS24</span></div><div class="startup-label">GLOBAL SOUND 24</div><div class="startup-status" id="startupStatus">正在檢查可用音源…<br>請稍候</div><div class="startup-progress"><span id="startupProgress"></span></div></div><main>
 <section id="homeView" class="view active" aria-label="首頁"><header class="top"><div class="logo">GLOBAL SOUND 24</div><button class="gear" id="homeSettings" aria-label="Settings">⚙︎</button></header>
 <div class="hero"><h1>想聽什麼？</h1><p>點選曲風或睡眠音樂，直接進入唱盤播放。</p></div>
 <section class="section music-section"><div class="music-head"><div class="music-title"><h2>🎵 音樂類型</h2><p class="sub">選擇曲風，直接進入唱盤播放</p></div></div><div class="grid" id="genres"></div></section>
@@ -54,13 +54,13 @@ main{width:min(760px,100%);margin:0 auto;padding:18px 18px 88px}
 </section><section id="sourcesView" class="view" aria-hidden="true" style="display:none!important"><div class="view-top"><button class="back" onclick="showHome()">‹ 回首頁</button><button class="gear" aria-label="Settings" onclick="openSettings()">⚙︎</button></div><div class="view-title" id="sourceTitle">音樂來源</div><div id="sourceCount" class="sub" style="margin-top:-2px"></div><p class="sub">來源可含歌唱；排除新聞、主持、Talk、政治與體育口播。播放時即時確認。</p><div class="source-list" id="sources"></div></section>
 <section id="playerView" class="view player-screen"><div class="view-top"><button class="back" onclick="showHome()">‹ 回首頁</button><button class="gear" aria-label="Settings" onclick="openSettings()">⚙︎</button></div><div class="view-title">Now Playing</div><div class="turn-wrap"><div class="turntable"><div class="platter"></div><div class="turn" id="turn"><div class="core-counter" id="coreCounter"><div class="spindle"></div><div class="genre-logo" id="genreLogo"><span id="genreLogoText">PIANO</span></div></div></div><svg class="arm-svg" viewBox="0 0 330 330" aria-hidden="true"><circle class="pivot" cx="286" cy="34" r="17"/><path class="arm" d="M286 34 C286 66 282 100 272 136 C263 172 253 205 244 232"/><path class="arm-inner" d="M286 34 C286 66 282 100 272 136 C263 172 253 205 244 232"/><g class="needle" id="needle"><path class="headshell" d="M244 225 L230 231 L232 243 L247 239 Z"/><path class="stylus" d="M234 241 L257 276"/></g></svg></div></div><div class="playername" id="playername">GLOBAL SOUND 24 · Ready</div><div class="status" id="status">等待播放</div>
 <details id="streamDiagnostics" open style="display:block;max-width:92%;margin:10px auto;color:#bdbdbd;font-size:12px;text-align:left;border:1px solid #333;border-radius:10px;padding:10px;background:#111">
-<summary style="cursor:pointer;color:#d9c2a3">播放診斷（V245）</summary>
+<summary style="cursor:pointer;color:#d9c2a3">播放診斷（V246）</summary>
 <div id="streamDiagSummary" style="margin-top:8px;line-height:1.6;overflow-wrap:anywhere">診斷區已就緒。選擇曲風後，這裡會記錄播放事件與錯誤。</div>
 <button id="copyStreamDiag" type="button" style="margin-top:8px;border:1px solid #555;border-radius:8px;padding:7px 10px;background:#222;color:#eee">複製診斷文字</button>
 </details><audio id="audio" class="audio-engine" preload="auto" playsinline webkit-playsinline></audio><div id="officialEmbed" style="display:none"></div><div class="track-nav"><button type="button" id="prevTrack" aria-label="上一首">‹ 上一首</button><button class="play" id="play" aria-label="播放">▶</button><button type="button" id="nextTrack" aria-label="下一首">下一首 ›</button></div></section>
 
 </main>
-<div class="overlay" id="overlay" aria-hidden="true"><div class="sheet"><div class="sheettop"><strong>Settings</strong><button class="close" id="close">×</button></div><div class="settings-row"><label for="settingsSleepTimer">Sleep Timer</label><select id="settingsSleepTimer" class="settings-select"><option value="0">關閉</option><option value="30">30 分鐘</option><option value="60">1 小時</option><option value="120">2 小時</option><option value="240">4 小時</option><option value="480">8 小時</option></select></div><div class="settings-row"><label for="settingsLanguage">Language</label><select id="settingsLanguage" class="settings-select"><option value="zh-TW">繁體中文</option><option value="zh-CN">简体中文</option><option value="ja">日本語</option><option value="ko">한국어</option><option value="en-US">English (US)</option><option value="en-GB">English (UK)</option></select></div><div class="settings-row"><label>Soft Ver.</label><div class="settings-value">V245 · BUILD 20261009-05</div></div></div></div>
+<div class="overlay" id="overlay" aria-hidden="true"><div class="sheet"><div class="sheettop"><strong>Settings</strong><button class="close" id="close">×</button></div><div class="settings-row"><label for="settingsSleepTimer">Sleep Timer</label><select id="settingsSleepTimer" class="settings-select"><option value="0">關閉</option><option value="30">30 分鐘</option><option value="60">1 小時</option><option value="120">2 小時</option><option value="240">4 小時</option><option value="480">8 小時</option></select></div><div class="settings-row"><label for="settingsLanguage">Language</label><select id="settingsLanguage" class="settings-select"><option value="zh-TW">繁體中文</option><option value="zh-CN">简体中文</option><option value="ja">日本語</option><option value="ko">한국어</option><option value="en-US">English (US)</option><option value="en-GB">English (UK)</option></select></div><div class="settings-row"><label>Soft Ver.</label><div class="settings-value">V246 · BUILD 20261009-06</div></div></div></div>
 <script>
 const countries=[['tw','🇹🇼','台灣'],['cn','🇨🇳','中國'],['jp','🇯🇵','日本'],['kr','🇰🇷','韓國'],['us','🇺🇸','美國'],['uk','🇬🇧','英國']];
 let selected=new Set(countries.map(x=>x[0])); let currentGenre=''; let currentFaith='';
@@ -337,7 +337,11 @@ function playDirect(url){
     audio.src=url; audio.preload='auto'; audio.load();
     const p=audio.play();
     if(p&&p.catch)p.catch(e=>failCurrentAttempt(attempt,'play() '+(e?.name||'拒絕')+': '+(e?.message||'')));
-    playTimeout=setTimeout(()=>failCurrentAttempt(attempt,'3.5 秒逾時'),3500);
+    playTimeout=setTimeout(()=>{
+      if(attempt!==playAttemptId || playStarted)return;
+      const extra=`12 秒逾時；readyState=${audio.readyState}，networkState=${audio.networkState}，currentTime=${Number.isFinite(audio.currentTime)?audio.currentTime.toFixed(2):'N/A'}`;
+      failCurrentAttempt(attempt,extra);
+    },12000);
   }catch(e){ failCurrentAttempt(attempt,(e?.name||'例外')+': '+(e?.message||'')); }
 }
 function tryActiveUrl(){
@@ -402,9 +406,10 @@ function playSource(x){
 }
 audio.addEventListener('loadstart',()=>diagRecord('loadstart','瀏覽器開始載入音源'));
 audio.addEventListener('loadedmetadata',()=>{diagRecord('loadedmetadata','已取得媒體 metadata');if(activeSource)status.textContent='已連線，正在緩衝…'});
-audio.addEventListener('canplay',()=>{if(!playStarted)status.textContent='已連線，準備播放…'});
-audio.addEventListener('playing',()=>{diagRecord('開始播放成功','playing event');clearPlayTimeout();playStarted=true;setBusy(false);sourceHealth.set(activeSource.name,{ok:true,at:Date.now()});status.textContent='播放中 · 24H Sound';turn.classList.add('spinning');needle.classList.add('down');genreLogo.classList.add('playing');setPlayIcon(true)});
-audio.addEventListener('waiting',()=>{diagRecord('waiting','播放器正在等待更多資料');if(playStarted){status.textContent='正在緩衝…';turn.classList.remove('spinning');needle.classList.remove('down')}});
+audio.addEventListener('canplay',()=>{diagRecord('canplay','瀏覽器認為已有足夠資料可開始播放');if(!playStarted)status.textContent='已連線，準備播放…'});
+audio.addEventListener('progress',()=>{if(!playStarted)diagRecord('progress','瀏覽器收到載入進度事件')});
+audio.addEventListener('playing',()=>{diagRecord('開始播放成功',`playing event；currentTime=${Number.isFinite(audio.currentTime)?audio.currentTime.toFixed(2):'N/A'}`);clearPlayTimeout();playStarted=true;setBusy(false);sourceHealth.set(activeSource.name,{ok:true,at:Date.now()});status.textContent='播放中 · 24H Sound';turn.classList.add('spinning');needle.classList.add('down');genreLogo.classList.add('playing');setPlayIcon(true)});
+audio.addEventListener('waiting',()=>{diagRecord('waiting',`播放器正在等待更多資料；currentTime=${Number.isFinite(audio.currentTime)?audio.currentTime.toFixed(2):'N/A'}`);if(playStarted){status.textContent='正在緩衝…';turn.classList.remove('spinning');needle.classList.remove('down')}});
 audio.addEventListener('pause',()=>{clearPlayTimeout();if(!playStarted)return;status.textContent='已暫停';turn.classList.remove('spinning');needle.classList.remove('down');genreLogo.classList.remove('playing');setPlayIcon(false);audio.volume=1});
 audio.addEventListener('ended',()=>{clearPlayTimeout();status.textContent='播放結束';turn.classList.remove('spinning');needle.classList.remove('down');genreLogo.classList.remove('playing');setPlayIcon(false)});
 audio.addEventListener('error',()=>{if(activeSource&&!playStarted){const code=audio.error?.code||0;const labels={1:'MEDIA_ERR_ABORTED',2:'MEDIA_ERR_NETWORK',3:'MEDIA_ERR_DECODE',4:'MEDIA_ERR_SRC_NOT_SUPPORTED'};failCurrentAttempt(playAttemptId,(labels[code]||'媒體錯誤 code='+code)+'; currentSrc='+ (audio.currentSrc||audio.src||''));}});
@@ -462,7 +467,7 @@ function playSleep(kind,playNow=false){
 
 const overlay=document.getElementById('overlay');function openSettings(){overlay.style.display='flex';overlay.setAttribute('aria-hidden','false')}function closeSettings(){overlay.style.display='none';overlay.setAttribute('aria-hidden','true')}document.getElementById('close').onclick=closeSettings;document.getElementById('homeSettings').onclick=openSettings;overlay.addEventListener('click',e=>{if(e.target===overlay)closeSettings()});const settingsTimer=document.getElementById('settingsSleepTimer');settingsTimer.addEventListener('change',()=>{if(sleepNodes.length||document.getElementById('youtubeFrame'))armSleepTimer()});const settingsLanguage=document.getElementById('settingsLanguage');settingsLanguage.addEventListener('change',()=>{document.documentElement.lang=settingsLanguage.value==='zh-TW'?'zh-Hant':settingsLanguage.value});renderGenres();renderFaith();renderHot();renderSources();
 showHome();
-// V245 BUILD 20261009-05: diagnostics remain visible from the start; no hidden display state.
+// V246 BUILD 20261009-06: diagnostics remain visible from the start; no hidden display state.
 (function(){const badge=document.getElementById('buildStamp');if(!badge)return;setTimeout(()=>{badge.style.opacity='0';setTimeout(()=>badge.remove(),400)},4500)})();
 
 async function preflightUrl(url, timeoutMs=1800){
