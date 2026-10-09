@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="zh-Hant"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#080808"><meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Expires" content="0"><title>GLOBAL SOUND 24 V213</title>
+<meta name="theme-color" content="#080808"><meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Expires" content="0"><title>GLOBAL SOUND 24 V215</title>
 <style>
 :root{--bg:#0b0b0b;--panel:#141414;--panel2:#101010;--line:#272727;--text:#f2f2f2;--muted:#8b8b8b;--soft:#bdbdbd}
 *{box-sizing:border-box}html,body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Noto Sans TC",Arial,sans-serif}
@@ -17,10 +17,10 @@ main{width:min(760px,100%);margin:0 auto;padding:18px 18px 88px}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.tile{position:relative;min-height:104px;overflow:hidden;border:1px solid #252525;border-radius:12px;background:linear-gradient(145deg,#151515,#101010);cursor:pointer;text-align:left;padding:0;transition:border-color .2s,background .2s,transform .15s}.tile:after{content:"";position:absolute;left:14px;right:14px;bottom:13px;height:1px;background:#2d2d2d}.tile:active{background:#181818;border-color:#444;transform:scale(.99)}.tile-content{position:absolute;left:15px;right:15px;top:50%;transform:translateY(-50%)}.tile-title{font-size:17px;font-weight:560;letter-spacing:.02em;color:#e8e8e8}.tile-en{margin-top:6px;font-size:9px;letter-spacing:.14em;color:#737373;text-transform:uppercase}.bar{display:none}
 .hot{display:grid;grid-template-columns:1fr 1fr;gap:8px}.hot button{position:relative;min-height:72px;border:1px solid var(--line);border-radius:12px;background:#111;padding:13px;text-align:left;overflow:hidden}.hot .inside{position:relative;z-index:1}.hot strong{display:block;font-size:13px;font-weight:600}.hot small{display:block;margin-top:4px;color:#aaa;font-size:10px}
 .space-link{width:100%;display:flex;align-items:center;justify-content:space-between;text-align:left;border:1px solid var(--line);background:#111;border-radius:12px;padding:14px 15px}.space-link b{font-size:14px;font-weight:600}.space-link small{display:block;margin-top:5px;color:#777;font-size:11px}.space-link>span:last-child{font-size:25px;color:#777}
-.view{display:none}.view.active{display:block}.back{border:0;background:transparent;color:#aaa;padding:7px 0;font-size:14px}.view-title{margin:22px 0 8px;font-size:25px;font-weight:650}.source-list{display:grid;gap:8px;margin-top:15px}.source-card{width:100%;border:1px solid var(--line);background:#111;border-radius:12px;padding:14px;text-align:left;cursor:pointer}.source-card strong{display:block;font-size:14px;font-weight:600}.source-card small{display:block;margin-top:5px;color:#858585;font-size:11px;line-height:1.45}.source-meta{margin-top:9px;color:#aaa;font-size:11px}.source-card em{display:inline-block;margin-top:6px;color:#666;font-style:normal;font-size:10px}.empty{border:1px dashed #333;border-radius:12px;padding:18px;color:#777;line-height:1.6}
+.view{display:none}.view.active{display:block}#sourcesView{display:none!important}.back{border:0;background:transparent;color:#aaa;padding:7px 0;font-size:14px}.view-title{margin:22px 0 8px;font-size:25px;font-weight:650}.source-list{display:grid;gap:8px;margin-top:15px}.source-card{width:100%;border:1px solid var(--line);background:#111;border-radius:12px;padding:14px;text-align:left;cursor:pointer}.source-card strong{display:block;font-size:14px;font-weight:600}.source-card small{display:block;margin-top:5px;color:#858585;font-size:11px;line-height:1.45}.source-meta{margin-top:9px;color:#aaa;font-size:11px}.source-card em{display:inline-block;margin-top:6px;color:#666;font-style:normal;font-size:10px}.empty{border:1px dashed #333;border-radius:12px;padding:18px;color:#777;line-height:1.6}
 .player-screen{text-align:center}.player-screen .view-title{margin-top:16px}.turn-wrap{position:relative;width:min(320px,82vw);margin:12px auto 24px}.turntable{position:relative;width:100%;aspect-ratio:1}.platter{position:absolute;inset:4%;border-radius:50%;background:#101010;box-shadow:0 0 0 8px #111,0 18px 38px #000}.turn{position:absolute;inset:7%;border-radius:50%;background:repeating-radial-gradient(circle,#080808 0 1px,#242424 1.2px 2px,#0b0b0b 2.2px 3.6px);box-shadow:inset 0 0 24px #000,0 0 0 1px #303030}.turn.spinning{animation:spin 3.2s linear infinite}.core-counter{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}.spindle{width:64px;height:64px;border-radius:50%;background:#111;border:1px solid #3b3b3b;box-shadow:0 0 0 5px #0b0b0b}.genre-logo{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:108px;height:108px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#121212;border:1px solid #4a4a4a;color:#eee;font-family:Georgia,"Times New Roman",serif;font-size:12px;font-weight:700;letter-spacing:1.1px;z-index:3}.genre-logo.playing{animation:logoSpin 18s linear infinite}.genre-logo span{display:block}.genre-logo.playing span{animation:logoTextSpin 18s linear infinite reverse}
 .arm-svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none;z-index:20}.arm{stroke:#d0d0d0;stroke-width:7;stroke-linecap:round;fill:none;filter:drop-shadow(0 2px 3px #000)}.arm-inner{stroke:#777;stroke-width:2;fill:none}.pivot{fill:#d9d9d9;stroke:#222;stroke-width:4}.headshell{fill:#ddd;stroke:#222;stroke-width:3}.stylus{stroke:#eee;stroke-width:3;stroke-linecap:round}.needle{transform:translateY(-3px);transition:transform .45s ease}.needle.down{transform:translateY(3px)}
-.playername{max-width:88%;margin:0 auto;padding:7px 12px;border:1px solid #252525;background:#111;border-radius:9px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:13px;color:#ddd}.status{margin-top:7px;color:#858585;font-size:11px;min-height:17px}.play{display:block;width:56px;height:56px;margin:16px auto 0;border:1px solid #555;border-radius:50%;background:#eee;color:#111;font-size:18px}.play.busy{background:#242424;color:#aaa}.audio-engine{position:absolute;left:-9999px;top:auto;width:1px;height:1px;opacity:.01;pointer-events:none}
+.playername{max-width:88%;margin:0 auto;padding:7px 12px;border:1px solid #252525;background:#111;border-radius:9px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:13px;color:#ddd}.status{margin-top:7px;color:#858585;font-size:11px;min-height:17px}.play{display:block;width:56px;height:56px;margin:16px auto 0;border:1px solid #555;border-radius:50%;background:#eee;color:#111;font-size:18px}.play.busy{background:#242424;color:#aaa}.track-nav{display:flex;align-items:center;justify-content:center;gap:18px;margin-top:14px}.track-nav .play{margin:0}.track-nav>button:not(.play){border:1px solid #2b2b2b;border-radius:999px;background:#111;color:#bbb;padding:10px 15px;font-size:12px;min-width:88px}.audio-engine{position:absolute;left:-9999px;top:auto;width:1px;height:1px;opacity:.01;pointer-events:none}
 
 .chart-modal{position:fixed;inset:0;background:rgba(0,0,0,.82);z-index:90;display:none;align-items:flex-end}.chart-modal.show{display:flex}.chart-sheet{width:100%;max-height:88vh;overflow:auto;background:#111;border:1px solid #2c2c2c;border-bottom:0;border-radius:20px 20px 0 0;padding:18px}.chart-head{display:flex;justify-content:space-between;align-items:center}.chart-head h3{margin:0;font-size:20px}.chart-close{width:36px;height:36px;border:1px solid #333;background:#181818;border-radius:50%}.chart-note{color:#777;font-size:10px;line-height:1.5;margin:6px 0 12px}.chart-tabs{display:flex;gap:6px;overflow:auto}.chart-tab{white-space:nowrap;border:1px solid #333;background:#151515;border-radius:999px;padding:7px 10px;font-size:10px}.chart-tab.active{border-color:#777}.chart-list{display:grid;gap:7px;margin-top:10px}.chart-row{display:grid;grid-template-columns:30px 1fr auto;gap:8px;align-items:center;border:1px solid #292929;background:#151515;border-radius:10px;padding:9px}.chart-rank{font-size:16px;color:#aaa;text-align:center}.chart-song{font-size:12px;font-weight:600}.chart-artist{font-size:9px;color:#777;margin-top:2px}.chart-open{border:1px solid #333;background:#181818;border-radius:8px;padding:6px 7px;font-size:9px}
 @keyframes spin{to{transform:rotate(360deg)}}@keyframes logoSpin{to{transform:translate(-50%,-50%) rotate(360deg)}}@keyframes logoTextSpin{to{transform:rotate(-360deg)}}
@@ -34,23 +34,23 @@ main{width:min(760px,100%);margin:0 auto;padding:18px 18px 88px}
 .sleep-home .section-head{display:flex;justify-content:space-between;align-items:center}.mini-more{border:0;background:none;color:#888;font-size:11px;padding:4px}.sleep-home-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:7px}.sleep-home-grid button{border:1px solid #292929;background:#111;border-radius:10px;padding:11px 5px;color:#ddd;font-size:11px}.faith-grid{grid-template-columns:repeat(2,1fr)}.faith-card{background:#111}.faith-card b{font-size:15px}.embed-box{margin-top:14px;border:1px solid #2b2b2b;border-radius:12px;overflow:hidden;background:#0e0e0e}.embed-box iframe{display:block;width:100%;height:420px;border:0;background:#fff}.embed-note{padding:10px 12px;color:#777;font-size:10px;line-height:1.5}
 .sleep-main-grid{grid-template-columns:repeat(3,1fr)}.sleep-home-grid button{min-height:78px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px}.sleep-home-grid button b{font-size:12px;font-weight:600}.sleep-home-grid button small{font-size:9px;color:#777}.sleep-control{margin-top:10px}.yt-hidden{position:absolute;width:1px;height:1px;left:-9999px;top:0;overflow:hidden;opacity:0;pointer-events:none}.yt-hidden iframe{width:1px;height:1px;border:0}.yt-box{margin-top:14px;border:1px solid #2b2b2b;border-radius:12px;overflow:hidden;background:#090909}.yt-box iframe{display:block;width:100%;aspect-ratio:16/9;border:0}.yt-note{padding:9px 11px;color:#777;font-size:10px;line-height:1.5;text-align:left}.source-card.youtube{border-color:#3a3a3a}.source-card.youtube .source-meta{color:#bbb}</style></head><body><main>
 <section id="homeView" class="view active" aria-label="首頁"><header class="top"><div class="logo">GLOBAL SOUND 24</div><button class="gear" id="homeSettings" aria-label="Settings">⚙︎</button></header>
-<div class="hero"><h1>想聽什麼？</h1><p>選一種感覺，直接開始聽。</p></div>
+<div class="hero"><h1>想聽什麼？</h1><p>點選曲風或睡眠音樂，直接進入唱盤播放。</p></div>
 <section class="section music-section"><div class="music-head"><div class="music-title"><h2>🎵 音樂類型</h2><p class="sub">依地區篩選音樂來源</p></div><div class="region-box" id="regions"></div></div><div class="grid" id="genres"></div></section>
 <section class="section sleep-home"><div class="section-head"><div><h2>🌙 睡眠音樂</h2><p class="sub">24H 睡眠音樂・寶寶安睡・白噪音・自然聲</p></div></div><div class="sleep-home-grid sleep-main-grid"><button onclick="playSleep('baby')">🍼<b>寶寶安睡</b><small>Lullaby 24H</small></button><button onclick="playSleep('deep')">🌙<b>深度睡眠</b><small>Piano & Rain 24H</small></button><button onclick="playSleep('rain')">🌧️<b>雨聲</b><small>Rain 24H</small></button><button onclick="playSleep('white')">🤍<b>白噪音</b><small>White Noise</small></button><button onclick="playSleep('pink')">🌸<b>粉紅噪音</b><small>Pink Noise</small></button><button onclick="playSleep('brown')">🤎<b>棕噪音</b><small>Brown Noise</small></button><button onclick="playSleep('ocean')">🌊<b>海浪</b><small>Ocean</small></button><button onclick="playSleep('forest')">🌲<b>森林</b><small>Forest</small></button><button onclick="playSleep('campfire')">🔥<b>營火</b><small>Campfire</small></button><button onclick="playSleep('wind')">💨<b>風聲</b><small>Wind</small></button><button onclick="playSleep('thunder')">⛈️<b>雷雨</b><small>Thunderstorm</small></button></div><div class="status" id="sleepStatus">尚未播放睡眠音樂</div></section><section class="section faith-section"><div class="section-head"><div><h2>🕊️ 信仰・靈性</h2><p class="sub">宗教音樂與靈性聲音</p></div></div><div class="faith-grid" id="faithGrid"></div></section>
 <section class="section"><div class="section-head"><div><h2>🔥 熱門音樂</h2><p class="sub">依你選擇的地區顯示</p></div></div><div class="hot" id="hot"></div></section>
 
-</section><section id="sourcesView" class="view"><div class="view-top"><button class="back" onclick="showHome()">‹ 回首頁</button><button class="gear" aria-label="Settings" onclick="openSettings()">⚙︎</button></div><div class="view-title" id="sourceTitle">音樂來源</div><div id="sourceCount" class="sub" style="margin-top:-2px"></div><p class="sub">來源可含歌唱；排除新聞、主持、Talk、政治與體育口播。播放時即時確認。</p><div class="source-list" id="sources"></div></section>
-<section id="playerView" class="view player-screen"><div class="view-top"><button class="back" onclick="returnToSourceList()">‹ 返回來源</button><button class="gear" aria-label="Settings" onclick="openSettings()">⚙︎</button></div><div class="view-title">Now Playing</div><div class="turn-wrap"><div class="turntable"><div class="platter"></div><div class="turn" id="turn"><div class="core-counter" id="coreCounter"><div class="spindle"></div><div class="genre-logo" id="genreLogo"><span id="genreLogoText">PIANO</span></div></div></div><svg class="arm-svg" viewBox="0 0 330 330" aria-hidden="true"><circle class="pivot" cx="286" cy="34" r="17"/><path class="arm" d="M286 34 C286 66 282 100 272 136 C263 172 253 205 244 232"/><path class="arm-inner" d="M286 34 C286 66 282 100 272 136 C263 172 253 205 244 232"/><g class="needle" id="needle"><path class="headshell" d="M244 225 L230 231 L232 243 L247 239 Z"/><path class="stylus" d="M234 241 L257 276"/></g></svg></div></div><div class="playername" id="playername">GLOBAL SOUND 24 · Ready</div><div class="status" id="status">等待播放</div><audio id="audio" class="audio-engine" preload="auto" playsinline webkit-playsinline></audio><div id="officialEmbed" style="display:none"></div><button class="play" id="play" aria-label="播放">▶</button></section>
+</section><section id="sourcesView" class="view" aria-hidden="true" style="display:none!important"><div class="view-top"><button class="back" onclick="showHome()">‹ 回首頁</button><button class="gear" aria-label="Settings" onclick="openSettings()">⚙︎</button></div><div class="view-title" id="sourceTitle">音樂來源</div><div id="sourceCount" class="sub" style="margin-top:-2px"></div><p class="sub">來源可含歌唱；排除新聞、主持、Talk、政治與體育口播。播放時即時確認。</p><div class="source-list" id="sources"></div></section>
+<section id="playerView" class="view player-screen"><div class="view-top"><button class="back" onclick="showHome()">‹ 回首頁</button><button class="gear" aria-label="Settings" onclick="openSettings()">⚙︎</button></div><div class="view-title">Now Playing</div><div class="turn-wrap"><div class="turntable"><div class="platter"></div><div class="turn" id="turn"><div class="core-counter" id="coreCounter"><div class="spindle"></div><div class="genre-logo" id="genreLogo"><span id="genreLogoText">PIANO</span></div></div></div><svg class="arm-svg" viewBox="0 0 330 330" aria-hidden="true"><circle class="pivot" cx="286" cy="34" r="17"/><path class="arm" d="M286 34 C286 66 282 100 272 136 C263 172 253 205 244 232"/><path class="arm-inner" d="M286 34 C286 66 282 100 272 136 C263 172 253 205 244 232"/><g class="needle" id="needle"><path class="headshell" d="M244 225 L230 231 L232 243 L247 239 Z"/><path class="stylus" d="M234 241 L257 276"/></g></svg></div></div><div class="playername" id="playername">GLOBAL SOUND 24 · Ready</div><div class="status" id="status">等待播放</div><audio id="audio" class="audio-engine" preload="auto" playsinline webkit-playsinline></audio><div id="officialEmbed" style="display:none"></div><div class="track-nav"><button type="button" id="prevTrack" aria-label="上一首">‹ 上一首</button><button class="play" id="play" aria-label="播放">▶</button><button type="button" id="nextTrack" aria-label="下一首">下一首 ›</button></div></section>
 
 </main>
-<div class="overlay" id="overlay" aria-hidden="true"><div class="sheet"><div class="sheettop"><strong>Settings</strong><button class="close" id="close">×</button></div><div class="settings-row"><label for="settingsSleepTimer">Sleep Timer</label><select id="settingsSleepTimer" class="settings-select"><option value="0">關閉</option><option value="30">30 分鐘</option><option value="60">1 小時</option><option value="120">2 小時</option><option value="240">4 小時</option><option value="480">8 小時</option></select></div><div class="settings-row"><label for="settingsLanguage">Language</label><select id="settingsLanguage" class="settings-select"><option value="zh-TW">繁體中文</option><option value="zh-CN">简体中文</option><option value="ja">日本語</option><option value="ko">한국어</option><option value="en-US">English (US)</option><option value="en-GB">English (UK)</option></select></div><div class="settings-row"><label>Soft Ver.</label><div class="settings-value">V213</div></div></div></div>
+<div class="overlay" id="overlay" aria-hidden="true"><div class="sheet"><div class="sheettop"><strong>Settings</strong><button class="close" id="close">×</button></div><div class="settings-row"><label for="settingsSleepTimer">Sleep Timer</label><select id="settingsSleepTimer" class="settings-select"><option value="0">關閉</option><option value="30">30 分鐘</option><option value="60">1 小時</option><option value="120">2 小時</option><option value="240">4 小時</option><option value="480">8 小時</option></select></div><div class="settings-row"><label for="settingsLanguage">Language</label><select id="settingsLanguage" class="settings-select"><option value="zh-TW">繁體中文</option><option value="zh-CN">简体中文</option><option value="ja">日本語</option><option value="ko">한국어</option><option value="en-US">English (US)</option><option value="en-GB">English (UK)</option></select></div><div class="settings-row"><label>Soft Ver.</label><div class="settings-value">V215</div></div></div></div>
 <script>
 const countries=[['tw','🇹🇼','台灣'],['cn','🇨🇳','中國'],['jp','🇯🇵','日本'],['kr','🇰🇷','韓國'],['us','🇺🇸','美國'],['uk','🇬🇧','英國']];
 let selected=new Set(countries.map(x=>x[0])); let currentGenre=''; let currentFaith='';
 let activeSource=null, activeUrlIndex=0, playTimeout=null, playStarted=false;
 const audio=document.getElementById('audio'), turn=document.getElementById('turn'), needle=document.getElementById('needle'), genreLogo=document.getElementById('genreLogo'), status=document.getElementById('status'), playername=document.getElementById('playername');
 const genres=[
- ['instrumental','純音樂','PURE INSTRUMENTAL'],['piano','Piano','PIANO'],['jazz','Jazz','JAZZ MUSIC'],['classical','Classical','CLASSICAL MUSIC'],['rnb','R&B','R&B MUSIC'],['rock','Rock','ROCK MUSIC'],['pop','Pop','POP MUSIC']
+ ['instrumental','純音樂','PURE INSTRUMENTAL'],['reading','閱讀音樂','READING MUSIC'],['piano','Piano','PIANO'],['jazz','Jazz','JAZZ MUSIC'],['classical','Classical','CLASSICAL MUSIC'],['rnb','R&B','R&B MUSIC'],['rock','Rock','ROCK MUSIC'],['pop','Pop','POP MUSIC']
  ];
 const faiths=[
  ['buddhist','🪷 佛教','梵唄・佛號・禪修'],
@@ -162,8 +162,8 @@ function renderRegions(){
  box.innerHTML=countries.map(([id,f,n])=>`<label class="region-chip ${selected.has(id)?'on':''}"><input type="checkbox" ${selected.has(id)?'checked':''} data-id="${id}"><span class="flag">${f}</span><span>${n}</span></label>`).join('');
  box.querySelectorAll('input').forEach(i=>i.onchange=()=>{i.checked?selected.add(i.dataset.id):selected.delete(i.dataset.id);renderRegions();renderHot();renderSources()});
 }
-function renderGenres(){document.getElementById('genres').innerHTML=genres.map(g=>`<button class="tile" data-g="${g[0]}"><div class="tile-content"><div class="tile-title">${g[1]}</div><div class="tile-en">${g[2]}</div></div></button>`).join('');document.querySelectorAll('.tile').forEach(b=>b.onclick=()=>{showSources(b.dataset.g)})}
-function renderFaith(){const el=document.getElementById('faithGrid');el.innerHTML=faiths.map(f=>`<button class="faith-card" data-faith="${f[0]}"><b>${f[1]}</b><small>${f[2]}</small></button>`).join('');el.querySelectorAll('[data-faith]').forEach(b=>b.onclick=()=>showFaith(b.dataset.faith))}
+function renderGenres(){document.getElementById('genres').innerHTML=genres.map(g=>`<button class="tile" data-g="${g[0]}"><div class="tile-content"><div class="tile-title">${g[1]}</div><div class="tile-en">${g[2]}</div></div></button>`).join('');document.querySelectorAll('.tile').forEach(b=>b.onclick=()=>{startCategory(b.dataset.g)})}
+function renderFaith(){const el=document.getElementById('faithGrid');el.innerHTML=faiths.map(f=>`<button class="faith-card" data-faith="${f[0]}"><b>${f[1]}</b><small>${f[2]}</small></button>`).join('');el.querySelectorAll('[data-faith]').forEach(b=>b.onclick=()=>startFaith(b.dataset.faith))}
 function hotItems(){const out=[];if(selected.has('tw'))out.push(['tw','台灣流行歌曲','台灣熱門排行']);if(selected.has('cn'))out.push(['cn','中國流行歌曲','中國熱門排行']);if(selected.has('jp'))out.push(['jp','日本流行歌曲','J-POP 熱門排行']);if(selected.has('kr'))out.push(['kr','韓國流行歌曲','K-POP 熱門排行']);if(selected.has('us'))out.push(['us','美國流行歌曲','US Top Hits']);if(selected.has('uk'))out.push(['uk','英國流行歌曲','UK Top Hits']);return out.slice(0,6)}
 const chartLabels={tw:'台灣流行歌曲',cn:'中國流行歌曲',jp:'日本 J-POP',kr:'韓國 K-POP',us:'US Top Hits',uk:'UK Top Hits'};
 const chartSamples={tw:['台灣熱門歌曲 01','台灣熱門歌曲 02','台灣熱門歌曲 03','台灣熱門歌曲 04','台灣熱門歌曲 05'],cn:['中國熱門歌曲 01','中國熱門歌曲 02','中國熱門歌曲 03','中國熱門歌曲 04','中國熱門歌曲 05'],jp:['日本熱門歌曲 01','日本熱門歌曲 02','日本熱門歌曲 03','日本熱門歌曲 04','日本熱門歌曲 05'],kr:['K-POP 熱門歌曲 01','K-POP 熱門歌曲 02','K-POP 熱門歌曲 03','K-POP 熱門歌曲 04','K-POP 熱門歌曲 05'],us:['US Top Song 01','US Top Song 02','US Top Song 03','US Top Song 04','US Top Song 05'],uk:['UK Top Song 01','UK Top Song 02','UK Top Song 03','UK Top Song 04','UK Top Song 05']};
@@ -173,6 +173,63 @@ function closeCharts(){document.getElementById('chartModal').classList.remove('s
 function openOfficialChart(c){const u={tw:'https://music.youtube.com/charts',cn:'https://music.youtube.com/charts',jp:'https://music.youtube.com/charts',kr:'https://music.youtube.com/charts',us:'https://music.youtube.com/charts',uk:'https://music.youtube.com/charts'}[c]||'https://music.youtube.com/charts';window.open(u,'_blank','noopener')}
 function hideViews(){document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'))}
 function showHome(){hideViews();currentGenre='';currentFaith='';document.getElementById('homeView').classList.add('active');renderRegions();renderFaith();renderHot();history.replaceState(null,'','#home');window.scrollTo(0,0)}
+
+let playQueue=[], queueIndex=0, queueKind='genre';
+function stopCurrentMedia(){
+  clearPlayTimeout();
+  stopFade();
+  try{audio.pause();audio.removeAttribute('src');audio.load();audio.volume=1}catch(e){}
+  stopYouTubePlayer();
+  if(sleepNodes.length){sleepNodes.forEach(n=>{try{n.stop?.()}catch(e){}try{n.disconnect?.()}catch(e){}});sleepNodes=[]}
+  if(sleepStopTimer){clearTimeout(sleepStopTimer);sleepStopTimer=null}
+  hideOfficialEmbed();
+  playStarted=false;setBusy(false);setPlayIcon(false);
+  turn.classList.remove('spinning');needle.classList.remove('down');genreLogo.classList.remove('playing');
+}
+function sourcesForGenre(g){
+  let filtered;
+  if(g==='reading') filtered=testSources.filter(x=>(x.c==='global'||selected.has(x.c))&&!x.faith&&['piano','classical','instrumental'].includes(x.g)&&(x.urls?.length||x.ytId));
+  else filtered=testSources.filter(x=>(x.c==='global'||selected.has(x.c))&&!x.faith&&x.g===g&&(x.urls?.length||x.ytId));
+  return filtered.sort((a,b)=>Number(!!b.urls?.length)-Number(!!a.urls?.length));
+}
+function sourcesForFaith(f){
+  return testSources.filter(x=>x.faith===f&&(x.urls?.length||x.ytId)).sort((a,b)=>Number(!!b.urls?.length)-Number(!!a.urls?.length));
+}
+function startCategory(g){
+  const list=sourcesForGenre(g);
+  currentGenre=g;currentFaith='';queueKind='genre';playQueue=list;queueIndex=0;
+  if(!list.length){openPlayerNotice('這個曲風目前沒有可用音源，請稍後再試。',g);return}
+  playQueueItem(0);
+}
+function startFaith(f){
+  const list=sourcesForFaith(f);
+  currentFaith=f;currentGenre='';queueKind='faith';playQueue=list;queueIndex=0;
+  if(!list.length){openPlayerNotice('此分類暫時沒有可用音源，請稍後再試。','faith');return}
+  playQueueItem(0);
+}
+function openPlayerNotice(msg,logo){
+  stopCurrentMedia();hideViews();document.getElementById('playerView').classList.add('active');
+  setGenreLogo({g:logo});playername.textContent=logo==='faith'?'信仰・靈性':'GLOBAL SOUND 24';
+  status.textContent=msg;history.replaceState(null,'','#player');window.scrollTo(0,0);
+}
+function playQueueItem(index){
+  if(!playQueue.length)return;
+  queueIndex=(index+playQueue.length)%playQueue.length;
+  const x=playQueue[queueIndex];
+  stopCurrentMedia();
+  if(x.ytId)showYouTube(x);
+  else if(x.urls?.length)playSource(x);
+  else showOfficialEmbed({...x,embedUrl:x.embedUrl||x.manifest});
+}
+function moveTrack(delta){
+  if(queueKind==='sleep'){
+    const order=['baby','deep','rain','white','pink','brown','ocean','forest','campfire','wind','thunder'];
+    const idx=order.indexOf(sleepActiveKind);playSleep(order[(idx+delta+order.length)%order.length]);return;
+  }
+  if(playQueue.length>1)playQueueItem(queueIndex+delta);
+  else status.textContent='此分類正在播放可用音源';
+}
+
 function showSources(g=''){hideOfficialEmbed();currentGenre=g;currentFaith='';hideViews();document.getElementById('sourcesView').classList.add('active');history.replaceState(null,'','#sources');const genre=genres.find(x=>x[0]===g);document.getElementById('sourceTitle').textContent=genre?genre[1]+' · 音樂來源':'音樂來源';renderSources();window.scrollTo(0,0)}
 function showFaith(f=''){hideOfficialEmbed();currentFaith=f;currentGenre='';hideViews();document.getElementById('sourcesView').classList.add('active');history.replaceState(null,'','#faith');const faith=faiths.find(x=>x[0]===f);document.getElementById('sourceTitle').textContent=faith?faith[1]+' · 宗教音樂':'信仰・靈性';renderSources();window.scrollTo(0,0)}
 function renderSources(){
@@ -232,7 +289,7 @@ function sourceFailed(){
 function returnToSourceList(){hideOfficialEmbed(); if(currentFaith)showFaith(currentFaith); else showSources(currentGenre)}
 
 function setGenreLogo(x){
- const map={instrumental:'INSTRUMENTAL',piano:'PIANO',jazz:'JAZZ',classical:'CLASSICAL',rnb:'R&B',rock:'ROCK',pop:'POP',faith:'FAITH'};
+ const map={instrumental:'INSTRUMENTAL',reading:'READING',piano:'PIANO',jazz:'JAZZ',classical:'CLASSICAL',rnb:'R&B',rock:'ROCK',pop:'POP',faith:'FAITH'};
  document.getElementById('genreLogoText').textContent=map[currentGenre]||map[x?.g]||'MUSIC';genreLogo.classList.remove('playing');
 }
 
@@ -262,7 +319,7 @@ function showOfficialEmbed(x){
 }
 function hideOfficialEmbed(){const wrap=document.getElementById('officialEmbed'); if(wrap){wrap.innerHTML='';wrap.style.display='none'} const tw=document.querySelector('.turn-wrap'); if(tw)tw.style.display='block'; const pb=document.getElementById('play'); if(pb)pb.style.display='block'}
 function playSource(x){
- hideOfficialEmbed();
+ stopCurrentMedia();hideOfficialEmbed();
  activeSource=x;activeUrlIndex=0;setGenreLogo(x);hideViews();document.getElementById('playerView').classList.add('active');history.replaceState(null,'','#player');window.scrollTo(0,0);
  playername.textContent=x.name;status.textContent='準備播放';setPlayIcon(false);setBusy(false);
  // First attempt is initiated directly from the user's tap on the source card.
@@ -276,6 +333,7 @@ audio.addEventListener('pause',()=>{clearPlayTimeout();if(!playStarted)return;st
 audio.addEventListener('ended',()=>{clearPlayTimeout();status.textContent='播放結束';turn.classList.remove('spinning');needle.classList.remove('down');genreLogo.classList.remove('playing');setPlayIcon(false)});
 audio.addEventListener('error',()=>{if(activeSource&&!playStarted)tryNextUrl()});
 function setPlayIcon(isPlaying){const b=document.getElementById('play');b.textContent=isPlaying?'❚❚':'▶';b.setAttribute('aria-label',isPlaying?'暫停':'播放');b.disabled=false}
+document.getElementById('prevTrack').onclick=()=>moveTrack(-1);document.getElementById('nextTrack').onclick=()=>moveTrack(1);
 document.getElementById('play').onclick=()=>{if(mediaMode==='youtube'||mediaMode==='official'){const f=document.getElementById('youtubeFrame');if(f&&f.contentWindow){const cmd=playStarted?'pauseVideo':'playVideo';try{f.contentWindow.postMessage(JSON.stringify({event:'command',func:cmd,args:[]}),'*')}catch(e){}}if(playStarted){turn.classList.remove('spinning');needle.classList.remove('down');genreLogo.classList.remove('playing');setPlayIcon(false);setBusy(false);status.textContent='已暫停';playStarted=false}else{setBusy(true);setTimeout(()=>{setBusy(false);setPlayIcon(true);turn.classList.add('spinning');needle.classList.add('down');genreLogo.classList.add('playing');status.textContent='播放中';playStarted=true},500)}return;}if(mediaMode==='sleep'){if(sleepNodes.length){stopSleep();return}if(sleepActiveKind)playSleep(sleepActiveKind);return;}if(!activeSource)return;if(audio.paused){activeUrlIndex=0;tryActiveUrl()}else{setBusy(true);fadeOutAudio(()=>{audio.pause();audio.volume=1;setBusy(false);status.textContent='已暫停';setPlayIcon(false)})}};
 
 let ctx=null,sleepNodes=[],sleepStopTimer=null,sleepActiveKind=null;
@@ -292,7 +350,7 @@ function showSleepPlayer(label){
   hideViews();document.getElementById('playerView').classList.add('active');hideOfficialEmbed();mediaMode='sleep';activeSource={name:label,g:'sleep'};setGenreLogo({g:'instrumental'});document.getElementById('genreLogoText').textContent='SLEEP';playername.textContent=label;status.textContent='準備播放';setBusy(false);setPlayIcon(false);history.replaceState(null,'','#player');window.scrollTo(0,0);
 }
 function playSleep(kind){
-  stopSleep();
+  stopCurrentMedia();queueKind='sleep';playQueue=[];
   const label={baby:'寶寶安睡',deep:'深度睡眠',white:'白噪音',pink:'粉紅噪音',brown:'棕噪音',rain:'雨聲',ocean:'海浪',forest:'森林',campfire:'營火',wind:'風聲',thunder:'雷雨'}[kind]||'睡眠音樂';
   sleepActiveKind=kind; showSleepPlayer(label);
   if(sleepYT[kind]){
