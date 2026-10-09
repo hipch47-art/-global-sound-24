@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#080808">
+<title>GLOBAL SOUND 24 V220 測試版</title>
+<style>
+:root{--bg:#0b0b0b;--panel:#141414;--line:#292929;--text:#f2f2f2;--muted:#888}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Noto Sans TC",Arial,sans-serif}
+main{width:min(760px,100%);margin:auto;padding:16px 16px 100px}.top{height:44px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #202020}.logo{font-size:14px;font-weight:700;letter-spacing:.13em}.headtools{display:flex;gap:6px;align-items:center}.region-select{max-width:112px;background:#111;color:#ccc;border:1px solid #292929;border-radius:20px;padding:8px 6px;font-size:11px}.gear,.back{border:1px solid var(--line);background:#111;color:#ddd;border-radius:20px;padding:9px 12px}
+.hero{padding:28px 2px 20px}.hero h1{font-size:30px;margin:0}.hero p,.sub{font-size:12px;line-height:1.6;color:var(--muted)}.section{margin-top:24px}.section h2{font-size:18px;margin:0 0 8px}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.tile{min-height:92px;text-align:left;border:1px solid #292929;border-radius:12px;background:linear-gradient(145deg,#171717,#101010);color:#eee;padding:14px}.tile b{font-size:16px;display:block}.tile small{display:block;color:#777;margin-top:6px;font-size:10px;letter-spacing:.08em}.sleep-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}.sleep-grid button{min-height:75px;background:#111;border:1px solid #292929;border-radius:10px;color:#eee;padding:9px 4px;font-size:12px}.sleep-grid small{display:block;color:#777;font-size:9px;margin-top:5px}.view{display:none}.view.active{display:block}.view-title{font-size:25px;font-weight:650;margin:22px 0 5px}.cards{display:grid;gap:8px;margin-top:15px}.source{width:100%;text-align:left;background:#111;border:1px solid #292929;border-radius:12px;color:#eee;padding:14px}.source strong{display:block;font-size:14px}.source small{display:block;color:#888;font-size:11px;line-height:1.5;margin-top:5px}.status{font-size:11px;color:#888;line-height:1.6;min-height:18px;margin-top:8px}.player{text-align:center}.disc-wrap{width:min(300px,80vw);aspect-ratio:1;margin:22px auto;display:grid;place-items:center;border-radius:50%;background:repeating-radial-gradient(circle,#090909 0 2px,#292929 2.5px 3.4px,#101010 4px 6px);box-shadow:0 0 0 8px #141414,0 18px 36px #000}.disc-label{width:105px;height:105px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#292929,#111 68%);border:1px solid #666;display:grid;place-items:center;text-align:center;padding:8px;font-size:13px;line-height:1.25;letter-spacing:.06em;overflow-wrap:anywhere;box-shadow:0 0 0 4px #171717}.tonearm{position:absolute;width:122px;height:9px;background:linear-gradient(#b7b7b7,#555);border:1px solid #777;border-radius:9px;top:20px;right:6px;transform-origin:calc(100% - 7px) 50%;transform:rotate(-23deg);transition:transform .7s ease;z-index:3;box-shadow:0 2px 5px #000}.tonearm:before{content:'';position:absolute;right:-3px;top:-5px;width:15px;height:17px;border-radius:4px;background:linear-gradient(90deg,#555,#aaa,#333)}.tonearm:after{content:'';position:absolute;left:-3px;top:-3px;width:12px;height:13px;background:#aaa;border-radius:3px}.disc-wrap{position:relative}.tonearm.playing{transform:rotate(9deg)}.disc-wrap.spinning:before{animation:spin 3s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}.playername{max-width:90%;margin:auto;border:1px solid #292929;background:#111;border-radius:9px;padding:10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:13px}.controls{display:flex;justify-content:center;align-items:center;gap:15px;margin-top:16px}.controls button{border:1px solid #333;background:#151515;color:#eee;border-radius:30px;padding:12px 16px}.controls .mainplay{width:58px;height:58px;border-radius:50%;background:#eee;color:#111;font-size:19px}.controls .mainplay:disabled{background:#292929;color:#666;border-color:#333;opacity:.75}.notice{border:1px dashed #333;border-radius:10px;padding:12px;color:#999;font-size:11px;line-height:1.6;margin-top:14px}.settings{display:none;position:fixed;inset:0;background:#000b;align-items:flex-end}.settings.show{display:flex}.sheet{width:100%;background:#151515;border-radius:18px 18px 0 0;padding:20px}.sheet button{background:#222;border:1px solid #444;color:#eee;padding:12px;border-radius:9px;margin-top:12px}
+@media(max-width:380px){.sleep-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.tile{min-height:85px}}
+</style>
+</head>
+<body><main>
+<section id="home" class="view active">
+<header class="top"><div class="logo">GLOBAL SOUND 24</div><div class="headtools"><select id="regionSelect" class="region-select" aria-label="音樂地區"><option value="all">全部地區</option><option value="tw">🇹🇼 台灣</option><option value="cn">🇨🇳 中國</option><option value="jp">🇯🇵 日本</option><option value="kr">🇰🇷 韓國</option><option value="us">🇺🇸 美國</option><option value="uk">🇬🇧 英國</option></select><button class="gear" id="settingsBtn">⚙︎</button></div></header>
+<div class="hero"><h1>想聽什麼？</h1><p>V220 測試版｜點選曲風或睡眠音樂即可自動開始播放。允許符合曲風的人聲演唱；排除廣告、新聞、談話節目。</p></div>
+<section class="section"><h2>🎵 音樂曲風</h2><p class="sub">不含「純音樂」分類；古典樂可包含人聲演唱。</p><div class="grid" id="genres"></div></section>
+<section class="section"><h2>🌙 睡眠音樂</h2><p class="sub">睡眠分類需使用經驗證的音源；不以內建合成噪音冒充正式內容。</p><div class="sleep-grid" id="sleepGrid"></div><div class="status" id="sleepStatus">選擇一種睡眠聲音開始播放</div></section>
+<div class="notice">測試說明：睡眠聲音由瀏覽器即時產生。音樂曲風使用公開音樂串流來源；不同網路、瀏覽器或來源端狀態可能影響播放，失敗時會自動嘗試同分類的備用來源。本測試版尚未部署至正式 GitHub Pages。</div>
+</section>
+<section id="sourcesView" class="view">
+<div class="top"><button class="back" onclick="goHome()">‹ 回首頁</button><button class="gear" id="settingsBtn2">⚙︎</button></div>
+<div class="view-title" id="sourceTitle">音樂來源</div><p class="sub" id="sourceIntro">點選來源開始播放。</p><div class="cards" id="sourceCards"></div><div class="status" id="sourceStatus"></div>
+</section>
+<section id="playerView" class="view player">
+<div class="top"><button class="back" onclick="goHome()">‹ 回首頁</button><button class="gear" id="settingsBtn3">⚙︎</button></div>
+<div class="view-title">Now Playing</div><div class="disc-wrap" id="disc"><div class="tonearm" id="tonearm"></div><div class="disc-label" id="discLabel">選擇曲風</div></div>
+<div class="playername" id="playerName">GLOBAL SOUND 24 · Ready</div><div class="status" id="playerStatus">等待播放</div>
+<div class="controls"><button id="prev">‹ 上一個來源</button><button class="mainplay" id="playBtn" disabled aria-disabled="true">▶</button><button id="next">下一個來源 ›</button></div>
+<div class="notice" id="playerNotice">只會在實際收到播放事件後顯示「播放中」。</div>
+</section>
+</main>
+<div class="settings" id="settings"><div class="sheet"><div style="display:flex;justify-content:space-between;align-items:center"><b>設定</b><button id="closeSettings" aria-label="關閉設定" style="width:42px;height:42px;border-radius:50%;font-size:20px">×</button></div><p class="sub">App 版本：V220 測試版</p><p class="sub">介面語言</p><select id="language" style="background:#222;color:#eee;border:1px solid #444;padding:10px;border-radius:8px;width:100%"><option value="zh-Hant">繁體中文</option><option value="en">English（部分介面）</option></select><p class="sub">睡眠計時器</p><select id="timer" style="background:#222;color:#eee;border:1px solid #444;padding:10px;border-radius:8px;width:100%"><option value="0">關閉</option><option value="30">30 分鐘</option><option value="60">1 小時</option><option value="120">2 小時</option><option value="240">4 小時</option><option value="480">8 小時</option></select><button id="stopAll" style="width:100%">停止播放</button></div></div>
+<audio id="audio" preload="none" playsinline></audio>
+<script>
+const genreData = [
+ {id:'reading',name:'閱讀音樂',en:'READING MUSIC',sources:[
+  {name:'Radio Art · Study',detail:'閱讀／專注背景音樂',urls:['https://air.radioart.com/fStudy.mp3','https://live.radioart.com/fStudy.mp3']},
+  {name:'SomaFM · Groove Salad',detail:'Ambient／Downtempo 音樂',urls:['https://ice5.somafm.com/groovesalad-128-mp3','https://ice2.somafm.com/groovesalad-128-mp3']}
+ ]},
+ {id:'piano',name:'鋼琴',en:'PIANO',sources:[
+  {name:'Radio Art · Piano',detail:'鋼琴音樂',urls:['https://air.radioart.com/fPiano.mp3','https://live.radioart.com/fPiano.mp3']},
+  {name:'Whisperings · Solo Piano',detail:'獨奏鋼琴音樂',urls:['https://pianosolo.streamguys1.com/live']}
+ ]},
+ {id:'jazz',name:'爵士樂',en:'JAZZ',sources:[
+  {name:'Jazz24 · Jazz',detail:'爵士樂，可包含人聲演唱',urls:['https://knkx-live-a.edge.audiocdn.com/6285_128k','https://knkx-live-a.edge.audiocdn.com/6285_256k']},
+  {name:'SomaFM · Sonic Universe',detail:'現代爵士音樂',urls:['https://ice5.somafm.com/sonicuniverse-128-mp3','https://ice2.somafm.com/sonicuniverse-128-mp3']},
+  {name:'Radio Art · Jazz Piano',detail:'爵士鋼琴',urls:['https://air.radioart.com/fJazz_piano.mp3','https://live.radioart.com/fJazz_piano.mp3']}
+ ]},
+ {id:'classical',name:'古典樂',en:'CLASSICAL',sources:[
+  {name:'Radio Art · Classical Relaxation',detail:'古典音樂；本分類不限制為純器樂',urls:['https://air.radioart.com/fClassical_relaxation.mp3','https://live.radioart.com/fClassical_relaxation.mp3']},
+  {name:'Radio Art · Solo Instruments',detail:'古典／器樂曲目',urls:['https://air.radioart.com/fSolo_instruments.mp3','https://live.radioart.com/fSolo_instruments.mp3']}
+ ]},
+ {id:'rnb',name:'R&B',en:'R&B',sources:[
+  {name:'SomaFM · Fluid',detail:'Future Soul／R&B 取向音樂',urls:['https://ice.somafm.com/fluid','https://ice5.somafm.com/fluid']}
+ ]},
+ {id:'rock',name:'搖滾樂',en:'ROCK',sources:[
+  {name:'SomaFM · Metal Detector',detail:'搖滾／金屬音樂',urls:['https://ice5.somafm.com/metal-128-mp3','https://ice2.somafm.com/metal-128-mp3']},
+  {name:'SomaFM · Digitalis',detail:'另類搖滾音樂',urls:['https://ice.somafm.com/digitalis']}
+ ]},
+ {id:'pop',name:'流行樂',en:'POP',sources:[
+  {name:'SomaFM · Indie Pop Rocks!',detail:'獨立流行／搖滾歌曲，可有人聲演唱',urls:['https://ice5.somafm.com/indiepop-128-mp3','https://ice6.somafm.com/indiepop-128-mp3']}
+ ]}
+];
+const sleepData=[
+ ['baby','🍼','寶寶安睡','柔和搖籃音與輕柔底噪'],['deep','🌙','深度睡眠','低起伏舒緩音'],['rain','🌧️','雨聲','連續雨聲'],['white','🤍','白噪音','白噪音'],['pink','🌸','粉紅噪音','粉紅噪音'],['brown','🤎','棕噪音','棕噪音'],['ocean','🌊','海浪','海浪環境音'],['forest','🌲','森林','風與鳥鳴氛圍'],['campfire','🔥','營火','木柴劈啪聲'],['wind','💨','風聲','柔和風聲'],['thunder','⛈️','雷雨','雨聲與遠雷']
+];
+const $=id=>document.getElementById(id);
+let currentGenre=null, currentSources=[], sourceIndex=0, mediaMode='none', audioCtx=null, sleepNodes=[], sleepKind=null, timerId=null, healthTimer=null;
+const audio=$('audio');
+$('genres').innerHTML=genreData.map(g=>`<button class="tile" data-genre="${g.id}"><b>${g.name}</b><small>${g.en}</small></button>`).join('');
+$('sleepGrid').innerHTML=sleepData.map(s=>`<button data-sleep="${s[0]}">${s[1]} ${s[2]}<small>${s[3]}</small></button>`).join('');
+document.querySelectorAll('[data-genre]').forEach(b=>b.onclick=()=>openGenre(b.dataset.genre));
+document.querySelectorAll('[data-sleep]').forEach(b=>b.onclick=()=>playSleep(b.dataset.sleep));
+function showView(id){document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));$(id).classList.add('active');window.scrollTo(0,0)}
+function goHome(){showView('home')}
+function openGenre(id){
+ stopEverything(false); currentGenre=genreData.find(g=>g.id===id); currentSources=currentGenre.sources; sourceIndex=0;
+ $('sourceTitle').textContent=currentGenre.name; $('sourceIntro').textContent='自動尋找可播放的同曲風音源…'; $('sourceStatus').textContent='';
+ $('playerName').textContent=currentGenre.name+' · 正在尋找音源'; $('discLabel').textContent=currentGenre.name; $('tonearm').classList.remove('playing');
+ showView('playerView'); startSource(0);
+}
+function startSource(i){
+ stopEverything(false); sourceIndex=i; mediaMode='stream'; $('playerName').textContent=currentSources[i].name; $('discLabel').textContent=currentGenre.name; $('playerStatus').textContent='正在檢查音源…'; $('playerNotice').textContent='音源確認可用後，播放鍵才會啟用。'; $('playBtn').disabled=true; $('playBtn').textContent='…'; $('playBtn').setAttribute('aria-disabled','true'); $('tonearm').classList.remove('playing'); showView('playerView'); tryStream(i,0);
+}
+function tryStream(i,urlIndex){
+ if(i>=currentSources.length){
+  $('playerStatus').textContent='目前沒有確認可播放的來源';$('disc').classList.remove('spinning');$('tonearm').classList.remove('playing');$('playBtn').disabled=true;$('playBtn').textContent='▶';$('playerNotice').textContent='此分類目前找不到已確認可播放的音源，請稍後再試。';return
+ }
+ sourceIndex=i;const src=currentSources[i], url=src.urls[urlIndex];
+ if(!url){tryStream(i+1,0);return}
+ audio.pause();audio.volume=0;audio.removeAttribute('src');audio.load();audio.src=url;audio.load();
+ let settled=false;clearTimeout(healthTimer);
+ const fail=()=>{if(settled)return;settled=true;clearTimeout(healthTimer);audio.pause();tryStream(i,urlIndex+1)};
+ healthTimer=setTimeout(()=>{if(!settled)fail()},7000);
+ audio.onplaying=()=>{
+  if(settled)return;settled=true;clearTimeout(healthTimer);audio.pause();audio.currentTime=0;audio.volume=1;
+  $('playerName').textContent=src.name;$('playerStatus').textContent='音源已確認，請按播放';$('playBtn').disabled=false;$('playBtn').textContent='▶';$('playBtn').setAttribute('aria-disabled','false');$('playerNotice').textContent='已確認瀏覽器可開始播放。第三方串流的內容與後續插播仍需實際聆聽確認。';
+ };
+ audio.onerror=fail;
+ audio.play().then(()=>{}).catch(fail);
+}
+function stopAudio(){audio.pause();audio.volume=1;audio.removeAttribute('src');audio.load();$('disc').classList.remove('spinning');$('tonearm').classList.remove('playing');$('playBtn').textContent='▶';$('playBtn').disabled=true;$('playBtn').setAttribute('aria-disabled','true')}
+function audioContext(){if(!audioCtx)audioCtx=new (window.AudioContext||window.webkitAudioContext)();if(audioCtx.state==='suspended')audioCtx.resume();return audioCtx}
+function stopSleepNodes(){sleepNodes.forEach(n=>{try{if(n.stop)n.stop()}catch(e){}try{n.disconnect()}catch(e){}});sleepNodes=[]}
+function noiseSource(type,ctx){
+ const length=ctx.sampleRate*3, buffer=ctx.createBuffer(1,length,ctx.sampleRate), data=buffer.getChannelData(0);
+ let last=0, last2=0, last3=0;
+ for(let i=0;i<length;i++){
+  const white=Math.random()*2-1;
+  if(type==='white')data[i]=white;
+  else if(type==='pink'){last=.985*last+.15*white;data[i]=last*2.8}
+  else if(type==='brown'){last=.998*last+.035*white;data[i]=last*3.5}
+  else if(type==='rain'){last=.94*last+.35*white;data[i]=last*1.5}
+  else if(type==='ocean'){last=.985*last+.15*white;data[i]=last*2.4}
+  else if(type==='wind'){last=.997*last+.06*white;data[i]=last*2.5}
+  else if(type==='forest'){last=.96*last+.25*white;data[i]=last*1.2}
+  else if(type==='campfire'){data[i]=(Math.random()>.996?white*1.5:0)+last*.92;last=.9*last+.12*white}
+  else if(type==='thunder'){last=.995*last+.08*white;data[i]=last*2.2}
+ }
+ const src=ctx.createBufferSource();src.buffer=buffer;src.loop=true;return src;
+}
+function playSleep(kind){
+ stopEverything(false);sleepKind=kind;mediaMode='sleep';const item=sleepData.find(x=>x[0]===kind);
+ $('playerName').textContent=item[2]+' · 睡眠音樂';$('discLabel').textContent=item[2];$('tonearm').classList.remove('playing');showView('playerView');
+ $('playerStatus').textContent='正在檢查睡眠音源…';$('playerNotice').textContent='此測試版尚未整合經實測的外部睡眠音源；不以內建合成噪音冒充正式音源。';
+ $('playBtn').disabled=true;$('playBtn').textContent='▶';$('playBtn').setAttribute('aria-disabled','true');
+ $('sleepStatus').textContent='尚待整合並驗證此分類的可播放音源。';
+}
+function stopEverything(update=true){clearTimeout(healthTimer);stopSleepNodes();stopAudio();mediaMode='none';sleepKind=null;if(update){$('playerStatus').textContent='已停止';$('sleepStatus').textContent='睡眠音樂已停止'}}
+$('playBtn').onclick=()=>{
+ if(mediaMode==='sleep'){if(sleepNodes.length){stopEverything(true)}else if(sleepKind)playSleep(sleepKind);return}
+ if(mediaMode==='stream'){if(!audio.paused){audio.pause();$('playerStatus').textContent='已暫停';$('disc').classList.remove('spinning');$('tonearm').classList.remove('playing');$('playBtn').textContent='▶'}else{audio.play().catch(()=>{$('playerStatus').textContent='播放被瀏覽器阻擋，請再按一次。'})}}
+};
+function stepSource(delta){if(mediaMode==='sleep'){const idx=sleepData.findIndex(x=>x[0]===sleepKind);playSleep(sleepData[(idx+delta+sleepData.length)%sleepData.length][0]);return}if(currentSources.length){const idx=(sourceIndex+delta+currentSources.length)%currentSources.length;startSource(idx)}}
+$('prev').onclick=()=>stepSource(-1);$('next').onclick=()=>stepSource(1);
+function openSettings(){$('settings').classList.add('show')}
+['settingsBtn','settingsBtn2','settingsBtn3'].forEach(id=>$(id).onclick=openSettings);
+$('closeSettings').onclick=()=>$('settings').classList.remove('show');
+$('regionSelect').onchange=()=>{try{localStorage.setItem('gs24-region',$('regionSelect').value)}catch(e){};const labels={all:'全部地區',tw:'台灣',cn:'中國',jp:'日本',kr:'韓國',us:'美國',uk:'英國'};$('sourceIntro').textContent='目前地區偏好：'+labels[$('regionSelect').value]+'。此測試版音源尚未完整建立地區標籤。'};
+try{const savedRegion=localStorage.getItem('gs24-region');if(savedRegion)$('regionSelect').value=savedRegion}catch(e){}
+$('settings').addEventListener('click',e=>{if(e.target===$('settings'))$('settings').classList.remove('show')});
+$('language').onchange=()=>{const en=$('language').value==='en';$('settingsBtn').textContent=en?'Settings':'⚙︎';$('settingsBtn2').textContent=en?'Settings':'⚙︎';$('settingsBtn3').textContent=en?'Settings':'⚙︎';$('playerNotice').textContent=en?'Language preference changed. Some labels remain in Traditional Chinese in this test build.':'語言偏好已更新；此測試版部分分類名稱仍以繁體中文顯示。'};
+$('stopAll').onclick=()=>{stopEverything(true);$('settings').classList.remove('show')};
+$('timer').onchange=()=>{if(timerId)clearTimeout(timerId);const min=+$('timer').value;if(min>0)timerId=setTimeout(()=>stopEverything(true),min*60000)};
+</script>
+</body></html>
