@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>GLOBAL SOUND 24｜音訊輸出診斷 V4</title>
+<style>
+:root{color-scheme:dark}*{box-sizing:border-box}body{margin:0;padding:22px 16px 40px;background:#0b0c0f;color:#f5efe4;font-family:-apple-system,BlinkMacSystemFont,sans-serif}.wrap{max-width:680px;margin:auto}.brand{color:#c6aa79;letter-spacing:.12em;font-size:12px}.brand strong{display:block;font-size:21px;color:#fff;margin-bottom:5px}h1{font-size:22px}p{color:#bbb3a7;line-height:1.6;font-size:14px}.card{background:#18191d;border:1px solid #3d3932;border-radius:16px;padding:16px;margin:14px 0}.btn{border:0;border-radius:999px;padding:13px 16px;margin:5px 5px 5px 0;background:#c6aa79;color:#17130d;font-size:15px;font-weight:700}.secondary{background:#28292d;color:#eee;border:1px solid #555}.status{font-size:13px;color:#e5d1a8;white-space:pre-wrap}.row{display:flex;gap:8px;flex-wrap:wrap}.tiny{font-size:12px;color:#999}.bar{width:100%;accent-color:#c6aa79}audio{width:100%;margin-top:8px} .warn{color:#ffd49b}
+</style></head><body><main class="wrap">
+<div class="brand"><strong>GLOBAL SOUND 24</strong>AUDIO OUTPUT DIAGNOSTIC · V4</div>
+<h1>音訊輸出診斷</h1>
+<p>這版先不測複雜的睡眠音景。請依序測試「標準音檔」與「Web Audio 測試音」，確認是哪一種音訊輸出失敗。</p>
+<div class="card"><b>測試 1｜標準音檔播放</b><p>按下播放後，應聽到約 3 秒的 440 Hz 音調。這是由本頁產生的 WAV，不連接外部音源。</p><audio id="wavplayer" controls playsinline preload="auto"></audio><div class="row"><button class="btn" id="playwav">▶ 播放標準音檔</button><button class="btn secondary" id="stopwav">■ 停止</button></div></div>
+<div class="card"><b>測試 2｜Web Audio 即時測試音</b><p>按住/點按按鈕即可啟動；正常應聽到約 2 秒的嗶聲。</p><div class="row"><button class="btn" id="beep">🔊 播放測試音</button><button class="btn secondary" id="noise">〰 播放白噪音（2 秒）</button><button class="btn secondary" id="stopall">■ 停止全部</button></div><div class="status" id="status">AudioContext：尚未建立</div></div>
+<div class="card"><b>測試結果怎麼看</b><p>① 標準音檔有聲、Web Audio 無聲：是 Web Audio 路徑或瀏覽器相容性問題。<br>② 兩者都無聲：請點網址列附近的 Safari/指南針圖示，選擇「在 Safari 中開啟」，再測一次；同時確認 iPhone 音量與音訊輸出裝置。<br>③ 兩者都有聲：代表裝置可播放，接下來再修睡眠音景程式。</p><p class="tiny warn">請不要只看「AudioContext: running」就判斷有聲；這只代表引擎狀態，並不保證聲音真的送到喇叭。</p></div>
+<script>
+const $=id=>document.getElementById(id); let ctx=null,osc=null,gain=null,noiseSrc=null;
+function makeWav(){
+ const sr=44100,dur=3,n=sr*dur,buf=new ArrayBuffer(44+n*2),v=new DataView(buf);
+ function s(o,t){for(let i=0;i<t.length;i++)v.setUint8(o+i,t.charCodeAt(i))}
+ s(0,'RIFF');v.setUint32(4,36+n*2,true);s(8,'WAVE');s(12,'fmt ');v.setUint32(16,16,true);v.setUint16(20,1,true);v.setUint16(22,1,true);v.setUint32(24,sr,true);v.setUint32(28,sr*2,true);v.setUint16(32,2,true);v.setUint16(34,16,true);s(36,'data');v.setUint32(40,n*2,true);
+ for(let i=0;i<n;i++){let env=Math.min(1,i/(sr*.04),(n-i)/(sr*.08));let sample=Math.sin(2*Math.PI*440*i/sr)*0.35*Math.max(0,env);v.setInt16(44+i*2,Math.max(-1,Math.min(1,sample))*32767,true)}
+ return new Blob([buf],{type:'audio/wav'});
+}
+const url=URL.createObjectURL(makeWav());$('wavplayer').src=url;
+$('playwav').addEventListener('click',async()=>{try{$('wavplayer').currentTime=0;await $('wavplayer').play();$('status').textContent='標準 WAV：播放指令已送出。若仍無聲，請試 Safari。'}catch(e){$('status').textContent='標準 WAV 播放失敗：'+e.name+' / '+e.message}});
+$('stopwav').addEventListener('click',()=>{$('wavplayer').pause();$('wavplayer').currentTime=0});
+async function setup(){const AC=window.AudioContext||window.webkitAudioContext;if(!AC)throw Error('瀏覽器不支援 Web Audio');if(!ctx)ctx=new AC();if(ctx.state!=='running')await ctx.resume();if(ctx.state!=='running')throw Error('AudioContext 無法進入 running 狀態');return ctx}
+$('beep').addEventListener('click',async()=>{try{await setup();osc=ctx.createOscillator();gain=ctx.createGain();osc.type='sine';osc.frequency.value=660;gain.gain.setValueAtTime(0.0001,ctx.currentTime);gain.gain.exponentialRampToValueAtTime(.45,ctx.currentTime+.03);gain.gain.setValueAtTime(.45,ctx.currentTime+1.65);gain.gain.exponentialRampToValueAtTime(.0001,ctx.currentTime+1.95);osc.connect(gain);gain.connect(ctx.destination);osc.start();osc.stop(ctx.currentTime+2);$('status').textContent='AudioContext：'+ctx.state+'\\nWeb Audio 測試音：已排程播放 2 秒';}catch(e){$('status').textContent='Web Audio 失敗：'+e.name+' / '+e.message}});
+$('noise').addEventListener('click',async()=>{try{await setup();const n=ctx.sampleRate*2,b=ctx.createBuffer(1,n,ctx.sampleRate),d=b.getChannelData(0);for(let i=0;i<n;i++)d[i]=(Math.random()*2-1)*.3;noiseSrc=ctx.createBufferSource();noiseSrc.buffer=b;gain=ctx.createGain();gain.gain.value=.45;noiseSrc.connect(gain);gain.connect(ctx.destination);noiseSrc.start();noiseSrc.stop(ctx.currentTime+2);$('status').textContent='AudioContext：'+ctx.state+'\\n白噪音：已排程播放 2 秒';}catch(e){$('status').textContent='白噪音失敗：'+e.name+' / '+e.message}});
+$('stopall').addEventListener('click',()=>{try{if(ctx&&ctx.state==='running')ctx.suspend();}catch(e){};try{$('wavplayer').pause();$('wavplayer').currentTime=0}catch(e){};$('status').textContent='已停止；AudioContext：'+(ctx?ctx.state:'尚未建立')});
+</script></main></body></html>
