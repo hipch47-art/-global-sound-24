@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#101010">
+<title>GLOBAL SOUND 24 V250 · Stream Isolation Test</title>
+<style>
+:root{color-scheme:dark}*{box-sizing:border-box}body{margin:0;background:#101010;color:#eee;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;padding:22px 16px 40px}.wrap{max-width:640px;margin:auto}h1{font-size:21px;margin:8px 0}p{color:#aaa;line-height:1.6;font-size:14px}.badge{color:#bca17a;font-size:12px;letter-spacing:.08em}.card{border:1px solid #333;border-radius:14px;padding:16px;margin:16px 0;background:#171717}.buttons{display:flex;gap:10px;flex-wrap:wrap}button{background:#eee;color:#111;border:0;border-radius:9px;padding:12px 14px;font-size:14px;font-weight:600;min-height:44px}button.secondary{background:#292929;color:#eee;border:1px solid #444}audio{width:100%;margin:14px 0 4px}#status{color:#d7c5a4;font-size:13px;word-break:break-word}#log{white-space:pre-wrap;word-break:break-word;background:#0a0a0a;border:1px solid #333;border-radius:9px;padding:12px;min-height:150px;max-height:45vh;overflow:auto;font:12px/1.55 ui-monospace,SFMono-Regular,Menlo,monospace}.small{font-size:12px;color:#888}a{color:#d7c5a4}
+</style>
+</head>
+<body><main class="wrap">
+<div class="badge">ISOLATED AUDIO TEST · V250</div><h1>音源獨立測試</h1>
+<p>這個頁面只測試 HTML5 原生音訊播放器，不載入 GLOBAL SOUND 24 的播放控制、逾時、重試或自動切換邏輯。請先選一個音源，再按播放器本身的播放鍵。</p>
+<section class="card"><div class="buttons"><button id="fluid">載入 Fluid</button><button id="soul" class="secondary">載入 Seven Inch Soul</button><button id="clear" class="secondary">清除紀錄</button></div>
+<p id="status">尚未選擇音源</p><audio id="audio" controls preload="none" playsinline webkit-playsinline></audio>
+<p class="small">測試期間不要快速切換音源。選好後按上方原生播放器的 ▶，等候最多 10 秒觀察結果；此頁不會自動中止載入。</p></section>
+<section class="card"><h2 style="font-size:15px;margin-top:0">事件紀錄</h2><div id="log">測試就緒。選擇一個音源後，按原生播放器的播放鍵。</div><div class="buttons" style="margin-top:12px"><button id="copy" class="secondary">複製診斷</button></div></section>
+<p class="small">V250 · 只作診斷，不會修改正式 App。若測試完成，請提供事件紀錄，並告訴我是否有聲音。</p>
+</main><script>
+(()=>{const a=document.getElementById('audio'),log=document.getElementById('log'),status=document.getElementById('status');let current='';
+const urls={fluid:'https://ice1.somafm.com/fluid-128-aac',soul:'https://ice1.somafm.com/7soul-128-aac'};
+function row(event,detail=''){const e=a.error;const labels={1:'MEDIA_ERR_ABORTED',2:'MEDIA_ERR_NETWORK',3:'MEDIA_ERR_DECODE',4:'MEDIA_ERR_SRC_NOT_SUPPORTED'};const s=`${new Date().toLocaleTimeString()} | ${current||'none'} | ${event} | ${detail} | error=${e?(labels[e.code]||e.code):'none'} | ready=${a.readyState} network=${a.networkState} time=${Number.isFinite(a.currentTime)?a.currentTime.toFixed(2):'N/A'} | ${a.currentSrc||a.src||'no-src'}`;log.textContent=(log.textContent==='測試就緒。選擇一個音源後，按原生播放器的播放鍵。'?'':log.textContent+'\n')+s;log.scrollTop=log.scrollHeight;}
+function choose(key){try{a.pause();a.removeAttribute('src');a.load();current=key;a.src=urls[key];status.textContent='已載入選擇：'+(key==='fluid'?'SomaFM · Fluid':'SomaFM · Seven Inch Soul')+'。請按下方原生播放器的播放鍵。';row('選擇音源','設定 src；未呼叫 play()，未設定逾時或自動重試');a.load();}catch(err){row('設定音源失敗',String(err));}}
+document.getElementById('fluid').addEventListener('click',()=>choose('fluid'));
+document.getElementById('soul').addEventListener('click',()=>choose('soul'));
+document.getElementById('clear').addEventListener('click',()=>{log.textContent='紀錄已清除。';row('清除紀錄')});
+document.getElementById('copy').addEventListener('click',async()=>{try{await navigator.clipboard.writeText(log.textContent);status.textContent='診斷紀錄已複製。'}catch(e){status.textContent='無法自動複製，請長按紀錄文字後複製。'}});
+['loadstart','loadedmetadata','loadeddata','durationchange','progress','canplay','canplaythrough','play','playing','pause','waiting','stalled','suspend','abort','emptied','error','timeupdate','ended'].forEach(ev=>a.addEventListener(ev,()=>{row(ev);if(ev==='playing')status.textContent='已開始播放；請確認是否真的聽到聲音。';if(ev==='error')status.textContent='收到媒體錯誤，請複製診斷紀錄。';}));
+})();
+</script></body></html>
