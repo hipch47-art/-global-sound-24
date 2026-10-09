@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#080808">
+<title>GLOBAL SOUND 24 V230 音源診斷與控制修正版</title>
+<style>
+:root{--bg:#0b0b0b;--panel:#141414;--line:#292929;--text:#f2f2f2;--muted:#888}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Noto Sans TC",Arial,sans-serif}
+main{width:min(760px,100%);margin:auto;padding:16px 16px 100px}.top{height:44px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #202020}.logo{font-size:14px;font-weight:700;letter-spacing:.13em}.headtools{display:flex;gap:6px;align-items:center}.gear,.back{border:1px solid var(--line);background:#111;color:#ddd;border-radius:20px;padding:9px 12px}
+.hero{padding:28px 2px 20px}.hero h1{font-size:30px;margin:0}.hero p,.sub{font-size:12px;line-height:1.6;color:var(--muted)}.section{margin-top:24px}.section h2{font-size:18px;margin:0 0 8px}.region-panel{border:1px solid #292929;border-radius:16px;background:#101010;padding:10px;margin:12px 0 18px}.region-heading{display:flex;justify-content:space-between;gap:8px;font-size:13px;color:#ddd;margin:2px 2px 10px}.region-heading span{font-size:10px;color:#888}.region-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}.region-grid label{min-height:42px;display:flex;align-items:center;gap:6px;border:1px solid #333;border-radius:10px;background:#171717;padding:7px;font-size:11px;color:#ddd}.region-grid input{accent-color:#b9a17a;width:15px;height:15px;margin:0;flex-shrink:0}.region-actions{display:flex;gap:7px;margin-top:8px}.region-actions button{flex:1;background:#111;color:#999;border:1px solid #292929;border-radius:10px;padding:7px;font-size:11px}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.tile{min-height:92px;text-align:left;border:1px solid #292929;border-radius:12px;background:linear-gradient(145deg,#171717,#101010);color:#eee;padding:14px}.tile b{font-size:16px;display:block}.tile small{display:block;color:#777;margin-top:6px;font-size:10px;letter-spacing:.08em}.sleep-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}.sleep-grid button{min-height:75px;background:#111;border:1px solid #292929;border-radius:10px;color:#eee;padding:9px 4px;font-size:12px}.sleep-grid small{display:block;color:#777;font-size:9px;margin-top:5px}.view{display:none}.view.active{display:block}.view-title{font-size:25px;font-weight:650;margin:22px 0 5px}.cards{display:grid;gap:8px;margin-top:15px}.source{width:100%;text-align:left;background:#111;border:1px solid #292929;border-radius:12px;color:#eee;padding:14px}.source strong{display:block;font-size:14px}.source small{display:block;color:#888;font-size:11px;line-height:1.5;margin-top:5px}.status{font-size:11px;color:#888;line-height:1.6;min-height:18px;margin-top:8px}.player{text-align:center}.disc-wrap{width:min(300px,80vw);aspect-ratio:1;margin:22px auto;display:grid;place-items:center;border-radius:50%;background:transparent;box-shadow:0 0 0 8px #141414,0 18px 36px #000}.disc-label{width:105px;height:105px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#292929,#111 68%);border:1px solid #666;display:grid;place-items:center;padding:8px;box-shadow:0 0 0 4px #171717}.brand-mark{width:76px;height:76px;display:block;filter:drop-shadow(0 1px 4px #0008)}.disc-wrap:before{content:'';position:absolute;inset:0;border-radius:50%;background:repeating-radial-gradient(circle,#090909 0 2px,#292929 2.5px 3.4px,#101010 4px 6px);z-index:0}.disc-label{position:relative;z-index:1}.tonearm{position:absolute;width:122px;height:9px;background:linear-gradient(#b7b7b7,#555);border:1px solid #777;border-radius:9px;top:20px;right:6px;transform-origin:calc(100% - 7px) 50%;transform:rotate(-23deg);transition:transform .7s ease;z-index:3;box-shadow:0 2px 5px #000}.tonearm:before{content:'';position:absolute;right:-3px;top:-5px;width:15px;height:17px;border-radius:4px;background:linear-gradient(90deg,#555,#aaa,#333)}.tonearm:after{content:'';position:absolute;left:-3px;top:-3px;width:12px;height:13px;background:#aaa;border-radius:3px}.disc-wrap{position:relative}.tonearm.playing{transform:rotate(9deg)}.tonearm{will-change:transform}.tonearm.playing{transition:transform 1.1s cubic-bezier(.2,.7,.2,1)}.disc-wrap.spinning:before{animation:spin 3s linear infinite}.disc-wrap.spinning .disc-label{animation:spin 3s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}.playername{max-width:90%;margin:auto;border:1px solid #292929;background:#111;border-radius:9px;padding:10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:13px}.controls{display:flex;justify-content:center;align-items:center;gap:7px;margin:16px auto 0;padding:10px;border:1px solid #292929;border-radius:40px;background:#101010;width:fit-content;max-width:100%;flex-wrap:wrap}.controls button{border:1px solid #333;background:#151515;color:#eee;border-radius:30px;padding:11px 12px;font-size:12px}.transport-cluster{display:flex;align-items:center;gap:0;border:1px solid #383838;border-radius:34px;overflow:hidden;background:#181818}.transport-cluster button{border:0!important;border-radius:0!important;min-width:54px;height:54px}.transport-cluster #stopBtn{border-left:1px solid #383838!important;background:#181818;font-size:16px;padding:0 16px}.controls .mainplay{width:58px;height:58px;border-radius:50%;background:#eee;color:#111;font-size:19px}.controls .mainplay:disabled{background:#292929;color:#666;border-color:#333;opacity:.75}.notice{border:1px dashed #333;border-radius:10px;padding:12px;color:#999;font-size:11px;line-height:1.6;margin-top:14px}.settings{display:none;position:fixed;inset:0;background:#000b;align-items:flex-end}.settings.show{display:flex}.sheet{width:100%;background:#151515;border-radius:18px 18px 0 0;padding:20px}.sheet button{background:#222;border:1px solid #444;color:#eee;padding:12px;border-radius:9px;margin-top:12px}
+@media(max-width:380px){.sleep-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.tile{min-height:85px}}
+</style>
+</head>
+<body><main>
+<section id="home" class="view active">
+<header class="top"><div class="logo">GLOBAL SOUND 24</div><div class="headtools"><button class="gear" id="settingsBtn">⚙︎</button></div></header>
+<div class="hero"><h1>想聽什麼？</h1><p>V230 音源診斷與控制修正版｜已移除地區選單，所有音樂曲風直接顯示。點選曲風自動嘗試播放；音源仍需逐一驗證。</p></div>
+<section class="section"><h2>🎵 音樂曲風</h2><p class="sub">已移除地區選單，直接選擇曲風。第三方串流播放清單可能變動；若來源無法播放，仍需逐一更換並實測。</p><div class="grid" id="genres"></div></section>
+<section class="section"><h2>🌙 睡眠音樂</h2><p class="sub">真實雨聲、海浪、森林與自然環境音已由使用者在 iPhone 測試可播放；寶寶搖籃曲改用獨立音源。營火音源目前僅限非商業用途。</p><div class="sleep-grid" id="sleepGrid"></div><div class="status" id="sleepStatus">選擇睡眠音樂分類</div></section>
+<div class="notice">V230：移除地區選單；播放／停止改為相鄰整合控制；延長慢速串流的連線等待時間並清楚回報失敗。音源仍須逐一實測。寶寶安睡不再使用合成粉紅噪音或雨聲，改用獨立搖籃曲串流；營火、風聲、雷雨改接真實音檔。第三方音源仍需在 iPhone 實測。注意：營火來源頁標示 CC BY-NC 4.0，正式商用版本不得使用。</div>
+</section>
+<section id="sourcesView" class="view">
+<div class="top"><button class="back" onclick="goHome()">‹ 回首頁</button><button class="gear" id="settingsBtn2">⚙︎</button></div>
+<div class="view-title" id="sourceTitle">音樂來源</div><p class="sub" id="sourceIntro">點選來源開始播放。</p><div class="cards" id="sourceCards"></div><div class="status" id="sourceStatus"></div>
+</section>
+<section id="playerView" class="view player">
+<div class="top"><button class="back" onclick="goHome()">‹ 回首頁</button><button class="gear" id="settingsBtn3">⚙︎</button></div>
+<div class="view-title">Now Playing</div><div class="disc-wrap" id="disc"><div class="tonearm" id="tonearm"></div><div class="disc-label" id="discLabel" aria-label="GLOBAL SOUND 24 品牌標誌"><svg class="brand-mark" viewBox="0 0 100 100" role="img" aria-label="品牌標誌"><defs><linearGradient id="gold" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e8d6ad"/><stop offset=".52" stop-color="#b9a17a"/><stop offset="1" stop-color="#766044"/></linearGradient></defs><circle cx="50" cy="50" r="46" fill="#111" stroke="url(#gold)" stroke-width="2"/><circle cx="50" cy="50" r="38" fill="none" stroke="#5d5140" stroke-width="1"/><path d="M60 27a25 25 0 1 0 0 46h12V52H51v9h11v4a16 16 0 1 1 0-30l6-7a25 25 0 0 0-8-1z" fill="url(#gold)"/><path d="M25 43v14m7-22v30m7-37v44m34-36v28m7-22v16" stroke="#eee1c5" stroke-width="2.4" stroke-linecap="round" opacity=".9"/></svg></div></div>
+<div class="playername" id="playerName">GLOBAL SOUND 24 · Ready</div><div class="status" id="playerStatus">等待播放</div>
+<div class="volume-control" style="display:flex;align-items:center;gap:10px;max-width:360px;margin:12px auto;padding:0 10px;color:#aaa;font-size:12px"><label for="mainVolume">音量 <span id="volumeValue">70%</span></label><input id="mainVolume" type="range" min="0" max="1" step="0.05" value="0.7" style="flex:1;min-width:0;accent-color:#b9a17a"></div><div class="controls"><button id="prev">‹ 上一個</button><div class="transport-cluster" role="group" aria-label="播放控制"><button class="mainplay" id="playBtn" disabled aria-disabled="true" aria-label="播放或暫停">▶</button><button id="stopBtn" title="停止播放">■</button></div><button id="next">下一個 ›</button></div>
+<div class="notice" id="playerNotice">只會在實際收到播放事件後顯示「播放中」。</div>
+</section>
+</main>
+<div class="settings" id="settings"><div class="sheet"><div style="display:flex;justify-content:space-between;align-items:center"><b>設定</b><button id="closeSettings" aria-label="關閉設定" style="width:42px;height:42px;border-radius:50%;font-size:20px">×</button></div><p class="sub">App 版本：V230 音源診斷與控制修正版</p><p class="sub">介面語言</p><select id="language" style="background:#222;color:#eee;border:1px solid #444;padding:10px;border-radius:8px;width:100%"><option value="zh-Hant">繁體中文</option><option value="en">English（部分介面）</option></select><p class="sub">睡眠計時器</p><select id="timer" style="background:#222;color:#eee;border:1px solid #444;padding:10px;border-radius:8px;width:100%"><option value="0">關閉</option><option value="30">30 分鐘</option><option value="60">1 小時</option><option value="120">2 小時</option><option value="240">4 小時</option><option value="480">8 小時</option></select><button id="stopAll" style="width:100%">停止播放</button></div></div>
+<audio id="audio" preload="none" playsinline></audio>
+<script>
+const genreData = [
+ {id:'reading',regions:['tw','cn','jp','kr','us','uk'],name:'閱讀音樂',en:'READING MUSIC',sources:[
+  {name:'Radio Art · Study',detail:'閱讀／專注背景音樂',urls:['https://air.radioart.com/fStudy.mp3','https://live.radioart.com/fStudy.mp3']},
+  {name:'SomaFM · Groove Salad',detail:'Ambient／Downtempo 音樂',urls:['https://ice5.somafm.com/groovesalad-128-mp3','https://ice2.somafm.com/groovesalad-128-mp3']}
+ ]},
+ {id:'piano',regions:['tw','cn','jp','kr','us','uk'],name:'鋼琴',en:'PIANO',sources:[
+  {name:'Whisperings · Solo Piano',detail:'獨奏鋼琴；優先使用無人聲來源',urls:['https://pianosolo.streamguys1.com/live']}
+ ]},
+ {id:'jazz',regions:['us','uk'],name:'爵士樂',en:'JAZZ',sources:[
+  {name:'Jazz24 · Jazz',detail:'爵士樂，可包含人聲演唱',urls:['https://knkx-live-a.edge.audiocdn.com/6285_128k','https://knkx-live-a.edge.audiocdn.com/6285_256k']},
+  {name:'SomaFM · Sonic Universe',detail:'現代爵士音樂',urls:['https://ice5.somafm.com/sonicuniverse-128-mp3','https://ice2.somafm.com/sonicuniverse-128-mp3']},
+  {name:'Radio Art · Jazz Piano',detail:'爵士鋼琴',urls:['https://air.radioart.com/fJazz_piano.mp3','https://live.radioart.com/fJazz_piano.mp3']}
+ ]},
+ {id:'classical',regions:['tw','cn','jp','kr','us','uk'],name:'古典樂',en:'CLASSICAL',sources:[
+  {name:'Radio Art · Solo Instruments',detail:'古典／器樂曲目',urls:['https://air.radioart.com/fSolo_instruments.mp3','https://live.radioart.com/fSolo_instruments.mp3']}
+ ]},
+ {id:'rnb',regions:['us','uk'],name:'R&B',en:'R&B',sources:[
+  {name:'SomaFM · Fluid',detail:'官方 Direct Stream；Instrumental hip-hop／future soul／liquid trap',urls:['https://ice.somafm.com/fluid','https://ice1.somafm.com/fluid-128-mp3','https://ice2.somafm.com/fluid-128-mp3']}
+ ]},
+ {id:'rock',regions:['us','uk'],name:'搖滾樂',en:'ROCK',sources:[
+  {name:'SomaFM · Metal Detector',detail:'搖滾／金屬音樂',urls:['https://ice1.somafm.com/metal-128-mp3','https://ice2.somafm.com/metal-128-mp3','https://ice5.somafm.com/metal-128-mp3']},
+  {name:'SomaFM · Digitalis',detail:'另類搖滾音樂',urls:['https://ice1.somafm.com/digitalis-128-mp3','https://ice2.somafm.com/digitalis-128-mp3']}
+ ]},
+ {id:'pop',regions:['tw','cn','jp','kr','us','uk'],name:'流行樂',en:'POP',sources:[
+  {name:'SomaFM · Indie Pop Rocks!',detail:'獨立流行／搖滾歌曲，可有人聲演唱',urls:['https://ice1.somafm.com/indiepop-128-mp3','https://ice2.somafm.com/indiepop-128-mp3','https://ice5.somafm.com/indiepop-128-mp3']}
+ ]}
+];
+const sleepData=[
+ ['baby','🍼','寶寶安睡','輕柔搖籃曲（非雨聲）'],['deep','🌙','深度睡眠','低起伏舒緩音'],['rain','🌧️','雨聲','連續雨聲'],['white','🤍','白噪音','白噪音'],['pink','🌸','粉紅噪音','粉紅噪音'],['brown','🤎','棕噪音','棕噪音'],['ocean','🌊','海浪','海浪環境音'],['forest','🌲','森林','風與鳥鳴氛圍'],['campfire','🔥','營火','木柴劈啪聲'],['wind','💨','風聲','柔和風聲'],['thunder','⛈️','雷雨','雨聲與遠雷']
+];
+const $=id=>document.getElementById(id);
+let currentGenre=null, currentSources=[], sourceIndex=0, mediaMode='none', audioCtx=null, sleepNodes=[], sleepKind=null, timerId=null, healthTimer=null;
+const sleepAudioSources={baby:{name:'寶寶搖籃曲（Radio Art）',url:'https://air.radioart.com/fLullaby.mp3',credit:'Radio Art Lullaby 串流；播放可用性與商用授權仍需另行確認'},campfire:{name:'營火聲（待重新驗證）',url:'https://www.orangefreesounds.com/wp-content/uploads/2020/05/Campfire-nature-sounds.mp3',credit:'暫存測試音源；使用者回報音色不像營火，尚未通過音質驗收，不能作為正式音源'},wind:{name:'風聲與暴風雨（測試音源）',url:'https://www.orangefreesounds.com/wp-content/uploads/2016/12/Storm-noises.mp3',credit:'Alexander／Orange Free Sounds；來源頁標示 CC BY 4.0，需署名'},thunder:{name:'雷雨聲（測試音源）',url:'https://www.orangefreesounds.com/wp-content/uploads/2016/12/Thunderstorm-sounds-sleep.mp3',credit:'Vstplanet／Orange Free Sounds；來源頁標示 CC BY 4.0，需確認原作者署名資訊'},rain:{name:'真實雨聲',url:'https://orangefreesounds.com/wp-content/uploads/2014/09/Rain-sound-for-sleep.mp3',credit:'Alexander／Orange Free Sounds，來源頁標示 CC BY 4.0'},ocean:{name:'真實海浪',url:'https://orangefreesounds.com/wp-content/uploads/2022/11/Free-ocean-sounds-for-sleeping.mp3',credit:'Alexander／Orange Free Sounds，來源頁標示 CC BY 4.0'},forest:{name:'森林鳥鳴與溪流',url:'https://orangefreesounds.com/wp-content/uploads/2017/04/Relaxing-forest-sounds.mp3',credit:'Alexander／Orange Free Sounds，來源頁標示 CC BY 4.0'},nature:{name:'自然環境音',url:'https://www.orangefreesounds.com/wp-content/uploads/2016/03/Sounds-of-nature.mp3',credit:'Alexander／Orange Free Sounds，來源頁標示 CC BY 4.0'}};
+let currentVolume=0.7;
+const audio=$('audio');
+$('mainVolume').addEventListener('input',()=>{currentVolume=+$('mainVolume').value;audio.volume=currentVolume;if(audioCtx&&audioCtx.state!=='closed'){}$('volumeValue').textContent=Math.round(currentVolume*100)+'%'});
+function renderGenres(){ $('genres').innerHTML=genreData.map(g=>`<button class="tile" data-genre="${g.id}"><b>${g.name}</b><small>${g.en}</small></button>`).join(''); document.querySelectorAll('[data-genre]').forEach(b=>b.onclick=()=>openGenre(b.dataset.genre)); }
+$('sleepGrid').innerHTML=sleepData.map(s=>`<button data-sleep="${s[0]}">${s[1]} ${s[2]}<small>${s[3]}</small></button>`).join('');
+document.querySelectorAll('[data-sleep]').forEach(b=>b.onclick=()=>playSleep(b.dataset.sleep));
+function showView(id){document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));$(id).classList.add('active');window.scrollTo(0,0)}
+function goHome(){showView('home')}
+function openGenre(id){
+ stopEverything(false); currentGenre=genreData.find(g=>g.id===id); currentSources=currentGenre.sources; sourceIndex=0;
+ $('sourceTitle').textContent=currentGenre.name; $('sourceIntro').textContent='自動尋找可播放的同曲風音源…'; $('sourceStatus').textContent='';
+ $('playerName').textContent=currentGenre.name+' · 正在尋找音源'; $('tonearm').classList.remove('playing');
+ showView('playerView'); startSource(0);
+}
+function startSource(i){
+ stopEverything(false); sourceIndex=i; mediaMode='stream'; $('playerName').textContent=currentSources[i].name; $('playerStatus').textContent='正在檢查音源…'; $('playerNotice').textContent='音源開始播放後，播放鍵才會啟用；播放與停止按鈕會同時顯示。'; $('playBtn').disabled=true; $('playBtn').textContent='…'; $('playBtn').setAttribute('aria-disabled','true'); $('tonearm').classList.remove('playing'); showView('playerView'); tryStream(i,0);
+}
+function tryStream(i,urlIndex){
+ if(i>=currentSources.length){
+  $('playerStatus').textContent='目前沒有確認可播放的來源';$('disc').classList.remove('spinning');$('tonearm').classList.remove('playing');$('playBtn').disabled=true;$('playBtn').textContent='▶';$('playerNotice').textContent='已逐一嘗試此分類設定的音源網址，仍未收到播放事件。這代表目前串流來源無法確認可用，並非播放按鈕問題。';return
+ }
+ sourceIndex=i;const src=currentSources[i], url=src.urls[urlIndex];
+ if(!url){tryStream(i+1,0);return}
+ audio.pause();audio.volume=currentVolume;audio.removeAttribute('src');audio.load();audio.src=url;audio.load();
+ let settled=false;clearTimeout(healthTimer);
+ const fail=()=>{if(settled)return;settled=true;clearTimeout(healthTimer);audio.pause();tryStream(i,urlIndex+1)};
+ healthTimer=setTimeout(()=>{if(!settled){$('playerStatus').textContent='音源連線逾時，正在嘗試下一個備援…';fail()}},15000);
+ audio.onplaying=()=>{
+  if(settled)return;settled=true;clearTimeout(healthTimer);audio.volume=currentVolume;
+  $('playerName').textContent=src.name;$('playerStatus').textContent='播放中';$('playBtn').disabled=false;$('playBtn').textContent='Ⅱ';$('playBtn').setAttribute('aria-disabled','false');$('disc').classList.add('spinning');$('tonearm').classList.add('playing');$('playerNotice').textContent='音源已開始播放。第三方串流的內容與後續插播仍需實際聆聽確認。';
+ };
+ audio.onerror=fail;
+ audio.play().then(()=>{}).catch(fail);
+}
+function stopAudio(){audio.pause();audio.volume=currentVolume;audio.removeAttribute('src');audio.load();$('disc').classList.remove('spinning');$('tonearm').classList.remove('playing');$('playBtn').textContent='▶';$('playBtn').disabled=true;$('playBtn').setAttribute('aria-disabled','true')}
+function audioContext(){if(!audioCtx)audioCtx=new (window.AudioContext||window.webkitAudioContext)();if(audioCtx.state==='suspended')audioCtx.resume();return audioCtx}
+function stopSleepNodes(){sleepNodes.forEach(n=>{try{if(n.stop)n.stop()}catch(e){}try{n.disconnect()}catch(e){}});sleepNodes=[]}
+function noiseSource(type,ctx){
+ const length=ctx.sampleRate*3, buffer=ctx.createBuffer(1,length,ctx.sampleRate), data=buffer.getChannelData(0);
+ let last=0, last2=0, last3=0;
+ for(let i=0;i<length;i++){
+  const white=Math.random()*2-1;
+  if(type==='white')data[i]=white;
+  else if(type==='pink'){last=.985*last+.15*white;data[i]=last*2.8}
+  else if(type==='brown'){last=.998*last+.035*white;data[i]=last*3.5}
+  else if(type==='rain'){last=.94*last+.35*white;data[i]=last*1.5}
+  else if(type==='ocean'){last=.985*last+.15*white;data[i]=last*2.4}
+  else if(type==='wind'){last=.997*last+.06*white;data[i]=last*2.5}
+  else if(type==='forest'){last=.96*last+.25*white;data[i]=last*1.2}
+  else if(type==='campfire'){data[i]=(Math.random()>.996?white*1.5:0)+last*.92;last=.9*last+.12*white}
+  else if(type==='thunder'){last=.995*last+.08*white;data[i]=last*2.2}
+ }
+ const src=ctx.createBufferSource();src.buffer=buffer;src.loop=true;return src;
+}
+function playSleep(kind){
+ stopEverything(false);sleepKind=kind;mediaMode='sleep';const item=sleepData.find(x=>x[0]===kind);
+ $('playerName').textContent=item[2]+' · 睡眠音效';showView('playerView');
+ if(sleepAudioSources[kind]){
+  const src=sleepAudioSources[kind];mediaMode='sleep-audio';audio.pause();audio.removeAttribute('src');audio.load();audio.src=src.url;audio.loop=true;audio.volume=currentVolume;audio.load();
+  $('playerStatus').textContent='正在載入真實音源…';$('playerNotice').textContent='音源：'+src.credit+'。播放狀態以實際音訊事件為準。';$('playBtn').disabled=true;$('playBtn').textContent='…';$('playBtn').setAttribute('aria-disabled','true');
+  let settled=false;const fail=()=>{if(settled)return;settled=true;$('playerStatus').textContent='音源載入失敗';$('playerNotice').textContent='此音源未能播放。若為營火，該音檔也尚未通過音色驗收；不應視為正式音源。請回首頁選其他分類。';$('playBtn').disabled=true;$('playBtn').textContent='▶';$('disc').classList.remove('spinning');$('tonearm').classList.remove('playing');$('sleepStatus').textContent='播放失敗：'+src.name};
+  audio.onerror=fail;audio.onplaying=()=>{if(settled)return;settled=true;$('playerStatus').textContent='播放中';$('playBtn').disabled=false;$('playBtn').textContent='Ⅱ';$('playBtn').setAttribute('aria-disabled','false');$('disc').classList.add('spinning');$('tonearm').classList.add('playing');$('sleepStatus').textContent='正在播放：'+src.name};
+  audio.play().catch(fail);if(timerId)clearTimeout(timerId);const min=+$('timer').value;if(min>0)timerId=setTimeout(()=>stopEverything(true),min*60000);return;
+ }
+ try{
+  const ctx=audioContext();const typeMap={deep:'brown',white:'white',pink:'pink',brown:'brown'};
+  if(!typeMap[kind]){ $('playerStatus').textContent='此分類目前沒有已驗證的真實音源';$('playerNotice').textContent='為避免以不自然的合成雜訊冒充真實環境音，此分類暫不播放。';$('playBtn').disabled=true;$('playBtn').textContent='▶';return; }
+  const src=noiseSource(typeMap[kind],ctx);const gain=ctx.createGain();gain.gain.value=currentVolume*.25;
+  const filter=ctx.createBiquadFilter();filter.type='lowpass';filter.frequency.value=(kind==='baby'||kind==='deep')?900:4000;
+  src.connect(filter);filter.connect(gain);gain.connect(ctx.destination);src.start();sleepNodes=[src,filter,gain];
+  $('playerStatus').textContent='播放中';$('playerNotice').textContent='此分類使用程式合成音，並非真實錄音。';$('playBtn').disabled=false;$('playBtn').textContent='Ⅱ';$('playBtn').setAttribute('aria-disabled','false');$('disc').classList.add('spinning');$('tonearm').classList.add('playing');$('sleepStatus').textContent='正在播放：'+item[2];
+  if(timerId)clearTimeout(timerId);const min=+$('timer').value;if(min>0)timerId=setTimeout(()=>stopEverything(true),min*60000);
+ }catch(e){$('playerStatus').textContent='此裝置無法啟動睡眠音效';$('playerNotice').textContent='請確認瀏覽器允許音訊播放後再試。';$('playBtn').disabled=true;$('playBtn').textContent='▶';$('sleepStatus').textContent='播放失敗，請重新點選分類。'}
+}
+function stopEverything(update=true){clearTimeout(healthTimer);if(timerId)clearTimeout(timerId);timerId=null;stopSleepNodes();stopAudio();mediaMode='none';sleepKind=null;if(update){$('playerStatus').textContent='已停止';$('sleepStatus').textContent='睡眠音樂已停止'}}
+$('playBtn').onclick=()=>{
+ if(mediaMode==='sleep-audio'){if(!audio.paused){audio.pause();$('playerStatus').textContent='已暫停';$('disc').classList.remove('spinning');$('tonearm').classList.remove('playing');$('playBtn').textContent='▶'}else{audio.play().then(()=>{$('playerStatus').textContent='播放中';$('disc').classList.add('spinning');$('tonearm').classList.add('playing');$('playBtn').textContent='Ⅱ'}).catch(()=>{$('playerStatus').textContent='播放被瀏覽器阻擋，請再按一次。'})}return}
+ if(mediaMode==='sleep'){if(!audioCtx)return;if(audioCtx.state==='running'){audioCtx.suspend().then(()=>{$('playerStatus').textContent='已暫停';$('disc').classList.remove('spinning');$('tonearm').classList.remove('playing');$('playBtn').textContent='▶'})}else{audioCtx.resume().then(()=>{$('playerStatus').textContent='播放中';$('disc').classList.add('spinning');$('tonearm').classList.add('playing');$('playBtn').textContent='Ⅱ'})}return}
+ if(mediaMode==='stream'){if(!audio.paused){audio.pause();$('playerStatus').textContent='已暫停';$('disc').classList.remove('spinning');$('tonearm').classList.remove('playing');$('playBtn').textContent='▶'}else{audio.play().then(()=>{$('playerStatus').textContent='播放中';$('disc').classList.add('spinning');$('tonearm').classList.add('playing');$('playBtn').textContent='Ⅱ'}).catch(()=>{$('playerStatus').textContent='播放被瀏覽器阻擋，請再按一次。'})}}
+};
+function stepSource(delta){if(mediaMode==='sleep'||mediaMode==='sleep-audio'){const idx=sleepData.findIndex(x=>x[0]===sleepKind);playSleep(sleepData[(idx+delta+sleepData.length)%sleepData.length][0]);return}if(currentSources.length){const idx=(sourceIndex+delta+currentSources.length)%currentSources.length;startSource(idx)}}
+$('prev').onclick=()=>stepSource(-1);$('next').onclick=()=>stepSource(1);
+$('stopBtn').onclick=()=>{stopEverything(true);mediaMode='none';$('playerName').textContent='已停止播放';$('playerStatus').textContent='已停止';$('playBtn').disabled=true;$('playBtn').textContent='▶';$('tonearm').classList.remove('playing');$('disc').classList.remove('spinning')};
+function openSettings(){$('settings').classList.add('show')}
+['settingsBtn','settingsBtn2','settingsBtn3'].forEach(id=>$(id).onclick=openSettings);
+$('closeSettings').onclick=()=>$('settings').classList.remove('show');
+renderGenres();
+$('settings').addEventListener('click',e=>{if(e.target===$('settings'))$('settings').classList.remove('show')});
+$('language').onchange=()=>{const en=$('language').value==='en';$('settingsBtn').textContent=en?'Settings':'⚙︎';$('settingsBtn2').textContent=en?'Settings':'⚙︎';$('settingsBtn3').textContent=en?'Settings':'⚙︎';$('playerNotice').textContent=en?'Language preference changed. Some labels remain in Traditional Chinese in this test build.':'語言偏好已更新；此測試版部分分類名稱仍以繁體中文顯示。'};
+$('stopAll').onclick=()=>{stopEverything(true);$('settings').classList.remove('show')};
+$('timer').onchange=()=>{if(timerId)clearTimeout(timerId);const min=+$('timer').value;if(min>0)timerId=setTimeout(()=>stopEverything(true),min*60000)};
+</script>
+</body></html>
