@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>GLOBAL SOUND 24｜睡眠音景引擎 V4</title>
+<style>
+:root{color-scheme:dark}*{box-sizing:border-box}body{margin:0;padding:20px 14px 36px;background:radial-gradient(circle at top,#29251f,#08090b 60%);color:#f4efe6;font-family:-apple-system,BlinkMacSystemFont,sans-serif}.wrap{max-width:680px;margin:auto}.brand{font-size:12px;letter-spacing:.14em;color:#c6aa79}.brand b{display:block;font-size:21px;color:#fff;letter-spacing:.06em;margin-bottom:5px}.sub{font-size:13px;color:#aaa49a;line-height:1.6}.recordbox{display:flex;justify-content:center;margin:25px}.record{width:min(64vw,260px);aspect-ratio:1;border-radius:50%;background:repeating-radial-gradient(circle,#111 0 3px,#292929 4px 5px,#101010 6px 8px);box-shadow:0 0 0 7px #191919,0 16px 40px #000;display:grid;place-items:center;position:relative}.record:after{content:"";position:absolute;inset:34%;border-radius:50%;background:radial-gradient(circle,#e3cca0,#755a34 68%,#151515 72%);border:2px solid #b99c67}.label{z-index:1;text-align:center;font:12px Georgia,serif;letter-spacing:.08em;color:#fff}.playing{animation:spin 5s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}h1{text-align:center;font-size:23px;font-weight:500;margin:10px 0}.now{text-align:center;color:#c6aa79;min-height:22px;font-size:13px}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin:20px 0}.sound{padding:14px 12px;min-height:68px;text-align:left;border:1px solid #39352f;border-radius:13px;background:#191a1d;color:#f4efe6;font-size:15px}.sound small{display:block;color:#aaa49a;font-size:11px;margin-top:5px}.sound.active{border-color:#c6aa79;background:#292319}.controls{display:flex;justify-content:center;flex-wrap:wrap;gap:9px;margin:18px 0}.btn{border:1px solid #8b734d;border-radius:999px;background:#c6aa79;color:#17130c;padding:12px 18px;font-weight:700;font-size:14px}.secondary{background:#1b1c1f;color:#eee;border-color:#555}.panel{background:#151619;border:1px solid #38332c;border-radius:15px;padding:15px;margin-top:14px}.row{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:12px 0;font-size:13px;color:#d5cec2}.row input{width:52%;accent-color:#c6aa79}.row select{background:#222;color:#fff;border:1px solid #555;padding:7px;border-radius:7px}.status{font-size:12px;color:#d9c69f;white-space:pre-wrap;line-height:1.6}.license{text-align:center;color:#938b7e;font-size:10px;margin-top:18px}
+</style></head><body><main class="wrap">
+<div class="brand"><b>GLOBAL SOUND 24</b>SLEEP AMBIENCE ENGINE · V4</div>
+<p class="sub">修正版：使用經診斷確認可輸出的 Web Audio 路徑。先點選音景，再按「開始播放」。此測試版是程式合成音，不是真實錄音或 AI 生成音檔。</p>
+<div class="recordbox"><div class="record" id="record"><div class="label">GLOBAL<br>SOUND 24</div></div></div>
+<h1 id="title">白噪音</h1><div class="now" id="status">準備就緒，請按開始播放</div>
+<div class="grid">
+<button class="sound active" data-kind="white">◉ 白噪音<small>即時產生</small></button>
+<button class="sound" data-kind="pink">◉ 粉紅噪音<small>即時產生</small></button>
+<button class="sound" data-kind="brown">◉ 棕噪音<small>即時產生</small></button>
+<button class="sound" data-kind="rain">☂ 雨聲氛圍<small>合成噪音＋柔和高頻</small></button>
+<button class="sound" data-kind="wind">〰 微風氛圍<small>低通噪音＋緩慢音量變化</small></button>
+<button class="sound" data-kind="ocean">≈ 海浪氛圍<small>低頻噪音＋緩慢浪潮起伏</small></button>
+</div>
+<div class="controls"><button class="btn" id="play">▶ 開始播放</button><button class="btn secondary" id="stop">■ 停止</button><button class="btn secondary" id="test">🔊 測試音</button></div>
+<div class="panel">
+<div class="row"><label for="volume">播放音量</label><input id="volume" type="range" min="0" max=".8" step=".01" value=".22"></div>
+<div class="row"><label for="variation">自然變化幅度</label><input id="variation" type="range" min="0" max="100" value="35"></div>
+<div class="row"><label for="timer">睡眠定時</label><select id="timer"><option value="0">關閉</option><option value="30">30 分鐘</option><option value="60">1 小時</option><option value="120">2 小時</option><option value="240">4 小時</option><option value="480">8 小時</option></select></div>
+<div class="status" id="diag">AudioContext：尚未建立</div>
+<p class="sub">如果按「測試音」有聲，但音景沒聲，請看這裡的狀態並截圖。背景播放及鎖定螢幕仍需另行測試。</p>
+</div><div class="license">SYNTHESIZED AUDIO · TEST BUILD · NO EXTERNAL AUDIO URL</div></main>
+<script>
+const $=id=>document.getElementById(id);
+const names={white:'白噪音',pink:'粉紅噪音',brown:'棕噪音',rain:'雨聲氛圍',wind:'微風氛圍',ocean:'海浪氛圍'};
+let ctx=null,master=null,noise=null,filter=null,modOsc=null,modGain=null,kind='white',playing=false,sleepId=null,modTimer=null;
+function status(t){$('status').textContent=t;$('diag').textContent='AudioContext：'+(ctx?ctx.state:'尚未建立')+(ctx?'\n取樣率：'+ctx.sampleRate+' Hz':'')+'\n音景：'+names[kind]+'\n播放狀態：'+(playing?'播放中':'未播放')}
+function createBuffer(k){
+ const sr=ctx.sampleRate, len=sr*3, b=ctx.createBuffer(1,len,sr), d=b.getChannelData(0);let last=0;
+ for(let i=0;i<len;i++){const w=Math.random()*2-1;
+ if(k==='pink'||k==='rain'){last=.96*last+.12*w;d[i]=k==='rain'?w*.7+last*.7:last*2.2}
+ else if(k==='brown'||k==='ocean'){last=(last+.025*w)/1.025;d[i]=last*3.0}
+ else if(k==='wind'){last=.985*last+.06*w;d[i]=last*2.4}
+ else d[i]=w*.55;
+ }
+ return b
+}
+async function ensureContext(){const AC=window.AudioContext||window.webkitAudioContext;if(!AC)throw Error('此瀏覽器不支援 Web Audio');if(!ctx)ctx=new AC();if(ctx.state!=='running')await ctx.resume();if(ctx.state!=='running')throw Error('AudioContext 沒有進入 running');}
+function clearAudio(){if(noise){try{noise.stop()}catch(e){}try{noise.disconnect()}catch(e){}noise=null}if(modOsc){try{modOsc.stop()}catch(e){}try{modOsc.disconnect()}catch(e){}modOsc=null}if(modGain){try{modGain.disconnect()}catch(e){}modGain=null}if(filter){try{filter.disconnect()}catch(e){}filter=null}if(master){try{master.disconnect()}catch(e){}master=null}if(modTimer){clearInterval(modTimer);modTimer=null}if(sleepId){clearTimeout(sleepId);sleepId=null}}
+async function start(){try{await ensureContext();clearAudio();master=ctx.createGain();master.gain.setValueAtTime(Number($('volume').value),ctx.currentTime);master.connect(ctx.destination);noise=ctx.createBufferSource();noise.buffer=createBuffer(kind);noise.loop=true;filter=ctx.createBiquadFilter();filter.type='lowpass';filter.frequency.value=kind==='brown'||kind==='ocean'?700:kind==='wind'?1000:kind==='rain'?8000:kind==='pink'?3500:18000;noise.connect(filter);filter.connect(master);
+ if(['rain','wind','ocean'].includes(kind)){modOsc=ctx.createOscillator();modOsc.type='sine';modOsc.frequency.value=kind==='ocean'?.09:kind==='wind'?.13:.18;modGain=ctx.createGain();modGain.gain.value=Number($('variation').value)/100*.10;modOsc.connect(modGain);modGain.connect(master.gain);modOsc.start()}
+ noise.start();playing=true;$('record').classList.add('playing');$('play').textContent='Ⅱ 暫停播放';status('播放中 · '+names[kind]);const m=Number($('timer').value);if(m)sleepId=setTimeout(stop,m*60000);
+ modTimer=setInterval(()=>{if(!playing||!ctx||!filter)return;const v=Number($('variation').value)/100;const base=kind==='brown'||kind==='ocean'?700:kind==='wind'?1000:kind==='rain'?8000:kind==='pink'?3500:18000;filter.frequency.setTargetAtTime(base*(1+(Math.random()-.5)*v*.55),ctx.currentTime,1.5)},5000)
+ }catch(e){playing=false;$('record').classList.remove('playing');$('play').textContent='▶ 開始播放';status('啟動失敗：'+e.name+' / '+e.message)}}
+async function stop(){clearAudio();playing=false;$('record').classList.remove('playing');$('play').textContent='▶ 開始播放';status('已停止')}
+document.querySelectorAll('.sound').forEach(b=>b.addEventListener('click',async()=>{kind=b.dataset.kind;document.querySelectorAll('.sound').forEach(x=>x.classList.toggle('active',x===b));$('title').textContent=names[kind];if(playing)await start();else status('已選擇：'+names[kind]+'，按開始播放')}));
+$('play').addEventListener('click',async()=>{if(playing){if(ctx&&ctx.state==='running')await ctx.suspend();playing=false;$('record').classList.remove('playing');$('play').textContent='▶ 繼續播放';status('已暫停')}else{if(ctx&&ctx.state==='suspended'&&noise){try{await ctx.resume();playing=true;$('record').classList.add('playing');$('play').textContent='Ⅱ 暫停播放';status('播放中 · '+names[kind]);return}catch(e){}}await start()}});
+$('stop').addEventListener('click',stop);
+$('volume').addEventListener('input',()=>{if(master&&ctx&&ctx.state==='running')master.gain.setTargetAtTime(Number($('volume').value),ctx.currentTime,.05)});
+$('variation').addEventListener('input',()=>{if(modGain&&ctx&&ctx.state==='running')modGain.gain.setTargetAtTime(Number($('variation').value)/100*.10,ctx.currentTime,.1)});
+$('timer').addEventListener('change',()=>{if(sleepId)clearTimeout(sleepId);const m=Number($('timer').value);if(playing&&m)sleepId=setTimeout(stop,m*60000)});
+$('test').addEventListener('click',async()=>{try{await ensureContext();const o=ctx.createOscillator(),g=ctx.createGain();o.type='sine';o.frequency.value=660;g.gain.setValueAtTime(.0001,ctx.currentTime);g.gain.exponentialRampToValueAtTime(.35,ctx.currentTime+.03);g.gain.setValueAtTime(.35,ctx.currentTime+.55);g.gain.exponentialRampToValueAtTime(.0001,ctx.currentTime+.8);o.connect(g);g.connect(ctx.destination);o.start();o.stop(ctx.currentTime+.85);status('測試音已播放排程；音景播放狀態：'+(playing?'播放中':'未播放'))}catch(e){status('測試音失敗：'+e.name+' / '+e.message)}});
+status('準備就緒，請先按「測試音」或「開始播放」');
+</script></body></html>
