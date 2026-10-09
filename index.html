@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="zh-Hant"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#080808"><meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Expires" content="0"><title>GLOBAL SOUND 24 V240</title>
+<meta name="theme-color" content="#080808"><meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Expires" content="0"><title>GLOBAL SOUND 24 V242</title>
 <style>
 :root{--bg:#0b0b0b;--panel:#141414;--panel2:#101010;--line:#272727;--text:#f2f2f2;--muted:#8b8b8b;--soft:#bdbdbd}
 *{box-sizing:border-box}html,body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Noto Sans TC",Arial,sans-serif}
@@ -40,7 +40,11 @@ main{width:min(760px,100%);margin:0 auto;padding:18px 18px 88px}
 #startupCheck .startup-progress{width:min(260px,80vw);height:3px;background:#282828;margin-top:20px;border-radius:4px;overflow:hidden}
 #startupCheck .startup-progress span{display:block;height:100%;width:0;background:#c9a77c;transition:width .2s}
 @keyframes startupSpin{to{transform:rotate(360deg)}}
-</style></head><body><div id="startupCheck"><div class="startup-disc"><span>GS24</span></div><div class="startup-label">GLOBAL SOUND 24</div><div class="startup-status" id="startupStatus">正在檢查可用音源…<br>請稍候</div><div class="startup-progress"><span id="startupProgress"></span></div></div><main>
+
+/* V242 build/version confirmation badge */
+#buildStamp{position:fixed;top:calc(env(safe-area-inset-top,0px) + 10px);left:50%;transform:translateX(-50%);z-index:10001;max-width:calc(100vw - 28px);padding:10px 15px;border:1px solid #8a735a;border-radius:999px;background:rgba(18,18,18,.96);box-shadow:0 6px 24px #0009;color:#f4e7d5;font-size:12px;letter-spacing:.04em;text-align:center;white-space:nowrap;transition:opacity .35s ease}
+#buildStamp small{color:#b7a38b;margin-left:7px;font-size:10px}
+</style></head><body><div id="buildStamp">GLOBAL SOUND 24 · V242<small>BUILD 20261009-01</small></div><div id="startupCheck"><div class="startup-disc"><span>GS24</span></div><div class="startup-label">GLOBAL SOUND 24</div><div class="startup-status" id="startupStatus">正在檢查可用音源…<br>請稍候</div><div class="startup-progress"><span id="startupProgress"></span></div></div><main>
 <section id="homeView" class="view active" aria-label="首頁"><header class="top"><div class="logo">GLOBAL SOUND 24</div><button class="gear" id="homeSettings" aria-label="Settings">⚙︎</button></header>
 <div class="hero"><h1>想聽什麼？</h1><p>點選曲風或睡眠音樂，直接進入唱盤播放。</p></div>
 <section class="section music-section"><div class="music-head"><div class="music-title"><h2>🎵 音樂類型</h2><p class="sub">選擇曲風，直接進入唱盤播放</p></div></div><div class="grid" id="genres"></div></section>
@@ -51,7 +55,7 @@ main{width:min(760px,100%);margin:0 auto;padding:18px 18px 88px}
 <section id="playerView" class="view player-screen"><div class="view-top"><button class="back" onclick="showHome()">‹ 回首頁</button><button class="gear" aria-label="Settings" onclick="openSettings()">⚙︎</button></div><div class="view-title">Now Playing</div><div class="turn-wrap"><div class="turntable"><div class="platter"></div><div class="turn" id="turn"><div class="core-counter" id="coreCounter"><div class="spindle"></div><div class="genre-logo" id="genreLogo"><span id="genreLogoText">PIANO</span></div></div></div><svg class="arm-svg" viewBox="0 0 330 330" aria-hidden="true"><circle class="pivot" cx="286" cy="34" r="17"/><path class="arm" d="M286 34 C286 66 282 100 272 136 C263 172 253 205 244 232"/><path class="arm-inner" d="M286 34 C286 66 282 100 272 136 C263 172 253 205 244 232"/><g class="needle" id="needle"><path class="headshell" d="M244 225 L230 231 L232 243 L247 239 Z"/><path class="stylus" d="M234 241 L257 276"/></g></svg></div></div><div class="playername" id="playername">GLOBAL SOUND 24 · Ready</div><div class="status" id="status">等待播放</div><audio id="audio" class="audio-engine" preload="auto" playsinline webkit-playsinline></audio><div id="officialEmbed" style="display:none"></div><div class="track-nav"><button type="button" id="prevTrack" aria-label="上一首">‹ 上一首</button><button class="play" id="play" aria-label="播放">▶</button><button type="button" id="nextTrack" aria-label="下一首">下一首 ›</button></div></section>
 
 </main>
-<div class="overlay" id="overlay" aria-hidden="true"><div class="sheet"><div class="sheettop"><strong>Settings</strong><button class="close" id="close">×</button></div><div class="settings-row"><label for="settingsSleepTimer">Sleep Timer</label><select id="settingsSleepTimer" class="settings-select"><option value="0">關閉</option><option value="30">30 分鐘</option><option value="60">1 小時</option><option value="120">2 小時</option><option value="240">4 小時</option><option value="480">8 小時</option></select></div><div class="settings-row"><label for="settingsLanguage">Language</label><select id="settingsLanguage" class="settings-select"><option value="zh-TW">繁體中文</option><option value="zh-CN">简体中文</option><option value="ja">日本語</option><option value="ko">한국어</option><option value="en-US">English (US)</option><option value="en-GB">English (UK)</option></select></div><div class="settings-row"><label>Soft Ver.</label><div class="settings-value">V237</div></div></div></div>
+<div class="overlay" id="overlay" aria-hidden="true"><div class="sheet"><div class="sheettop"><strong>Settings</strong><button class="close" id="close">×</button></div><div class="settings-row"><label for="settingsSleepTimer">Sleep Timer</label><select id="settingsSleepTimer" class="settings-select"><option value="0">關閉</option><option value="30">30 分鐘</option><option value="60">1 小時</option><option value="120">2 小時</option><option value="240">4 小時</option><option value="480">8 小時</option></select></div><div class="settings-row"><label for="settingsLanguage">Language</label><select id="settingsLanguage" class="settings-select"><option value="zh-TW">繁體中文</option><option value="zh-CN">简体中文</option><option value="ja">日本語</option><option value="ko">한국어</option><option value="en-US">English (US)</option><option value="en-GB">English (UK)</option></select></div><div class="settings-row"><label>Soft Ver.</label><div class="settings-value">V242 · BUILD 20261009-01</div></div></div></div>
 <script>
 const countries=[['tw','🇹🇼','台灣'],['cn','🇨🇳','中國'],['jp','🇯🇵','日本'],['kr','🇰🇷','韓國'],['us','🇺🇸','美國'],['uk','🇬🇧','英國']];
 let selected=new Set(countries.map(x=>x[0])); let currentGenre=''; let currentFaith='';
@@ -95,15 +99,15 @@ const testSources=[
  {c:'us',g:'electronic',type:'music',name:'SomaFM · Groove Salad Classic',meta:'Downtempo / Electronica · 可含演唱 · 無新聞／談話',manifest:'https://somafm.com/gsclassic/',urls:['https://ice5.somafm.com/gsclassic-128-mp3','https://ice6.somafm.com/gsclassic-128-mp3']},
  {c:'us',g:'electronic',type:'music',name:'SomaFM · The Trip',meta:'Progressive House / Trance · 可含演唱 · 無新聞／談話',manifest:'https://somafm.com/thetrip/',urls:['https://ice5.somafm.com/thetrip-128-mp3','https://ice6.somafm.com/thetrip-128-mp3']},
  {c:'us',g:'electronic',type:'music',name:'SomaFM · Lush',meta:'Mellow Electronica · 女聲演唱 · 無新聞／談話',manifest:'https://somafm.com/lush/',urls:['https://ice5.somafm.com/lush-128-mp3','https://ice6.somafm.com/lush-128-mp3']},
- {c:'us',g:'pop',type:'music',name:'SomaFM · Indie Pop Rocks!',meta:'Indie Pop / Rock · 有演唱 · 無新聞／談話',manifest:'https://somafm.com/indiepop/',urls:['https://ice5.somafm.com/indiepop-128-mp3','https://ice2.somafm.com/indiepop-128-mp3','https://ice5.somafm.com/indiepop-128-aac','https://ice2.somafm.com/indiepop-128-aac']},
- {c:'us',g:'rock',type:'music',name:'SomaFM · Metal Detector',meta:'Rock / Metal · 可含演唱 · 無新聞／談話',manifest:'https://somafm.com/metal/',urls:['https://ice5.somafm.com/metal-128-mp3','https://ice6.somafm.com/metal-128-mp3','https://ice5.somafm.com/metal-128-aac','https://ice6.somafm.com/metal-128-aac']},
- {c:'us',g:'rock',type:'music',name:'SomaFM · Digitalis',meta:'Alternative Rock · 可含演唱 · 無新聞／談話',manifest:'https://somafm.com/digitalis/',urls:['https://ice5.somafm.com/digitalis-128-mp3','https://ice6.somafm.com/digitalis-128-mp3','https://ice5.somafm.com/digitalis-128-aac','https://ice6.somafm.com/digitalis-128-aac']},
+ {c:'us',g:'pop',type:'music',name:'SomaFM · Indie Pop Rocks!',meta:'Indie Pop / Rock · 有演唱 · 無新聞／談話',manifest:'https://somafm.com/indiepop/',urls:['https://ice1.somafm.com/indiepop-128-aac','https://ice2.somafm.com/indiepop-128-aac']},
+ {c:'us',g:'rock',type:'music',name:'SomaFM · Metal Detector',meta:'Rock / Metal · 可含演唱 · 無新聞／談話',manifest:'https://somafm.com/metal/',urls:['https://ice1.somafm.com/metal-128-aac','https://ice2.somafm.com/metal-128-aac']},
+ {c:'us',g:'rock',type:'music',name:'SomaFM · Digitalis',meta:'Alternative Rock · 可含演唱 · 無新聞／談話',manifest:'https://somafm.com/digitalis/',urls:['https://ice1.somafm.com/digitalis-128-aac','https://ice2.somafm.com/digitalis-128-aac']},
  {c:'us',g:'ambient',type:'music',name:'SomaFM · Secret Agent',meta:'Cinematic / Lounge · 可含演唱 · 無新聞／談話',manifest:'https://somafm.com/secretagent/',urls:['https://ice5.somafm.com/secretagent-128-mp3','https://ice2.somafm.com/secretagent-128-mp3']},
  {c:'us',g:'electronic',type:'music',name:'SomaFM · Fluid',meta:'Instrumental Hip-Hop / Future Soul · 可含演唱 · 無新聞／談話',manifest:'https://somafm.com/fluid/',urls:['https://ice.somafm.com/fluid']},
- {c:'us',g:'pop',type:'music',name:'SomaFM · Indie Pop Rocks!',meta:'Indie Pop / Rock · 有演唱 · 無新聞／談話',manifest:'https://somafm.com/indiepop/',urls:['https://ice5.somafm.com/indiepop-128-mp3','https://ice2.somafm.com/indiepop-128-mp3','https://ice5.somafm.com/indiepop-128-aac','https://ice2.somafm.com/indiepop-128-aac']},
- {c:'us',g:'rnb',type:'music',name:'SomaFM · Fluid',meta:'Future Soul / R&B · 可含演唱 · 無新聞／談話',manifest:'https://somafm.com/fluid/',urls:['https://ice5.somafm.com/fluid-128-mp3','https://ice2.somafm.com/fluid-128-mp3','https://ice5.somafm.com/fluid-128-aac','https://ice2.somafm.com/fluid-128-aac']},
- {c:'us',g:'rnb',type:'music',name:'SomaFM · Seven Inch Soul',meta:'Soul / R&B · 復古靈魂樂 · 有演唱',manifest:'https://somafm.com/7soul/',urls:['https://ice5.somafm.com/7soul-128-mp3','https://ice6.somafm.com/7soul-128-mp3','https://ice5.somafm.com/7soul-128-aac','https://ice6.somafm.com/7soul-128-aac']},
- {c:'us',g:'pop',type:'music',name:'SomaFM · PopTron',meta:'Electropop / Indie Dance Rock · 有演唱',manifest:'https://somafm.com/poptron/',urls:['https://ice5.somafm.com/poptron-128-mp3','https://ice6.somafm.com/poptron-128-mp3','https://ice5.somafm.com/poptron-128-aac','https://ice6.somafm.com/poptron-128-aac']},
+ {c:'us',g:'pop',type:'music',name:'SomaFM · Indie Pop Rocks!',meta:'Indie Pop / Rock · 有演唱 · 無新聞／談話',manifest:'https://somafm.com/indiepop/',urls:['https://ice1.somafm.com/indiepop-128-aac','https://ice2.somafm.com/indiepop-128-aac']},
+ {c:'us',g:'rnb',type:'music',name:'SomaFM · Fluid',meta:'Future Soul / R&B · 可含演唱 · 無新聞／談話',manifest:'https://somafm.com/fluid/',urls:['https://ice1.somafm.com/fluid-128-aac','https://ice2.somafm.com/fluid-128-aac']},
+ {c:'us',g:'rnb',type:'music',name:'SomaFM · Seven Inch Soul',meta:'Soul / R&B · 復古靈魂樂 · 有演唱',manifest:'https://somafm.com/7soul/',urls:['https://ice1.somafm.com/7soul-128-aac','https://ice2.somafm.com/7soul-128-aac']},
+ {c:'us',g:'pop',type:'music',name:'SomaFM · PopTron',meta:'Electropop / Indie Dance Rock · 有演唱',manifest:'https://somafm.com/poptron/',urls:['https://ice1.somafm.com/poptron-128-aac','https://ice2.somafm.com/poptron-128-aac']},
  {c:'us',g:'electronic',type:'instrumental',name:'SomaFM · Deep Space One',meta:'Ambient Electronic / Space · 以音樂為主',manifest:'https://somafm.com/deepspaceone/',urls:['https://ice.somafm.com/deepspaceone']},
  {c:'global',faith:'protestant',g:'faith',type:'instrumental',name:'Abiding Radio · Instrumental',meta:'基督新教 · Sacred Instrumental · 24H · 純器樂',manifest:'https://www.abidingradio.org/media/',urls:['https://www.abidingradio.org/radio/instrumental']},
  {c:'global',faith:'protestant',g:'faith',type:'music',name:'Abiding Radio · Sacred',ytId:'PuialdcA6r0',ytTitle:'Christian Hymns · 24/7 Worship',meta:'基督新教 · Sacred Hymns · 可含歌唱',manifest:'https://www.abidingradio.org/media/',urls:['https://www.abidingradio.org/radio/sacred']},
@@ -313,7 +317,8 @@ function playDirect(url){
       status.textContent='此音源未能啟動，正在嘗試其他來源…';
       setTimeout(()=>{if(attempt===playAttemptId&&!playStarted)tryNextUrl()},350);
     });
-    playTimeout=setTimeout(()=>{if(attempt===playAttemptId&&!playStarted)tryNextUrl()},9000);
+    // V241: fail over quickly so a dead stream does not leave the player hanging.
+    playTimeout=setTimeout(()=>{if(attempt===playAttemptId&&!playStarted)tryNextUrl()},3500);
   }catch(e){
     if(attempt!==playAttemptId)return;
     clearPlayTimeout();setBusy(false);status.textContent='來源無法連線，正在嘗試其他來源…';
@@ -440,6 +445,8 @@ function playSleep(kind,playNow=false){
 
 const overlay=document.getElementById('overlay');function openSettings(){overlay.style.display='flex';overlay.setAttribute('aria-hidden','false')}function closeSettings(){overlay.style.display='none';overlay.setAttribute('aria-hidden','true')}document.getElementById('close').onclick=closeSettings;document.getElementById('homeSettings').onclick=openSettings;overlay.addEventListener('click',e=>{if(e.target===overlay)closeSettings()});const settingsTimer=document.getElementById('settingsSleepTimer');settingsTimer.addEventListener('change',()=>{if(sleepNodes.length||document.getElementById('youtubeFrame'))armSleepTimer()});const settingsLanguage=document.getElementById('settingsLanguage');settingsLanguage.addEventListener('change',()=>{document.documentElement.lang=settingsLanguage.value==='zh-TW'?'zh-Hant':settingsLanguage.value});renderGenres();renderFaith();renderHot();renderSources();
 showHome();
+// V242: briefly display the exact build identifier so cached GitHub Pages versions are obvious.
+(function(){const badge=document.getElementById('buildStamp');if(!badge)return;setTimeout(()=>{badge.style.opacity='0';setTimeout(()=>badge.remove(),400)},4500)})();
 
 async function preflightUrl(url, timeoutMs=1800){
  return new Promise(resolve=>{
@@ -452,7 +459,7 @@ async function preflightUrl(url, timeoutMs=1800){
  });
 }
 async function runStartupPreflight(){
- // V240: never block the app behind a sequential check of every stream.
+ // V241: never block the app behind a sequential check of every stream.
  const panel=document.getElementById('startupCheck');
  if(panel){panel.style.opacity='0';panel.style.pointerEvents='none';setTimeout(()=>panel.remove(),180)}
  // Probe sources in the background with limited concurrency. Playback can start immediately.
@@ -466,5 +473,5 @@ async function runStartupPreflight(){
 }
 runStartupPreflight().catch(()=>{const panel=document.getElementById('startupCheck');if(panel)panel.remove()});
 
-// V240: startup source checks run in background; app UI is not blocked by all-source preflight.
+// V241: startup source checks run in background; app UI is not blocked by all-source preflight.
 </script><div class="chart-modal" id="chartModal" onclick="if(event.target===this)closeCharts()"><div class="chart-sheet"><div class="chart-head"><h3 id="chartTitle">🔥 熱門音樂</h3><button class="chart-close" onclick="closeCharts()">✕</button></div><div class="chart-note">排行榜介面獨立於播放來源；歌曲排行可依地區更新。正式版可接後端排行榜資料，播放時再使用合法的官方播放來源。</div><div class="chart-tabs" id="chartTabs"></div><div class="chart-list" id="chartList"></div></div></div></body></html>
