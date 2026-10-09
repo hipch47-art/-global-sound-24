@@ -1,0 +1,493 @@
+<!doctype html>
+<html lang="zh-Hant"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#080808"><meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Expires" content="0"><title>GLOBAL SOUND 24 V245</title>
+<style>
+:root{--bg:#0b0b0b;--panel:#141414;--panel2:#101010;--line:#272727;--text:#f2f2f2;--muted:#8b8b8b;--soft:#bdbdbd}
+*{box-sizing:border-box}html,body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Noto Sans TC",Arial,sans-serif}
+body{min-height:100vh}button,input,select{font:inherit}button{color:inherit}
+main{width:min(760px,100%);margin:0 auto;padding:18px 18px 88px}
+.top{height:44px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #1d1d1d}.view-top{display:flex;align-items:center;justify-content:space-between}.view-top .back{flex:1}.gear{width:36px;height:36px;border:1px solid var(--line);background:#111;border-radius:50%;color:#aaa;font-size:18px;display:flex;align-items:center;justify-content:center}.gear:active{background:#1b1b1b;color:#eee}
+.logo{font-size:15px;font-weight:650;letter-spacing:.16em;color:#eee}.gear{width:38px;height:38px;border:1px solid var(--line);background:#111;border-radius:50%;color:#ccc}
+.hero{padding:38px 2px 24px}.hero h1{margin:0;font-size:32px;line-height:1.15;font-weight:650;letter-spacing:-.03em}.hero p{margin:9px 0 0;color:var(--muted);font-size:13px}
+.section{margin-top:25px}.section-head{margin-bottom:12px}.section-head h2,.music-title h2{margin:0;font-size:19px;font-weight:620}.sub{margin:5px 0 0;color:#777;font-size:11px;line-height:1.45}
+.music-head{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;margin-bottom:12px}.music-title{min-width:0}
+
+
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.tile{position:relative;min-height:104px;overflow:hidden;border:1px solid #252525;border-radius:12px;background:linear-gradient(145deg,#151515,#101010);cursor:pointer;text-align:left;padding:0;transition:border-color .2s,background .2s,transform .15s}.tile:after{content:"";position:absolute;left:14px;right:14px;bottom:13px;height:1px;background:#2d2d2d}.tile:active{background:#181818;border-color:#444;transform:scale(.99)}.tile-content{position:absolute;left:15px;right:15px;top:50%;transform:translateY(-50%)}.tile-title{font-size:17px;font-weight:560;letter-spacing:.02em;color:#e8e8e8}.tile-en{margin-top:6px;font-size:9px;letter-spacing:.14em;color:#737373;text-transform:uppercase}.bar{display:none}
+.hot{display:grid;grid-template-columns:1fr 1fr;gap:8px}.hot button{position:relative;min-height:72px;border:1px solid var(--line);border-radius:12px;background:#111;padding:13px;text-align:left;overflow:hidden}.hot .inside{position:relative;z-index:1}.hot strong{display:block;font-size:13px;font-weight:600}.hot small{display:block;margin-top:4px;color:#aaa;font-size:10px}
+.space-link{width:100%;display:flex;align-items:center;justify-content:space-between;text-align:left;border:1px solid var(--line);background:#111;border-radius:12px;padding:14px 15px}.space-link b{font-size:14px;font-weight:600}.space-link small{display:block;margin-top:5px;color:#777;font-size:11px}.space-link>span:last-child{font-size:25px;color:#777}
+.view{display:none}.view.active{display:block}#sourcesView{display:none!important}.back{border:0;background:transparent;color:#aaa;padding:7px 0;font-size:14px}.view-title{margin:22px 0 8px;font-size:25px;font-weight:650}.source-list{display:grid;gap:8px;margin-top:15px}.source-card{width:100%;border:1px solid var(--line);background:#111;border-radius:12px;padding:14px;text-align:left;cursor:pointer}.source-card strong{display:block;font-size:14px;font-weight:600}.source-card small{display:block;margin-top:5px;color:#858585;font-size:11px;line-height:1.45}.source-meta{margin-top:9px;color:#aaa;font-size:11px}.source-card em{display:inline-block;margin-top:6px;color:#666;font-style:normal;font-size:10px}.empty{border:1px dashed #333;border-radius:12px;padding:18px;color:#777;line-height:1.6}
+.player-screen{text-align:center}.player-screen .view-title{margin-top:16px}.turn-wrap{position:relative;width:min(320px,82vw);margin:12px auto 24px}.turntable{position:relative;width:100%;aspect-ratio:1}.platter{position:absolute;inset:4%;border-radius:50%;background:#101010;box-shadow:0 0 0 8px #111,0 18px 38px #000}.turn{position:absolute;inset:7%;border-radius:50%;background:repeating-radial-gradient(circle,#080808 0 1px,#242424 1.2px 2px,#0b0b0b 2.2px 3.6px);box-shadow:inset 0 0 24px #000,0 0 0 1px #303030}.turn.spinning{animation:spin 3.2s linear infinite}.core-counter{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}.spindle{width:64px;height:64px;border-radius:50%;background:#111;border:1px solid #3b3b3b;box-shadow:0 0 0 5px #0b0b0b}.genre-logo{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:108px;height:108px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#121212;border:1px solid #4a4a4a;color:#eee;font-family:Georgia,"Times New Roman",serif;font-size:12px;font-weight:700;letter-spacing:1.1px;z-index:3}.genre-logo.playing{animation:logoSpin 18s linear infinite}.genre-logo span{display:block}.genre-logo.playing span{animation:logoTextSpin 18s linear infinite reverse}
+.arm-svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none;z-index:20}.arm{stroke:#d0d0d0;stroke-width:7;stroke-linecap:round;fill:none;filter:drop-shadow(0 2px 3px #000)}.arm-inner{stroke:#777;stroke-width:2;fill:none}.pivot{fill:#d9d9d9;stroke:#222;stroke-width:4}.headshell{fill:#ddd;stroke:#222;stroke-width:3}.stylus{stroke:#eee;stroke-width:3;stroke-linecap:round}.needle{transform:translateY(-3px);transition:transform .45s ease}.needle.down{transform:translateY(3px)}
+.playername{max-width:88%;margin:0 auto;padding:7px 12px;border:1px solid #252525;background:#111;border-radius:9px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:13px;color:#ddd}.status{margin-top:7px;color:#858585;font-size:11px;min-height:17px}.play{display:block;width:56px;height:56px;margin:16px auto 0;border:1px solid #555;border-radius:50%;background:#eee;color:#111;font-size:18px}.play.busy{background:#242424;color:#aaa}.track-nav{display:flex;align-items:center;justify-content:center;gap:18px;margin-top:14px}.track-nav .play{margin:0}.track-nav>button:not(.play){border:1px solid #2b2b2b;border-radius:999px;background:#111;color:#bbb;padding:10px 15px;font-size:12px;min-width:88px}.audio-engine{position:absolute;left:-9999px;top:auto;width:1px;height:1px;opacity:.01;pointer-events:none}
+
+.chart-modal{position:fixed;inset:0;background:rgba(0,0,0,.82);z-index:90;display:none;align-items:flex-end}.chart-modal.show{display:flex}.chart-sheet{width:100%;max-height:88vh;overflow:auto;background:#111;border:1px solid #2c2c2c;border-bottom:0;border-radius:20px 20px 0 0;padding:18px}.chart-head{display:flex;justify-content:space-between;align-items:center}.chart-head h3{margin:0;font-size:20px}.chart-close{width:36px;height:36px;border:1px solid #333;background:#181818;border-radius:50%}.chart-note{color:#777;font-size:10px;line-height:1.5;margin:6px 0 12px}.chart-tabs{display:flex;gap:6px;overflow:auto}.chart-tab{white-space:nowrap;border:1px solid #333;background:#151515;border-radius:999px;padding:7px 10px;font-size:10px}.chart-tab.active{border-color:#777}.chart-list{display:grid;gap:7px;margin-top:10px}.chart-row{display:grid;grid-template-columns:30px 1fr auto;gap:8px;align-items:center;border:1px solid #292929;background:#151515;border-radius:10px;padding:9px}.chart-rank{font-size:16px;color:#aaa;text-align:center}.chart-song{font-size:12px;font-weight:600}.chart-artist{font-size:9px;color:#777;margin-top:2px}.chart-open{border:1px solid #333;background:#181818;border-radius:8px;padding:6px 7px;font-size:9px}
+@keyframes spin{to{transform:rotate(360deg)}}@keyframes logoSpin{to{transform:translate(-50%,-50%) rotate(360deg)}}@keyframes logoTextSpin{to{transform:rotate(-360deg)}}
+
+/* V206 UI refinement */
+.music-head{position:relative;min-height:44px;align-items:flex-start}.music-title{padding-top:1px;padding-right:8px}.overlay{position:fixed;inset:0;background:rgba(0,0,0,.68);z-index:100;display:none;align-items:flex-end;padding:0}.sheet{width:100%;background:#111;border:1px solid #292929;border-bottom:0;border-radius:20px 20px 0 0;padding:18px;box-shadow:0 -12px 35px rgba(0,0,0,.4)}.sheettop{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}.close{width:36px;height:36px;border:1px solid #333;background:#181818;border-radius:50%;font-size:22px}.opt{width:100%;padding:13px;margin-top:7px;text-align:left;border:1px solid #292929;background:#151515;border-radius:10px}.settings-row{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:14px 0;border-bottom:1px solid #242424}.settings-row:last-child{border-bottom:0}.settings-row label{font-size:13px;color:#ddd}.settings-select{min-width:150px;padding:9px 10px;border:1px solid #333;border-radius:9px;background:#171717;color:#ddd;text-align:right}.settings-value{min-width:150px;padding:9px 10px;border:1px solid #333;border-radius:9px;background:#171717;color:#888;text-align:right;font-size:13px}.player-screen{padding-bottom:70px}.player-screen .turn-wrap{margin-bottom:18px}.play{margin-top:14px}.source-card{transition:border-color .15s,background .15s}.source-card:active{background:#181818;border-color:#555}.verified{color:#aaa}.pending{color:#777}
+@media(max-width:650px){main{padding:16px 16px 92px}.hero{padding-top:32px}.hero h1{font-size:31px}.music-head{display:flex;align-items:flex-start}.grid{gap:8px}.tile{min-height:100px}.tile-title{font-size:17px}.hot{grid-template-columns:1fr 1fr}.turn-wrap{width:min(310px,82vw)}}
+@media(max-width:430px){.hot{grid-template-columns:1fr}.tile{min-height:126px}}
+.faith-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}.faith-card{min-height:92px;border:1px solid #292929;border-radius:12px;background:#151515;text-align:left;padding:13px;color:#eee}.faith-card b{display:block;font-size:16px}.faith-card small{display:block;margin-top:6px;color:#888;font-size:10px;line-height:1.4}.faith-card:active{background:#1b1b1b;border-color:#4a4a4a}.faith-note{color:#777;font-size:11px;padding:12px;border:1px dashed #292929;border-radius:10px}.hot{overflow-x:auto;display:flex;gap:8px;padding-bottom:3px}.hot button{min-width:190px;flex:0 0 190px}
+
+.sleep-home .section-head{display:flex;justify-content:space-between;align-items:center}.mini-more{border:0;background:none;color:#888;font-size:11px;padding:4px}.sleep-home-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:7px}.sleep-home-grid button{border:1px solid #292929;background:#111;border-radius:10px;padding:11px 5px;color:#ddd;font-size:11px}.faith-grid{grid-template-columns:repeat(2,1fr)}.faith-card{background:#111}.faith-card b{font-size:15px}.embed-box{margin-top:14px;border:1px solid #2b2b2b;border-radius:12px;overflow:hidden;background:#0e0e0e}.embed-box iframe{display:block;width:100%;height:420px;border:0;background:#fff}.embed-note{padding:10px 12px;color:#777;font-size:10px;line-height:1.5}
+.sleep-main-grid{grid-template-columns:repeat(3,1fr)}.sleep-home-grid button{min-height:78px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px}.sleep-home-grid button b{font-size:12px;font-weight:600}.sleep-home-grid button small{font-size:9px;color:#777}.sleep-control{margin-top:10px}.yt-hidden{position:absolute;width:1px;height:1px;left:-9999px;top:0;overflow:hidden;opacity:0;pointer-events:none}.yt-hidden iframe{width:1px;height:1px;border:0}.yt-box{margin-top:14px;border:1px solid #2b2b2b;border-radius:12px;overflow:hidden;background:#090909}.yt-box iframe{display:block;width:100%;aspect-ratio:16/9;border:0}.yt-note{padding:9px 11px;color:#777;font-size:10px;line-height:1.5;text-align:left}.source-card.youtube{border-color:#3a3a3a}.source-card.youtube .source-meta{color:#bbb}
+#startupCheck{position:fixed;inset:0;z-index:9999;background:radial-gradient(ellipse at center,#191919 0%,#080808 65%);display:flex;flex-direction:column;align-items:center;justify-content:center;color:#eee;text-align:center;padding:24px}
+#startupCheck .startup-disc{width:116px;height:116px;border-radius:50%;border:5px solid #252525;background:repeating-radial-gradient(circle,#111 0 3px,#202020 4px 5px);display:grid;place-items:center;animation:startupSpin 3s linear infinite;margin-bottom:25px}
+#startupCheck .startup-label{font-size:19px;letter-spacing:3px}
+#startupCheck .startup-status{font-size:13px;color:#aaa;margin-top:14px;line-height:1.7}
+#startupCheck .startup-progress{width:min(260px,80vw);height:3px;background:#282828;margin-top:20px;border-radius:4px;overflow:hidden}
+#startupCheck .startup-progress span{display:block;height:100%;width:0;background:#c9a77c;transition:width .2s}
+@keyframes startupSpin{to{transform:rotate(360deg)}}
+
+/* V242 build/version confirmation badge */
+#buildStamp{position:fixed;top:calc(env(safe-area-inset-top,0px) + 10px);left:50%;transform:translateX(-50%);z-index:10001;max-width:calc(100vw - 28px);padding:10px 15px;border:1px solid #8a735a;border-radius:999px;background:rgba(18,18,18,.96);box-shadow:0 6px 24px #0009;color:#f4e7d5;font-size:12px;letter-spacing:.04em;text-align:center;white-space:nowrap;transition:opacity .35s ease}
+#buildStamp small{color:#b7a38b;margin-left:7px;font-size:10px}
+</style></head><body><div id="buildStamp">GLOBAL SOUND 24 · V259<small>ROCK STREAM CANDIDATE</small></div><div id="startupCheck"><div class="startup-disc"><span>GS24</span></div><div class="startup-label">GLOBAL SOUND 24</div><div class="startup-status" id="startupStatus">正在檢查可用音源…<br>請稍候</div><div class="startup-progress"><span id="startupProgress"></span></div></div><main>
+<section id="homeView" class="view active" aria-label="首頁"><header class="top"><div class="logo">GLOBAL SOUND 24</div><button class="gear" id="homeSettings" aria-label="Settings">⚙︎</button></header>
+<div class="hero"><h1>想聽什麼？</h1><p>點選曲風或睡眠音樂，直接進入唱盤播放。</p></div>
+<section class="section music-section"><div class="music-head"><div class="music-title"><h2>🎵 音樂類型</h2><p class="sub">選擇曲風，直接進入唱盤播放</p></div></div><div class="grid" id="genres"></div></section>
+<section class="section sleep-home"><div class="section-head"><div><h2>🌙 睡眠音樂</h2><p class="sub">24H 睡眠音樂・寶寶安睡・白噪音・自然聲</p></div></div><div class="sleep-home-grid sleep-main-grid"><button onclick="playSleep('baby')">🍼<b>寶寶安睡</b><small>Lullaby 24H</small></button><button onclick="playSleep('deep')">🌙<b>深度睡眠</b><small>Piano & Rain 24H</small></button><button onclick="playSleep('rain')">🌧️<b>雨聲</b><small>Rain 24H</small></button><button onclick="playSleep('white')">🤍<b>白噪音</b><small>White Noise</small></button><button onclick="playSleep('pink')">🌸<b>粉紅噪音</b><small>Pink Noise</small></button><button onclick="playSleep('brown')">🤎<b>棕噪音</b><small>Brown Noise</small></button><button onclick="playSleep('ocean')">🌊<b>海浪</b><small>Ocean</small></button><button onclick="playSleep('forest')">🌲<b>森林</b><small>Forest</small></button><button onclick="playSleep('campfire')">🔥<b>營火</b><small>Campfire</small></button><button onclick="playSleep('wind')">💨<b>風聲</b><small>Wind</small></button><button onclick="playSleep('thunder')">⛈️<b>雷雨</b><small>Thunderstorm</small></button></div><div class="status" id="sleepStatus">尚未播放睡眠音樂</div></section><section class="section faith-section"><div class="section-head"><div><h2>🕊️ 信仰・靈性</h2><p class="sub">宗教音樂與靈性聲音</p></div></div><div class="faith-grid" id="faithGrid"></div></section>
+<section class="section"><div class="section-head"><div><h2>🔥 熱門音樂</h2><p class="sub">依你選擇的地區顯示</p></div></div><div class="hot" id="hot"></div></section>
+
+</section><section id="sourcesView" class="view" aria-hidden="true" style="display:none!important"><div class="view-top"><button class="back" onclick="showHome()">‹ 回首頁</button><button class="gear" aria-label="Settings" onclick="openSettings()">⚙︎</button></div><div class="view-title" id="sourceTitle">音樂來源</div><div id="sourceCount" class="sub" style="margin-top:-2px"></div><p class="sub">來源可含歌唱；排除新聞、主持、Talk、政治與體育口播。播放時即時確認。</p><div class="source-list" id="sources"></div></section>
+<section id="playerView" class="view player-screen"><div class="view-top"><button class="back" onclick="showHome()">‹ 回首頁</button><button class="gear" aria-label="Settings" onclick="openSettings()">⚙︎</button></div><div class="view-title">Now Playing</div><div class="turn-wrap"><div class="turntable"><div class="platter"></div><div class="turn" id="turn"><div class="core-counter" id="coreCounter"><div class="spindle"></div><div class="genre-logo" id="genreLogo"><span id="genreLogoText">PIANO</span></div></div></div><svg class="arm-svg" viewBox="0 0 330 330" aria-hidden="true"><circle class="pivot" cx="286" cy="34" r="17"/><path class="arm" d="M286 34 C286 66 282 100 272 136 C263 172 253 205 244 232"/><path class="arm-inner" d="M286 34 C286 66 282 100 272 136 C263 172 253 205 244 232"/><g class="needle" id="needle"><path class="headshell" d="M244 225 L230 231 L232 243 L247 239 Z"/><path class="stylus" d="M234 241 L257 276"/></g></svg></div></div><div class="playername" id="playername">GLOBAL SOUND 24 · Ready</div><div class="status" id="status">等待播放</div>
+<details id="streamDiagnostics" open style="display:block;max-width:92%;margin:10px auto;color:#bdbdbd;font-size:12px;text-align:left;border:1px solid #333;border-radius:10px;padding:10px;background:#111">
+<summary style="cursor:pointer;color:#d9c2a3">播放診斷（V245）</summary>
+<div id="streamDiagSummary" style="margin-top:8px;line-height:1.6;overflow-wrap:anywhere">診斷區已就緒。選擇曲風後，這裡會記錄播放事件與錯誤。</div>
+<button id="copyStreamDiag" type="button" style="margin-top:8px;border:1px solid #555;border-radius:8px;padding:7px 10px;background:#222;color:#eee">複製診斷文字</button>
+</details><audio id="audio" class="audio-engine" preload="auto" playsinline webkit-playsinline></audio><div id="officialEmbed" style="display:none"></div><div class="track-nav"><button type="button" id="prevTrack" aria-label="上一首">‹ 上一首</button><button class="play" id="play" aria-label="播放">▶</button><button type="button" id="nextTrack" aria-label="下一首">下一首 ›</button></div></section>
+
+</main>
+<div class="overlay" id="overlay" aria-hidden="true"><div class="sheet"><div class="sheettop"><strong>Settings</strong><button class="close" id="close">×</button></div><div class="settings-row"><label for="settingsSleepTimer">Sleep Timer</label><select id="settingsSleepTimer" class="settings-select"><option value="0">關閉</option><option value="30">30 分鐘</option><option value="60">1 小時</option><option value="120">2 小時</option><option value="240">4 小時</option><option value="480">8 小時</option></select></div><div class="settings-row"><label for="settingsLanguage">Language</label><select id="settingsLanguage" class="settings-select"><option value="zh-TW">繁體中文</option><option value="zh-CN">简体中文</option><option value="ja">日本語</option><option value="ko">한국어</option><option value="en-US">English (US)</option><option value="en-GB">English (UK)</option></select></div><div class="settings-row"><label>Soft Ver.</label><div class="settings-value">V245 · BUILD 20261009-05</div></div></div></div>
+<script>
+const countries=[['tw','🇹🇼','台灣'],['cn','🇨🇳','中國'],['jp','🇯🇵','日本'],['kr','🇰🇷','韓國'],['us','🇺🇸','美國'],['uk','🇬🇧','英國']];
+let selected=new Set(countries.map(x=>x[0])); let currentGenre=''; let currentFaith='';
+let activeSource=null, activeUrlIndex=0, playTimeout=null, playStarted=false, playAttemptId=0, failedAttemptId=0;
+const audio=document.getElementById('audio'), turn=document.getElementById('turn'), needle=document.getElementById('needle'), genreLogo=document.getElementById('genreLogo'), status=document.getElementById('status'), playername=document.getElementById('playername');
+const genres=[
+ ['reading','閱讀音樂','READING MUSIC'],['piano','Piano','PIANO'],['jazz','Jazz','JAZZ MUSIC'],['classical','Classical','CLASSICAL MUSIC'],['rnb','R&B','R&B MUSIC'],['rock','Rock','ROCK MUSIC'],['pop','Pop','POP MUSIC']
+ ];
+const faiths=[
+ ['buddhist','🪷 佛教','梵唄・佛號・禪修'],
+ ['tibetan','🏔️ 藏傳佛教','藏音・梵唱・冥想'],
+ ['catholic','✝️ 天主教','Gregorian Chant・Catholic Hymns'],
+ ['protestant','⛪ 基督新教','Hymns・Worship・Gospel'],
+ ['spiritual','🕯️ 其他靈性','Meditation・Spiritual Music']
+];
+const testSources=[
+ {c:'global',g:'rock',type:'instrumental',name:'Post-Rock Nation · 24H Live',meta:'Post-Rock · 氛圍／器樂搖滾 · 24H Live · 使用授權待確認',manifest:'https://postrocknation.com/radio',urls:['https://radio.postrocknation.com/listen/radio/radio.mp3']},
+ {c:'us',g:'piano',type:'instrumental',name:'Whisperings · Solo Piano Radio',ytId:'IL-m-hbAoI8',ytTitle:'Relaxing Piano Music & Rain 24/7',meta:'USA · Solo Piano · 24H · 純器樂',manifest:'https://www.solopianoradio.com/',urls:['https://pianosolo.streamguys1.com/live','http://pianosolo.streamguys.net/live']},
+ {c:'global',g:'instrumental',type:'instrumental',name:'Abiding Radio · Instrumental',meta:'Sacred Instrumental · 24H · 純器樂',manifest:'https://www.abidingradio.org/media/',urls:['https://www.abidingradio.org/radio/instrumental']},
+ {c:'us',g:'jazz',type:'instrumental',name:'RelaxingJazz.com · Smooth Jazz',ytId:'csg53CHpvVs',ytTitle:'Smooth Jazz & Soul R&B 24/7 · Instrumentals',meta:'Smooth Jazz · 24H · 純器樂',manifest:'https://relaxingjazz.com/?p=40',urls:['https://443-1.autopo.st/171/stream/3/','https://stream-02-eu.relaxingjazz.com/stream/3/','https://stream-02-eu.relaxingjazz.com/stream/1/']},
+ {c:'us',g:'jazz',type:'instrumental',name:'101 Smooth Jazz · 24H',meta:'USA · Smooth Jazz · 24H · 純器樂',manifest:'https://www.101smoothjazz.com/',urls:['https://ais-sa5.cdnstream1.com/b22139_128mp3']},
+ {c:'us',g:'jazz',type:'music',name:'Jazz24 · 24H Jazz',ytId:'I8tAPRpa9I8',ytTitle:'Calm Night Jazz 24/7',meta:'USA · Jazz · 24H · 可含演唱 · 無新聞／談話',manifest:'https://www.jazz24.org/streaming-links/',urls:['https://knkx-live-a.edge.audiocdn.com/6285_128k','https://knkx-live-a.edge.audiocdn.com/6285_256k']},
+
+ {c:'global',g:'jazz',type:'music',name:'SomaFM · Sonic Universe',meta:'Modern Jazz · 可含演唱 · 無新聞／談話',manifest:'https://somafm.com/sonicuniverse/',urls:['https://ice5.somafm.com/sonicuniverse-128-mp3','https://ice2.somafm.com/sonicuniverse-128-mp3']},
+ {c:'global',g:'piano',type:'instrumental',name:'Radio Art · Solo Piano',meta:'Solo Piano · 純器樂',manifest:'https://www.radioart.com/',urls:['https://air.radioart.com/fSolo_piano.mp3','https://live.radioart.com/fSolo_piano.mp3']},
+ {c:'global',g:'acoustic',type:'instrumental',name:'Radio Art · Piano & Guitar',meta:'Piano + Guitar · 純器樂',manifest:'https://www.radioart.com/',urls:['https://air.radioart.com/fPiano_and_guitar.mp3','https://live.radioart.com/fPiano_and_guitar.mp3']},
+ {c:'global',g:'jazz',type:'instrumental',name:'Radio Art · Jazz Piano',meta:'Jazz Piano · 純器樂',manifest:'https://www.radioart.com/',urls:['https://air.radioart.com/fJazz_piano.mp3','https://live.radioart.com/fJazz_piano.mp3']},
+ {c:'global',g:'piano',type:'instrumental',name:'Radio Art · Piano',meta:'Piano · 純器樂',manifest:'https://www.radioart.com/',urls:['https://air.radioart.com/fPiano.mp3','https://live.radioart.com/fPiano.mp3']},
+ {c:'global',g:'classical',type:'instrumental',name:'Radio Art · Classical Relaxation',meta:'Classical · 純器樂',manifest:'https://www.radioart.com/',urls:['https://air.radioart.com/fClassical_relaxation.mp3','https://live.radioart.com/fClassical_relaxation.mp3']},
+ {c:'global',g:'classical',type:'instrumental',name:'Radio Art · Solo Flute',meta:'Solo Flute · 純器樂',manifest:'https://www.radioart.com/',urls:['https://air.radioart.com/fSolo_flute.mp3','https://live.radioart.com/fSolo_flute.mp3']},
+ {c:'global',g:'classical',type:'instrumental',name:'Radio Art · Solo Harp',meta:'Solo Harp · 純器樂',manifest:'https://www.radioart.com/',urls:['https://air.radioart.com/fSolo_harp.mp3','https://live.radioart.com/fSolo_harp.mp3']},
+ {c:'global',g:'classical',type:'instrumental',name:'Radio Art · Solo Instruments',meta:'Solo Instruments · 純器樂',manifest:'https://www.radioart.com/',urls:['https://air.radioart.com/fSolo_instruments.mp3','https://live.radioart.com/fSolo_instruments.mp3']},
+ {c:'global',g:'piano',type:'instrumental',name:'Radio Art · Piano Trios',meta:'Piano Trio · 純器樂',manifest:'https://www.radioart.com/',urls:['https://air.radioart.com/fPiano_trios.mp3','https://live.radioart.com/fPiano_trios.mp3']},
+ {c:'global',g:'acoustic',type:'instrumental',name:'Radio Art · Solo Guitar',meta:'Solo Guitar · 純器樂',manifest:'https://www.radioart.com/',urls:['https://air.radioart.com/fSolo_guitar.mp3','https://live.radioart.com/fSolo_guitar.mp3']},
+ {c:'global',g:'classical',type:'instrumental',name:'Radio Art · Classical for Sleep',meta:'Classical · 純器樂',manifest:'https://www.radioart.com/',urls:['https://air.radioart.com/fClassical_for_sleep.mp3','https://live.radioart.com/fClassical_for_sleep.mp3']},
+ {c:'global',g:'ambient',type:'instrumental',name:'MUGEN Radio · Ambient',meta:'Ambient · 純器樂 · HLS',manifest:'https://mugenradio.com/embed.html',urls:['https://mugenradio.com/hls/live.m3u8'],hls:true},
+ {c:'global',g:'instrumental',type:'instrumental',name:'Radio Art · Study',meta:'Atmospheric Instrumental · 純器樂',manifest:'https://www.radioart.com/',urls:['https://air.radioart.com/fStudy.mp3','https://live.radioart.com/fStudy.mp3']},
+ {c:'global',g:'ambient',type:'instrumental',name:'Radio Art · Healing & Recovery',meta:'Ambient Instrumental · 純器樂',manifest:'https://www.radioart.com/',urls:['https://air.radioart.com/fHealing_and_recovery.mp3','https://live.radioart.com/fHealing_and_recovery.mp3']},
+ {c:'global',g:'world',type:'instrumental',name:'Radio Art · Lute',meta:'Lute / Early Music · 純器樂',manifest:'https://www.radioart.com/',urls:['https://air.radioart.com/fLute.mp3','https://live.radioart.com/fLute.mp3']},
+
+ {c:'us',g:'electronic',type:'music',name:'SomaFM · Groove Salad',meta:'Ambient / Downtempo · 可含演唱 · 無新聞／談話',manifest:'https://somafm.com/groovesalad/',urls:['https://ice5.somafm.com/groovesalad-128-mp3','https://ice2.somafm.com/groovesalad-128-mp3']},
+ {c:'us',g:'electronic',type:'music',name:'SomaFM · Groove Salad Classic',meta:'Downtempo / Electronica · 可含演唱 · 無新聞／談話',manifest:'https://somafm.com/gsclassic/',urls:['https://ice5.somafm.com/gsclassic-128-mp3','https://ice6.somafm.com/gsclassic-128-mp3']},
+ {c:'us',g:'electronic',type:'music',name:'SomaFM · The Trip',meta:'Progressive House / Trance · 可含演唱 · 無新聞／談話',manifest:'https://somafm.com/thetrip/',urls:['https://ice5.somafm.com/thetrip-128-mp3','https://ice6.somafm.com/thetrip-128-mp3']},
+ {c:'us',g:'electronic',type:'music',name:'SomaFM · Lush',meta:'Mellow Electronica · 女聲演唱 · 無新聞／談話',manifest:'https://somafm.com/lush/',urls:['https://ice5.somafm.com/lush-128-mp3','https://ice6.somafm.com/lush-128-mp3']},
+ {c:'us',g:'pop',type:'music',name:'SomaFM · Indie Pop Rocks!',meta:'Indie Pop / Rock · 有演唱 · 無新聞／談話',manifest:'https://somafm.com/indiepop/',urls:['https://ice1.somafm.com/indiepop-128-aac','https://ice2.somafm.com/indiepop-128-aac']},
+ {c:'us',g:'ambient',type:'music',name:'SomaFM · Secret Agent',meta:'Cinematic / Lounge · 可含演唱 · 無新聞／談話',manifest:'https://somafm.com/secretagent/',urls:['https://ice5.somafm.com/secretagent-128-mp3','https://ice2.somafm.com/secretagent-128-mp3']},
+ {c:'us',g:'electronic',type:'music',name:'SomaFM · Fluid',meta:'Instrumental Hip-Hop / Future Soul · 可含演唱 · 無新聞／談話',manifest:'https://somafm.com/fluid/',urls:['https://ice.somafm.com/fluid']},
+ {c:'us',g:'pop',type:'music',name:'SomaFM · Indie Pop Rocks!',meta:'Indie Pop / Rock · 有演唱 · 無新聞／談話',manifest:'https://somafm.com/indiepop/',urls:['https://ice1.somafm.com/indiepop-128-aac','https://ice2.somafm.com/indiepop-128-aac']},
+ {c:'us',g:'rnb',type:'music',name:'SomaFM · Fluid',meta:'Future Soul / R&B · 可含演唱 · 無新聞／談話',manifest:'https://somafm.com/fluid/',urls:['https://ice1.somafm.com/fluid-128-aac','https://ice2.somafm.com/fluid-128-aac']},
+ {c:'us',g:'rnb',type:'music',name:'SomaFM · Seven Inch Soul',meta:'Soul / R&B · 復古靈魂樂 · 有演唱',manifest:'https://somafm.com/7soul/',urls:['https://ice1.somafm.com/7soul-128-aac','https://ice2.somafm.com/7soul-128-aac']},
+ {c:'us',g:'pop',type:'music',name:'SomaFM · PopTron',meta:'Electropop / Indie Dance Rock · 有演唱',manifest:'https://somafm.com/poptron/',urls:['https://ice1.somafm.com/poptron-128-aac','https://ice2.somafm.com/poptron-128-aac']},
+ {c:'us',g:'electronic',type:'instrumental',name:'SomaFM · Deep Space One',meta:'Ambient Electronic / Space · 以音樂為主',manifest:'https://somafm.com/deepspaceone/',urls:['https://ice.somafm.com/deepspaceone']},
+ {c:'global',faith:'protestant',g:'faith',type:'instrumental',name:'Abiding Radio · Instrumental',meta:'基督新教 · Sacred Instrumental · 24H · 純器樂',manifest:'https://www.abidingradio.org/media/',urls:['https://www.abidingradio.org/radio/instrumental']},
+ {c:'global',faith:'protestant',g:'faith',type:'music',name:'Abiding Radio · Sacred',ytId:'PuialdcA6r0',ytTitle:'Christian Hymns · 24/7 Worship',meta:'基督新教 · Sacred Hymns · 可含歌唱',manifest:'https://www.abidingradio.org/media/',urls:['https://www.abidingradio.org/radio/sacred']},
+ {c:'us',faith:'protestant',g:'faith',type:'instrumental',name:'Abiding Radio · Bluegrass Hymns',meta:'基督新教 · Bluegrass Hymns · 純器樂',manifest:'https://www.abidingradio.org/media/',urls:['https://www.abidingradio.org/radio/bluegrass']},
+ {c:'us',faith:'protestant',g:'faith',type:'music',name:'FBC Radio · Great Hymns of the Faith',meta:'基督新教 · Sacred Traditional Music · 24H',manifest:'https://www.fbcradio.org/',urls:['https://cast1.my-control-panel.com/proxy/foundati/stream','https://cast2.my-control-panel.com/proxy/foundat1/stream']},
+ {c:'global',faith:'catholic',g:'faith',type:'music',name:'SACREDMUSIC.FM · Gregorian Chant',ytId:'-etf1icCUeA',ytTitle:'Gregorian Chants Compilation · 24/7',meta:'天主教／聖樂 · Gregorian Chant & Renaissance Polyphony · 24H',manifest:'https://www.sacredmusic.fm/',embedUrl:'https://www.sacredmusic.fm/',urls:[]},
+ {c:'global',faith:'tibetan',g:'faith',type:'music',name:'Lungta Radio · Tibetan Spiritual & Devotional',ytId:'qPtZID7JC3s',ytTitle:'Tibetan Meditation Music · 24/7',meta:'藏傳佛教相關 · Tibetan Spiritual & Devotional Music · 24H',manifest:'https://lungtaradio.com/',embedUrl:'https://lungtaradio.com/',urls:[]},
+ {c:'global',faith:'buddhist',g:'faith',type:'music',name:'World Buddhist Radio',ytId:'GeMdgGizIJI',ytTitle:'Buddhist Chanting · Meditation Music',meta:'佛教 · Buddhist Music & Dharma · 24H',manifest:'https://bdcu.org.au/buddhist-radio/',embedUrl:'https://bdcu.org.au/buddhist-radio/',urls:[]},
+ {c:'global',faith:'spiritual',g:'faith',type:'music',name:'Sanathana Vani · Spiritual Stream',meta:'靈性 · Chants / Meditation / Instrumental · 24H',manifest:'https://www.saiprakashana.org/sanathana-vani/',embedUrl:'https://www.saiprakashana.org/sanathana-vani/',urls:[]}
+];
+let sourceRefreshDone=false;
+const candidateSources=testSources.map(x=>({...x,urls:[...(x.urls||[])]}));
+const badSources=new Set();
+const sourceHealth=new Map();
+let retryTimer=null;
+function wait(ms){return new Promise(r=>setTimeout(r,ms))}
+async function loadHlsForCheck(){
+ if(window.Hls)return window.Hls;
+ return new Promise((resolve,reject)=>{
+  const sc=document.createElement('script'); let finished=false;
+  const done=(err)=>{if(finished)return;finished=true;clearTimeout(t);try{sc.remove()}catch(e){};err?reject(err):resolve(window.Hls)};
+  sc.src='https://cdn.jsdelivr.net/npm/hls.js@1.5.17/dist/hls.min.js';
+  sc.onload=()=>done(null); sc.onerror=()=>done(new Error('HLS library load failed'));
+  const t=setTimeout(()=>done(new Error('HLS library timeout')),4500);
+  document.head.appendChild(sc);
+ });
+}
+function testAudioUrl(url,{hls=false,timeout=4500}={}){
+ return new Promise(resolve=>{
+  const a=document.createElement('audio');a.preload='metadata';a.muted=true;a.volume=0;a.playsInline=true;
+  let done=false,timer=setTimeout(()=>finish(false),timeout);
+  function finish(ok){if(done)return;done=true;clearTimeout(timer);try{a.pause();a.removeAttribute('src');a.load()}catch(e){}resolve(ok)}
+  a.oncanplay=()=>finish(true);a.onloadeddata=()=>finish(true);a.onerror=()=>finish(false);a.onstalled=()=>{};
+  try{a.src=url;a.load()}catch(e){finish(false)}
+ });
+}
+async function verifyOneSource(src,index,total,background=false){
+ for(const url of (src.urls||[])){
+   const ok=await testAudioUrl(url,{timeout:4500});
+   if(ok){src.urls=[url];src.verified=true;sourceHealth.set(src.name,{ok:true,at:Date.now()});return true}
+ }
+ sourceHealth.set(src.name,{ok:false,at:Date.now()});return false;
+}
+
+async function refreshSourceRegistry(){
+ const candidates=candidateSources.filter(x=>genres.some(g=>g[0]===x.g)||x.faith); let next=0;
+ const worker=async()=>{while(true){const i=next++;if(i>=candidates.length)return;const src=candidates[i];for(const url of (src.urls||[])){const ok=await testAudioUrl(url,{timeout:3500});if(ok){sourceHealth.set(src.name,{ok:true,at:Date.now()});renderSources();break}}}};
+ Promise.all([worker(),worker(),worker()]).catch(()=>{});
+}
+
+function addVerifiedSource(src){if(testSources.some(x=>x.name===src.name))return;testSources.push(src);testSources.sort((a,b)=>candidateSources.indexOf(a)-candidateSources.indexOf(b));renderSources();}
+function scheduleBackgroundRetry(failed){
+ if(retryTimer)clearTimeout(retryTimer);
+ let round=0;
+ const retry=async()=>{
+  round++; if(round>3||!failed.length)return;
+  const remaining=[];
+  for(const src of failed){if(testSources.some(x=>x.name===src.name))continue;const ok=await verifyOneSource(src,0,0,true);if(ok)addVerifiedSource(src);else remaining.push(src);}
+  failed=remaining;
+  if(failed.length)retryTimer=setTimeout(retry,300000);
+ };
+ retryTimer=setTimeout(retry,300000);
+}
+function renderRegions(){
+ const box=document.getElementById('regions');
+ box.innerHTML=countries.map(([id,f,n])=>`<label class="region-chip ${selected.has(id)?'on':''}"><input type="checkbox" ${selected.has(id)?'checked':''} data-id="${id}"><span class="flag">${f}</span><span>${n}</span></label>`).join('');
+ box.querySelectorAll('input').forEach(i=>i.onchange=()=>{i.checked?selected.add(i.dataset.id):selected.delete(i.dataset.id);renderRegions();renderHot();renderSources()});
+}
+function renderGenres(){document.getElementById('genres').innerHTML=genres.map(g=>`<button class="tile" data-g="${g[0]}"><div class="tile-content"><div class="tile-title">${g[1]}</div><div class="tile-en">${g[2]}</div></div></button>`).join('');document.querySelectorAll('.tile').forEach(b=>b.onclick=()=>{startCategory(b.dataset.g)})}
+function renderFaith(){const el=document.getElementById('faithGrid');el.innerHTML=faiths.map(f=>`<button class="faith-card" data-faith="${f[0]}"><b>${f[1]}</b><small>${f[2]}</small></button>`).join('');el.querySelectorAll('[data-faith]').forEach(b=>b.onclick=()=>startFaith(b.dataset.faith))}
+function hotItems(){const out=[];if(selected.has('tw'))out.push(['tw','台灣流行歌曲','台灣熱門排行']);if(selected.has('cn'))out.push(['cn','中國流行歌曲','中國熱門排行']);if(selected.has('jp'))out.push(['jp','日本流行歌曲','J-POP 熱門排行']);if(selected.has('kr'))out.push(['kr','韓國流行歌曲','K-POP 熱門排行']);if(selected.has('us'))out.push(['us','美國流行歌曲','US Top Hits']);if(selected.has('uk'))out.push(['uk','英國流行歌曲','UK Top Hits']);return out.slice(0,6)}
+const chartLabels={tw:'台灣流行歌曲',cn:'中國流行歌曲',jp:'日本 J-POP',kr:'韓國 K-POP',us:'US Top Hits',uk:'UK Top Hits'};
+const chartSamples={tw:['台灣熱門歌曲 01','台灣熱門歌曲 02','台灣熱門歌曲 03','台灣熱門歌曲 04','台灣熱門歌曲 05'],cn:['中國熱門歌曲 01','中國熱門歌曲 02','中國熱門歌曲 03','中國熱門歌曲 04','中國熱門歌曲 05'],jp:['日本熱門歌曲 01','日本熱門歌曲 02','日本熱門歌曲 03','日本熱門歌曲 04','日本熱門歌曲 05'],kr:['K-POP 熱門歌曲 01','K-POP 熱門歌曲 02','K-POP 熱門歌曲 03','K-POP 熱門歌曲 04','K-POP 熱門歌曲 05'],us:['US Top Song 01','US Top Song 02','US Top Song 03','US Top Song 04','US Top Song 05'],uk:['UK Top Song 01','UK Top Song 02','UK Top Song 03','UK Top Song 04','UK Top Song 05']};
+function renderHot(){const h=document.getElementById('hot');h.innerHTML=hotItems().map(x=>`<button data-hot="${x[0]}"><div class="inside"><strong>${x[1]}</strong><small>${x[2]}</small></div></button>`).join('')||'<div style="color:#777">請至少選擇一個地區</div>';h.querySelectorAll('[data-hot]').forEach(b=>b.onclick=()=>openHot(b.dataset.hot))}
+function openHot(c){const modal=document.getElementById('chartModal');document.getElementById('chartTitle').textContent='🔥 '+chartLabels[c];const tabs=document.getElementById('chartTabs');tabs.innerHTML=hotItems().map(x=>`<button class="chart-tab ${x[0]===c?'active':''}" onclick="openHot('${x[0]}')">${x[1]}</button>`).join('');const list=document.getElementById('chartList');list.innerHTML=(chartSamples[c]||[]).map((name,i)=>`<div class="chart-row"><div class="chart-rank">${i+1}</div><div><div class="chart-song">${name}</div><div class="chart-artist">即時排行榜資料接入後顯示歌手</div></div><button class="chart-open" onclick="openOfficialChart('${c}')">官方來源</button></div>`).join('');modal.classList.add('show')}
+function closeCharts(){document.getElementById('chartModal').classList.remove('show')}
+function openOfficialChart(c){const u={tw:'https://music.youtube.com/charts',cn:'https://music.youtube.com/charts',jp:'https://music.youtube.com/charts',kr:'https://music.youtube.com/charts',us:'https://music.youtube.com/charts',uk:'https://music.youtube.com/charts'}[c]||'https://music.youtube.com/charts';window.open(u,'_blank','noopener')}
+function hideViews(){document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'))}
+function showHome(){
+  // Navigation only: keep the current audio, queue, track index, sleep timer, and turntable state alive.
+  // Playback is replaced/stopped only when the user chooses another genre/faith category or another sleep item.
+  hideViews();document.getElementById('homeView').classList.add('active');
+  renderFaith();renderHot();
+  history.replaceState(null,'','#home');window.scrollTo(0,0);
+}
+
+let playQueue=[], queueIndex=0, queueKind='genre';
+function stopCurrentMedia(){
+  clearPlayTimeout();
+  stopFade();
+  try{audio.pause();audio.removeAttribute('src');audio.load();audio.volume=1}catch(e){}
+  stopYouTubePlayer();
+  if(sleepNodes.length){sleepNodes.forEach(n=>{try{n.stop?.()}catch(e){}try{n.disconnect?.()}catch(e){}});sleepNodes=[]}
+  if(sleepStopTimer){clearTimeout(sleepStopTimer);sleepStopTimer=null}
+  hideOfficialEmbed();
+  playStarted=false;setBusy(false);setPlayIcon(false);
+  turn.classList.remove('spinning');needle.classList.remove('down');genreLogo.classList.remove('playing');
+}
+function sourcesForGenre(g){
+  // V239: genre-correct sources only for R&B/Rock/Pop; never silently replace these genres with Jazz.
+  const tags = g==='reading' ? ['instrumental','piano','classical','ambient','acoustic'] : [g];
+  const primary=testSources.filter(x=>!x.faith && (tags.includes(x.g) || (g==='reading' && ['instrumental','reading'].includes(x.type))) && (x.urls?.length||x.ytId));
+  const allowJazzFallback = !['rnb','rock','pop'].includes(g) && g!=='jazz';
+  const jazzFallback=allowJazzFallback ? testSources.filter(x=>!x.faith&&x.g==='jazz'&&(x.urls?.length||x.ytId)) : [];
+  const seen=new Set();
+  return [...primary,...jazzFallback].filter(x=>{const k=x.name+'|'+(x.urls||[]).join(',');if(seen.has(k))return false;seen.add(k);return true;})
+    .sort((a,b)=>Number(!!b.urls?.length)-Number(!!a.urls?.length));
+}
+function sourcesForFaith(f){
+  return testSources.filter(x=>x.faith===f&&(x.urls?.length||x.ytId)).sort((a,b)=>Number(!!b.urls?.length)-Number(!!a.urls?.length));
+}
+function startCategory(g){
+  const list=sourcesForGenre(g);
+  currentGenre=g;currentFaith='';queueKind='genre';playQueue=list;queueIndex=0;
+  const chosen=list[0];
+  if(chosen && chosen.urls && chosen.urls.length){
+    // Start directly inside the category tap gesture for iPhone Safari.
+    playSource(chosen);
+    return;
+  }
+  if(chosen && chosen.ytId){
+    showYouTube(chosen);
+    return;
+  }
+  enterPlayerReady(chosen||{name:genres.find(x=>x[0]===g)?.[1]||'音樂',g});
+}
+function startFaith(f){
+  const list=sourcesForFaith(f); currentFaith=f;currentGenre='';queueKind='faith';playQueue=list;queueIndex=0;
+  enterPlayerReady(list[0]||{name:faiths.find(x=>x[0]===f)?.[1]||'信仰・靈性',g:'faith'});
+}
+function enterPlayerReady(x){
+  stopCurrentMedia();activeSource=x;activeUrlIndex=0;mediaMode='none';
+  hideViews();hideOfficialEmbed();document.getElementById('playerView').classList.add('active');setGenreLogo(x);
+  playername.textContent=x.name||'GLOBAL SOUND 24';status.textContent=playQueue.length?'準備就緒 · 按 ▶ 開始播放':'目前沒有可用音源';
+  turn.classList.remove('spinning');needle.classList.remove('down');genreLogo.classList.remove('playing');setPlayIcon(false);
+  history.replaceState(null,'','#player');window.scrollTo(0,0);
+}
+function openPlayerNotice(msg,logo){
+  stopCurrentMedia();hideViews();document.getElementById('playerView').classList.add('active');
+  setGenreLogo({g:logo});playername.textContent=logo==='faith'?'信仰・靈性':'GLOBAL SOUND 24';
+  status.textContent=msg;history.replaceState(null,'','#player');window.scrollTo(0,0);
+}
+function playQueueItem(index){
+  if(!playQueue.length)return;
+  queueIndex=(index+playQueue.length)%playQueue.length;
+  const x=playQueue[queueIndex];
+  stopCurrentMedia();
+  if(x.ytId)showYouTube(x);
+  else if(x.urls?.length)playSource(x);
+  else showOfficialEmbed({...x,embedUrl:x.embedUrl||x.manifest});
+}
+function moveTrack(delta){
+  // Previous/Next only selects the new item. It must never auto-play.
+  // Navigation back to Home/Settings leaves current media and turntable untouched.
+  if(queueKind==='sleep'){
+    const order=['baby','deep','rain','white','pink','brown','ocean','forest','campfire','wind','thunder'];
+    const idx=order.indexOf(sleepActiveKind);
+    playSleep(order[(idx+delta+order.length)%order.length], false);
+    return;
+  }
+  if(playQueue.length>1){
+    queueIndex=(queueIndex+delta+playQueue.length)%playQueue.length;
+    enterPlayerReady(playQueue[queueIndex]);
+  } else status.textContent='此分類沒有其他可切換的音源';
+}
+
+function showSources(g=''){hideOfficialEmbed();currentGenre=g;currentFaith='';hideViews();document.getElementById('sourcesView').classList.add('active');history.replaceState(null,'','#sources');const genre=genres.find(x=>x[0]===g);document.getElementById('sourceTitle').textContent=genre?genre[1]+' · 音樂來源':'音樂來源';renderSources();window.scrollTo(0,0)}
+function showFaith(f=''){hideOfficialEmbed();currentFaith=f;currentGenre='';hideViews();document.getElementById('sourcesView').classList.add('active');history.replaceState(null,'','#faith');const faith=faiths.find(x=>x[0]===f);document.getElementById('sourceTitle').textContent=faith?faith[1]+' · 宗教音樂':'信仰・靈性';renderSources();window.scrollTo(0,0)}
+function renderSources(){
+ const s=document.getElementById('sources');
+ const list=testSources.filter(x=>(currentFaith?x.faith===currentFaith:(!currentGenre||x.g===currentGenre)));
+ const count=document.getElementById('sourceCount');
+ if(count)count.textContent=list.length?`音樂來源 ${list.length} 個`:'目前沒有符合這個曲風／地區的來源';
+ if(!list.length){s.innerHTML='<div class="empty">目前沒有這個曲風的來源。請改選其他地區或曲風。</div>';return;}
+ s.innerHTML=list.map(x=>{
+   const health=sourceHealth.get(x.name);
+   const label=x.type==='instrumental'?'純器樂':'可含歌唱';
+   const failed=sourceHealth.get(x.name)?.ok===false;
+   return `<button class="source-card ${x.ytId?'youtube':''}" data-i="${testSources.indexOf(x)}"><strong>${x.name}</strong><small>${x.meta}</small><div class="source-meta ${health?.ok?'verified':'pending'}">${x.ytId?'▶ YouTube 24H／長時間播放':(x.urls?.length?(health?.ok?'✓ 最近播放成功':(failed?'⚠ 上次播放失敗，點擊重試':'點擊播放')):(x.embedUrl?'官方播放器（App 內開啟）':'官方來源已找到，播放器串流待接入'))}</div><em>${label}</em></button>`;
+ }).join('');
+ s.querySelectorAll('.source-card').forEach(b=>b.onclick=()=>{const x=testSources[+b.dataset.i]; if(x.ytId) showYouTube(x); else if(x.urls&&x.urls.length) playSource(x); else if(x.embedUrl) showOfficialEmbed(x); else if(x.manifest) showOfficialEmbed({...x,embedUrl:x.manifest})});
+}
+
+function clearPlayTimeout(){if(playTimeout){clearTimeout(playTimeout);playTimeout=null}}
+let hlsInstance=null,fadeTimer=null;
+function setBusy(on){const b=document.getElementById('play');b.classList.toggle('busy',on);b.textContent=on?'…':(playStarted?'❚❚':'▶');b.disabled=!!on;}
+function stopFade(){if(fadeTimer){clearInterval(fadeTimer);fadeTimer=null}}
+function fadeInAudio(){stopFade();audio.volume=0;const start=performance.now(),dur=2000;fadeTimer=setInterval(()=>{const p=Math.min(1,(performance.now()-start)/dur);audio.volume=p;if(p>=1)stopFade()},50)}
+function fadeOutAudio(done){stopFade();const startVol=Math.max(0,Math.min(1,audio.volume||1)),start=performance.now(),dur=1000;fadeTimer=setInterval(()=>{const p=Math.min(1,(performance.now()-start)/dur);audio.volume=startVol*(1-p);if(p>=1){stopFade();if(done)done()}},50)}
+const streamDiagLog=[];
+function diagRecord(event, detail=''){
+ const code=audio.error?.code||0;
+ const mediaErrors={1:'MEDIA_ERR_ABORTED（播放中止）',2:'MEDIA_ERR_NETWORK（網路錯誤）',3:'MEDIA_ERR_DECODE（解碼失敗）',4:'MEDIA_ERR_SRC_NOT_SUPPORTED（來源或格式不支援）'};
+ const row={time:new Date().toLocaleTimeString(),genre:currentGenre||'unknown',source:activeSource?.name||'unknown',url:audio.currentSrc||audio.src||'',event,detail:detail||'',mediaError:code?(mediaErrors[code]||('media error '+code)):'none',readyState:audio.readyState,networkState:audio.networkState};
+ streamDiagLog.push(row); if(streamDiagLog.length>12)streamDiagLog.shift();
+ const box=document.getElementById('streamDiagnostics'), summary=document.getElementById('streamDiagSummary');
+ if(box&&summary){box.style.display='block';if(/失敗|錯誤|逾時|拒絕|例外/.test(event))box.open=true;summary.innerHTML=streamDiagLog.slice().reverse().map(r=>`<div style="border-top:1px solid #292929;padding:6px 0"><b>${r.time} · ${r.event}</b><br>曲風：${r.genre}｜音源：${r.source}<br>原因：${r.detail||'未提供'}｜MediaError：${r.mediaError}<br>readyState=${r.readyState} / networkState=${r.networkState}<br><span style="color:#888">${r.url}</span></div>`).join('');}
+}
+document.getElementById('copyStreamDiag')?.addEventListener('click',async()=>{const text=streamDiagLog.map(r=>`${r.time} | ${r.genre} | ${r.source} | ${r.event} | ${r.detail} | ${r.mediaError} | ready=${r.readyState} network=${r.networkState} | ${r.url}`).join('\n');try{await navigator.clipboard.writeText(text);status.textContent='診斷文字已複製';}catch(e){status.textContent='請展開診斷並截圖回傳';}});
+function cleanupAudio(){playAttemptId++;stopFade();if(hlsInstance){try{hlsInstance.destroy()}catch(e){}hlsInstance=null}clearPlayTimeout();try{audio.pause()}catch(e){}audio.volume=1;audio.removeAttribute('src');audio.load();}
+
+async function resolvePlaylist(url){
+ try{
+  const r=await fetch(url,{cache:'no-store'}); if(!r.ok)return null;
+  const t=await r.text(); const m=t.match(/https?:\/\/[^\s]+/); return m?m[0].trim():null;
+ }catch(e){return null}
+}
+
+function failCurrentAttempt(attempt, reason){
+  if(attempt!==playAttemptId || failedAttemptId===attempt || playStarted)return;
+  failedAttemptId=attempt; clearPlayTimeout(); stopFade();
+  diagRecord('URL 嘗試失敗',reason);
+  setBusy(false);
+  status.textContent='音源連線失敗（'+reason+'），正在切換…';
+  setTimeout(()=>{if(attempt===playAttemptId && !playStarted)tryNextUrl()},120);
+}
+function playDirect(url){
+  cleanupAudio(); const attempt=++playAttemptId; playStarted=false; failedAttemptId=0;
+  setBusy(true); status.textContent='正在連線…';
+  diagRecord('開始嘗試',url);
+  try{
+    audio.src=url; audio.preload='auto'; audio.load();
+    const p=audio.play();
+    if(p&&p.catch)p.catch(e=>failCurrentAttempt(attempt,'play() '+(e?.name||'拒絕')+': '+(e?.message||'')));
+    playTimeout=setTimeout(()=>failCurrentAttempt(attempt,'3.5 秒逾時'),3500);
+  }catch(e){ failCurrentAttempt(attempt,(e?.name||'例外')+': '+(e?.message||'')); }
+}
+function tryActiveUrl(){
+ const urls=activeSource?.urls||[];
+ if(!urls.length){sourceFailed();return}
+ playDirect(urls[activeUrlIndex]);
+}
+function tryNextUrl(){
+ clearPlayTimeout(); if(!activeSource)return;
+ activeUrlIndex++;
+ if(activeUrlIndex<(activeSource.urls||[]).length){tryActiveUrl();return}
+ sourceFailed()
+}
+function sourceFailed(){
+ diagRecord('此音源所有網址失敗','已嘗試此音源的所有 urls');
+ clearPlayTimeout();stopFade();try{audio.pause();audio.removeAttribute('src');audio.load()}catch(e){}
+ playStarted=false;turn.classList.remove('spinning');needle.classList.remove('down');genreLogo.classList.remove('playing');setBusy(false);setPlayIcon(false);
+ if(activeSource)sourceHealth.set(activeSource.name,{ok:false,at:Date.now()});
+ // Automatically try the next source, including Jazz fallback for non-Jazz genres.
+ if(queueKind==='genre' && queueIndex+1<playQueue.length){
+   queueIndex++; const next=playQueue[queueIndex]; status.textContent='此音源無法播放，正在切換下一個音源…';
+   setTimeout(()=>{if(queueKind==='genre' && activeSource!==next)playSource(next);},250); return;
+ }
+ status.textContent='目前音源都無法播放，請稍後重試。';
+}
+function setGenreLogo(x){
+ const map={instrumental:'INSTRUMENTAL',reading:'READING',piano:'PIANO',jazz:'JAZZ',classical:'CLASSICAL',rnb:'R&B',rock:'ROCK',pop:'POP',faith:'FAITH'};
+ document.getElementById('genreLogoText').textContent=map[currentGenre]||map[x?.g]||'MUSIC';genreLogo.classList.remove('playing');
+}
+
+let mediaMode='none';
+function showYouTube(x){
+  stopSleep(); cleanupAudio();
+  hideViews(); document.getElementById('playerView').classList.add('active');
+  activeSource=x; activeUrlIndex=0; mediaMode='youtube';
+  setGenreLogo(x); playername.textContent=x.ytTitle||x.name; status.textContent='正在載入音樂…';
+  setBusy(true); setPlayIcon(false); turn.classList.remove('spinning'); needle.classList.remove('down'); genreLogo.classList.remove('playing');
+  const wrap=document.getElementById('officialEmbed');
+  wrap.style.display='block';
+  wrap.innerHTML=`<div class="yt-hidden"><iframe id="youtubeFrame" src="https://www.youtube.com/embed/${x.ytId}?enablejsapi=1&autoplay=1&playsinline=1&controls=0&rel=0&modestbranding=1&origin=${encodeURIComponent(location.origin)}" title="${(x.ytTitle||x.name).replace(/"/g,'&quot;')}" allow="autoplay; encrypted-media; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin"></iframe></div>`;
+  const f=document.getElementById('youtubeFrame');
+  const start=()=>{try{f.contentWindow.postMessage(JSON.stringify({event:'command',func:'playVideo',args:[]}),'*')}catch(e){}}
+  f.addEventListener('load',()=>{start();setTimeout(start,500);setTimeout(()=>{setBusy(false);status.textContent='播放中 · 24H Sound';turn.classList.add('spinning');needle.classList.add('down');genreLogo.classList.add('playing');setPlayIcon(true)},900)});
+  history.replaceState(null,'','#player'); window.scrollTo(0,0);
+}
+function showOfficialEmbed(x){
+  stopSleep(); cleanupAudio();
+  activeSource=x; activeUrlIndex=0; mediaMode='official'; hideViews(); document.getElementById('playerView').classList.add('active'); history.replaceState(null,'','#player'); window.scrollTo(0,0);
+  setGenreLogo(x); playername.textContent=x.name; status.textContent='正在載入音樂…'; setBusy(true); setPlayIcon(false);
+  const wrap=document.getElementById('officialEmbed');
+  wrap.innerHTML=`<div class="yt-hidden"><iframe src="${x.embedUrl}" title="${x.name}" loading="eager" allow="autoplay; encrypted-media"></iframe></div>`;
+  wrap.style.display='block';
+  setTimeout(()=>{setBusy(false);status.textContent='官方音源播放中';turn.classList.add('spinning');needle.classList.add('down');genreLogo.classList.add('playing');setPlayIcon(true)},1200);
+}
+function hideOfficialEmbed(){const wrap=document.getElementById('officialEmbed'); if(wrap){wrap.innerHTML='';wrap.style.display='none'} const tw=document.querySelector('.turn-wrap'); if(tw)tw.style.display='block'; const pb=document.getElementById('play'); if(pb)pb.style.display='block'}
+function playSource(x){
+ stopCurrentMedia();hideOfficialEmbed();
+ activeSource=x;activeUrlIndex=0;setGenreLogo(x);hideViews();document.getElementById('playerView').classList.add('active');history.replaceState(null,'','#player');window.scrollTo(0,0);
+ playername.textContent=x.name;status.textContent='準備播放';setPlayIcon(false);setBusy(false);
+ // First attempt is initiated directly from the user's tap on the source card.
+ tryActiveUrl();
+}
+audio.addEventListener('loadstart',()=>diagRecord('loadstart','瀏覽器開始載入音源'));
+audio.addEventListener('loadedmetadata',()=>{diagRecord('loadedmetadata','已取得媒體 metadata');if(activeSource)status.textContent='已連線，正在緩衝…'});
+audio.addEventListener('canplay',()=>{if(!playStarted)status.textContent='已連線，準備播放…'});
+audio.addEventListener('playing',()=>{diagRecord('開始播放成功','playing event');clearPlayTimeout();playStarted=true;setBusy(false);sourceHealth.set(activeSource.name,{ok:true,at:Date.now()});status.textContent='播放中 · 24H Sound';turn.classList.add('spinning');needle.classList.add('down');genreLogo.classList.add('playing');setPlayIcon(true)});
+audio.addEventListener('waiting',()=>{diagRecord('waiting','播放器正在等待更多資料');if(playStarted){status.textContent='正在緩衝…';turn.classList.remove('spinning');needle.classList.remove('down')}});
+audio.addEventListener('pause',()=>{clearPlayTimeout();if(!playStarted)return;status.textContent='已暫停';turn.classList.remove('spinning');needle.classList.remove('down');genreLogo.classList.remove('playing');setPlayIcon(false);audio.volume=1});
+audio.addEventListener('ended',()=>{clearPlayTimeout();status.textContent='播放結束';turn.classList.remove('spinning');needle.classList.remove('down');genreLogo.classList.remove('playing');setPlayIcon(false)});
+audio.addEventListener('error',()=>{if(activeSource&&!playStarted){const code=audio.error?.code||0;const labels={1:'MEDIA_ERR_ABORTED',2:'MEDIA_ERR_NETWORK',3:'MEDIA_ERR_DECODE',4:'MEDIA_ERR_SRC_NOT_SUPPORTED'};failCurrentAttempt(playAttemptId,(labels[code]||'媒體錯誤 code='+code)+'; currentSrc='+ (audio.currentSrc||audio.src||''));}});
+function setPlayIcon(isPlaying){const b=document.getElementById('play');b.textContent=isPlaying?'❚❚':'▶';b.setAttribute('aria-label',isPlaying?'暫停':'播放');b.disabled=false}
+document.getElementById('prevTrack').onclick=()=>moveTrack(-1);document.getElementById('nextTrack').onclick=()=>moveTrack(1);
+document.getElementById('play').onclick=()=>{if(mediaMode==='none'&&queueKind!=='sleep'&&playQueue.length){playQueueItem(queueIndex);return;}if(mediaMode==='sleep'&&!sleepNodes.length&&sleepActiveKind){playSleep(sleepActiveKind,true);return;}if(mediaMode==='youtube'||mediaMode==='official'){const f=document.getElementById('youtubeFrame');if(f&&f.contentWindow){const cmd=playStarted?'pauseVideo':'playVideo';try{f.contentWindow.postMessage(JSON.stringify({event:'command',func:cmd,args:[]}),'*')}catch(e){}}if(playStarted){turn.classList.remove('spinning');needle.classList.remove('down');genreLogo.classList.remove('playing');setPlayIcon(false);setBusy(false);status.textContent='已暫停';playStarted=false}else{setBusy(true);setTimeout(()=>{setBusy(false);setPlayIcon(true);turn.classList.add('spinning');needle.classList.add('down');genreLogo.classList.add('playing');status.textContent='播放中';playStarted=true},500)}return;}if(mediaMode==='sleep'){
+  if(sleepNodes.length){
+    stopSleep();
+    mediaMode='sleep';
+    status.textContent='已停止';
+    setPlayIcon(false);
+    return;
+  }
+  if(sleepActiveKind)playSleep(sleepActiveKind,true);
+  return;
+}if(!activeSource)return;if(audio.paused){activeUrlIndex=0;tryActiveUrl()}else{setBusy(true);fadeOutAudio(()=>{audio.pause();audio.volume=1;setBusy(false);status.textContent='已暫停';setPlayIcon(false)})}};
+
+let ctx=null,sleepNodes=[],sleepStopTimer=null,sleepActiveKind=null;
+function audioCtx(){return ctx||(ctx=new (window.AudioContext||window.webkitAudioContext)())}
+function stopYouTubePlayer(){const f=document.getElementById('youtubeFrame');if(f&&f.contentWindow){try{f.contentWindow.postMessage(JSON.stringify({event:'command',func:'pauseVideo',args:[]}),'*')}catch(e){}}}
+function stopSleep(){sleepNodes.forEach(n=>{try{n.stop?.()}catch(e){}try{n.disconnect?.()}catch(e){}});sleepNodes=[];if(sleepStopTimer)clearTimeout(sleepStopTimer);sleepStopTimer=null;stopYouTubePlayer();sleepActiveKind=null;turn.classList.remove('spinning');needle.classList.remove('down');genreLogo.classList.remove('playing');setPlayIcon(false);setBusy(false);document.querySelectorAll('.sleep-home-grid button').forEach(b=>b.classList.remove('sleep-playing'));const st=document.getElementById('sleepStatus');if(st)st.textContent='睡眠音樂已停止';if(mediaMode==='sleep'||mediaMode==='youtube'){mediaMode='none'}hideOfficialEmbed()}
+function armSleepTimer(){if(sleepStopTimer)clearTimeout(sleepStopTimer);sleepStopTimer=null;const el=document.getElementById('settingsSleepTimer');const mins=Number(el?.value||0);if(!mins)return;sleepStopTimer=setTimeout(stopSleep,mins*60000)}
+function noiseBuffer(type){const c=audioCtx(),len=Math.floor(c.sampleRate*2),buf=c.createBuffer(1,len,c.sampleRate),d=buf.getChannelData(0);let last=0;for(let i=0;i<len;i++){const w=Math.random()*2-1;if(type==='white')d[i]=w*.55;else if(type==='pink'){last=.985*last+.055*w;d[i]=last*2.4}else{last=.985*last+.012*w;d[i]=last*6}}return buf}
+function playNoise(type,vol=.10,filterType=null,freq=1800){const c=audioCtx(),src=c.createBufferSource(),g=c.createGain();src.buffer=noiseBuffer(type);src.loop=true;let tail=g;if(filterType){const f=c.createBiquadFilter();f.type=filterType;f.frequency.value=freq;src.connect(f);tail=f}tail.connect(g).connect(c.destination);g.gain.value=vol;src.start();sleepNodes.push(src);return {src,g,filter:filterType?tail:null}}
+function addLfo(param,rate,depth){const c=audioCtx(),l=c.createOscillator(),g=c.createGain();l.frequency.value=rate;g.gain.value=depth;l.connect(g).connect(param);l.start();sleepNodes.push(l);return l}
+function addCrackle(rate,baseVol){const c=audioCtx(),out=c.createGain();out.gain.value=baseVol;out.connect(c.destination);let stopped=false;function burst(){if(stopped)return;const o=c.createOscillator(),g=c.createGain();o.type='triangle';o.frequency.value=80+Math.random()*180;g.gain.setValueAtTime(0,c.currentTime);g.gain.linearRampToValueAtTime(.16+Math.random()*.18,c.currentTime+.006);g.gain.exponentialRampToValueAtTime(.001,c.currentTime+.05+Math.random()*.09);o.connect(g).connect(out);o.start();o.stop(c.currentTime+.16);setTimeout(burst,Math.max(80,rate*(.45+Math.random()*1.5)))}burst();sleepNodes.push({stop(){stopped=true},disconnect(){}})}
+const sleepYT={baby:{ytId:'PwJasSQz_Y8',title:'寶寶安睡 · Soothing Baby Sleep Music 24H'},deep:{ytId:'IL-m-hbAoI8',title:'深度睡眠 · Relaxing Piano Music & Rain 24H'},rainYT:{ytId:'kJnnBHdH5p0',title:'自然雨聲 · Rain Sounds 24H'}};
+function showSleepPlayer(label){
+  hideViews();document.getElementById('playerView').classList.add('active');hideOfficialEmbed();mediaMode='sleep';activeSource={name:label,g:'sleep'};setGenreLogo({g:'instrumental'});document.getElementById('genreLogoText').textContent='SLEEP';playername.textContent=label;status.textContent='準備播放';setBusy(false);setPlayIcon(false);history.replaceState(null,'','#player');window.scrollTo(0,0);
+}
+function playSleep(kind,playNow=false){
+  stopCurrentMedia();queueKind='sleep';playQueue=[];
+  const label={baby:'寶寶安睡',deep:'深度睡眠',white:'白噪音',pink:'粉紅噪音',brown:'棕噪音',rain:'雨聲',ocean:'海浪',forest:'森林',campfire:'營火',wind:'風聲',thunder:'雷雨'}[kind]||'睡眠音樂';
+  sleepActiveKind=kind; showSleepPlayer(label);
+  if(!playNow){mediaMode='sleep';status.textContent='準備就緒 · 按 ▶ 開始播放';setPlayIcon(false);turn.classList.remove('spinning');needle.classList.remove('down');genreLogo.classList.remove('playing');const st=document.getElementById('sleepStatus');if(st)st.textContent='已選擇 · '+label+'（按播放開始）';return;}
+  if(sleepYT[kind]){
+    mediaMode='youtube';
+    const x={name:label,ytId:sleepYT[kind].ytId,ytTitle:sleepYT[kind].title,g:'sleep'};
+    const wrap=document.getElementById('officialEmbed');wrap.style.display='block';
+    wrap.innerHTML=`<div class="yt-hidden"><iframe id="youtubeFrame" src="https://www.youtube.com/embed/${x.ytId}?enablejsapi=1&autoplay=1&playsinline=1&controls=0&rel=0&modestbranding=1&origin=${encodeURIComponent(location.origin)}" title="${x.ytTitle}" allow="autoplay; encrypted-media; picture-in-picture"></iframe></div>`;
+    const f=document.getElementById('youtubeFrame');const start=()=>{try{f.contentWindow.postMessage(JSON.stringify({event:'command',func:'playVideo',args:[]}),'*')}catch(e){}};
+    f.addEventListener('load',()=>{start();setTimeout(start,500);setTimeout(()=>{setBusy(false);status.textContent='播放中 · '+label;turn.classList.add('spinning');needle.classList.add('down');genreLogo.classList.add('playing');setPlayIcon(true)},900)});
+    const st=document.getElementById('sleepStatus');if(st)st.textContent='正在播放 · '+label;armSleepTimer();return;
+  }
+  const c=audioCtx();if(c.state==='suspended')c.resume();
+  if(['white','pink','brown'].includes(kind)){playNoise(kind,kind==='white'?.085:kind==='pink'?.10:.13)}
+  else if(kind==='rain'){const a=playNoise('white',.055,'bandpass',4200);addLfo(a.g,5,.025);const b=playNoise('pink',.035,'highpass',1800);addLfo(b.g,1.8,.018)}
+  else if(kind==='ocean'){const a=playNoise('brown',.13,'lowpass',650);addLfo(a.g,.075,.055);addLfo(a.filter.frequency,.075,250)}
+  else if(kind==='forest'){const a=playNoise('pink',.045,'lowpass',1700);addLfo(a.g,.11,.022);const b=playNoise('white',.018,'highpass',2800);addLfo(b.g,.23,.012);addCrackle(520,.025)}
+  else if(kind==='campfire'){const a=playNoise('brown',.075,'lowpass',1200);addLfo(a.g,.18,.03);addCrackle(700,.09)}
+  else if(kind==='wind'){const a=playNoise('pink',.11,'bandpass',500);addLfo(a.g,.035,.055);addLfo(a.filter.frequency,.028,260)}
+  else if(kind==='thunder'){const rain=playNoise('white',.045,'bandpass',3500);addLfo(rain.g,3.5,.02);const wind=playNoise('brown',.035,'lowpass',500);addLfo(wind.g,.06,.025);let stopped=false;function thunder(){if(stopped)return;const delay=1800+Math.random()*6500;setTimeout(()=>{if(stopped)return;const o=c.createOscillator(),g=c.createGain();o.type='sawtooth';o.frequency.value=38+Math.random()*35;g.gain.setValueAtTime(.001,c.currentTime);g.gain.linearRampToValueAtTime(.07+Math.random()*.08,c.currentTime+.12);g.gain.exponentialRampToValueAtTime(.001,c.currentTime+3.5);o.connect(g).connect(c.destination);o.start();o.stop(c.currentTime+3.6);thunder()},delay)}thunder();sleepNodes.push({stop(){stopped=true},disconnect(){}})}
+  status.textContent='播放中 · '+label;setPlayIcon(true);turn.classList.add('spinning');needle.classList.add('down');genreLogo.classList.add('playing');const st=document.getElementById('sleepStatus');if(st)st.textContent='正在播放 · '+label;armSleepTimer();
+}
+
+const overlay=document.getElementById('overlay');function openSettings(){overlay.style.display='flex';overlay.setAttribute('aria-hidden','false')}function closeSettings(){overlay.style.display='none';overlay.setAttribute('aria-hidden','true')}document.getElementById('close').onclick=closeSettings;document.getElementById('homeSettings').onclick=openSettings;overlay.addEventListener('click',e=>{if(e.target===overlay)closeSettings()});const settingsTimer=document.getElementById('settingsSleepTimer');settingsTimer.addEventListener('change',()=>{if(sleepNodes.length||document.getElementById('youtubeFrame'))armSleepTimer()});const settingsLanguage=document.getElementById('settingsLanguage');settingsLanguage.addEventListener('change',()=>{document.documentElement.lang=settingsLanguage.value==='zh-TW'?'zh-Hant':settingsLanguage.value});renderGenres();renderFaith();renderHot();renderSources();
+showHome();
+// V245 BUILD 20261009-05: diagnostics remain visible from the start; no hidden display state.
+(function(){const badge=document.getElementById('buildStamp');if(!badge)return;setTimeout(()=>{badge.style.opacity='0';setTimeout(()=>badge.remove(),400)},4500)})();
+
+async function preflightUrl(url, timeoutMs=1800){
+ return new Promise(resolve=>{
+  const probe=new Audio(); let done=false;
+  const finish=ok=>{if(done)return;done=true;clearTimeout(timer);probe.removeEventListener('canplay',yes);probe.removeEventListener('loadedmetadata',yes);probe.removeEventListener('error',no);try{probe.pause();probe.removeAttribute('src');probe.load()}catch(e){}resolve(ok)};
+  const yes=()=>finish(true), no=()=>finish(false);
+  const timer=setTimeout(()=>finish(false),timeoutMs);
+  probe.preload='auto';probe.addEventListener('canplay',yes,{once:true});probe.addEventListener('loadedmetadata',yes,{once:true});probe.addEventListener('error',no,{once:true});
+  try{probe.src=url;probe.load()}catch(e){finish(false)}
+ });
+}
+async function runStartupPreflight(){
+ // V241: never block the app behind a sequential check of every stream.
+ const panel=document.getElementById('startupCheck');
+ if(panel){panel.style.opacity='0';panel.style.pointerEvents='none';setTimeout(()=>panel.remove(),180)}
+ // Probe sources in the background with limited concurrency. Playback can start immediately.
+ const urls=[...new Set(testSources.flatMap(x=>x.urls||[]))];
+ urls.push('https://ice1.somafm.com/dronezone-128-aac');
+ let cursor=0;
+ const workers=Array.from({length:4},async()=>{
+   while(cursor<urls.length){const i=cursor++;try{await preflightUrl(urls[i],1200)}catch(e){}}
+ });
+ await Promise.all(workers);
+}
+runStartupPreflight().catch(()=>{const panel=document.getElementById('startupCheck');if(panel)panel.remove()});
+
+// V241: startup source checks run in background; app UI is not blocked by all-source preflight.
+</script><div class="chart-modal" id="chartModal" onclick="if(event.target===this)closeCharts()"><div class="chart-sheet"><div class="chart-head"><h3 id="chartTitle">🔥 熱門音樂</h3><button class="chart-close" onclick="closeCharts()">✕</button></div><div class="chart-note">排行榜介面獨立於播放來源；歌曲排行可依地區更新。正式版可接後端排行榜資料，播放時再使用合法的官方播放來源。</div><div class="chart-tabs" id="chartTabs"></div><div class="chart-list" id="chartList"></div></div></div></body></html>
