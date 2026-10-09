@@ -201,15 +201,13 @@ function stopCurrentMedia(){
   turn.classList.remove('spinning');needle.classList.remove('down');genreLogo.classList.remove('playing');
 }
 function sourcesForGenre(g){
-  // V237 diagnostic baseline: use the known-working Jazz source list for all
-  // music genres during this test. This is temporary and not final genre mapping.
-  let filtered;
-  if(g==='jazz') {
-    filtered=testSources.filter(x=>!x.faith&&x.g==='jazz'&&(x.urls?.length||x.ytId));
-  } else {
-    filtered=testSources.filter(x=>!x.faith&&x.g==='jazz'&&(x.urls?.length||x.ytId));
-  }
-  return filtered.sort((a,b)=>Number(!!b.urls?.length)-Number(!!a.urls?.length));
+  // V238: restore genre-matched candidates. Jazz is appended as a known-working fallback.
+  const tags = g==='reading' ? ['instrumental','piano','classical','ambient','acoustic'] : [g];
+  const primary=testSources.filter(x=>!x.faith && (tags.includes(x.g) || (g==='reading' && ['instrumental','reading'].includes(x.type))) && (x.urls?.length||x.ytId));
+  const jazzFallback=g==='jazz' ? [] : testSources.filter(x=>!x.faith&&x.g==='jazz'&&(x.urls?.length||x.ytId));
+  const seen=new Set();
+  return [...primary,...jazzFallback].filter(x=>{const k=x.name+'|'+(x.urls||[]).join(',');if(seen.has(k))return false;seen.add(k);return true;})
+    .sort((a,b)=>Number(!!b.urls?.length)-Number(!!a.urls?.length));
 }
 function sourcesForFaith(f){
   return testSources.filter(x=>x.faith===f&&(x.urls?.length||x.ytId)).sort((a,b)=>Number(!!b.urls?.length)-Number(!!a.urls?.length));
@@ -333,8 +331,13 @@ function tryNextUrl(){
 function sourceFailed(){
  clearPlayTimeout();stopFade();try{audio.pause();audio.removeAttribute('src');audio.load()}catch(e){}
  playStarted=false;turn.classList.remove('spinning');needle.classList.remove('down');genreLogo.classList.remove('playing');setBusy(false);setPlayIcon(false);
- status.textContent='此音源暫時無法播放。請稍後重試或選擇其他曲風。';
  if(activeSource)sourceHealth.set(activeSource.name,{ok:false,at:Date.now()});
+ // Automatically try the next source, including Jazz fallback for non-Jazz genres.
+ if(queueKind==='genre' && queueIndex+1<playQueue.length){
+   queueIndex++; const next=playQueue[queueIndex]; status.textContent='此音源無法播放，正在切換下一個音源…';
+   setTimeout(()=>{if(queueKind==='genre' && activeSource!==next)playSource(next);},250); return;
+ }
+ status.textContent='目前音源都無法播放，請稍後重試。';
 }
 function setGenreLogo(x){
  const map={instrumental:'INSTRUMENTAL',reading:'READING',piano:'PIANO',jazz:'JAZZ',classical:'CLASSICAL',rnb:'R&B',rock:'ROCK',pop:'POP',faith:'FAITH'};
