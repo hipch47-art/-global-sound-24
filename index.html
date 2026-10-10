@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="zh-Hant"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#080808"><meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Expires" content="0"><title>GLOBAL SOUND 24 V265</title>
+<meta name="theme-color" content="#080808"><meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Expires" content="0"><title>GLOBAL SOUND 24 V266</title>
 <style>
 :root{--bg:#0b0b0b;--panel:#141414;--panel2:#101010;--line:#272727;--text:#f2f2f2;--muted:#8b8b8b;--soft:#bdbdbd}
 *{box-sizing:border-box}html,body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Noto Sans TC",Arial,sans-serif}
@@ -44,7 +44,7 @@ main{width:min(760px,100%);margin:0 auto;padding:18px 18px 88px}
 /* V242 build/version confirmation badge */
 #buildStamp{position:fixed;top:calc(env(safe-area-inset-top,0px) + 10px);left:50%;transform:translateX(-50%);z-index:10001;max-width:calc(100vw - 28px);padding:10px 15px;border:1px solid #8a735a;border-radius:999px;background:rgba(18,18,18,.96);box-shadow:0 6px 24px #0009;color:#f4e7d5;font-size:12px;letter-spacing:.04em;text-align:center;white-space:nowrap;transition:opacity .35s ease}
 #buildStamp small{color:#b7a38b;margin-left:7px;font-size:10px}
-</style></head><body><div id="buildStamp">GLOBAL SOUND 24 · V265<small>HOME ROUTE FIX</small></div><div id="startupCheck"><div class="startup-disc"><span>GS24</span></div><div class="startup-label">GLOBAL SOUND 24</div><div class="startup-status" id="startupStatus">正在檢查可用音源…<br>請稍候</div><div class="startup-progress"><span id="startupProgress"></span></div></div><main>
+</style></head><body><div id="buildStamp">GLOBAL SOUND 24 · V266<small>HOME ROUTE FIX</small></div><div id="startupCheck"><div class="startup-disc"><span>GS24</span></div><div class="startup-label">GLOBAL SOUND 24</div><div class="startup-status" id="startupStatus">正在檢查可用音源…<br>請稍候</div><div class="startup-progress"><span id="startupProgress"></span></div></div><main>
 <section id="homeView" class="view active" aria-label="首頁"><header class="top"><div class="logo">GLOBAL SOUND 24</div><button class="gear" id="homeSettings" aria-label="Settings">⚙︎</button></header>
 <div class="hero"><h1>想聽什麼？</h1><p>點選曲風或睡眠音樂，直接進入唱盤播放。</p></div>
 <section class="section music-section"><div class="music-head"><div class="music-title"><h2>🎵 音樂類型</h2><p class="sub">選擇曲風，直接進入唱盤播放</p></div></div><div class="grid" id="genres"></div></section>
@@ -56,7 +56,7 @@ main{width:min(760px,100%);margin:0 auto;padding:18px 18px 88px}
 <audio id="audio" class="audio-engine" controls preload="auto" playsinline webkit-playsinline></audio><div id="officialEmbed" style="display:none"></div><div class="track-nav"><button type="button" id="prevTrack" aria-label="上一首">‹ 上一首</button><button class="play" id="play" aria-label="播放">▶</button><button type="button" id="nextTrack" aria-label="下一首">下一首 ›</button></div></section>
 
 </main>
-<div class="overlay" id="overlay" aria-hidden="true"><div class="sheet"><div class="sheettop"><strong>Settings</strong><button class="close" id="close">×</button></div><div class="settings-row"><label for="settingsSleepTimer">Sleep Timer</label><select id="settingsSleepTimer" class="settings-select"><option value="0">關閉</option><option value="30">30 分鐘</option><option value="60">1 小時</option><option value="120">2 小時</option><option value="240">4 小時</option><option value="480">8 小時</option></select></div><div class="settings-row"><label for="settingsLanguage">Language</label><select id="settingsLanguage" class="settings-select"><option value="zh-TW">繁體中文</option><option value="zh-CN">简体中文</option><option value="ja">日本語</option><option value="ko">한국어</option><option value="en-US">English (US)</option><option value="en-GB">English (UK)</option></select></div><div class="settings-row"><label>Soft Ver.</label><div class="settings-value">V265 · HOME ROUTE FIX</div></div></div></div>
+<div class="overlay" id="overlay" aria-hidden="true"><div class="sheet"><div class="sheettop"><strong>Settings</strong><button class="close" id="close">×</button></div><div class="settings-row"><label for="settingsSleepTimer">Sleep Timer</label><select id="settingsSleepTimer" class="settings-select"><option value="0">關閉</option><option value="30">30 分鐘</option><option value="60">1 小時</option><option value="120">2 小時</option><option value="240">4 小時</option><option value="480">8 小時</option></select></div><div class="settings-row"><label for="settingsLanguage">Language</label><select id="settingsLanguage" class="settings-select"><option value="zh-TW">繁體中文</option><option value="zh-CN">简体中文</option><option value="ja">日本語</option><option value="ko">한국어</option><option value="en-US">English (US)</option><option value="en-GB">English (UK)</option></select></div><div class="settings-row"><label>Soft Ver.</label><div class="settings-value">V266 · ROCK/R&B SOURCE UPDATE</div></div></div></div>
 <script>
 const countries=[['tw','🇹🇼','台灣'],['cn','🇨🇳','中國'],['jp','🇯🇵','日本'],['kr','🇰🇷','韓國'],['us','🇺🇸','美國'],['uk','🇬🇧','英國']];
 let selected=new Set(countries.map(x=>x[0])); let currentGenre=''; let currentFaith='';
@@ -102,12 +102,12 @@ const testSources=[
  {c:'us',g:'electronic',type:'music',name:'SomaFM · Lush',meta:'Mellow Electronica · 女聲演唱 · 無新聞／談話',manifest:'https://somafm.com/lush/',urls:['https://ice5.somafm.com/lush-128-mp3','https://ice6.somafm.com/lush-128-mp3']},
  {c:'us',g:'pop',type:'music',name:'SomaFM · Indie Pop Rocks!',meta:'Indie Pop / Rock · 有演唱 · 無新聞／談話',manifest:'https://somafm.com/indiepop/',urls:['https://ice1.somafm.com/indiepop-128-aac','https://ice2.somafm.com/indiepop-128-aac']},
  {c:'us',g:'rock',type:'music',name:'SomaFM · Metal Detector',meta:'Rock / Metal · 可含演唱 · 無新聞／談話',manifest:'https://somafm.com/metal/',urls:['https://ice1.somafm.com/metal-128-aac','https://ice2.somafm.com/metal-128-aac']},
- {c:'us',g:'rock',type:'music',name:'SomaFM · Digitalis',meta:'Alternative Rock · 可含演唱 · 無新聞／談話',manifest:'https://somafm.com/digitalis/',urls:['https://ice1.somafm.com/digitalis-128-aac','https://ice2.somafm.com/digitalis-128-aac']},
+ {c:'global',g:'rock',type:'instrumental',name:'Post-Rock Nation · 24H Live',meta:'Post-Rock / Instrumental · 你先前確認無主持人口播；商用授權仍待確認',manifest:'https://postrocknation.com/radio',urls:['https://radio.postrocknation.com/listen/radio/radio.mp3']},
  {c:'us',g:'ambient',type:'music',name:'SomaFM · Secret Agent',meta:'Cinematic / Lounge · 可含演唱 · 無新聞／談話',manifest:'https://somafm.com/secretagent/',urls:['https://ice5.somafm.com/secretagent-128-mp3','https://ice2.somafm.com/secretagent-128-mp3']},
  {c:'us',g:'electronic',type:'music',name:'SomaFM · Fluid',meta:'Instrumental Hip-Hop / Future Soul · 可含演唱 · 無新聞／談話',manifest:'https://somafm.com/fluid/',urls:['https://ice.somafm.com/fluid']},
  {c:'us',g:'pop',type:'music',name:'SomaFM · Indie Pop Rocks!',meta:'Indie Pop / Rock · 有演唱 · 無新聞／談話',manifest:'https://somafm.com/indiepop/',urls:['https://ice1.somafm.com/indiepop-128-aac','https://ice2.somafm.com/indiepop-128-aac']},
  {c:'us',g:'rnb',type:'music',name:'SomaFM · Fluid',meta:'Future Soul / R&B · 可含演唱 · 無新聞／談話',manifest:'https://somafm.com/fluid/',urls:['https://ice1.somafm.com/fluid-128-aac','https://ice2.somafm.com/fluid-128-aac']},
- {c:'us',g:'rnb',type:'music',name:'SomaFM · Seven Inch Soul',meta:'Soul / R&B · 復古靈魂樂 · 有演唱',manifest:'https://somafm.com/7soul/',urls:['https://ice1.somafm.com/7soul-128-aac','https://ice2.somafm.com/7soul-128-aac']},
+ {c:'global',g:'rnb',type:'music',name:'90s90s · RnB Ballads',meta:'R&B Ballads · 你先前在 iPhone 測試曾成功播放；商用授權仍待確認',manifest:'https://90s90s.de/',urls:['https://streams.90s90s.de/rnbballads/aac-64/streams.90s90s.de/']},
  {c:'us',g:'pop',type:'music',name:'SomaFM · PopTron',meta:'Electropop / Indie Dance Rock · 有演唱',manifest:'https://somafm.com/poptron/',urls:['https://ice1.somafm.com/poptron-128-aac','https://ice2.somafm.com/poptron-128-aac']},
  {c:'us',g:'electronic',type:'instrumental',name:'SomaFM · Deep Space One',meta:'Ambient Electronic / Space · 以音樂為主',manifest:'https://somafm.com/deepspaceone/',urls:['https://ice.somafm.com/deepspaceone']},
  {c:'global',faith:'protestant',g:'faith',type:'instrumental',name:'Abiding Radio · Instrumental',meta:'基督新教 · Sacred Instrumental · 24H · 純器樂',manifest:'https://www.abidingradio.org/media/',urls:['https://www.abidingradio.org/radio/instrumental']},
@@ -467,7 +467,7 @@ function playSleep(kind,playNow=false){
 }
 
 const overlay=document.getElementById('overlay');function openSettings(){overlay.style.display='flex';overlay.setAttribute('aria-hidden','false')}function closeSettings(){overlay.style.display='none';overlay.setAttribute('aria-hidden','true')}document.getElementById('close').onclick=closeSettings;document.getElementById('homeSettings').onclick=openSettings;overlay.addEventListener('click',e=>{if(e.target===overlay)closeSettings()});const settingsTimer=document.getElementById('settingsSleepTimer');settingsTimer.addEventListener('change',()=>{if(sleepNodes.length||document.getElementById('youtubeFrame'))armSleepTimer()});const settingsLanguage=document.getElementById('settingsLanguage');settingsLanguage.addEventListener('change',()=>{document.documentElement.lang=settingsLanguage.value==='zh-TW'?'zh-Hant':settingsLanguage.value});renderGenres();renderFaith();renderHot();renderSources();
-// V265: Always start a fresh document at the category home, never restore #player on initial load.
+// V266: Always start a fresh document at the category home, never restore #player on initial load.
 try { history.replaceState(null, '', window.location.pathname + window.location.search + '#home'); } catch(e) {}
 showHome();
 // If iOS restores this page from the back-forward cache, normalize the visible view to Home too.
@@ -477,7 +477,7 @@ window.addEventListener('pageshow', function(event) {
     showHome();
   }
 });
-// V265 BUILD 20261010-01: normalized initial route and bfcache restore.
+// V266 BUILD 20261010-01: normalized initial route and bfcache restore.
 (function(){const badge=document.getElementById('buildStamp');if(!badge)return;setTimeout(()=>{badge.style.opacity='0';setTimeout(()=>badge.remove(),400)},2200)})();
 
 function runStartupPreflight(){
