@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="zh-Hant"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#080808"><meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Expires" content="0"><title>GLOBAL SOUND 24 V261</title>
+<meta name="theme-color" content="#080808"><meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Expires" content="0"><title>GLOBAL SOUND 24 V262</title>
 <style>
 :root{--bg:#0b0b0b;--panel:#141414;--panel2:#101010;--line:#272727;--text:#f2f2f2;--muted:#8b8b8b;--soft:#bdbdbd}
 *{box-sizing:border-box}html,body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Noto Sans TC",Arial,sans-serif}
@@ -36,20 +36,16 @@ main{width:min(760px,100%);margin:0 auto;padding:18px 18px 88px}
 @keyframes startupSpin{to{transform:rotate(360deg)}}
 
 /* V242 build/version confirmation badge */
-#buildStamp{position:fixed;top:calc(env(safe-area-inset-top,0px) + 10px);left:50%;transform:translateX(-50%);z-index:10001;max-width:calc(100vw - 28px);padding:10px 15px;border:1px solid #8a735a;border-radius:999px;background:rgba(18,18,18,.96);box-shadow:0 6px 24px #0009;color:#f4e7d5;font-size:12px;letter-spacing:.04em;text-align:center;white-space:nowrap;transition:opacity .35s ease}
+#buildStamp{position:fixed;top:calc(env(safe-area-inset-top,0px) + 10px);left:50%;transform:translateX(-50%);z-index:10001;max-width:calc(100vw - 28px);padding:10px 15px;border:1px solid #8a735a;border-radius:999px;background:rgba(18,18,18,.96);box-shadow:0 6px 24px #0009;color:#f4e7d5;font-size:12px;letter-spacing:.04em;text-align:center;white-space:nowrap;transition:opacity .35s ease;pointer-events:none}
 #buildStamp small{color:#b7a38b;margin-left:7px;font-size:10px}
-</style></head><body><div id="buildStamp">GLOBAL SOUND 24 · V261<small>STARTUP FIX · POST-ROCK SOURCE</small></div><svg class="arm-svg" viewBox="0 0 330 330" aria-hidden="true"><circle class="pivot" cx="286" cy="34" r="17"/><path class="arm" d="M286 34 C286 66 282 100 272 136 C263 172 253 205 244 232"/><path class="arm-inner" d="M286 34 C286 66 282 100 272 136 C263 172 253 205 244 232"/><g class="needle" id="needle"><path class="headshell" d="M244 225 L230 231 L232 243 L247 239 Z"/><path class="stylus" d="M234 241 L257 276"/></g></svg></div></div><div class="playername" id="playername">GLOBAL SOUND 24 · Ready</div><div class="status" id="status">等待播放</div>
-<details id="streamDiagnostics" open style="display:block;max-width:92%;margin:10px auto;color:#bdbdbd;font-size:12px;text-align:left;border:1px solid #333;border-radius:10px;padding:10px;background:#111">
-<summary style="cursor:pointer;color:#d9c2a3">播放診斷（V261）</summary>
-<div id="streamDiagSummary" style="margin-top:8px;line-height:1.6;overflow-wrap:anywhere">診斷區已就緒。選擇曲風後，這裡會記錄播放事件與錯誤。Post-Rock Nation 串流已加入 Rock 音源候選；實際播放需在瀏覽器中確認，第三方使用授權仍待確認。</div>
-<button id="copyStreamDiag" type="button" style="margin-top:8px;border:1px solid #555;border-radius:8px;padding:7px 10px;background:#222;color:#eee">複製診斷文字</button>
-</details><audio id="audio" class="audio-engine" preload="auto" playsinline webkit-playsinline></audio><div id="officialEmbed" style="display:none"></div><div class="track-nav"><button type="button" id="prevTrack" aria-label="上一首">‹ 上一首</button><button class="play" id="play" aria-label="播放">▶</button><button type="button" id="nextTrack" aria-label="下一首">下一首 ›</button></div></section>
+</style></head><body><div id="buildStamp">GLOBAL SOUND 24 · V262<small>VERSION ALIGNMENT · REGION UI REMOVED</small></div><svg class="arm-svg" viewBox="0 0 330 330" aria-hidden="true"><circle class="pivot" cx="286" cy="34" r="17"/><path class="arm" d="M286 34 C286 66 282 100 272 136 C263 172 253 205 244 232"/><path class="arm-inner" d="M286 34 C286 66 282 100 272 136 C263 172 253 205 244 232"/><g class="needle" id="needle"><path class="headshell" d="M244 225 L230 231 L232 243 L247 239 Z"/><path class="stylus" d="M234 241 L257 276"/></g></svg></div></div><div class="playername" id="playername">GLOBAL SOUND 24 · Ready</div><div class="status" id="status">等待播放</div>
+<audio id="audio" class="audio-engine" preload="auto" playsinline webkit-playsinline></audio><div id="officialEmbed" style="display:none"></div><div class="track-nav"><button type="button" id="prevTrack" aria-label="上一首">‹ 上一首</button><button class="play" id="play" aria-label="播放">▶</button><button type="button" id="nextTrack" aria-label="下一首">下一首 ›</button></div></section>
 
 </main>
-<div class="overlay" id="overlay" aria-hidden="true"><div class="sheet"><div class="sheettop"><strong>Settings</strong><button class="close" id="close">×</button></div><div class="settings-row"><label for="settingsSleepTimer">Sleep Timer</label><select id="settingsSleepTimer" class="settings-select"><option value="0">關閉</option><option value="30">30 分鐘</option><option value="60">1 小時</option><option value="120">2 小時</option><option value="240">4 小時</option><option value="480">8 小時</option></select></div><div class="settings-row"><label for="settingsLanguage">Language</label><select id="settingsLanguage" class="settings-select"><option value="zh-TW">繁體中文</option><option value="zh-CN">简体中文</option><option value="ja">日本語</option><option value="ko">한국어</option><option value="en-US">English (US)</option><option value="en-GB">English (UK)</option></select></div><div class="settings-row"><label>Soft Ver.</label><div class="settings-value">V261 · STARTUP FIX</div></div></div></div>
+<div class="overlay" id="overlay" aria-hidden="true"><div class="sheet"><div class="sheettop"><strong>Settings</strong><button class="close" id="close">×</button></div><div class="settings-row"><label for="settingsSleepTimer">Sleep Timer</label><select id="settingsSleepTimer" class="settings-select"><option value="0">關閉</option><option value="30">30 分鐘</option><option value="60">1 小時</option><option value="120">2 小時</option><option value="240">4 小時</option><option value="480">8 小時</option></select></div><div class="settings-row"><label for="settingsLanguage">Language</label><select id="settingsLanguage" class="settings-select"><option value="zh-TW">繁體中文</option><option value="zh-CN">简体中文</option><option value="ja">日本語</option><option value="ko">한국어</option><option value="en-US">English (US)</option><option value="en-GB">English (UK)</option></select></div><div class="settings-row"><label>Soft Ver.</label><div class="settings-value">V262 · STARTUP FIX</div></div></div></div>
 <script>
 const countries=[['tw','🇹🇼','台灣'],['cn','🇨🇳','中國'],['jp','🇯🇵','日本'],['kr','🇰🇷','韓國'],['us','🇺🇸','美國'],['uk','🇬🇧','英國']];
-let selected=new Set(countries.map(x=>x[0])); let currentGenre=''; let currentFaith='';
+let selected=new Set(countries.map(x=>x[0])); // V262: region selection UI removed; all supported regions remain enabled let currentGenre=''; let currentFaith='';
 let activeSource=null, activeUrlIndex=0, playTimeout=null, playStarted=false, playAttemptId=0, failedAttemptId=0;
 const audio=document.getElementById('audio'), turn=document.getElementById('turn'), needle=document.getElementById('needle'), genreLogo=document.getElementById('genreLogo'), status=document.getElementById('status'), playername=document.getElementById('playername');
 const genres=[
@@ -161,17 +157,13 @@ function scheduleBackgroundRetry(failed){
  };
  retryTimer=setTimeout(retry,300000);
 }
-function renderRegions(){
- const box=document.getElementById('regions');
- box.innerHTML=countries.map(([id,f,n])=>`<label class="region-chip ${selected.has(id)?'on':''}"><input type="checkbox" ${selected.has(id)?'checked':''} data-id="${id}"><span class="flag">${f}</span><span>${n}</span></label>`).join('');
- box.querySelectorAll('input').forEach(i=>i.onchange=()=>{i.checked?selected.add(i.dataset.id):selected.delete(i.dataset.id);renderRegions();renderHot();renderSources()});
-}
+function renderRegions(){ /* V262: region selector intentionally removed; all regions remain enabled. */ }
 function renderGenres(){document.getElementById('genres').innerHTML=genres.map(g=>`<button class="tile" data-g="${g[0]}"><div class="tile-content"><div class="tile-title">${g[1]}</div><div class="tile-en">${g[2]}</div></div></button>`).join('');document.querySelectorAll('.tile').forEach(b=>b.onclick=()=>{startCategory(b.dataset.g)})}
 function renderFaith(){const el=document.getElementById('faithGrid');el.innerHTML=faiths.map(f=>`<button class="faith-card" data-faith="${f[0]}"><b>${f[1]}</b><small>${f[2]}</small></button>`).join('');el.querySelectorAll('[data-faith]').forEach(b=>b.onclick=()=>startFaith(b.dataset.faith))}
 function hotItems(){const out=[];if(selected.has('tw'))out.push(['tw','台灣流行歌曲','台灣熱門排行']);if(selected.has('cn'))out.push(['cn','中國流行歌曲','中國熱門排行']);if(selected.has('jp'))out.push(['jp','日本流行歌曲','J-POP 熱門排行']);if(selected.has('kr'))out.push(['kr','韓國流行歌曲','K-POP 熱門排行']);if(selected.has('us'))out.push(['us','美國流行歌曲','US Top Hits']);if(selected.has('uk'))out.push(['uk','英國流行歌曲','UK Top Hits']);return out.slice(0,6)}
 const chartLabels={tw:'台灣流行歌曲',cn:'中國流行歌曲',jp:'日本 J-POP',kr:'韓國 K-POP',us:'US Top Hits',uk:'UK Top Hits'};
 const chartSamples={tw:['台灣熱門歌曲 01','台灣熱門歌曲 02','台灣熱門歌曲 03','台灣熱門歌曲 04','台灣熱門歌曲 05'],cn:['中國熱門歌曲 01','中國熱門歌曲 02','中國熱門歌曲 03','中國熱門歌曲 04','中國熱門歌曲 05'],jp:['日本熱門歌曲 01','日本熱門歌曲 02','日本熱門歌曲 03','日本熱門歌曲 04','日本熱門歌曲 05'],kr:['K-POP 熱門歌曲 01','K-POP 熱門歌曲 02','K-POP 熱門歌曲 03','K-POP 熱門歌曲 04','K-POP 熱門歌曲 05'],us:['US Top Song 01','US Top Song 02','US Top Song 03','US Top Song 04','US Top Song 05'],uk:['UK Top Song 01','UK Top Song 02','UK Top Song 03','UK Top Song 04','UK Top Song 05']};
-function renderHot(){const h=document.getElementById('hot');h.innerHTML=hotItems().map(x=>`<button data-hot="${x[0]}"><div class="inside"><strong>${x[1]}</strong><small>${x[2]}</small></div></button>`).join('')||'<div style="color:#777">請至少選擇一個地區</div>';h.querySelectorAll('[data-hot]').forEach(b=>b.onclick=()=>openHot(b.dataset.hot))}
+function renderHot(){const h=document.getElementById('hot');h.innerHTML=hotItems().map(x=>`<button data-hot="${x[0]}"><div class="inside"><strong>${x[1]}</strong><small>${x[2]}</small></div></button>`).join('')||'<div style="color:#777">目前沒有熱門項目</div>';h.querySelectorAll('[data-hot]').forEach(b=>b.onclick=()=>openHot(b.dataset.hot))}
 function openHot(c){const modal=document.getElementById('chartModal');document.getElementById('chartTitle').textContent='🔥 '+chartLabels[c];const tabs=document.getElementById('chartTabs');tabs.innerHTML=hotItems().map(x=>`<button class="chart-tab ${x[0]===c?'active':''}" onclick="openHot('${x[0]}')">${x[1]}</button>`).join('');const list=document.getElementById('chartList');list.innerHTML=(chartSamples[c]||[]).map((name,i)=>`<div class="chart-row"><div class="chart-rank">${i+1}</div><div><div class="chart-song">${name}</div><div class="chart-artist">即時排行榜資料接入後顯示歌手</div></div><button class="chart-open" onclick="openOfficialChart('${c}')">官方來源</button></div>`).join('');modal.classList.add('show')}
 function closeCharts(){document.getElementById('chartModal').classList.remove('show')}
 function openOfficialChart(c){const u={tw:'https://music.youtube.com/charts',cn:'https://music.youtube.com/charts',jp:'https://music.youtube.com/charts',kr:'https://music.youtube.com/charts',us:'https://music.youtube.com/charts',uk:'https://music.youtube.com/charts'}[c]||'https://music.youtube.com/charts';window.open(u,'_blank','noopener')}
@@ -270,8 +262,8 @@ function renderSources(){
  const s=document.getElementById('sources');
  const list=testSources.filter(x=>(currentFaith?x.faith===currentFaith:(!currentGenre||x.g===currentGenre)));
  const count=document.getElementById('sourceCount');
- if(count)count.textContent=list.length?`音樂來源 ${list.length} 個`:'目前沒有符合這個曲風／地區的來源';
- if(!list.length){s.innerHTML='<div class="empty">目前沒有這個曲風的來源。請改選其他地區或曲風。</div>';return;}
+ if(count)count.textContent=list.length?`音樂來源 ${list.length} 個`:'目前沒有符合這個曲風的來源';
+ if(!list.length){s.innerHTML='<div class="empty">目前沒有這個曲風的來源。請改選其他曲風。</div>';return;}
  s.innerHTML=list.map(x=>{
    const health=sourceHealth.get(x.name);
    const label=x.type==='instrumental'?'純器樂':'可含歌唱';
@@ -451,4 +443,7 @@ showHome();
 (function(){const badge=document.getElementById('buildStamp');if(!badge)return;setTimeout(()=>{badge.style.opacity='0';setTimeout(()=>badge.remove(),400)},4500)})();
 
 
+
+// V262 build stamp: informational only; never blocks interaction.
+window.addEventListener('DOMContentLoaded',()=>{const b=document.getElementById('buildStamp');if(b){setTimeout(()=>{b.style.opacity='0';setTimeout(()=>b.remove(),400)},1800)}});
 </script><div class="chart-modal" id="chartModal" onclick="if(event.target===this)closeCharts()"><div class="chart-sheet"><div class="chart-head"><h3 id="chartTitle">🔥 熱門音樂</h3><button class="chart-close" onclick="closeCharts()">✕</button></div><div class="chart-note">排行榜介面獨立於播放來源；歌曲排行可依地區更新。正式版可接後端排行榜資料，播放時再使用合法的官方播放來源。</div><div class="chart-tabs" id="chartTabs"></div><div class="chart-list" id="chartList"></div></div></div></body></html>
