@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="zh-Hant"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#080808"><meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Expires" content="0"><title>Serene Sound · V311</title>
+<meta name="theme-color" content="#080808"><meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Expires" content="0"><title>Serene Sound · V312</title>
 <style>
 :root{--bg:#0b0b0b;--panel:#141414;--panel2:#101010;--line:#272727;--text:#f2f2f2;--muted:#8b8b8b;--soft:#bdbdbd}
 *{box-sizing:border-box}html,body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Noto Sans TC",Arial,sans-serif}
@@ -199,7 +199,7 @@ main{position:relative!important;z-index:1!important;background:transparent!impo
 </style>
 
 <style id="v296-hollow-turntable">
-/* V311: keep the vinyl turntable; make the center genuinely transparent. */
+/* V312: keep the vinyl turntable; make the center genuinely transparent. */
 .hero h1,.view-title,.section-head h2,.music-title h2{font-family:"Kaiti TC","BiauKai","DFKai-SB","KaiTi",serif!important;font-weight:500!important;letter-spacing:.045em!important}
 .hero h1{font-size:34px!important;text-shadow:0 3px 18px rgba(0,0,0,.42)!important}
 #playerView.player-screen{min-height:68vh;padding:16px 14px 32px;border-radius:28px;background:linear-gradient(180deg,rgba(12,30,22,.25),rgba(7,19,13,.56))!important;border:1px solid rgba(242,224,178,.48)!important;box-shadow:0 18px 50px rgba(0,0,0,.18)!important;display:flex;flex-direction:column;align-items:center;justify-content:flex-start}
@@ -230,7 +230,7 @@ main{position:relative!important;z-index:1!important;background:transparent!impo
 
 
 <style id="v299-regression-fix">
-/* V311: only the active player view may display its turntable; keep the home screen free of player artwork. */
+/* V312: only the active player view may display its turntable; keep the home screen free of player artwork. */
 .view:not(.active){display:none!important;visibility:hidden!important}
 #homeView #legacyTurntableHooks,#homeView #turn,#homeView #needle{display:none!important}
 #playerView:not(.active) #legacyTurntableHooks{display:none!important}
@@ -266,7 +266,7 @@ main{position:relative!important;z-index:1!important;background:transparent!impo
 
 
 <style id="v299-mobile-regression-fix">
-/* V311: restore clearly visible category icons and separate labels on iPhone. */
+/* V312: restore clearly visible category icons and separate labels on iPhone. */
 .sleep-home-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:10px!important;align-items:stretch!important}
 .sleep-home-grid button{position:relative!important;display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:flex-end!important;gap:4px!important;min-width:0!important;min-height:126px!important;height:auto!important;padding:54px 4px 12px!important;overflow:hidden!important;line-height:1.2!important}
 .sleep-home-grid button .category-icon{position:absolute!important;top:10px!important;left:50%!important;transform:translateX(-50%)!important;display:flex!important;align-items:center!important;justify-content:center!important;width:43px!important;height:43px!important;border-radius:50%!important;font-size:25px!important;line-height:1!important;color:initial!important;background:rgba(255,255,255,.82)!important;box-shadow:0 3px 12px rgba(0,0,0,.18),inset 0 1px 2px #fff!important;z-index:2!important;text-shadow:none!important}
@@ -294,7 +294,7 @@ main{position:relative!important;z-index:1!important;background:transparent!impo
 #playerView #play{width:72px!important;height:72px!important;font-size:24px!important}
 @media(max-width:430px){.sleep-home-grid button{min-height:122px!important;padding-top:53px!important}.sleep-home-grid button b{font-size:12px!important}#legacyTurntableHooks{width:min(66vw,285px)!important;margin-top:18px!important}#playerView .view-title{margin-top:10px!important}}
 
-/* V311: refined nature-themed play/stop control; replace platform emoji glyphs with clean CSS icons */
+/* V312: refined nature-themed play/stop control; replace platform emoji glyphs with clean CSS icons */
 #playerView .minimal-controls{display:flex!important;justify-content:center!important;align-items:center!important;margin:20px auto 10px!important;width:100%!important;}
 #playerView #play.play{position:relative!important;display:grid!important;place-items:center!important;width:76px!important;height:76px!important;min-width:76px!important;min-height:76px!important;margin:0 auto!important;padding:0!important;border:1px solid rgba(255,244,207,.9)!important;border-radius:50%!important;background:linear-gradient(145deg,rgba(255,248,222,.96),rgba(196,157,91,.96))!important;box-shadow:0 7px 18px rgba(0,0,0,.28),inset 0 1px 2px rgba(255,255,255,.9),inset 0 -3px 7px rgba(107,72,28,.22)!important;color:#3d3020!important;font-size:0!important;line-height:0!important;transition:transform .18s ease,box-shadow .18s ease!important;-webkit-tap-highlight-color:transparent!important;}
 #playerView #play.play:active{transform:scale(.95)!important;box-shadow:0 3px 9px rgba(0,0,0,.3),inset 0 2px 5px rgba(95,65,27,.2)!important;}
@@ -306,7 +306,7 @@ main{position:relative!important;z-index:1!important;background:transparent!impo
 
 
 <style id="v300-sleep-cards-text-only">
-/* V311: Sleep/nature cards follow the music-genre design: text labels, no circular logo badge. */
+/* V312: Sleep/nature cards follow the music-genre design: text labels, no circular logo badge. */
 .sleep-home-grid button{display:flex!important;flex-direction:column!important;justify-content:flex-end!important;align-items:center!important;gap:4px!important;padding:0 7px 13px!important;min-height:126px!important;position:relative!important;overflow:hidden!important}
 .sleep-home-grid button .category-icon{display:none!important}
 .sleep-home-grid button:before{content:""!important;position:absolute!important;inset:0!important;top:0!important;left:0!important;transform:none!important;width:auto!important;height:auto!important;border-radius:inherit!important;background:linear-gradient(180deg,rgba(0,0,0,.02) 12%,rgba(0,0,0,.08) 38%,rgba(0,0,0,.70) 72%,rgba(0,0,0,.88) 100%)!important;box-shadow:none!important;z-index:1!important}
@@ -319,7 +319,7 @@ main{position:relative!important;z-index:1!important;background:transparent!impo
 
 
 <style id="v303-approved-turntable-layout">
-/* V311: follow the approved photorealistic wood-and-brass reference; keep title clear above the record. */
+/* V312: follow the approved photorealistic wood-and-brass reference; keep title clear above the record. */
 #playerView.player-screen{display:flex!important;flex-direction:column!important;align-items:stretch!important;justify-content:flex-start!important;min-height:calc(100svh - 28px)!important;padding:14px 16px 24px!important;border-radius:28px!important;overflow:hidden!important;background-color:#10271d!important;background-size:cover!important;background-position:center!important;}
 #playerView .view-top{order:0!important;position:relative!important;z-index:30!important;display:flex!important;align-items:center!important;gap:12px!important;min-height:46px!important;}
 #playerView .view-top .back{flex:0 0 auto!important;display:inline-flex!important;align-items:center!important;gap:8px!important;padding:9px 16px!important;border:1px solid rgba(244,222,169,.72)!important;border-radius:999px!important;background:rgba(12,27,18,.55)!important;color:#fff3d0!important;font-size:15px!important;font-weight:600!important;text-shadow:0 2px 6px #000!important;}
@@ -369,7 +369,7 @@ main{position:relative!important;z-index:1!important;background:transparent!impo
 
 
 <style id="v303-fixes">
-/* V311: loading state sits immediately beneath the platter only while work is in progress. */
+/* V312: loading state sits immediately beneath the platter only while work is in progress. */
 #playerView #playerLoading{order:5!important;display:none;position:relative!important;z-index:16!important;width:100%!important;text-align:center!important;margin:10px auto 0!important;color:#fff0ce!important;font-size:13px!important;letter-spacing:.08em!important;text-shadow:0 2px 8px #000!important;min-height:18px!important}
 #playerView .serene-waveform{order:6!important;margin-top:16px!important}
 #playerView .minimal-controls{order:7!important;margin:0 auto 0!important}
@@ -385,12 +385,12 @@ main{position:relative!important;z-index:1!important;background:transparent!impo
 
 <style id="v305-dynamic-player-scenes">
 /* Every selected genre uses its own existing home-card artwork as the player background. */
-#playerView.player-screen{background-image:linear-gradient(180deg,rgba(7,22,14,.12),rgba(5,16,10,.30)),var(--scene-active,var(--scene-lake))!important;background-size:cover!important;background-position:center center!important;background-repeat:no-repeat!important;}
+#playerView.player-screen{background-image:linear-gradient(180deg,rgba(7,22,14,.12),rgba(5,16,10,.30)),var(--scene-active,var(--scene-lake))!important;background-size:var(--scene-fit,cover)!important;background-position:center center!important;background-repeat:no-repeat!important;}
 </style>
 
-/* V311: category artwork is card-sized and includes baked-in labels; fit it to the player frame instead of cover-zooming it. */
+/* V312: category artwork is card-sized and includes baked-in labels; fit it to the player frame instead of cover-zooming it. */
 #playerView.player-screen{background-size:100% 100%!important;background-position:center center!important;background-repeat:no-repeat!important;}
-</head><body><div id="buildStamp">SERENE SOUND · V311<small>RELAX · NATURE · BETTER SLEEP</small></div><div id="startupCheck"><div class="startup-disc"><span>GS24</span></div><div class="startup-label">Serene Sound</div><div class="startup-status" id="startupStatus">正在檢查可用音源…<br>請稍候</div><div class="startup-progress"><span id="startupProgress"></span></div></div><main>
+</head><body><div id="buildStamp">SERENE SOUND · V312<small>RELAX · NATURE · BETTER SLEEP</small></div><div id="startupCheck"><div class="startup-disc"><span>GS24</span></div><div class="startup-label">Serene Sound</div><div class="startup-status" id="startupStatus">正在檢查可用音源…<br>請稍候</div><div class="startup-progress"><span id="startupProgress"></span></div></div><main>
 <section id="homeView" class="view active" aria-label="首頁"><header class="top"><div class="logo" id="brandLogo">心境之聲 <small class="brand-tag">放鬆・自然・好眠</small></div><button class="gear" id="homeSettings" aria-label="Settings">⚙︎</button></header>
 <div class="hero"><h1>放鬆，回歸自然</h1><p>選擇喜愛的音樂或自然聲音，讓心境慢慢沉靜。</p></div>
 <section class="section music-section"><div class="music-head"><div class="music-title"><h2>♫ 音樂曲風</h2><p class="sub">選擇曲風，進入唱盤聆聽</p></div></div><div class="grid" id="genres"></div></section>
@@ -400,7 +400,7 @@ main{position:relative!important;z-index:1!important;background:transparent!impo
 <section id="playerView" class="view player-screen"><div class="view-top"><button class="back" onclick="showHome()">‹ 回首頁</button><button class="gear" aria-label="Settings" onclick="openSettings()">⚙︎</button></div><div class="view-title" id="nowPlayingTitle">雨聲</div><div class="player-subtitle" id="playerSubtitle">Rain</div><div class="status" id="status" aria-live="polite">選擇音源後開始播放</div><audio id="audio" class="audio-engine" preload="auto" playsinline webkit-playsinline></audio><div id="officialEmbed" style="display:none"></div><div class="minimal-controls"><button class="play" id="play" aria-label="播放／停止"><span class="serene-play-icon" aria-hidden="true"></span><span id="playerLoading" role="status" aria-live="polite">Loading…</span></button></div><div class="player-hint" id="playerHint">放鬆身心・回歸自然</div><div id="legacyTurntableHooks"><div id="turn"><div id="needle"></div><div id="genreLogo"><span id="genreLogoText">SERENE</span></div></div><button id="prevTrack" type="button"></button><button id="nextTrack" type="button"></button><div id="playername"></div></div><div class="serene-waveform" aria-hidden="true"></div><div class="serene-player-meta"><span id="elapsedTime">00:00</span><button id="loopToggle" type="button" aria-pressed="true">∞ 循環播放</button></div></section>
 
 </main>
-<div class="overlay" id="overlay" aria-hidden="true"><div class="sheet"><div class="sheettop"><strong id="settingsTitle">設定</strong><button class="close" id="close">×</button></div><div class="settings-row"><label for="settingsSleepTimer" id="timerLabel">睡眠定時</label><select id="settingsSleepTimer" class="settings-select"><option value="0">關閉</option><option value="30">30 分鐘</option><option value="60">1 小時</option><option value="120">2 小時</option><option value="240">4 小時</option><option value="480">8 小時</option></select></div><div class="settings-row"><label for="settingsLanguage" id="languageLabel">語言設定</label><select id="settingsLanguage" class="settings-select"><option value="zh-TW">中文</option><option value="en-US">English</option></select></div><div class="settings-row"><label id="versionLabel">版本資訊</label><span id="versionValue" style="font-weight:700;color:#34442f">V311</span></div></div></div>
+<div class="overlay" id="overlay" aria-hidden="true"><div class="sheet"><div class="sheettop"><strong id="settingsTitle">設定</strong><button class="close" id="close">×</button></div><div class="settings-row"><label for="settingsSleepTimer" id="timerLabel">睡眠定時</label><select id="settingsSleepTimer" class="settings-select"><option value="0">關閉</option><option value="30">30 分鐘</option><option value="60">1 小時</option><option value="120">2 小時</option><option value="240">4 小時</option><option value="480">8 小時</option></select></div><div class="settings-row"><label for="settingsLanguage" id="languageLabel">語言設定</label><select id="settingsLanguage" class="settings-select"><option value="zh-TW">中文</option><option value="en-US">English</option></select></div><div class="settings-row"><label id="versionLabel">版本資訊</label><span id="versionValue" style="font-weight:700;color:#34442f">V312</span></div></div></div>
 <script>
 const countries=[['tw','🇹🇼','台灣'],['cn','🇨🇳','中國'],['jp','🇯🇵','日本'],['kr','🇰🇷','韓國'],['us','🇺🇸','美國'],['uk','🇬🇧','英國']];
 let selected=new Set(countries.map(x=>x[0])); let currentGenre=''; let currentFaith='';
@@ -1058,7 +1058,7 @@ async function playSleep(kind,playNow=false){
   sleepSourceError(label);
 }
 
-const overlay=document.getElementById('overlay');function openSettings(){overlay.style.display='flex';overlay.setAttribute('aria-hidden','false')}function closeSettings(){overlay.style.display='none';overlay.setAttribute('aria-hidden','true')}const volumeControl=document.getElementById('volumeControl');if(volumeControl){audio.volume=Number(volumeControl.value);volumeControl.addEventListener('input',()=>{audio.volume=Number(volumeControl.value);});}const loopToggle=document.getElementById('loopToggle');if(loopToggle){loopToggle.addEventListener('click',()=>{audio.loop=!audio.loop;loopToggle.setAttribute('aria-pressed',String(audio.loop));loopToggle.textContent=audio.loop?'∞ 循環播放':'循環播放：關';});}const elapsedTime=document.getElementById('elapsedTime');if(elapsedTime){audio.addEventListener('timeupdate',()=>{const t=Math.floor(audio.currentTime||0);elapsedTime.textContent=String(Math.floor(t/60)).padStart(2,'0')+':'+String(t%60).padStart(2,'0');});audio.addEventListener('ended',()=>{elapsedTime.textContent='00:00';});}document.getElementById('close').onclick=closeSettings;document.getElementById('homeSettings').onclick=openSettings;overlay.addEventListener('click',e=>{if(e.target===overlay)closeSettings()});const settingsTimer=document.getElementById('settingsSleepTimer');settingsTimer.addEventListener('change',()=>{if(queueKind==='sleep'&&(sleepActiveKind||document.getElementById('youtubeFrame')))armSleepTimer()});const settingsLanguage=document.getElementById('settingsLanguage');settingsLanguage.addEventListener('change',()=>{const en=settingsLanguage.value==='en-US';document.documentElement.lang=en?'en':'zh-Hant'; document.getElementById('nowPlayingTitle').textContent=en?'Now Playing':'正在播放';document.getElementById('playerSubtitle').textContent=en?'Relax · Return to Nature':'放鬆身心・回歸自然';document.getElementById('playerHint').textContent=en?'Relax · Return to Nature':'放鬆身心・回歸自然'; document.getElementById('brandLogo').childNodes[0].textContent=en?'Serene Sound ':'心境之聲 '; document.querySelectorAll('.sleep-home-grid button').forEach((b,i)=>{const zh=['鋼琴與雨聲','自然雨聲','海浪錄音','森林環境音','營火錄音','自然風聲','雷雨環境音'];const enLabels=['Piano & Rain','Rain','Ocean Waves','Forest Ambience','Campfire','Wind','Thunderstorm'];const sm=b.querySelector('small');if(sm)sm.textContent=en?enLabels[i]:zh[i]});document.getElementById('settingsTitle').textContent=en?'Settings':'設定';document.getElementById('versionLabel').textContent=en?'App Version':'版本資訊';document.getElementById('versionValue').textContent='V311';document.getElementById('timerLabel').textContent=en?'Sleep Timer':'睡眠定時';document.getElementById('languageLabel').textContent=en?'Language':'語言設定';document.querySelector('.hero h1').textContent=en?'Relax and return to nature':'放鬆，回歸自然';document.querySelector('.hero p').textContent=en?'Choose music or nature sounds and let your mind settle.':'選擇喜愛的音樂或自然聲音，讓心境慢慢沉靜。';document.querySelector('.music-title h2').textContent=en?'♫ Music Genres':'♫ 音樂曲風';document.querySelector('.music-title .sub').textContent=en?'Choose a genre to open the player':'選擇曲風，進入唱盤聆聽';document.querySelector('.sleep-home h2').textContent=en?'☾ Sleep & Nature Sounds':'☾ 睡眠與自然聲音';document.querySelector('.sleep-home .sub').textContent=en?'Natural sounds for rest and sleep':'讓自然聲陪伴休息與睡眠';renderGenres();});renderGenres();renderFaith();renderHot();renderSources();
+const overlay=document.getElementById('overlay');function openSettings(){overlay.style.display='flex';overlay.setAttribute('aria-hidden','false')}function closeSettings(){overlay.style.display='none';overlay.setAttribute('aria-hidden','true')}const volumeControl=document.getElementById('volumeControl');if(volumeControl){audio.volume=Number(volumeControl.value);volumeControl.addEventListener('input',()=>{audio.volume=Number(volumeControl.value);});}const loopToggle=document.getElementById('loopToggle');if(loopToggle){loopToggle.addEventListener('click',()=>{audio.loop=!audio.loop;loopToggle.setAttribute('aria-pressed',String(audio.loop));loopToggle.textContent=audio.loop?'∞ 循環播放':'循環播放：關';});}const elapsedTime=document.getElementById('elapsedTime');if(elapsedTime){audio.addEventListener('timeupdate',()=>{const t=Math.floor(audio.currentTime||0);elapsedTime.textContent=String(Math.floor(t/60)).padStart(2,'0')+':'+String(t%60).padStart(2,'0');});audio.addEventListener('ended',()=>{elapsedTime.textContent='00:00';});}document.getElementById('close').onclick=closeSettings;document.getElementById('homeSettings').onclick=openSettings;overlay.addEventListener('click',e=>{if(e.target===overlay)closeSettings()});const settingsTimer=document.getElementById('settingsSleepTimer');settingsTimer.addEventListener('change',()=>{if(queueKind==='sleep'&&(sleepActiveKind||document.getElementById('youtubeFrame')))armSleepTimer()});const settingsLanguage=document.getElementById('settingsLanguage');settingsLanguage.addEventListener('change',()=>{const en=settingsLanguage.value==='en-US';document.documentElement.lang=en?'en':'zh-Hant'; document.getElementById('nowPlayingTitle').textContent=en?'Now Playing':'正在播放';document.getElementById('playerSubtitle').textContent=en?'Relax · Return to Nature':'放鬆身心・回歸自然';document.getElementById('playerHint').textContent=en?'Relax · Return to Nature':'放鬆身心・回歸自然'; document.getElementById('brandLogo').childNodes[0].textContent=en?'Serene Sound ':'心境之聲 '; document.querySelectorAll('.sleep-home-grid button').forEach((b,i)=>{const zh=['鋼琴與雨聲','自然雨聲','海浪錄音','森林環境音','營火錄音','自然風聲','雷雨環境音'];const enLabels=['Piano & Rain','Rain','Ocean Waves','Forest Ambience','Campfire','Wind','Thunderstorm'];const sm=b.querySelector('small');if(sm)sm.textContent=en?enLabels[i]:zh[i]});document.getElementById('settingsTitle').textContent=en?'Settings':'設定';document.getElementById('versionLabel').textContent=en?'App Version':'版本資訊';document.getElementById('versionValue').textContent='V312';document.getElementById('timerLabel').textContent=en?'Sleep Timer':'睡眠定時';document.getElementById('languageLabel').textContent=en?'Language':'語言設定';document.querySelector('.hero h1').textContent=en?'Relax and return to nature':'放鬆，回歸自然';document.querySelector('.hero p').textContent=en?'Choose music or nature sounds and let your mind settle.':'選擇喜愛的音樂或自然聲音，讓心境慢慢沉靜。';document.querySelector('.music-title h2').textContent=en?'♫ Music Genres':'♫ 音樂曲風';document.querySelector('.music-title .sub').textContent=en?'Choose a genre to open the player':'選擇曲風，進入唱盤聆聽';document.querySelector('.sleep-home h2').textContent=en?'☾ Sleep & Nature Sounds':'☾ 睡眠與自然聲音';document.querySelector('.sleep-home .sub').textContent=en?'Natural sounds for rest and sleep':'讓自然聲陪伴休息與睡眠';renderGenres();});renderGenres();renderFaith();renderHot();renderSources();
 
 
 // V288: Chinese is the default; home cards must not mix Chinese and English.
@@ -1104,7 +1104,7 @@ runStartupPreflight();
 })();
 </script>
 
-<!-- V311: restore backgrounds after removing white/pink/brown noise categories -->
+<!-- V312: restore backgrounds after removing white/pink/brown noise categories -->
 <style id="v303-sleep-background-map">
 .sleep-home-grid button:nth-child(3){background-image:url("data:image/webp;base64,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")!important;background-size:cover!important;background-position:center!important;background-color:transparent!important;} /* ocean */
 .sleep-home-grid button:nth-child(4){background-image:url("data:image/webp;base64,UklGRnwXAABXRUJQVlA4IHAXAACQUACdASqFAIwAPnkukUYkoiGhMpbdKJAPCWQAwUu5bN+jqKHkXus63874+j4n/J9Wv9j3cPmd83f0j/4r0qup09Dfpcv8Pa6vFj854N/jn0X+V/LL1+ssfXXqQfM/v3+t82v+D+TPon8kf8P1CPyP+if6D+0/Vj9WPvnfN2k9BT2b+pf77+/fuz/m/Tr1bu+//P9wD+c/1j/cf279y/i3v5vsP/I9gb+d/3z/v/5v8kvpc/vv/B/pPzH9236B/of/J/qfgI/mP9f/4H+I/ezjmw6hs3Zo4UhtzpVNdhHNTppguA1mDrr4Aa9CYi1MJGqFOAhDU6aPwH8PQjX6w3EsU5y2nOgb/S39Lr/1hO/f3rwild6Xv6inGYypUd8tmRgqaOeXfCC4DOlIBHivUhg0OvyIhn2M8ug7ju/UzR6nhJLdJSGKWru0plz2dZ4dbbxVdMEo3DQ9E9v0QrF9KufP/abfsQHS8SQ4Gv3vneibWlkyXZCFNTKOFyjEf4nvKvh5NZvs9wth1Csj4PoFsIjQ5XJ5wiead0Do719sOPy84UnAJgm9BQAoIkgQu5Pr8kOJ5fk/Kvi9l8wlAbcVEwkHFdb+nP17mYl/UvOWvRNSKSP85olSavxbKG0+SEAnBcWH0Ix0DaZS2g3Z1ZquPaLWi2wM+ATKarN5O28q9YKIO+eR2uDqikaRnjD/xtjnX1vhbawuTeheYGujsJs2rlIVnqukR2QHNQkNi43YZANDfsoInDMxgnV4+Z/yBHeWyzqNjMRbnTTwHLH+b/5L2YS+u1t9Z7K7cz0Ye4AzrPnhJDnn4BUnmSalf5vl/xpHH3hngxerbceByqmaTHyZZF7A00M5KUbp1G/KNmTv4AD+90rxuWLnduHGcaOsfhU9quJo6JJxhsmbPCFMbloOjh9H7czBjaHgM0MjLQhjYpKJTGttbR9XAXLprUAtPosjGUy8RmfwRrtPT3F8dU0CUUXn/1qZ6Nw1Gwd62lRnN0f/qiGRi5i98RqFkW8/glU2THMi8uXSCHrg3aWkmyJrBv9rx8ubX8dyNNSh6M6TZr2byKqCiJSiz2/Fo49yIY/XygYQSS8DJLoLhxPj3dwq5TDv9198WwOAouElm3Mhf509G0wjzow9Lx78m7ckbWSAxKFF3Qdu+AHeHxFwRRF4//QSS12iB1wxmtEMbmQWB/w+zrnBtfHKcGT651aP0KdDKP6AzLC+MJ8s5P/LAZlUNgpWD6bCj92H8N7nANyf4ZkKXAVW+Kq1CC1OJsMcsLsrdSdCr/fE6veGVP8cXji7KpWFLxcWamN/lv37D4FLTBjLviP0J05KaFPmP0w0AmMKY/cCN4Ayd0NTPlzB9+cJmnD/0ESiIriSYuRGiOchxND/PdaGyzsOVHTDMpD+Fih9mfrKfs7y8HfSaD3N3miKZVe7ss9JVN7ztg5VQwHUVehaRv1bsjCf7EwYeYIrud0IFKmNejqfODRG81fLPcc2lx8CVpbsTYfaoyfkayoyGOhvGMutA7RRk7Qm2qVhviDGtVmVi0oS3ioWeZwsOJ0Qorkfs9vu/6dwoLULsrLPyt8wnq83EwIkDMCYZKFwKu7oVaBjkoFV8q/66uuatn6Q66Pjv0ui7dscriWgMmFK+AkxQn4MJjM/Ht6LaGsK9RxuozrthJMUcYhhi3YwR3H+r/g96r/fNRe5UxWyqveS24P9x0dlPzsH5qfXI8LuK9RqtYsRmZoyjNDRtWK5yLqhWfvXRLodK8oLzv3iQ5HSPt2qTmZW6yDcop8ZZ6d8/M17zJPH4LuzHNizrA3pv/dm7R7ProWAloNHns49XinNYMpQBIEN/j8QzvlPbvmCs+DSWP6v2CtYOUT7qxOynpw5Ro/NsqCMDPB2OICoTdGASTWYoRqVKMC+uf+sxzR2OTm1v00Z9+LAK78aMQBiFS/PNk3n9WTDrBweZvceGGLRjBgJoqtqXblHexgKH3uYbhiIWkqNNTeIChDvVj+TZ1aaWwCEhKVx2QKRpCJcfGfdA637JVmfmoXVp0bXwM0bmcV/TgWbqy4P/O0zZWczr+HuVzGEjrTFnLDCt7Pwkj2rHZJ+XtcNF3pQE9Fo2CVcezadBTNSk0Aqf/+s38yu1mZH7qY5DfG8gCLx84hpJR0IwxwFrzHW7vkWu23vSaiaVmN26mbcCOCUli7NzmwYcwopeqSLdcc2ohqUWPfkMkwgY8KrZEGOir0ntvj+d07k1l9vjlX0Lam23imiNNlIJgoa9RbHW3rnTRWzX0b7p83yj1ATaMMVTjXDF/cnyJEGwgJNGAAHfZ+Y9Z4npNkob8G6r/3F+r7kE/kOYDqzscM9iyUhEJHWk6KC4+o+m6Ybj2MR40Y4mfiZLlVeJrcqDWt4fxubatNNLWz0Q2ZeSspq4BKlmFXzZTVMTm8rwtnEjSF2DCSpsyIl7cSYbhXghhuDZ7IMevt0TW8jgRZBqe852gDAcxiy428Vxk/4XNA38gfFQPaDNM5u8kNLhSIP5XwdqEa5/gMIBepsW27CwG97qkV9Hiz8VzOtXovPrbHK8RqlnkOEMxFD7u7U8LlISTUOvNBlkePQDkQTABIK0wwi6kRHdQ9Liv7otZskrM62tX25GalOLpU3fipPCWz3VGMK/SjNpkUe47B1NKfKI/yApie138iSNPtHt1W9pILD94bKWhT9bD9B3M0QNTTM316jxjGU7K19JathiT/+fIPKOfV/59QfdOmyDjcWQHMzWNYVpQpRgqerW1C4tMy+vsPH/w3OoM2dkU8daK4cWZoJXvNrHwsxCCTES9WDbCsjjrPx4FV/AJ4DaQ4fAx/HiA87whnM4mZNRVPHdsASPxHB1/16hWCEnqdAPNBaq8CSmWhqWcLAjEfJR7nyFVlMGibgYT2kDbrxE4eYNP8iFjpgpMbsxzsyhbRTLBawmq6bUmxAaLolYu+6nFK5UwYcoTi4vQx0ZiQfGnDGKnNAmeCiRfIaaK8dMzT9mRSYsYnaJrVgv8qX1FzJDd9r8PqJRzJUo5Y6nWDkGb8IKZJGfdxaafuFaYbl8ue6vj2UeM3v/6l9NjCoyD2N3ZbQaGu7sF0BdzYlEMvWBGFpyos6fp34gXip4wEx7MmA3Lo7bA0wzCSge3feX+t/+uqzQU6GljurOc29dnoj3iTOWQ3XLT1XD0LJw3JXwX/e01AHn/NjR8xRUJTzO632+11vaE0f9G5YuFMpN7wwC9QBM+uahEWd7ADqRgsyfBneaJS5nZQJyobjE14dPx/9R5XD6vVIpBfC7zZxX1hPJXqwI5glline7N2+wqPZQB/VBAVLk0V9SVMvWWOAmpKgoJskD2jLS9vE9Ns1euIZbXd/HMS/Ny+Y/gTUahZldWD/Vd42cElegTNNotp4QgSUWaf5nKee5CxFmCbxZwDyBXxFdx/1aMa7DXW/CjU1mrpDbVuv/7sUO+mc5EY8IJ8zloSUka0gjzhFIL+4PLAKem9+P0/B2FkSx3J0izrXudDJjSk3eX7Oy6XS/vczLygcOat7Brva1pq3SzjJnw8K8/AQp8JbMZ4krG5lbTSg8BcYydYlDokSGhS6bG6p426x3a9VSW+bfo2Qmc//0HFt02kCXdzXe0oIdlj2dcGBwvu1VudrYybUa+xlzfqbGhpHgznHO9qObGJ1cf3fNLb8rEAXNDh9bgP/+d3cAw5exrTTH8htsOoJnKEee1qRJ5G1OQfzkj82gjlaDBOO2z+ryyLKUCYFxsA1Sr/t0/IZ0pHd5jOKh6zl8PeSWup9wEyuvEtr3xX6m/AvTcq2I2cRvONS7feG4VNdGo+LoyXRQ0tvBoCCXiILdhLUr9i5AOd4wyW3kC6F04vsOycDxb8QgQdgmkQNyZZe94pd1NWPZesPCixmXMxEF69gDYYhbQyyN+ro51enZ47ItV0we6ERmvpLqVbTPK6sDzlfR73Uqyq0tW0/OY+3xcXrg8q6tDXhac6GeDc/4VlZIVEdLesu1j1lxvg6029RPsMS3eI0BMoRiR0tnoH7jgYdCWoldxWZsXDmVrRZYiJAB/Jn7V2nkKMPquGcU5wy9mvk0VaMETndkrgZzTNLvXJn2VU+By4/BQwvCcjZEyt3ZZa9ga5XDDrxC1KoZhO/6yAXLauEdiZFhDr/lgfe8a2dQgiUAhn5BlCJM54IV6cya6zaTwtNr0YUix3HHBPrgqvZYPaA6yYviqKww8XO63QlBkdu2LtvVTIMj090pEbicY7kfrP2U7vuBL0tqO+N33nw3FLJwKKCZCeXGWEHo37J3PKmJox05I2FXEiIytvth6ExFu5xtmBL0y5bgr3o/wKRP8aAh5sWaeGf3wl3DGAJP8uMg6DYwsWPEMqpJcFivsM7I/dqmn7xjR4It544rF/mKOM2A7t6KkmedSvkYCTeTVsvD8X9wWmz/O97P5K9xdbhm885b/kWsWmza3p5LgkvS7hdd0ttp73YepM5r3FJb8rBWbB2cpyk3sgiabbWYJPylbkZ4/oxRDppJ4bgwdp2RL7dJMuPhBz5t+S+dWMf4lvkc8uW5QpsqidsMrA0zSWT4xUyjwRNpjcKbnlnQjyLdcplpMgLCCbOiJJR1u9bE8AG/3SZGfTWcxQwKMcKMoarJamXsuBo/lJHRHoAid/DP1bWCSPUe3IAS0oXbD5jBOKjPGSYKTx7QuGp2KaHgAVfJVc4USQZha+07HrqQdF6l4WnuzbLvHCPtKbaq9CzJ7YlomF9vieYsGS+nPwjPtLI6cUJZyjbtm2IPdBEWPWDwcYcOrry+M8VJQVqqI6R2pK28Dmki31lcFSFKA3xDt77f+4Rj6rKhemzj3Ntuh4M245jVWVN+zU5zv+gTqvRooFbcCpd+lyS5h8w4/lxihiasuPx92UGlXO9WGAJMr6vZ8/RPt1S0bdwKyi6MN0vOYLqJq3PrkaKZist1DHXVqTjXMNvCkmFQDqPpoU/pJpR7w4BnjorVtRH986VTc0YeuG7mshyfROBfp2eH9V7i4Ft2ZuMCIUy7052jdjmOYrQ9kuIbBNcuOWlmfkKiF11Uh2sb6qlSn1paagPQt5niiAgcZzyT5uIIoba0o4n9OQuyFeo3D/mDMmHtNBodDGAS7ts9ltmiG373b79OSt38481c18fbwzMmh7rabc+ul2t+8Ag62nWKA1VeH9zsMX3RhntL7syK1QWo6bUOwNmeLrw9UM/cH0qyGzxUoqxPUPpZbJLti5iX2XrN52EFwcPqXMIf6mB4goI0Mud5pDZP6oIB1Z2qvOcQwlb7TfR0CKQ7zxLuihKEM5P9Pp9r3hcjbz8sMHeqaiSVqhV0ysqwiBuhmZHyZ0Kjgy4CvsskCDT5MTkv3iZdxTuLnwEIgljZdds/JYglYJM3uliZQyanzxjYpgBx/MBP8tE1a53DawBD0p7PsPx3yUJyMkcD1QA8xcRv2UBcd7vnI83Y7NKI8f0RShzvJfyJZff+W5+oVLvSf36ie3fzk1amKwTBwwPE+pmW5psKjW4uQtAHdRZopSOoM6kj2mX5RrH3jhIo/QAvOQlEPPxisCSbR67CK4g6mXv9cw0x/tpTIA5VhRUQKiuGrXs57m8q/w1n1aLEMKfsz8rVGMY860Yh4KTH8BWQJzI7CqSDAzOhTpoLEBPmKypIEodfhiODllrEv/5VA5YMy2Lkh+U/T0TGJbNcNxbj0L2eH/CU51GUS2/fXI66w1UAbDFO3WQNSlqRLsGll5/KuuFYwUrEUzYOgmPk5DUUNPzgvb1N/P+E98u4QDVYLkd9VJSla3xxsrsOABzUh4PtPfIo3kzDYSJ/kyEAG+tTl310/EniObd2LHBxce5unAJDuHuuij1eeFaybrQhGVMKbATDHp6nonbUXmLHMqeTqmk5lwhURGEjp1SLTaKoCs3MxI3IFY1838yLFumkNBhLlTDPwMs4ocUda/JNoAs9xCusSASmE8k40i6FCulg7A0ahBfEvwqfyY9W44CrrwUww8gp5fqJu4ZTo0Wkg0Iqyf5KE34BtrYVb7cHGeQPYqrPwy9+ZhYrH2d42YPPs/gtySi2JH2rsGiHxHQCglY0kQwMV3Qhl1w6nmB+aDKbTIG0fg9VfV/Dd+//TaoDVXECL4b595FBLrCHWyOpCLjIaVe6myfEEVIpA4RM+z8MeuVzpQ1bTG0bRgvIBHhQraOfYnlYoEyLHC8RtGaLL2TX8CXMsyyK+6ZykK1SxcQOl/m1ovfxijN0lfFYydLnXA1dp5Nok81FkNDMfSvNiAgw/q/GROSkwpsU5t2JtqwKB80z293vRvIgxiQ9dkCpWJCmda23vSabIK3gULPqG6Q9Dw8yIZvzzsvI6UC76pdcRPBwuUa/TNlZZqEVO5aql0EHu4TEE8blHMl7rMFb1eanCjruNV+1XFQmSPHZZEaWGTAgAteO0bE4R93LxclMPPsuBCBfU4d4uBQrEucATw0F0YuZ8IBERl7ljWJPpr8c5jVdJ22GZevtH9p1Y2L+R/LZWKP3IA8I5gY+7wZkOb6LDRD+Dx8hMvlvFtU4Ryamv1MTsDwfi/hSYdaLDGYc8Hovrymf+V+8nwQOLP/Z0lCqd+HE6B8PQQf2Uw77ywIrdXP7DnjF+v+uKS+KSkGFKY150LRVhdKhvBMbXtWjTG94ofkv9cSz7PO71c67wPVNvkE0ehk/2c2zPsJX8myCx/OQCklIJGVXHrB8iF34r/ZjXlkzPX0ULRznrfyJOAK+AA/rzsCDEzfrdktsRUOH/Zn+1ASHXsZlX0kU7bwsH/JtL3/iNRK9c0PnVBil6X8buHtiTRiSiUj/FSqHaDeJdPQVBhaQy4Ufz0j9UpcFJd7IfbfP/5Emmf2EYZu7m8LiZwOEAdavpdn3ErBSe3vRv1+34bhJ5RKPzXgNQxvSlsY8WZvmU8JuKBQ11XA68mCS35tsAycUaqD43K1aXIT8cM1TieEYbbc3ua78VSj2jatdPmf3L6EjYYcIstlKJhSvV1Rm9RZ2hCHQRq0oYfQJ7DTzD9f811RfC5BxAg6Fg+UMNAZX3lVoNxThOSTBfG7jJLxZ1ttIbtomyxZmEVlneOygKAJrNkaYzr0gQCXsh7uzoniPKasRh9yHHTrtfM/T/y5/kGK89mD/D9/tF4yI00nq58tWEARZdSGtmJ3UW7J2qdl53eANukx1L+SZbr1WAnX58Ul5tPxi7Q2gP5FVC5e26dKgf/xioIryOlFxVZ+lPfhC697nP+EmfzFDxRW0W7uzB/OCzWHvv6M+MXlN2O8Rydoy4tF/3w38P+uXwCFXKf/USz2N3yCfx/Gim2Bv5cEfP8F1Q7rT6unB3ZAscbw3ck60ucRLuLZ21ewaR9B/LDm4RPolT+e2BQUF1Ji6HzzPuEMD6Ics1/rllSeA18brLTl7vdTFRyhz4Uh8Ac1Szk05Ju/wEO//y0A5m1yR07A+zIsuhrbxFLZXKzslvpFGGdnjwQJtplXo7no9kzkM+/fVnq0fy5HnIJ/fzrtr8uq2ZbO0Xrph0it4nR8Ef8lm55NT2ba6x9/GfXBtR7X9+NweqNmByZfXyv9WXHKwynW/OqyenXcCUYrLf712l367WDZ4JKuRPPnkedljEfPyd/HbCRr4yucqcnYWzAjwVHIFzzpuVlh/ySAwTInBpWQZ6GJZXadzf0rUvOVWAUYitvYRVtxU5FgwZLS2klzx4NQVNrxFlKrmIVGsV0n3Lt5hsS55K9L1YchNO2dcIuk9w3RVAlolBsyvQIFKqltDmv0cIVBMGXqc/brWBr9+ebXhyyF5LyzqAGch9s5/K9v71sHIQE/61h+AEdlxwhhRqgv045yGNrCMSN7HlZrpNoJ0B+smhyUbCO4LEPdFmcKRBQ2/p4+FdGUTzX0MC0prgaaTq57jHLvUSEle/9BFsPmq2ofqFNPasMLfWcTlbc6s58pAcWY4u2UDL8Yg6rEyyIG2usJd7qVO12bOTFrAiUq0sQICfbiM7Kx0oCXHFpgAAA=")!important;background-size:cover!important;background-position:center!important;background-color:transparent!important;} /* forest */
@@ -1198,7 +1198,7 @@ runStartupPreflight();
 })();
 </script>
 
-<!-- V311: correct per-category player artwork and thunderstorm cover -->
+<!-- V312: correct per-category player artwork and thunderstorm cover -->
 
 <script id="v308-scene-fix-script">
 (function(){
@@ -1209,12 +1209,13 @@ runStartupPreflight();
  function pickGenre(){
    return document.getElementById('genreLogo')?.dataset.kind || '';
  }
- function applyV311(g){
+ function applyV312(g){
    const pv=document.getElementById('playerView'); if(!pv)return;
    const music=musicArt[g];
    if(music){
      // Use cropped instrument artwork without the baked-in card title/English label.
      pv.style.setProperty('--scene-active','url("'+music+'")');
+     pv.style.setProperty('--scene-fit','100% 100%');
      // Music tile thumbnails contain tiny baked-in labels at the bottom; the source art is cropped above.
      // Fit the cropped artwork to the player frame instead of cover-zooming it and magnifying the instrument.
      pv.style.backgroundSize='100% 100%';
@@ -1236,6 +1237,7 @@ runStartupPreflight();
        } else {
          const bg=getComputedStyle(card).backgroundImage;
          pv.style.setProperty('--scene-active',bg&&bg!=='none'?bg:'var(--scene-lake)');
+         pv.style.setProperty('--scene-fit','cover');
          pv.style.backgroundSize='cover'; pv.style.backgroundPosition='center center';
        }
        pv.dataset.sceneGenre=g;
@@ -1244,6 +1246,7 @@ runStartupPreflight();
      }
    }
    pv.style.removeProperty('--scene-active');
+   pv.style.removeProperty('--scene-fit');
    pv.style.backgroundSize='cover';pv.style.backgroundPosition='center center';
    pv.dataset.sceneGenre=g||'';
  }
@@ -1251,7 +1254,7 @@ runStartupPreflight();
    window.setGenreLogo=function(x){
      oldSet(x);
      const g=pickGenre()||(x&&x.g)||'';
-     applyV311(g);
+     applyV312(g);
    };
  }
  // Correct the wrong thunderstorm home cover at startup and keep it corrected.
@@ -1268,62 +1271,15 @@ runStartupPreflight();
  const pv=document.getElementById('playerView');
  if(pv){
    new MutationObserver(()=>{
-     if(pv.classList.contains('active')){const g=pickGenre(); if(g && pv.dataset.sceneGenre!==g)applyV311(g);}
+     if(pv.classList.contains('active')){const g=pickGenre(); if(g && pv.dataset.sceneGenre!==g)applyV312(g);}
    }).observe(pv,{attributes:true,attributeFilter:['class']});
  }
 })();
 </script>
 
-<!-- V311: restore full-scene player backgrounds; never stretch home category cards into the player -->
-<style id="v311-player-scene-restore">
-#playerView.player-screen {
-  background-image: linear-gradient(180deg,rgba(7,22,14,.12),rgba(5,16,10,.30)), var(--scene-active,var(--scene-lake)) !important;
-  background-size: cover !important;
-  background-position: center center !important;
-  background-repeat: no-repeat !important;
-}
-</style>
-<script id="v311-player-scene-restore-script">
-(function(){
-  const pv=document.getElementById('playerView');
-  const prior=window.setGenreLogo;
-  function genreFrom(x){
-    return document.getElementById('genreLogo')?.dataset.kind || (x&&x.g) || '';
-  }
-  function setScene(g){
-    if(!pv) return;
-    // Use the original full-screen landscape scene rather than enlarging the small home card artwork.
-    // Rain keeps its established full-screen rain photograph; all other genres return to the original lake scene.
-    const scene=(g==='rain')?'var(--scene-rain)':'var(--scene-lake)';
-    pv.style.setProperty('--scene-active',scene);
-    pv.style.removeProperty('background-size');
-    pv.style.removeProperty('background-position');
-    pv.style.removeProperty('background-repeat');
-    pv.dataset.sceneGenre=g;
-    pv.classList.toggle('scene-rain',g==='rain');
-    pv.classList.toggle('scene-lake',g!=='rain');
-  }
-  if(typeof prior==='function'){
-    window.setGenreLogo=function(x){ prior(x); setScene(genreFrom(x)); };
-  }
-  // Handle initial player state and returning from settings without changing audio logic.
-  if(pv){
-    const obs=new MutationObserver(()=>{
-      if(pv.classList.contains('active')){
-        const g=genreFrom(null);
-        if(g && pv.dataset.sceneGenre!==g) setScene(g);
-      }
-    });
-    obs.observe(pv,{attributes:true,attributeFilter:['class']});
-  }
-})();
-</script>
+<!-- V312: keep per-genre artwork mapping; do not replace every genre with the desktop wallpaper -->
+
 
 </body></html>
 
 <!-- V295: minimalist playback screen; all turntable artwork and previous/next controls removed. -->
-
-<!-- V311: final override prevents genre card artwork from being cover-zoomed on the player screen. -->
-<style id="v311-player-background-fit">
-#playerView.player-screen { background-size:100% 100% !important; background-position:center center !important; background-repeat:no-repeat !important; }
-</style>
