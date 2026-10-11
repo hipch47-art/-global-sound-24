@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="zh-Hant"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#080808"><meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Expires" content="0"><title>GLOBAL SOUND 24 V280</title>
+<meta name="theme-color" content="#080808"><meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Expires" content="0"><title>GLOBAL SOUND 24 V281</title>
 <style>
 :root{--bg:#0b0b0b;--panel:#141414;--panel2:#101010;--line:#272727;--text:#f2f2f2;--muted:#8b8b8b;--soft:#bdbdbd}
 *{box-sizing:border-box}html,body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Noto Sans TC",Arial,sans-serif}
@@ -56,7 +56,7 @@ main{width:min(760px,100%);margin:0 auto;padding:18px 18px 88px}
 <audio id="audio" class="audio-engine" controls preload="auto" playsinline webkit-playsinline></audio><div id="officialEmbed" style="display:none"></div><div class="track-nav"><button type="button" id="prevTrack" aria-label="上一首">‹ 上一首</button><button class="play" id="play" aria-label="播放">▶</button><button type="button" id="nextTrack" aria-label="下一首">下一首 ›</button></div></section>
 
 </main>
-<div class="overlay" id="overlay" aria-hidden="true"><div class="sheet"><div class="sheettop"><strong>Settings</strong><button class="close" id="close">×</button></div><div class="settings-row"><label for="settingsSleepTimer">Sleep Timer</label><select id="settingsSleepTimer" class="settings-select"><option value="0">關閉</option><option value="30">30 分鐘</option><option value="60">1 小時</option><option value="120">2 小時</option><option value="240">4 小時</option><option value="480">8 小時</option></select></div><div class="settings-row"><label for="settingsLanguage">Language</label><select id="settingsLanguage" class="settings-select"><option value="zh-TW">繁體中文</option><option value="zh-CN">简体中文</option><option value="ja">日本語</option><option value="ko">한국어</option><option value="en-US">English (US)</option><option value="en-GB">English (UK)</option></select></div><div class="settings-row"><label>Soft Ver.</label><div class="settings-value">V280 · CURATED REAL RECORDINGS</div></div></div></div>
+<div class="overlay" id="overlay" aria-hidden="true"><div class="sheet"><div class="sheettop"><strong>Settings</strong><button class="close" id="close">×</button></div><div class="settings-row"><label for="settingsSleepTimer">Sleep Timer</label><select id="settingsSleepTimer" class="settings-select"><option value="0">關閉</option><option value="30">30 分鐘</option><option value="60">1 小時</option><option value="120">2 小時</option><option value="240">4 小時</option><option value="480">8 小時</option></select></div><div class="settings-row"><label for="settingsLanguage">Language</label><select id="settingsLanguage" class="settings-select"><option value="zh-TW">繁體中文</option><option value="zh-CN">简体中文</option><option value="ja">日本語</option><option value="ko">한국어</option><option value="en-US">English (US)</option><option value="en-GB">English (UK)</option></select></div><div class="settings-row"><label>Soft Ver.</label><div class="settings-value">V281 · OCEAN AUDIO UPGRADE</div></div></div></div>
 <script>
 const countries=[['tw','🇹🇼','台灣'],['cn','🇨🇳','中國'],['jp','🇯🇵','日本'],['kr','🇰🇷','韓國'],['us','🇺🇸','美國'],['uk','🇬🇧','英國']];
 let selected=new Set(countries.map(x=>x[0])); let currentGenre=''; let currentFaith='';
@@ -332,7 +332,7 @@ function playDirect(url){
   setBusy(true); status.textContent='正在連線…';
   diagRecord('開始嘗試',url);
   try{
-    audio.preload='auto'; audio.loop=false; audio.src=url; // V280: sleep clips are restarted explicitly by the ended handler for iOS reliability.
+    audio.preload='auto'; audio.loop=false; audio.src=url; // V281: sleep clips are restarted explicitly by the ended handler for iOS reliability.
     // iOS Safari: call play() directly in the original tap flow; avoid forcing load() immediately before play().
     const p=audio.play();
     if(p&&p.then)p.then(()=>{if(attempt===playAttemptId)diagRecord('play() 已接受','瀏覽器接受播放請求')}).catch(e=>{if(attempt!==playAttemptId){diagRecord('舊網址播放請求中止','切換網址後收到 '+(e?.name||'AbortError')+'，屬於舊請求的結束紀錄');return;}diagRecord('play() 拒絕',(e?.name||'拒絕')+': '+(e?.message||''));failCurrentAttempt(attempt,'play() '+(e?.name||'拒絕')+': '+(e?.message||''))});
@@ -367,7 +367,7 @@ function sourceFailed(){
  }
  if(queueKind==='sleep'){
    const label={baby:'寶寶安睡',deep:'深度睡眠',white:'白噪音',pink:'粉紅噪音',brown:'棕噪音',rain:'雨聲',ocean:'海浪',forest:'森林',campfire:'營火',wind:'風聲',thunder:'雷雨'}[sleepActiveKind]||'睡眠音樂';
-   // V280: if curated direct URLs fail, search broader matching keywords for rain/thunder and try verified HTTPS candidates.
+   // V281: if curated direct URLs fail, search broader matching keywords for rain/thunder and try verified HTTPS candidates.
    if(['rain','thunder'].includes(sleepActiveKind) && !activeSource?._keywordFallback){
      const kind=sleepActiveKind; const failedSource=activeSource;
      if(failedSource)failedSource._keywordFallback=true;
@@ -456,7 +456,7 @@ audio.addEventListener('waiting',()=>{diagRecord('waiting',`播放器正在等�
 audio.addEventListener('pause',()=>{clearPlayTimeout();if(!playStarted)return;status.textContent='已暫停';turn.classList.remove('spinning');needle.classList.remove('down');genreLogo.classList.remove('playing');setPlayIcon(false);audio.volume=1});
 audio.addEventListener('ended',()=>{
  clearPlayTimeout();
- // V280: Some external rain/thunder recordings are short files, not 24-hour streams.
+ // V281: Some external rain/thunder recordings are short files, not 24-hour streams.
  // Explicitly restart sleep audio at the end so nature recordings continue playing on iOS Safari.
  if(queueKind==='sleep' && sleepActiveKind && mediaMode==='audio' && activeSource){
    status.textContent='真實錄音片段結束，正在自動循環接續播放…';
@@ -512,14 +512,14 @@ function stopSleep(){
   const st=document.getElementById('sleepStatus');if(st)st.textContent='睡眠音樂已停止';if(mediaMode==='sleep'||mediaMode==='sleep-generated'||mediaMode==='youtube'||mediaMode==='audio'){mediaMode='none'}hideOfficialEmbed();
 }
 function armSleepTimer(){if(sleepStopTimer)clearTimeout(sleepStopTimer);sleepStopTimer=null;const el=document.getElementById('settingsSleepTimer');const mins=Number(el?.value||0);if(!mins)return;sleepStopTimer=setTimeout(()=>{if(queueKind==='sleep')stopSleep();},mins*60000)}
-// V280: nature categories use curated direct recordings; never use YouTube or synthesize nature audio.
+// V281: nature categories use curated direct recordings; never use YouTube or synthesize nature audio.
 // YourClassical officially publishes these streams; MP3 is tried first for broader HTML5 support.
 // Curated direct sources are only permitted when their station title itself contains the requested keywords.
 // Baby/deep and noise categories are intentionally searched by metadata rather than substituted with merely similar audio.
 const sleepDirectStreams={
  // Real external recordings only. Rain/thunder use longer recordings where available.
  // Thunder primary: 44m24s recording by Jud McCranie, CC BY-SA 4.0 (credit/link required).
- ocean:{name:'MyNoise Ocean Waves',urls:['https://oceanwaves-mynoise.radioca.st/autodj']},
+ ocean:{name:'Calm Ocean Waves · SamsterBirdies (CC0)',urls:['https://oceansoundsforsleeping.com/audio/waves.mp3','https://oceanwaves-mynoise.radioca.st/autodj']},
  rain:{name:'Rain base · Soft rain by barkenov (CC0)',urls:[
   'https://rainsoundsforsleeping.com/audio/rain-base.mp3',
   'https://www.orangefreesounds.com/wp-content/uploads/2015/09/Rain-and-thunder-sounds-for-sleeping.mp3',
@@ -684,7 +684,7 @@ async function playSleep(kind,playNow=false){
   const label={baby:'寶寶安睡',deep:'深度睡眠',white:'白噪音',pink:'粉紅噪音',brown:'棕噪音',rain:'雨聲',ocean:'海浪',forest:'森林',campfire:'營火',wind:'風聲',thunder:'雷雨'}[kind]||'睡眠音樂';
   sleepActiveKind=kind;showSleepPlayer(label);
   if(!playNow){mediaMode='sleep';status.textContent='準備就緒 · 按 ▶ 開始播放';setPlayIcon(false);const st=document.getElementById('sleepStatus');if(st)st.textContent='已選擇 · '+label+'（按播放開始）';return;}
-  // V280: only noise categories may be generated locally. All nature sounds and lullabies must use external audio.
+  // V281: only noise categories may be generated locally. All nature sounds and lullabies must use external audio.
   if(['white','pink','brown'].includes(kind)){await startGeneratedNoise(kind,label);return;}
   // Curated direct streams first; no YouTube or iframe for sleep audio.
   const direct=sleepDirectStreams[kind];
@@ -702,7 +702,7 @@ async function playSleep(kind,playNow=false){
 }
 
 const overlay=document.getElementById('overlay');function openSettings(){overlay.style.display='flex';overlay.setAttribute('aria-hidden','false')}function closeSettings(){overlay.style.display='none';overlay.setAttribute('aria-hidden','true')}document.getElementById('close').onclick=closeSettings;document.getElementById('homeSettings').onclick=openSettings;overlay.addEventListener('click',e=>{if(e.target===overlay)closeSettings()});const settingsTimer=document.getElementById('settingsSleepTimer');settingsTimer.addEventListener('change',()=>{if(queueKind==='sleep'&&(sleepActiveKind||document.getElementById('youtubeFrame')))armSleepTimer()});const settingsLanguage=document.getElementById('settingsLanguage');settingsLanguage.addEventListener('change',()=>{document.documentElement.lang=settingsLanguage.value==='zh-TW'?'zh-Hant':settingsLanguage.value});renderGenres();renderFaith();renderHot();renderSources();
-// V280: locally generated audio is limited to white/pink/brown noise; all nature sounds and lullabies require external sources. Always start at Home.
+// V281: locally generated audio is limited to white/pink/brown noise; all nature sounds and lullabies require external sources. Always start at Home.
 try { history.replaceState(null, '', window.location.pathname + window.location.search + '#home'); } catch(e) {}
 showHome();
 // If iOS restores this page from the back-forward cache, normalize the visible view to Home too.
