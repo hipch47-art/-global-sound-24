@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="zh-Hant"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#080808"><meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Expires" content="0"><title>Serene Sound · V295</title>
+<meta name="theme-color" content="#080808"><meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Expires" content="0"><title>Serene Sound · V299</title>
 <style>
 :root{--bg:#0b0b0b;--panel:#141414;--panel2:#101010;--line:#272727;--text:#f2f2f2;--muted:#8b8b8b;--soft:#bdbdbd}
 *{box-sizing:border-box}html,body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Noto Sans TC",Arial,sans-serif}
@@ -199,7 +199,7 @@ main{position:relative!important;z-index:1!important;background:transparent!impo
 </style>
 
 <style id="v296-hollow-turntable">
-/* V297: keep the vinyl turntable; make the center genuinely transparent. */
+/* V299: keep the vinyl turntable; make the center genuinely transparent. */
 .hero h1,.view-title,.section-head h2,.music-title h2{font-family:"Kaiti TC","BiauKai","DFKai-SB","KaiTi",serif!important;font-weight:500!important;letter-spacing:.045em!important}
 .hero h1{font-size:34px!important;text-shadow:0 3px 18px rgba(0,0,0,.42)!important}
 #playerView.player-screen{min-height:68vh;padding:16px 14px 32px;border-radius:28px;background:linear-gradient(180deg,rgba(12,30,22,.25),rgba(7,19,13,.56))!important;border:1px solid rgba(242,224,178,.48)!important;box-shadow:0 18px 50px rgba(0,0,0,.18)!important;display:flex;flex-direction:column;align-items:center;justify-content:flex-start}
@@ -229,8 +229,8 @@ main{position:relative!important;z-index:1!important;background:transparent!impo
 </style>
 
 
-<style id="v297-regression-fix">
-/* V297: only the active player view may display its turntable; keep the home screen free of player artwork. */
+<style id="v299-regression-fix">
+/* V299: only the active player view may display its turntable; keep the home screen free of player artwork. */
 .view:not(.active){display:none!important;visibility:hidden!important}
 #homeView #legacyTurntableHooks,#homeView #turn,#homeView #needle{display:none!important}
 #playerView:not(.active) #legacyTurntableHooks{display:none!important}
@@ -264,17 +264,57 @@ main{position:relative!important;z-index:1!important;background:transparent!impo
 .sleep-home-grid button:nth-child(5){background:linear-gradient(145deg,rgba(170,120,79,.28),rgba(61,42,30,.22)),#111!important}
 </style>
 
-</head><body><div id="buildStamp">SERENE SOUND · V297<small>RELAX · NATURE · BETTER SLEEP</small></div><div id="startupCheck"><div class="startup-disc"><span>GS24</span></div><div class="startup-label">Serene Sound</div><div class="startup-status" id="startupStatus">正在檢查可用音源…<br>請稍候</div><div class="startup-progress"><span id="startupProgress"></span></div></div><main>
+
+<style id="v299-mobile-regression-fix">
+/* V299: restore clearly visible category icons and separate labels on iPhone. */
+.sleep-home-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:10px!important;align-items:stretch!important}
+.sleep-home-grid button{position:relative!important;display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:flex-end!important;gap:4px!important;min-width:0!important;min-height:126px!important;height:auto!important;padding:54px 4px 12px!important;overflow:hidden!important;line-height:1.2!important}
+.sleep-home-grid button .category-icon{position:absolute!important;top:10px!important;left:50%!important;transform:translateX(-50%)!important;display:flex!important;align-items:center!important;justify-content:center!important;width:43px!important;height:43px!important;border-radius:50%!important;font-size:25px!important;line-height:1!important;color:initial!important;background:rgba(255,255,255,.82)!important;box-shadow:0 3px 12px rgba(0,0,0,.18),inset 0 1px 2px #fff!important;z-index:2!important;text-shadow:none!important}
+.sleep-home-grid button b{display:block!important;position:relative!important;z-index:2!important;font-size:13px!important;line-height:1.25!important;text-align:center!important;white-space:normal!important;overflow-wrap:anywhere!important;margin:0!important}
+.sleep-home-grid button small{display:block!important;position:relative!important;z-index:2!important;font-size:10px!important;line-height:1.25!important;text-align:center!important;white-space:normal!important;margin:0!important}
+.sleep-home-grid button:nth-child(3) .category-icon{background:linear-gradient(145deg,#fffef5,#d7dfd2)!important;color:#657568!important}
+.sleep-home-grid button:nth-child(4) .category-icon{background:linear-gradient(145deg,#ffe7f0,#ed9fc1)!important;color:#a52f68!important}
+.sleep-home-grid button:nth-child(5) .category-icon{background:linear-gradient(145deg,#f3d4ad,#a87343)!important;color:#57351d!important}
+/* Keep the player title and navigation above the turntable; scale the platter to leave breathing room. */
+#playerView.player-screen{position:relative!important;isolation:isolate!important;overflow:hidden!important;padding:14px 12px 28px!important}
+#playerView .view-top,#playerView .view-title,#playerView .player-subtitle{position:relative!important;z-index:30!important;flex-shrink:0!important}
+#playerView .view-top{min-height:48px!important}
+#playerView .view-top .back{font-size:16px!important;font-weight:600!important;color:#fff8e8!important;background:rgba(20,35,24,.58)!important;border:1px solid rgba(255,245,220,.6)!important;border-radius:999px!important;padding:10px 14px!important;text-shadow:0 1px 5px #000!important}
+#playerView .view-title{margin-top:14px!important;font-size:clamp(32px,8vw,42px)!important;line-height:1.2!important;z-index:31!important}
+#playerView .player-subtitle{margin-top:4px!important;font-size:18px!important;z-index:31!important}
+#legacyTurntableHooks{position:relative!important;z-index:1!important;width:min(68vw,310px)!important;max-width:310px!important;aspect-ratio:1!important;margin:22px auto 10px!important;flex:0 0 auto!important}
+#legacyTurntableHooks #turn{z-index:1!important}
+#legacyTurntableHooks #turn:before{z-index:1!important}
+#legacyTurntableHooks #needle{z-index:8!important;transform-origin:top center!important;animation:none!important}
+#legacyTurntableHooks #turn.spinning{animation:none!important}
+#legacyTurntableHooks #turn.spinning:before{animation:spin 3.2s linear infinite!important}
+#playerView #status{position:relative!important;z-index:10!important;margin-top:8px!important}
+#playerView .minimal-controls,#playerView .player-hint{position:relative!important;z-index:10!important}
+#playerView .minimal-controls{margin-top:16px!important}
+#playerView #play{width:72px!important;height:72px!important;font-size:24px!important}
+@media(max-width:430px){.sleep-home-grid button{min-height:122px!important;padding-top:53px!important}.sleep-home-grid button b{font-size:12px!important}#legacyTurntableHooks{width:min(66vw,285px)!important;margin-top:18px!important}#playerView .view-title{margin-top:10px!important}}
+
+/* V299: refined nature-themed play/stop control; replace platform emoji glyphs with clean CSS icons */
+#playerView .minimal-controls{display:flex!important;justify-content:center!important;align-items:center!important;margin:20px auto 10px!important;width:100%!important;}
+#playerView #play.play{position:relative!important;display:grid!important;place-items:center!important;width:76px!important;height:76px!important;min-width:76px!important;min-height:76px!important;margin:0 auto!important;padding:0!important;border:1px solid rgba(255,244,207,.9)!important;border-radius:50%!important;background:linear-gradient(145deg,rgba(255,248,222,.96),rgba(196,157,91,.96))!important;box-shadow:0 7px 18px rgba(0,0,0,.28),inset 0 1px 2px rgba(255,255,255,.9),inset 0 -3px 7px rgba(107,72,28,.22)!important;color:#3d3020!important;font-size:0!important;line-height:0!important;transition:transform .18s ease,box-shadow .18s ease!important;-webkit-tap-highlight-color:transparent!important;}
+#playerView #play.play:active{transform:scale(.95)!important;box-shadow:0 3px 9px rgba(0,0,0,.3),inset 0 2px 5px rgba(95,65,27,.2)!important;}
+#playerView #play .serene-play-icon{display:block!important;width:0!important;height:0!important;margin-left:5px!important;border-top:12px solid transparent!important;border-bottom:12px solid transparent!important;border-left:18px solid #4a3b25!important;filter:drop-shadow(0 1px 1px rgba(255,255,255,.3))!important;}
+#playerView #play .serene-stop-icon{display:block!important;width:17px!important;height:17px!important;border-radius:4px!important;background:#4a3b25!important;box-shadow:inset 0 1px 1px rgba(255,255,255,.2)!important;}
+#playerView #play.play.busy{opacity:.72!important;}
+@media(max-width:430px){#playerView #play.play{width:70px!important;height:70px!important;min-width:70px!important;min-height:70px!important;}}
+</style>
+
+</head><body><div id="buildStamp">SERENE SOUND · V299<small>RELAX · NATURE · BETTER SLEEP</small></div><div id="startupCheck"><div class="startup-disc"><span>GS24</span></div><div class="startup-label">Serene Sound</div><div class="startup-status" id="startupStatus">正在檢查可用音源…<br>請稍候</div><div class="startup-progress"><span id="startupProgress"></span></div></div><main>
 <section id="homeView" class="view active" aria-label="首頁"><header class="top"><div class="logo" id="brandLogo">心境之聲 <small class="brand-tag">放鬆・自然・好眠</small></div><button class="gear" id="homeSettings" aria-label="Settings">⚙︎</button></header>
 <div class="hero"><h1>放鬆，回歸自然</h1><p>選擇喜愛的音樂或自然聲音，讓心境慢慢沉靜。</p></div>
 <section class="section music-section"><div class="music-head"><div class="music-title"><h2>♫ 音樂曲風</h2><p class="sub">選擇曲風，進入唱盤聆聽</p></div></div><div class="grid" id="genres"></div></section>
-<section class="section sleep-home"><div class="section-head"><div><h2>☾ 睡眠與自然聲音</h2><p class="sub">讓自然聲陪伴休息與睡眠</p></div></div><div class="sleep-home-grid sleep-main-grid"><button onclick="playSleep('deep',true)">🌙<b>深度睡眠</b><small>鋼琴與雨聲</small></button><button onclick="playSleep('rain',true)">🌧️<b>雨聲</b><small>自然雨聲</small></button><button onclick="playSleep('white',true)">🤍<b>白噪音</b><small>持續白噪音</small></button><button onclick="playSleep('pink',true)">🌸<b>粉紅噪音</b><small>持續粉紅噪音</small></button><button onclick="playSleep('brown',true)">🤎<b>棕噪音</b><small>持續棕噪音</small></button><button onclick="playSleep('ocean',true)">🌊<b>海浪</b><small>海浪錄音</small></button><button onclick="playSleep('forest',true)">🌲<b>森林</b><small>森林環境音</small></button><button onclick="playSleep('campfire',true)">🔥<b>營火</b><small>營火錄音</small></button><button onclick="playSleep('wind',true)">💨<b>風聲</b><small>自然風聲</small></button><button onclick="playSleep('thunder',true)">⛈️<b>雷雨</b><small>雷雨環境音</small></button></div><div class="status" id="sleepStatus" hidden></div></section><div id="faithGrid" hidden></div><div id="hot" hidden></div>
+<section class="section sleep-home"><div class="section-head"><div><h2>☾ 睡眠與自然聲音</h2><p class="sub">讓自然聲陪伴休息與睡眠</p></div></div><div class="sleep-home-grid sleep-main-grid"><button onclick="playSleep('deep',true)"><span class="category-icon">🌙</span><b>深度睡眠</b><small>鋼琴與雨聲</small></button><button onclick="playSleep('rain',true)"><span class="category-icon">🌧️</span><b>雨聲</b><small>自然雨聲</small></button><button onclick="playSleep('white',true)"><span class="category-icon">🤍</span><b>白噪音</b><small>持續白噪音</small></button><button onclick="playSleep('pink',true)"><span class="category-icon">🌸</span><b>粉紅噪音</b><small>持續粉紅噪音</small></button><button onclick="playSleep('brown',true)"><span class="category-icon">🤎</span><b>棕噪音</b><small>持續棕噪音</small></button><button onclick="playSleep('ocean',true)"><span class="category-icon">🌊</span><b>海浪</b><small>海浪錄音</small></button><button onclick="playSleep('forest',true)"><span class="category-icon">🌲</span><b>森林</b><small>森林環境音</small></button><button onclick="playSleep('campfire',true)"><span class="category-icon">🔥</span><b>營火</b><small>營火錄音</small></button><button onclick="playSleep('wind',true)"><span class="category-icon">💨</span><b>風聲</b><small>自然風聲</small></button><button onclick="playSleep('thunder',true)"><span class="category-icon">⛈️</span><b>雷雨</b><small>雷雨環境音</small></button></div><div class="status" id="sleepStatus" hidden></div></section><div id="faithGrid" hidden></div><div id="hot" hidden></div>
 
 </section><section id="sourcesView" class="view" aria-hidden="true" style="display:none!important"><div class="view-top"><button class="back" onclick="showHome()">‹ 回首頁</button><button class="gear" aria-label="Settings" onclick="openSettings()">⚙︎</button></div><div class="view-title" id="sourceTitle">音樂來源</div><div id="sourceCount" class="sub" style="margin-top:-2px"></div><p class="sub">來源可含歌唱；排除新聞、主持、Talk、政治與體育口播。播放時即時確認。</p><div class="source-list" id="sources"></div></section>
 <section id="playerView" class="view player-screen"><div class="view-top"><button class="back" onclick="showHome()">‹ 回首頁</button><button class="gear" aria-label="Settings" onclick="openSettings()">⚙︎</button></div><div class="view-title" id="nowPlayingTitle">雨聲</div><div class="player-subtitle" id="playerSubtitle">Rain</div><div class="status" id="status" aria-live="polite">選擇音源後開始播放</div><audio id="audio" class="audio-engine" preload="auto" playsinline webkit-playsinline></audio><div id="officialEmbed" style="display:none"></div><div class="minimal-controls"><button class="play" id="play" aria-label="播放／停止">▶</button></div><div class="player-hint" id="playerHint">放鬆身心・回歸自然</div><div id="legacyTurntableHooks"><div id="turn"><div id="needle"></div><div id="genreLogo"><span id="genreLogoText">SERENE</span></div></div><button id="prevTrack" type="button"></button><button id="nextTrack" type="button"></button><div id="playername"></div></div></section>
 
 </main>
-<div class="overlay" id="overlay" aria-hidden="true"><div class="sheet"><div class="sheettop"><strong id="settingsTitle">設定</strong><button class="close" id="close">×</button></div><div class="settings-row"><label for="settingsSleepTimer" id="timerLabel">睡眠定時</label><select id="settingsSleepTimer" class="settings-select"><option value="0">關閉</option><option value="30">30 分鐘</option><option value="60">1 小時</option><option value="120">2 小時</option><option value="240">4 小時</option><option value="480">8 小時</option></select></div><div class="settings-row"><label for="settingsLanguage" id="languageLabel">語言設定</label><select id="settingsLanguage" class="settings-select"><option value="zh-TW">中文</option><option value="en-US">English</option></select></div><div class="settings-row"><label id="versionLabel">版本資訊</label><span id="versionValue" style="font-weight:700;color:#34442f">V297</span></div></div></div>
+<div class="overlay" id="overlay" aria-hidden="true"><div class="sheet"><div class="sheettop"><strong id="settingsTitle">設定</strong><button class="close" id="close">×</button></div><div class="settings-row"><label for="settingsSleepTimer" id="timerLabel">睡眠定時</label><select id="settingsSleepTimer" class="settings-select"><option value="0">關閉</option><option value="30">30 分鐘</option><option value="60">1 小時</option><option value="120">2 小時</option><option value="240">4 小時</option><option value="480">8 小時</option></select></div><div class="settings-row"><label for="settingsLanguage" id="languageLabel">語言設定</label><select id="settingsLanguage" class="settings-select"><option value="zh-TW">中文</option><option value="en-US">English</option></select></div><div class="settings-row"><label id="versionLabel">版本資訊</label><span id="versionValue" style="font-weight:700;color:#34442f">V299</span></div></div></div>
 <script>
 const countries=[['tw','🇹🇼','台灣'],['cn','🇨🇳','中國'],['jp','🇯🇵','日本'],['kr','🇰🇷','韓國'],['us','🇺🇸','美國'],['uk','🇬🇧','英國']];
 let selected=new Set(countries.map(x=>x[0])); let currentGenre=''; let currentFaith='';
@@ -712,7 +752,7 @@ audio.addEventListener('ended',()=>{
  status.textContent='播放結束';turn.classList.remove('spinning');needle.classList.remove('down');genreLogo.classList.remove('playing');setPlayIcon(false);
 });
 audio.addEventListener('error',()=>{if(activeSource&&!playStarted){const code=audio.error?.code||0;const labels={1:'MEDIA_ERR_ABORTED',2:'MEDIA_ERR_NETWORK',3:'MEDIA_ERR_DECODE',4:'MEDIA_ERR_SRC_NOT_SUPPORTED'};failCurrentAttempt(playAttemptId,(labels[code]||'媒體錯誤 code='+code)+'; currentSrc='+ (audio.currentSrc||audio.src||''));}});
-function setPlayIcon(isPlaying){const b=document.getElementById('play');b.textContent=isPlaying?'⏹':'▶';b.setAttribute('aria-label',isPlaying?'停止':'播放');b.title=isPlaying?'停止播放':'開始播放';b.disabled=false}
+function setPlayIcon(isPlaying){const b=document.getElementById('play');b.innerHTML=isPlaying?'<span class="serene-stop-icon" aria-hidden="true"></span>':'<span class="serene-play-icon" aria-hidden="true"></span>';b.classList.toggle('is-playing',!!isPlaying);b.setAttribute('aria-label',isPlaying?'停止':'播放');b.title=isPlaying?'停止播放':'開始播放';b.disabled=false}
 
 document.getElementById('play').onclick=()=>{
   // One toggle only: ▶ starts, ⏹ fully stops. No pause state.
@@ -896,10 +936,11 @@ async function startGeneratedNoise(kind,label){
     const gain=ctx.createGain();gain.gain.value=kind==='brown'?1.8:1.5;
     const limiter=ctx.createDynamicsCompressor();limiter.threshold.value=-6;limiter.knee.value=18;limiter.ratio.value=3;limiter.attack.value=0.003;limiter.release.value=0.18;
     source.connect(gain);gain.connect(limiter);limiter.connect(ctx.destination);sleepNodes=[source,gain,limiter];
-    // Explicitly resume iOS Safari's audio engine before starting the looping buffer.
+    // Start the source synchronously inside the user's tap, then resume the iOS audio context.
+    // WebKit may suspend audio after an await; starting first avoids losing the activation gesture.
+    source.start(0);
     await resumePromise;
     if(ctx.state!=='running')throw new Error('iPhone 音訊引擎未進入 running 狀態（目前：'+ctx.state+'），請再點一次播放');
-    source.start(0);
     if(!ctx.destination || ctx.destination.maxChannelCount===0)throw new Error('找不到可用的音訊輸出裝置');
     mediaMode='sleep-generated';queueKind='sleep';playStarted=true;setBusy(false);setPlayIcon(true);
     status.textContent='正在播放 · '+label;playername.textContent=label+' · 本機產生';
@@ -938,18 +979,9 @@ async function playSleep(kind,playNow=false){
   sleepSourceError(label);
 }
 
-const overlay=document.getElementById('overlay');function openSettings(){overlay.style.display='flex';overlay.setAttribute('aria-hidden','false')}function closeSettings(){overlay.style.display='none';overlay.setAttribute('aria-hidden','true')}document.getElementById('close').onclick=closeSettings;document.getElementById('homeSettings').onclick=openSettings;overlay.addEventListener('click',e=>{if(e.target===overlay)closeSettings()});const settingsTimer=document.getElementById('settingsSleepTimer');settingsTimer.addEventListener('change',()=>{if(queueKind==='sleep'&&(sleepActiveKind||document.getElementById('youtubeFrame')))armSleepTimer()});const settingsLanguage=document.getElementById('settingsLanguage');settingsLanguage.addEventListener('change',()=>{const en=settingsLanguage.value==='en-US';document.documentElement.lang=en?'en':'zh-Hant'; document.getElementById('nowPlayingTitle').textContent=en?'Now Playing':'正在播放';document.getElementById('playerSubtitle').textContent=en?'Relax · Return to Nature':'放鬆身心・回歸自然';document.getElementById('playerHint').textContent=en?'Relax · Return to Nature':'放鬆身心・回歸自然'; document.getElementById('brandLogo').childNodes[0].textContent=en?'Serene Sound ':'心境之聲 '; document.querySelectorAll('.sleep-home-grid button').forEach((b,i)=>{const zh=['鋼琴與雨聲','自然雨聲','持續白噪音','持續粉紅噪音','持續棕噪音','海浪錄音','森林環境音','營火錄音','自然風聲','雷雨環境音'];const enLabels=['Piano & Rain','Rain','White Noise','Pink Noise','Brown Noise','Ocean Waves','Forest Ambience','Campfire','Wind','Thunderstorm'];const sm=b.querySelector('small');if(sm)sm.textContent=en?enLabels[i]:zh[i]});document.getElementById('settingsTitle').textContent=en?'Settings':'設定';document.getElementById('versionLabel').textContent=en?'App Version':'版本資訊';document.getElementById('versionValue').textContent='V295';document.getElementById('timerLabel').textContent=en?'Sleep Timer':'睡眠定時';document.getElementById('languageLabel').textContent=en?'Language':'語言設定';document.querySelector('.hero h1').textContent=en?'Relax and return to nature':'放鬆，回歸自然';document.querySelector('.hero p').textContent=en?'Choose music or nature sounds and let your mind settle.':'選擇喜愛的音樂或自然聲音，讓心境慢慢沉靜。';document.querySelector('.music-title h2').textContent=en?'♫ Music Genres':'♫ 音樂曲風';document.querySelector('.music-title .sub').textContent=en?'Choose a genre to open the player':'選擇曲風，進入唱盤聆聽';document.querySelector('.sleep-home h2').textContent=en?'☾ Sleep & Nature Sounds':'☾ 睡眠與自然聲音';document.querySelector('.sleep-home .sub').textContent=en?'Natural sounds for rest and sleep':'讓自然聲陪伴休息與睡眠';renderGenres();});renderGenres();renderFaith();renderHot();renderSources();
+const overlay=document.getElementById('overlay');function openSettings(){overlay.style.display='flex';overlay.setAttribute('aria-hidden','false')}function closeSettings(){overlay.style.display='none';overlay.setAttribute('aria-hidden','true')}document.getElementById('close').onclick=closeSettings;document.getElementById('homeSettings').onclick=openSettings;overlay.addEventListener('click',e=>{if(e.target===overlay)closeSettings()});const settingsTimer=document.getElementById('settingsSleepTimer');settingsTimer.addEventListener('change',()=>{if(queueKind==='sleep'&&(sleepActiveKind||document.getElementById('youtubeFrame')))armSleepTimer()});const settingsLanguage=document.getElementById('settingsLanguage');settingsLanguage.addEventListener('change',()=>{const en=settingsLanguage.value==='en-US';document.documentElement.lang=en?'en':'zh-Hant'; document.getElementById('nowPlayingTitle').textContent=en?'Now Playing':'正在播放';document.getElementById('playerSubtitle').textContent=en?'Relax · Return to Nature':'放鬆身心・回歸自然';document.getElementById('playerHint').textContent=en?'Relax · Return to Nature':'放鬆身心・回歸自然'; document.getElementById('brandLogo').childNodes[0].textContent=en?'Serene Sound ':'心境之聲 '; document.querySelectorAll('.sleep-home-grid button').forEach((b,i)=>{const zh=['鋼琴與雨聲','自然雨聲','持續白噪音','持續粉紅噪音','持續棕噪音','海浪錄音','森林環境音','營火錄音','自然風聲','雷雨環境音'];const enLabels=['Piano & Rain','Rain','White Noise','Pink Noise','Brown Noise','Ocean Waves','Forest Ambience','Campfire','Wind','Thunderstorm'];const sm=b.querySelector('small');if(sm)sm.textContent=en?enLabels[i]:zh[i]});document.getElementById('settingsTitle').textContent=en?'Settings':'設定';document.getElementById('versionLabel').textContent=en?'App Version':'版本資訊';document.getElementById('versionValue').textContent='V299';document.getElementById('timerLabel').textContent=en?'Sleep Timer':'睡眠定時';document.getElementById('languageLabel').textContent=en?'Language':'語言設定';document.querySelector('.hero h1').textContent=en?'Relax and return to nature':'放鬆，回歸自然';document.querySelector('.hero p').textContent=en?'Choose music or nature sounds and let your mind settle.':'選擇喜愛的音樂或自然聲音，讓心境慢慢沉靜。';document.querySelector('.music-title h2').textContent=en?'♫ Music Genres':'♫ 音樂曲風';document.querySelector('.music-title .sub').textContent=en?'Choose a genre to open the player':'選擇曲風，進入唱盤聆聽';document.querySelector('.sleep-home h2').textContent=en?'☾ Sleep & Nature Sounds':'☾ 睡眠與自然聲音';document.querySelector('.sleep-home .sub').textContent=en?'Natural sounds for rest and sleep':'讓自然聲陪伴休息與睡眠';renderGenres();});renderGenres();renderFaith();renderHot();renderSources();
 
-function fixNoiseArtwork(){
- const cards=[...document.querySelectorAll('.sleep-home-grid button')];
- if(cards.length<5)return;
- const deepBg=getComputedStyle(cards[0]).backgroundImage;
- const whiteOld=getComputedStyle(cards[2]).backgroundImage;
- cards[2].style.backgroundImage=deepBg; // White Noise: stacked stones
- cards[3].style.backgroundImage=whiteOld; // Pink Noise: pink orb currently assigned to White Noise
-}
 
-fixNoiseArtwork();
 // V288: Chinese is the default; home cards must not mix Chinese and English.
 settingsLanguage.value='zh-TW'; document.documentElement.lang='zh-Hant'; document.getElementById('nowPlayingTitle').textContent='正在播放'; document.querySelectorAll('.sleep-home-grid button small').forEach((el,i)=>{el.textContent=['鋼琴與雨聲','自然雨聲','持續白噪音','持續粉紅噪音','持續棕噪音','海浪錄音','森林環境音','營火錄音','自然風聲','雷雨環境音'][i]||''});
 // V283: locally generated audio is limited to white/pink/brown noise; all nature sounds and lullabies require external sources. Always start at Home.
